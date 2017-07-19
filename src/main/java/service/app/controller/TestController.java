@@ -13,15 +13,15 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import service.app.server.BaseService;
+import service.app.server.LogService;
 import service.app.timwin.TimWinMap;
 import service.app.util.TokenCreater;
 
-@Controller
+
 public class TestController extends BaseController implements InitializingBean{
 
 	@Autowired
-	BaseService bs;
+	LogService bs;
 	
 	@Autowired
 	TimWinMap tokens;
@@ -85,10 +85,11 @@ public class TestController extends BaseController implements InitializingBean{
 		System.err.println("username="+username+" password =" +password);
 
 		tokens.pushData(username, d.token);
-			
+
 		Cookie cookie = new Cookie("token", d.token);
 		cookie.setMaxAge(3600);
 		response.addCookie(cookie);
+
 		//bs.addUser();
 		return d;
 	}

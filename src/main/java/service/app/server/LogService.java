@@ -5,9 +5,10 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import service.app.dao.BaseDao;
+import service.app.model.UserInfo;
 
 @Service
-public class BaseService {
+public class LogService {
 	
 	@Autowired
 	BaseDao baseDao;
@@ -18,5 +19,15 @@ public class BaseService {
 		baseDao.addUser("tt2t", 12);
 		baseDao.addUser("ttt2", 12);
 	}
+	
+	public UserInfo getLogInData(String username){
+		UserInfo info = new UserInfo();
+		info.setUsername("admin");
+		info.setPassword("123456");
+		return info;
+	}
+	
+	
+	
 	
 }

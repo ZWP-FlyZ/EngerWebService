@@ -178,18 +178,22 @@ public class TimWinMap implements InitializingBean {
 		return mWinSize;
 	}
 	public void setmWinSize(int mWinSize) {
+		if(mRun) return ;
 		this.mWinSizeP = mWinSize+1;
 		this.mWinSize = mWinSize;
 	}
 	public int getmUniTimeLen() {
+		
 		return mUniTimeLen;
 	}
 	public void setmUniTimeLen(int mUniTimeLen) {
+		if(mRun) return ;
 		this.mUniTimeLen = mUniTimeLen;
 	}
 	@Override
 	public void afterPropertiesSet() throws Exception {
 		// TODO Auto-generated method stub
+		if(mRun) return ;
 		this.mWinSize =1;
 		this.mWinSizeP = 2;
 		this.mUniTimeLen = 1000;

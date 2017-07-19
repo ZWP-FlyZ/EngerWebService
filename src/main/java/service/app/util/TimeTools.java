@@ -9,4 +9,13 @@ public class TimeTools {
 	public static String getNow(){
 		return sdf.format(new Date());
 	}
+	
+	public static String[] sqlitTimeRange(String timeRange){
+		return timeRange.split(":");
+	}
+	public static String getYearMonth(String date){
+		if(date==null|| date.length()<7) 
+			return null;
+		return date.substring(0, 7);
+	}
 }
