@@ -1,0 +1,630 @@
+
+
+//登录返回数据
+{
+	errCode//状态码
+	token//授权码
+	userInfo//用户其他信息
+}
+
+//登录包含的用户信息 UserInfo
+{
+	username//用户名
+	userAuth//用户权限信息
+	roleName//账号所属组织名，例如公司名，运管单位名，港行单位名，交通厅名
+	roleType//账号所属组织类型，例如公司，运管单位，港行单位，交通厅，与roleName对应
+	place1//市级地址
+	place2//区县级地址
+
+	////////还有其他需要数据
+}
+
+
+
+//注册返回数据
+{
+	errCode//状态码
+}
+
+//首页返回数据
+{
+	errCode//状态码
+	roleName//角色名
+	timeRange//统计时间范围
+
+	engTypOther://每种燃料每个月使用量
+	[
+		{
+			engTyp//燃料类型
+			engTypMo://该燃料每个月的使用量
+			[
+				{
+					type//yyyy-mm类型
+					TypDatOfAllEng//能耗总量
+					TypDatOfAllLen//周转总量
+				}
+			]//end Month
+		}
+	]
+
+}//
+
+
+
+//道路客运返回数据
+{
+	errCode//状态码
+	roleName//角色名
+	timeRange//统计时间范围
+
+	engTypOther://每种燃料与其他条件
+	[
+		{
+			engTyp//燃料类型
+
+			engTypMo://该燃料每个月的使用量
+			[
+				{
+					type//yyyy-mm类型
+					TypDatOfAllEng//能耗总量
+					TypDatOfAllLen//周转总量
+				}
+			]//end Month
+
+			engTypSs://该燃料不同客座类型数据
+			[
+				{
+					type//类型
+					TypDatOfAllEng//能耗总量
+					TypDatOfAllLen//周转总量
+				}
+			]//end SS			
+
+			engTypEs://该燃料不同企业规模数据
+			[
+				{
+					type//类型
+					TypDatOfAllEng//能耗总量
+					TypDatOfAllLen//周转总量
+				}
+			]//end ES
+
+			engTypLs://该燃料不同运距类型数据
+			[
+				{
+					type//类型
+					TypDatOfAllEng//能耗总量
+					TypDatOfAllLen//周转总量
+				}
+			]//end LS
+
+			engTypCTs://该燃料不同车辆类型数据
+			[
+				{
+					type//类型
+					TypDatOfAllEng//能耗总量
+					TypDatOfAllLen//周转总量
+				}
+			]//end CTS
+
+		}//end EngType		
+	]
+
+}
+
+
+
+
+
+//道路货运返回数据
+{
+	errCode//状态码
+	roleName//角色名
+	timeRange//统计时间范围
+
+	engTypOther://每种燃料与其他条件
+	[
+		{
+			engTyp//燃料类型
+
+			engTypMo://该燃料每个月的使用量
+			[
+				{
+					type//yyyy-mm类型
+					TypDatOfAllEng//能耗总量
+					TypDatOfAllLen//周转总量
+				}
+			]//end Month
+
+			engTypWs://该燃料不同吨位类型数据
+			[
+				{
+					type//类型
+					TypDatOfAllEng//能耗总量
+					TypDatOfAllLen//周转总量
+				}
+			]//end SS			
+
+			engTypEs://该燃料不同企业规模数据
+			[
+				{
+					type//类型
+					TypDatOfAllEng//能耗总量
+					TypDatOfAllLen//周转总量
+				}
+			]//end ES
+
+			engTypLs://该燃料不同运距类型数据
+			[
+				{
+					type//类型
+					TypDatOfAllEng//能耗总量
+					TypDatOfAllLen//周转总量
+				}
+			]//end LS
+
+		}//end EngType		
+	]
+
+}
+
+
+
+//公交客运返回数据
+{
+	errCode//状态码
+	roleName//角色名
+	timeRange//统计时间范围
+
+	engTypOther://每种燃料与其他条件
+	[
+		{
+			engTyp//燃料类型
+
+			engTypMo://该燃料每个月的使用量
+			[
+				{
+					type//yyyy-mm类型
+					TypDatOfAllEng//能耗总量
+					TypDatOfAllLen//周转总量
+				}
+			]//end Month
+
+			engTypCLs://该燃料不同车长类型数据
+			[
+				{
+					type//类型
+					TypDatOfAllEng//能耗总量
+					TypDatOfAllLen//周转总量
+				}
+			]//end LS
+
+		}//end EngType		
+	]
+
+}
+
+
+
+//出租运输返回数据
+{
+	errCode//状态码
+	roleName//角色名
+	timeRange//统计时间范围
+
+	engTypOther://每种燃料与其他条件
+	[
+		{
+			engTyp//燃料类型
+
+			engTypMo://该燃料每个月的使用量
+			[
+				{
+					type//yyyy-mm类型
+					TypDatOfAllEng//能耗总量
+					TypDatOfAllLen//周转总量
+				}
+			]//end Month
+
+			engTypPs://该燃料不同排量类型数据
+			[
+				{
+					type//类型
+					TypDatOfAllEng//能耗总量
+					TypDatOfAllLen//周转总量
+				}
+			]//end LS
+
+		}//end EngType		
+	]
+
+}
+
+
+
+
+//内河运输返回数据
+{
+	errCode//状态码
+	roleName//角色名
+	timeRange//统计时间范围
+
+	engTypOther://每种燃料与其他条件
+	[
+		{
+			engTyp//燃料类型
+
+			engTypMo://该燃料每个月的使用量
+			[
+				{
+					type//yyyy-mm类型
+					TypDatOfAllEng//能耗总量
+					TypDatOfAllLen//周转总量
+				}
+			]//end Month
+
+			engTypWs://该燃料不同吨位类型数据
+			[
+				{
+					type//类型
+					TypDatOfAllEng//能耗总量
+					TypDatOfAllLen//周转总量
+				}
+			]//end LS
+
+			engTypEs://该燃料不同企业规模数据
+			[
+				{
+					type//类型
+					TypDatOfAllEng//能耗总量
+					TypDatOfAllLen//周转总量
+				}
+			]//end ES
+
+		}//end EngType		
+	]
+
+	weiTypOther://每个吨位类型与其他条件
+	[
+		{
+			weiTyp//吨位类型
+			weiTypSt://该吨位类型下不同船舶类型
+			[
+				{
+					type//类型
+					TypDatOfAllEng//能耗总量
+					TypDatOfAllLen//周转总量
+				}
+			]
+
+		}
+	]
+
+
+
+}
+
+
+
+//海洋货运返回数据
+{
+	errCode//状态码
+	roleName//角色名
+	timeRange//统计时间范围
+
+	engTypOther://每种燃料与其他条件
+	[
+		{
+			engTyp//燃料类型
+
+			engTypMo://该燃料每个月的使用量
+			[
+				{
+					type//yyyy-mm类型
+					TypDatOfAllEng//能耗总量
+					TypDatOfAllLen//周转总量
+				}
+			]//end Month
+
+			engTypWs://该燃料不同吨位类型数据
+			[
+				{
+					type//类型
+					TypDatOfAllEng//能耗总量
+					TypDatOfAllLen//周转总量
+				}
+			]//end WS
+
+			engTypEs://该燃料不同企业规模数据
+			[
+				{
+					type//类型
+					TypDatOfAllEng//能耗总量
+					TypDatOfAllLen//周转总量
+				}
+			]//end ES
+
+			engTypLs://该燃料不同运距类型数据
+			[
+				{
+					type//类型
+					TypDatOfAllEng//能耗总量
+					TypDatOfAllLen//周转总量
+				}
+			]//end LS
+
+		}//end EngType		
+	]
+
+	weiTypOther://每个吨位类型与其他条件
+	[
+		{
+			weiTyp//吨位类型
+			weiTypSt://该吨位类型下不同船舶类型
+			[
+				{
+					type//类型
+					TypDatOfAllEng//能耗总量
+					TypDatOfAllLen//周转总量
+				}
+			]
+
+		}
+	]
+
+}
+
+
+//海洋客运返回数据
+{
+	errCode//状态码
+	roleName//角色名
+	timeRange//统计时间范围
+
+	engTypOther://每种燃料与其他条件
+	[
+		{
+			engTyp//燃料类型
+
+			engTypMo://该燃料每个月的使用量
+			[
+				{
+					type//yyyy-mm类型
+					TypDatOfAllEng//能耗总量
+					TypDatOfAllLen//周转总量
+				}
+			]//end Month
+
+			engTypSs://该燃料不同客位类型数据
+			[
+				{
+					type//类型
+					TypDatOfAllEng//能耗总量
+					TypDatOfAllLen//周转总量
+				}
+			]//end SS
+
+			engTypEs://该燃料不同企业规模数据
+			[
+				{
+					type//类型
+					TypDatOfAllEng//能耗总量
+					TypDatOfAllLen//周转总量
+				}
+			]//end ES
+
+			engTypLs://该燃料不同运距类型数据
+			[
+				{
+					type//类型
+					TypDatOfAllEng//能耗总量
+					TypDatOfAllLen//周转总量
+				}
+			]//end LS
+
+		}//end EngType		
+	]
+
+}
+
+
+
+//港口生产返回数据
+{
+	errCode//状态码
+	roleName//角色名
+	timeRange//统计时间范围
+
+	engTypOther://每种燃料与其他条件
+	[
+		{
+			engTyp//燃料类型
+
+			engTypMo://该燃料每个月的使用量
+			[
+				{
+					type//yyyy-mm类型
+					TypDatOfAllEng//能耗总量
+					TypDatOfAllLen//周转总量
+				}
+			]//end Month
+
+		}//end EngType		
+	]
+
+	entTypOther://每种企业规模与其他条件
+	[
+		{
+			entTyp//企业类型
+
+			entTypMo://该企业类型每个月的使用量
+			[
+				{
+					type//yyyy-mm类型
+					TypDatOfAllEng//能耗总量
+					TypDatOfAllLen//周转总量
+				}
+			]//end Month
+
+		}//end EngType		
+	]
+
+}
+
+
+//单位运距能返回数据
+{
+	errCode//状态码
+	roleName//角色名
+	timeRange//统计时间范围
+
+	traTypOther://每种传输类型与其他条件
+	[
+		{
+			traTyp//燃料类型
+
+			traTypEt://该运输类型各燃料类型的使用量
+			[
+				{
+					type//燃料类型
+					TypDatOfAllEng//能耗总量
+					TypDatOfAllLen//运距总量
+				}
+			]//end 
+
+		}//end EngType		
+	]
+
+}
+
+//能源类型分时趋势
+{
+	errCode//状态码
+	roleName//角色名
+	timeRange//统计时间范围
+
+	engTypOther://每种燃料与其他条件
+	[
+		{
+			engTyp//燃料类型
+
+			engTypMo://该燃料每个月的使用量
+			[
+				{
+					type//yyyy-mm类型
+					TypDatOfAllEng//能耗总量
+					TypDatOfAllLen//周转总量
+				}
+			]//end Month
+
+		}//end EngType		
+	]
+
+}
+
+//单位能耗变化趋势
+{
+	errCode//状态码
+	roleName//角色名
+	timeRange//统计时间范围
+
+	traTypOther://每种传输类型与其他条件
+	[
+		{
+			traTyp//传输类型
+
+			traTypMo://该传输类型每个月的使用量
+			[
+				{
+					type//yyyy-mm类型
+					TypDatOfAllEng//能耗总量
+					TypDatOfAllLen//周转总量
+				}
+			]//end Month
+
+		}//end EngType		
+	]
+
+}
+
+//总能耗变化趋势
+{
+	errCode//状态码
+	roleName//角色名
+	timeRange//统计时间范围
+
+	traTypOther://每种传输类型与其他条件
+	[
+		{
+			traTyp//传输类型
+
+			traTypMo://该传输类型每个月的使用量
+			[
+				{
+					type//yyyy-mm类型
+					TypDatOfAllEng//能耗总量
+					TypDatOfAllLen//周转总量
+				}
+			]//end Month
+
+		}//end EngType		
+	]
+
+}
+
+
+//地市能耗构成图耗
+{
+	errCode//状态码
+	roleName//角色名
+	timeRange//统计时间范围
+	tranType//运输类型
+
+	citTypOther://每各地区类型与其他条件
+	[
+		{
+			ctiTyp//地市类型
+			ctiTypDataOfEng//能耗总量
+		}//end EngType		
+	]
+
+}
+
+
+//交通方式能耗构成图耗
+{
+	errCode//状态码
+	roleName//角色名
+	timeRange//统计时间范围
+	cityType//运输类型
+
+	traTypOther://每种传输类型与其他条件
+	[
+		{
+			traTyp//传输类型
+
+			traTypDataOfEng//交通方式能耗总量
+
+		}//end EngType		
+	]
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
