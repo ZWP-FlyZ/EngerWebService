@@ -5,8 +5,20 @@ public class RequestData {
 	private String password;
 	private String roleName;
 	private String roleType;
-	private String palce1;
-	private String palce2;
+	private String place1;
+	public String getPlace1() {
+		return place1;
+	}
+	public void setPlace1(String place1) {
+		this.place1 = place1;
+	}
+	public String getPlace2() {
+		return place2;
+	}
+	public void setPlace2(String place2) {
+		this.place2 = place2;
+	}
+	private String place2;
 	private String timeRange;
 	private String cityType;
 	private String engerType;
@@ -28,18 +40,8 @@ public class RequestData {
 	public void setRoleName(String roleName) {
 		this.roleName = roleName;
 	}
-	public String getPalce1() {
-		return palce1;
-	}
-	public void setPalce1(String palce1) {
-		this.palce1 = palce1;
-	}
-	public String getPalce2() {
-		return palce2;
-	}
-	public void setPalce2(String palce2) {
-		this.palce2 = palce2;
-	}
+
+	
 	public String getTimeRange() {
 		return timeRange;
 	}
