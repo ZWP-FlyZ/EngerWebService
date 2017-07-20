@@ -39,6 +39,70 @@ public class LandController {
 		return ir;
 	}
 	
+	@RequestMapping("/rodgodO.json")
+	@ResponseBody
+	public IndexResponse roadGoodsTrans(HttpServletResponse response,
+										RequestData rd){
+		rd.setUsername("zwp");
+		rd.setRoleType(RoleType.ROLE_LAND);
+		rd.setTimeRange("2017-1-1:2017-12-31");
+		rd.setPlace1("杭州");
+		rd.setPlace2("江干区");
+		
+		IndexResponse ir = new IndexResponse();
+		
+		ir.setErrCode(ErrCode.DATA_OK);
+		ir.setRoleName(rd.getRoleName());
+		ir.setTimeRange(rd.getTimeRange());
+		ir.setEngTypOther(lds.getRoadPassEngTypOther(rd));
+		
+		return ir;
+	}
+	
+	@RequestMapping("/busO.json")
+	@ResponseBody
+	public IndexResponse busTrans(HttpServletResponse response,
+										RequestData rd){
+		rd.setUsername("zwp");
+		rd.setRoleType(RoleType.ROLE_LAND);
+		rd.setTimeRange("2017-1-1:2017-12-31");
+		rd.setPlace1("杭州");
+		rd.setPlace2("江干区");
+		
+		IndexResponse ir = new IndexResponse();
+		
+		ir.setErrCode(ErrCode.DATA_OK);
+		ir.setRoleName(rd.getRoleName());
+		ir.setTimeRange(rd.getTimeRange());
+		ir.setEngTypOther(lds.getRoadPassEngTypOther(rd));
+		
+		return ir;
+	}
+	
+	
+	@RequestMapping("/texiTrans.json")
+	@ResponseBody
+	public IndexResponse taxiTrans(HttpServletResponse response,
+										RequestData rd){
+		rd.setUsername("zwp");
+		rd.setRoleType(RoleType.ROLE_LAND);
+		rd.setTimeRange("2017-1-1:2017-12-31");
+		rd.setPlace1("杭州");
+		rd.setPlace2("江干区");
+		
+		IndexResponse ir = new IndexResponse();
+		
+		ir.setErrCode(ErrCode.DATA_OK);
+		ir.setRoleName(rd.getRoleName());
+		ir.setTimeRange(rd.getTimeRange());
+		ir.setEngTypOther(lds.getRoadPassEngTypOther(rd));
+		
+		return ir;
+	}
+	
+	
+	
+	
 	
 	
 	
