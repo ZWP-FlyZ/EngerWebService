@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import service.app.server.IndexService;
-import service.app.server.LogService;
 import service.app.tramodel.ErrCode;
 import service.app.tramodel.IndexResponse;
 import service.app.tramodel.RequestData;
