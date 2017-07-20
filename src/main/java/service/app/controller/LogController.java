@@ -28,7 +28,7 @@ public class LogController extends BaseController implements InitializingBean{
 	
 	@Autowired
 	TimWinMap tokenMap;
-	
+		
 	@RequestMapping("/login.json")
 	@ResponseBody
 	public LogInResponse login(HttpServletResponse response,RequestData data){
@@ -66,7 +66,7 @@ public class LogController extends BaseController implements InitializingBean{
 		// TODO Auto-generated method stub
 		tokenMap.setmWinSize(4);
 		tokenMap.setmUniTimeLen(180*1000);
-		tokenMap.start();
+		//tokenMap.start();
 	}
 	
 	
