@@ -41,7 +41,7 @@
 				{
 					type//yyyy-mm类型
 					TypDatOfAllEng//能耗总量
-					TypDatOfAllLen//周转总量
+					TypDatOfAllLen//周转总量 ！！！！该数据无效
 				}
 			]//end Month
 		}
@@ -445,7 +445,7 @@
 				{
 					type//yyyy-mm类型
 					TypDatOfAllEng//能耗总量
-					TypDatOfAllLen//周转总量
+					TypDatOfAllLen//周转总量  ！！！！！！！注意：每种燃料类型下同一个月的TypDatOfAllLen都是一样的，都是这个月总生产量！！！！！！！
 				}
 			]//end Month
 

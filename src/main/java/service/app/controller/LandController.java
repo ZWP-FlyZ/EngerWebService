@@ -1,6 +1,7 @@
 package service.app.controller;
 
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletResponse;
 
@@ -24,13 +25,14 @@ public class LandController {
 	
 
 	@SuppressWarnings("unchecked")
-	@RequestMapping("/rodpasO.json")
+	@RequestMapping("/roadpassO.json")
 	@ResponseBody
 	public IndexResponse roadPassTrans(HttpServletResponse response,
 										RequestData rd){
 		rd.setUsername("zwp");
-		rd.setRoleType(RoleType.ROLE_LAND);
-		rd.setTimeRange("2017-1-1:2017-12-31");
+		rd.setRoleName("enterprice");
+		rd.setRoleType(RoleType.ROLE_TRAFFIC);
+		rd.setTimeRange("2017-01-01:2017-12-30");
 		rd.setPlace1("杭州");
 		rd.setPlace2("江干区");
 		
@@ -39,22 +41,21 @@ public class LandController {
 		ir.setErrCode(ErrCode.DATA_OK);
 		ir.setRoleName(rd.getRoleName());
 		ir.setTimeRange(rd.getTimeRange());
-
-		ir.setEngTypOther((List<EngTypOtherItem>) lds.getRoadPassTypOther(rd).get("engTypeOther"));
-		
-		
+		Map<String,Object> ds = lds.getRoadPassTypOther(rd);
+		ir.setEngTypOther((List<EngTypOtherItem>) ds.get("engTypeOther"));
 		
 		return ir;
 	}
 	
 	@SuppressWarnings("unchecked")
-	@RequestMapping("/rodgodO.json")
+	@RequestMapping("/roadgoodsO.json")
 	@ResponseBody
 	public IndexResponse roadGoodsTrans(HttpServletResponse response,
 										RequestData rd){
 		rd.setUsername("zwp");
-		rd.setRoleType(RoleType.ROLE_LAND);
-		rd.setTimeRange("2017-1-1:2017-12-31");
+		rd.setRoleName("enterprice");
+		rd.setRoleType(RoleType.ROLE_TRAFFIC);
+		rd.setTimeRange("2017-01-01:2017-12-30");
 		rd.setPlace1("杭州");
 		rd.setPlace2("江干区");
 		
@@ -62,20 +63,21 @@ public class LandController {
 		
 		ir.setErrCode(ErrCode.DATA_OK);
 		ir.setRoleName(rd.getRoleName());
-		ir.setTimeRange(rd.getTimeRange());
-		ir.setEngTypOther((List<EngTypOtherItem>) lds.getRoadPassTypOther(rd).get("engTypeOther"));
+		Map<String,Object> ds = lds.getRoadGoodsTypOther(rd);
+		ir.setEngTypOther((List<EngTypOtherItem>) ds.get("engTypeOther"));
 		
 		return ir;
 	}
 	
 	@SuppressWarnings("unchecked")
-	@RequestMapping("/busO.json")
+	@RequestMapping("/bustranO.json")
 	@ResponseBody
 	public IndexResponse busTrans(HttpServletResponse response,
 										RequestData rd){
 		rd.setUsername("zwp");
-		rd.setRoleType(RoleType.ROLE_LAND);
-		rd.setTimeRange("2017-1-1:2017-12-31");
+		rd.setRoleName("enterprice");
+		rd.setRoleType(RoleType.ROLE_TRAFFIC);
+		rd.setTimeRange("2017-01-01:2017-12-30");
 		rd.setPlace1("杭州");
 		rd.setPlace2("江干区");
 		
@@ -84,20 +86,22 @@ public class LandController {
 		ir.setErrCode(ErrCode.DATA_OK);
 		ir.setRoleName(rd.getRoleName());
 		ir.setTimeRange(rd.getTimeRange());
-		ir.setEngTypOther((List<EngTypOtherItem>)lds.getRoadPassTypOther(rd).get("engTypeOther"));
+		Map<String,Object> ds = lds.getBusTranTypOther(rd);
+		ir.setEngTypOther((List<EngTypOtherItem>) ds.get("engTypeOther"));
 		
 		return ir;
 	}
 	
 	
 	@SuppressWarnings("unchecked")
-	@RequestMapping("/texiTrans.json")
+	@RequestMapping("/taxitranO.json")
 	@ResponseBody
 	public IndexResponse taxiTrans(HttpServletResponse response,
 										RequestData rd){
 		rd.setUsername("zwp");
-		rd.setRoleType(RoleType.ROLE_LAND);
-		rd.setTimeRange("2017-1-1:2017-12-31");
+		rd.setRoleName("enterprice");
+		rd.setRoleType(RoleType.ROLE_TRAFFIC);
+		rd.setTimeRange("2017-01-01:2017-12-30");
 		rd.setPlace1("杭州");
 		rd.setPlace2("江干区");
 		
@@ -106,7 +110,8 @@ public class LandController {
 		ir.setErrCode(ErrCode.DATA_OK);
 		ir.setRoleName(rd.getRoleName());
 		ir.setTimeRange(rd.getTimeRange());
-		ir.setEngTypOther((List<EngTypOtherItem>)lds.getRoadPassTypOther(rd).get("engTypeOther"));
+		Map<String,Object> ds = lds.getTaxiTranTypOther(rd);
+		ir.setEngTypOther((List<EngTypOtherItem>) ds.get("engTypeOther"));
 		
 		return ir;
 	}

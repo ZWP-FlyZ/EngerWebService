@@ -1,5 +1,8 @@
 package service.app.controller;
 
+import java.util.List;
+import java.util.Map;
+
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import service.app.server.IndexService;
+import service.app.tramodel.EngTypOtherItem;
 import service.app.tramodel.ErrCode;
 import service.app.tramodel.IndexResponse;
 import service.app.tramodel.RequestData;
@@ -19,22 +23,26 @@ public class IndexController extends BaseController{
 	@Autowired
 	IndexService indexS;
 	
+	@SuppressWarnings("unchecked")
 	@RequestMapping("/index.json")
 	@ResponseBody
 	public IndexResponse getIndexData(HttpServletResponse response,
 				RequestData rd){
 		
 		rd.setUsername("zwp");
-		rd.setRoleType(RoleType.ROLE_LAND);
-		rd.setTimeRange("2017-1-1:2017-12-31");
-	
+		rd.setRoleName("enterprice");
+		rd.setRoleType(RoleType.ROLE_TRAFFIC);
+		rd.setTimeRange("2017-01-01:2017-12-30");
+		rd.setPlace1("杭州");
+		rd.setPlace2("江干区");
 		
 		IndexResponse ir = new IndexResponse();
-	
+		
 		ir.setErrCode(ErrCode.DATA_OK);
 		ir.setRoleName(rd.getRoleName());
 		ir.setTimeRange(rd.getTimeRange());
-		ir.setEngTypOther(indexS.getEngTypOther(rd));
+		Map<String,Object> ds = indexS.getEngTypOther(rd);
+		ir.setEngTypOther((List<EngTypOtherItem>) ds.get("engTypeOther"));
 		
 		return ir;
 	}

@@ -27,13 +27,14 @@ public class WaterController {
 	
 	
 	@SuppressWarnings("unchecked")
-	@RequestMapping("/riverO.json")
+	@RequestMapping("/rivertranO.json")
 	@ResponseBody
 	public IndexResponse riverTran(HttpServletResponse response,
 										RequestData rd){
 		rd.setUsername("zwp");
-		rd.setRoleType(RoleType.ROLE_LAND);
-		rd.setTimeRange("2017-1-1:2017-12-31");
+		rd.setRoleName("enterprice");
+		rd.setRoleType(RoleType.ROLE_TRAFFIC);
+		rd.setTimeRange("2017-01-01:2017-12-30");
 		rd.setPlace1("杭州");
 		rd.setPlace2("江干区");
 		
@@ -41,20 +42,21 @@ public class WaterController {
 		
 		ir.setErrCode(ErrCode.DATA_OK);
 		ir.setRoleName(rd.getRoleName());
-		ir.setTimeRange(rd.getTimeRange());
-		ir.setEngTypOther((List<EngTypOtherItem>)wds.getRiverTranTypeOther(rd).get("engTypeOther"));
+		Map<String,Object> ds = wds.getRiverTranTypeOther(rd);
+		ir.setEngTypOther((List<EngTypOtherItem>) ds.get("engTypeOther"));
 		
 		return ir;
 	}
 	
 	@SuppressWarnings("unchecked")
-	@RequestMapping("/oceanPassO.json")
+	@RequestMapping("/oceanpassO.json")
 	@ResponseBody
 	public IndexResponse oceanPass(HttpServletResponse response,
 										RequestData rd){
 		rd.setUsername("zwp");
-		rd.setRoleType(RoleType.ROLE_LAND);
-		rd.setTimeRange("2017-1-1:2017-12-31");
+		rd.setRoleName("enterprice");
+		rd.setRoleType(RoleType.ROLE_TRAFFIC);
+		rd.setTimeRange("2017-01-01:2017-12-30");
 		rd.setPlace1("杭州");
 		rd.setPlace2("江干区");
 		
@@ -63,20 +65,22 @@ public class WaterController {
 		ir.setErrCode(ErrCode.DATA_OK);
 		ir.setRoleName(rd.getRoleName());
 		ir.setTimeRange(rd.getTimeRange());
-		ir.setEngTypOther((List<EngTypOtherItem>)wds.getOceanPassTypeOther(rd).get("engTypeOther"));
+		Map<String,Object> ds = wds.getOceanPassTypeOther(rd);
+		ir.setEngTypOther((List<EngTypOtherItem>) ds.get("engTypeOther"));
 		
 		return ir;
 
 	}
 	
 	@SuppressWarnings("unchecked")
-	@RequestMapping("/oceanGoodsO.json")
+	@RequestMapping("/oceangoodsO.json")
 	@ResponseBody
 	public IndexResponse oceanGoods(HttpServletResponse response,
 										RequestData rd){
 		rd.setUsername("zwp");
-		rd.setRoleType(RoleType.ROLE_LAND);
-		rd.setTimeRange("2017-1-1:2017-12-31");
+		rd.setRoleName("enterprice");
+		rd.setRoleType(RoleType.ROLE_TRAFFIC);
+		rd.setTimeRange("2017-01-01:2017-12-30");
 		rd.setPlace1("杭州");
 		rd.setPlace2("江干区");
 		
@@ -85,19 +89,23 @@ public class WaterController {
 		ir.setErrCode(ErrCode.DATA_OK);
 		ir.setRoleName(rd.getRoleName());
 		ir.setTimeRange(rd.getTimeRange());
-		ir.setEngTypOther((List<EngTypOtherItem>)wds.getOceanGoodsTypeOther(rd).get("engTypeOther"));
+		Map<String,Object> ds = wds.getOceanGoodsTypeOther(rd);
+		ir.setEngTypOther((List<EngTypOtherItem>) ds.get("engTypeOther"));
 		
 		return ir;
+		
+
 	}
 	
 	@SuppressWarnings("unchecked")
-	@RequestMapping("/portProduceO.json")
+	@RequestMapping("/portproduceO.json")
 	@ResponseBody
 	public PortProductResponse portProduce(HttpServletResponse response,
 										RequestData rd){
 		rd.setUsername("zwp");
-		rd.setRoleType(RoleType.ROLE_WATER);
-		rd.setTimeRange("2017-1-1:2017-12-31");
+		rd.setRoleName("enterprice");
+		rd.setRoleType(RoleType.ROLE_TRAFFIC);
+		rd.setTimeRange("2017-01-01:2017-12-30");
 		rd.setPlace1("杭州");
 		rd.setPlace2("江干区");
 		

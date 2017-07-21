@@ -76,10 +76,7 @@ public  Map<String,Object> getRoadPassTypOther(RequestData rd){
 				allData.addAll(l);
 		}
 		if( (k&0x2)!=0 ){
-//			List<RoadPassData> l = 
-//					roadPassDao.getRoadPassAll(times[0], times[1], enterprice, places[0], places[1]);
-//			if(l!=null)
-//				allData.addAll(l);
+
 		}
 		
 		List<EngTypOtherItem> engTypeOther = new ArrayList<>();

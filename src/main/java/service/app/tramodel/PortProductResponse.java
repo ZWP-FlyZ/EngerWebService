@@ -2,31 +2,11 @@ package service.app.tramodel;
 
 import java.util.List;
 
-public class PortProductResponse {
-	private int errCode ;
-	private String roleName;
-	private String timeRange;
-	
+public class PortProductResponse extends BaseResponse{
+
 	private List<EngTypOtherItem> engTypOther;
 	private List<EntTypOtherItem> entTypOther;
-	public int getErrCode() {
-		return errCode;
-	}
-	public void setErrCode(int errCode) {
-		this.errCode = errCode;
-	}
-	public String getRoleName() {
-		return roleName;
-	}
-	public void setRoleName(String roleName) {
-		this.roleName = roleName;
-	}
-	public String getTimeRange() {
-		return timeRange;
-	}
-	public void setTimeRange(String timeRange) {
-		this.timeRange = timeRange;
-	}
+
 	public List<EngTypOtherItem> getEngTypOther() {
 		return engTypOther;
 	}
