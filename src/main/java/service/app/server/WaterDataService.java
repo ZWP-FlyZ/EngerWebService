@@ -16,7 +16,6 @@ import service.app.model.OceanGoodsData;
 import service.app.model.OceanPassData;
 import service.app.model.PortProData;
 import service.app.model.RiverTranData;
-import service.app.model.RoadPassData;
 import service.app.tramodel.EngTypOtherItem;
 import service.app.tramodel.EntTypOtherItem;
 import service.app.tramodel.RequestData;

@@ -6,6 +6,14 @@ public class RequestData {
 	private String roleName;
 	private String roleType;
 	private String place1;
+	private String place2;
+	private String timeRange;
+	private String cityType;
+	private String engerType;
+	
+	private String token;
+	
+	
 	public String getPlace1() {
 		return place1;
 	}
@@ -18,10 +26,7 @@ public class RequestData {
 	public void setPlace2(String place2) {
 		this.place2 = place2;
 	}
-	private String place2;
-	private String timeRange;
-	private String cityType;
-	private String engerType;
+	
 	public String getUsername() {
 		return username;
 	}
@@ -65,6 +70,12 @@ public class RequestData {
 	}
 	public void setRoleType(String roleType) {
 		this.roleType = roleType;
+	}
+	public String getToken() {
+		return token;
+	}
+	public void setToken(String token) {
+		this.token = token;
 	}
 	
 	

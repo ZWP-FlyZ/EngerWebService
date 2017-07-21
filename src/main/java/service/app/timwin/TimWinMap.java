@@ -112,9 +112,12 @@ public class TimWinMap implements InitializingBean {
 		boolean f = false;
 			lock.lock();
 
+			Object c;
 			for(Map<String,Object> m:flag.dataList){
-				if(m.remove(name)!=null) {
-					f = true;
+				c = m.remove(name);
+				if(c!=null ) {
+					if( c.equals(data))
+						f = true;
 					break;
 				}
 			}

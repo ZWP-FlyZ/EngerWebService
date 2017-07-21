@@ -53,9 +53,7 @@ public class LogController extends BaseController implements InitializingBean{
 				response.addCookie(cooUsername);
 				response.addCookie(cooToken);
 				resp.setToken(token);
-
-				
-				//tokenMap.pushData(username, token);
+				tokenMap.pushData(data.getUsername(), token);
 			}
 		return resp;
 	}
@@ -66,7 +64,7 @@ public class LogController extends BaseController implements InitializingBean{
 		// TODO Auto-generated method stub
 		tokenMap.setmWinSize(4);
 		tokenMap.setmUniTimeLen(180*1000);
-		//tokenMap.start();
+		tokenMap.start();
 	}
 	
 	
