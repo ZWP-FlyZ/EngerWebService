@@ -5,6 +5,16 @@ import org.springframework.stereotype.Component;
 @Component
 public class TypeGetter {
 	
+	public final static String CHAI_YOU = "f1";//柴油
+	public final static String QI_YOU = "f2";//汽油
+	public final static String MEI_YOU = "f4";//煤油
+	public final static String DIAN_LI = "f5";//电力
+	public final static String HUN_HE = "f13";//混合燃料
+	public final static String QI_TA = "f7";//其他类型
+	public final static String SHI_YOU_QI = "f8";//石油气
+	public final static String TIAN_RAN_QI = "f9";//天然气
+	
+	
 	//道路客运客位数转客位类型
 	public String getRoadPassSitCotType(int sitCot){
 		//道路客运客位数转客位类型

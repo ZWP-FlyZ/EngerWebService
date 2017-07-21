@@ -14,7 +14,7 @@ public interface RoadPassDao {
 	@Select("select * from "+
 		"(SELECT * FROM trafficenger.roadpass "+
         "where inTime >= '2017-01-01' and inTime <= '2017-04-30') as t1 "+
-        "where companyId like '%%'")
+        " where companyId like '%%' ; ")
 	public List<RoadPassData> getRoadPassAll(
 			String startTime,
 			String endTime,

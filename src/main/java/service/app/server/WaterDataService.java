@@ -14,9 +14,11 @@ import service.app.dao.PortProDao;
 import service.app.dao.RiverTranDao;
 import service.app.model.OceanGoodsData;
 import service.app.model.OceanPassData;
+import service.app.model.PortProData;
 import service.app.model.RiverTranData;
 import service.app.model.RoadPassData;
 import service.app.tramodel.EngTypOtherItem;
+import service.app.tramodel.EntTypOtherItem;
 import service.app.tramodel.RequestData;
 import service.app.tramodel.RoleType;
 import service.app.tramodel.TypeData;
@@ -389,7 +391,144 @@ public class WaterDataService {
 	}
 	
 	public Map<String ,Object> getPortProductTypeOther(RequestData rd){
-		return null;
+		String[] times = 
+				TimeTools.sqlitTimeRange(rd.getTimeRange());
+		String[] places = new String[2];
+		String enterprice=null;
+		int k = 0x0;
+		
+		List<PortProData> allData =  new ArrayList<>();
+		
+		places[0] = rd.getPlace1();
+		places[1] = rd.getPlace2();
+		if(rd.getRoleType().equals(RoleType.ROLE_TRAFFIC)){
+			enterprice = "%%";
+			k=0x3;
+		}else if(rd.getRoleType().equals(RoleType.ROLE_ENTERPEICE)){
+			enterprice = rd.getRoleName();
+			k = 0x3;
+		}else if(rd.getRoleType().equals(RoleType.ROLE_LAND)){
+			enterprice = "%%";
+			k=0x1;
+		}else if(rd.getRoleType().equals(RoleType.ROLE_WATER)){
+			enterprice = "%%";
+			k=0x2;
+		}
+		
+		if( (k&0x1)!=0 ){
+
+		}
+		if( (k&0x2)!=0 ){
+			List<PortProData> l = 
+					portProDao.getProtProAll(times[0], times[1], enterprice, places[0], places[1]);
+			if(l!=null)
+				allData.addAll(l);
+		}
+		
+		List<EngTypOtherItem> engTypeOther = new ArrayList<>();
+		List<EntTypOtherItem> entTypeOther = new ArrayList<>();
+		TwoDecMap<String,TypeData> engMonthMap = new TwoDecMap<>();
+		TwoDecMap<String,TypeData> entMonthMap = new TwoDecMap<>();
+		
+		String tmp = null;
+		String tmp2 = null;
+		TypeData td = null;
+		
+		for(PortProData d:allData){
+			//month
+			tmp = TimeTools.getYearMonth(d.getInTime());
+			if(tmp!=null){
+				td = engMonthMap.get(TypeGetter.CHAI_YOU,tmp);//柴油
+				if(td==null)
+				{
+					td = new TypeData();
+					td.setType(tmp);
+				}
+				td.addEng(d.getDiesel());
+				td.addLen(d.getProTask());
+				engMonthMap.put(TypeGetter.CHAI_YOU,tmp,td);
+				
+				td = engMonthMap.get(TypeGetter.QI_YOU,tmp);
+				if(td==null)
+				{
+					td = new TypeData();
+					td.setType(tmp);
+				}
+				td.addEng(d.getGasoline());
+				td.addLen(d.getProTask());
+				engMonthMap.put(TypeGetter.QI_YOU,tmp,td);
+				
+				td = engMonthMap.get(TypeGetter.MEI_YOU,tmp);
+				if(td==null)
+				{
+					td = new TypeData();
+					td.setType(tmp);
+				}
+				td.addEng(d.getCoal());
+				td.addLen(d.getProTask());
+				engMonthMap.put(TypeGetter.MEI_YOU,tmp,td);
+				
+				td = engMonthMap.get(TypeGetter.DIAN_LI,tmp);
+				if(td==null)
+				{
+					td = new TypeData();
+					td.setType(tmp);
+				}
+				td.addEng(d.getPower());
+				td.addLen(d.getProTask());
+				engMonthMap.put(TypeGetter.DIAN_LI,tmp,td);
+				
+				td = engMonthMap.get(TypeGetter.QI_TA,tmp);
+				if(td==null)
+				{
+					td = new TypeData();
+					td.setType(tmp);
+				}
+				td.addEng(d.getOther());
+				td.addLen(d.getProTask());
+				engMonthMap.put(TypeGetter.QI_TA,tmp,td);
+				
+				tmp2 = tg.getPortProEntSType(d.getProTask());//企业 规模 每月数据
+				td = entMonthMap.get(tmp2, tmp);
+				if(td==null)
+				{
+					td = new TypeData();
+					td.setType(tmp);
+				}
+				
+				td.addEng(d.getDiesel());
+				td.addEng(d.getGasoline());
+				td.addEng(d.getPower());
+				td.addEng(d.getCoal());
+				td.addEng(d.getOther());
+				td.addLen(d.getProTask());
+				entMonthMap.put(tmp2, tmp, td);
+			}
+						
+		}
+		
+		
+		EngTypOtherItem etoi = null;
+		EntTypOtherItem ettoi = null;
+		for(String et:engMonthMap.getXset()){
+			etoi = new EngTypOtherItem();
+			etoi.setEngTyp(et);
+			etoi.setEngTypMo(new ArrayList<TypeData>(engMonthMap.getYMap(et).values()));
+			engTypeOther.add(etoi);
+		}
+		for(String et:entMonthMap.getXset()){
+			ettoi = new EntTypOtherItem();
+			ettoi.setEntTyp(et);
+			ettoi.setEntTypMo(new ArrayList<TypeData>(entMonthMap.getYMap(et).values()));
+			entTypeOther.add(ettoi);
+		}
+		
+		
+		
+		Map<String ,Object> map = new HashMap<String ,Object>();
+		map.put("engTypeOther",engTypeOther);
+		map.put("entTypeOther",entTypeOther);
+		return map;
 	}
 	
 	

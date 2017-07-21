@@ -1,6 +1,7 @@
 package service.app.controller;
 
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletResponse;
 
@@ -11,8 +12,10 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import service.app.server.WaterDataService;
 import service.app.tramodel.EngTypOtherItem;
+import service.app.tramodel.EntTypOtherItem;
 import service.app.tramodel.ErrCode;
 import service.app.tramodel.IndexResponse;
+import service.app.tramodel.PortProductResponse;
 import service.app.tramodel.RequestData;
 import service.app.tramodel.RoleType;
 
@@ -90,22 +93,24 @@ public class WaterController {
 	@SuppressWarnings("unchecked")
 	@RequestMapping("/portProduceO.json")
 	@ResponseBody
-	public IndexResponse portProduce(HttpServletResponse response,
+	public PortProductResponse portProduce(HttpServletResponse response,
 										RequestData rd){
 		rd.setUsername("zwp");
-		rd.setRoleType(RoleType.ROLE_LAND);
+		rd.setRoleType(RoleType.ROLE_WATER);
 		rd.setTimeRange("2017-1-1:2017-12-31");
 		rd.setPlace1("杭州");
 		rd.setPlace2("江干区");
 		
-		IndexResponse ir = new IndexResponse();
+		PortProductResponse ppr = new PortProductResponse();
 		
-		ir.setErrCode(ErrCode.DATA_OK);
-		ir.setRoleName(rd.getRoleName());
-		ir.setTimeRange(rd.getTimeRange());
-		ir.setEngTypOther((List<EngTypOtherItem>)wds.getPortProductTypeOther(rd).get("engTypeOther"));
+		ppr.setErrCode(ErrCode.DATA_OK);
+		ppr.setRoleName(rd.getRoleName());
+		ppr.setTimeRange(rd.getTimeRange());
+		Map<String ,Object> ds = wds.getPortProductTypeOther(rd);
+		ppr.setEngTypOther((List<EngTypOtherItem>)ds.get("engTypeOther"));
+		ppr.setEntTypOther((List<EntTypOtherItem>)ds.get("entTypeOther"));
 		
-		return ir;
+		return ppr;
 	}
 	
 	
