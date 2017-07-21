@@ -1,5 +1,7 @@
 package service.app.controller;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import service.app.server.LandDataService;
+import service.app.tramodel.EngTypOtherItem;
 import service.app.tramodel.ErrCode;
 import service.app.tramodel.IndexResponse;
 import service.app.tramodel.RequestData;
@@ -19,6 +22,8 @@ public class LandController {
 	@Autowired
 	LandDataService lds;
 	
+
+	@SuppressWarnings("unchecked")
 	@RequestMapping("/rodpasO.json")
 	@ResponseBody
 	public IndexResponse roadPassTrans(HttpServletResponse response,
@@ -34,11 +39,15 @@ public class LandController {
 		ir.setErrCode(ErrCode.DATA_OK);
 		ir.setRoleName(rd.getRoleName());
 		ir.setTimeRange(rd.getTimeRange());
-		ir.setEngTypOther(lds.getRoadPassEngTypOther(rd));
+
+		ir.setEngTypOther((List<EngTypOtherItem>) lds.getRoadPassTypOther(rd).get("engTypeOther"));
+		
+		
 		
 		return ir;
 	}
 	
+	@SuppressWarnings("unchecked")
 	@RequestMapping("/rodgodO.json")
 	@ResponseBody
 	public IndexResponse roadGoodsTrans(HttpServletResponse response,
@@ -54,11 +63,12 @@ public class LandController {
 		ir.setErrCode(ErrCode.DATA_OK);
 		ir.setRoleName(rd.getRoleName());
 		ir.setTimeRange(rd.getTimeRange());
-		ir.setEngTypOther(lds.getRoadPassEngTypOther(rd));
+		ir.setEngTypOther((List<EngTypOtherItem>) lds.getRoadPassTypOther(rd).get("engTypeOther"));
 		
 		return ir;
 	}
 	
+	@SuppressWarnings("unchecked")
 	@RequestMapping("/busO.json")
 	@ResponseBody
 	public IndexResponse busTrans(HttpServletResponse response,
@@ -74,12 +84,13 @@ public class LandController {
 		ir.setErrCode(ErrCode.DATA_OK);
 		ir.setRoleName(rd.getRoleName());
 		ir.setTimeRange(rd.getTimeRange());
-		ir.setEngTypOther(lds.getRoadPassEngTypOther(rd));
+		ir.setEngTypOther((List<EngTypOtherItem>)lds.getRoadPassTypOther(rd).get("engTypeOther"));
 		
 		return ir;
 	}
 	
 	
+	@SuppressWarnings("unchecked")
 	@RequestMapping("/texiTrans.json")
 	@ResponseBody
 	public IndexResponse taxiTrans(HttpServletResponse response,
@@ -95,7 +106,7 @@ public class LandController {
 		ir.setErrCode(ErrCode.DATA_OK);
 		ir.setRoleName(rd.getRoleName());
 		ir.setTimeRange(rd.getTimeRange());
-		ir.setEngTypOther(lds.getRoadPassEngTypOther(rd));
+		ir.setEngTypOther((List<EngTypOtherItem>)lds.getRoadPassTypOther(rd).get("engTypeOther"));
 		
 		return ir;
 	}

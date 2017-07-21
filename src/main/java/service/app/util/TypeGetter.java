@@ -12,7 +12,7 @@ public class TypeGetter {
 	}
 	
 	//道路客运企业规模获取
-	public String getRoadPassSitEntSizeType(int entS){
+	public String getRoadPassEntSizeType(int entS){
 		return "entS1";
 	}
 	
@@ -45,6 +45,49 @@ public class TypeGetter {
 		//楚竹车排量
 		return "dpCot1";
 	}
+	
+	public String getRiverTranTonType(Double tonnage){
+		return "tonnage2";
+	}
+	
+	public String getRiverTranEntSType(int entS){
+		return "entS2";
+	}
+	
+	public String getOceanGoodsTonType(Double tonnage){
+		return "tonnage2";
+	}
+	
+	public String getOceanGoodsEntSType(int entS){
+		return "entS2";
+	}
+	
+	public String getOceanGoodsTranDisType(Double tranDis){
+		return "tranDis2";
+	}
+	
+	public String getOceanPassSitSizeType(int sitCot){
+		return "sitSize";
+	}
+	
+	public String getOceanPassEntSType(int entS){
+		return "entS2";
+	}
+	
+	public String getOceanPassTranDisType(Double tranDis){
+		return "tranDis2";
+	}
+	
+	public String getPortProEntSType(Double proTask){
+		return "proTask1";
+	}
+	
+	
+	
+	
+	
+	
+	
 	
 	
 	
