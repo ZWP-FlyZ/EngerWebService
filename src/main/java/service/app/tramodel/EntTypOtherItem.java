@@ -5,6 +5,7 @@ import java.util.List;
 public class EntTypOtherItem {
 	private String entTyp;
 	private List<TypeData> entTypMo;//月份
+	
 	public String getEntTyp() {
 		return entTyp;
 	}

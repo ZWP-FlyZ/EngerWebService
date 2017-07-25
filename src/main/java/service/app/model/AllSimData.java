@@ -9,6 +9,7 @@ public class AllSimData {
 	protected String palce1;
 	protected String palce2;
 	protected Double tranDis;
+	protected String traType;
 	protected Integer entS;
 	
 	public String getInTime() {
@@ -65,6 +66,10 @@ public class AllSimData {
 	public void setCompanyId(String companyId) {
 		this.companyId = companyId;
 	}
-	
-	
+	public String getTraType() {
+		return traType;
+	}
+	public void setTraType(String traType) {
+		this.traType = traType;
+	}
 }

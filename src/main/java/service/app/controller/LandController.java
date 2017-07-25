@@ -81,6 +81,8 @@ public class LandController {
 		rd.setPlace1("杭州");
 		rd.setPlace2("江干区");
 		
+		response.setHeader("Access-Control-Allow-Origin", "*");
+		
 		IndexResponse ir = new IndexResponse();
 		
 		ir.setErrCode(ErrCode.DATA_OK);
