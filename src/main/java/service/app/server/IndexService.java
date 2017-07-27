@@ -219,7 +219,7 @@ public class IndexService {
 		
 		for(String et:monthMap.getXset()){
 			etoi = new EngTypOtherItem();
-			etoi.setEngTyp(et);
+			etoi.setBaseTyp(et);
 			etoi.setEngTypMo(
 					new ArrayList<TypeData>(monthMap.getYMap(et).values()));
 			engTypeOther.add(etoi);

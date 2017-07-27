@@ -133,7 +133,7 @@ public class WaterDataService {
 		
 		for(String et:monthMap.getXset()){
 			etoi = new EngTypOtherItem();
-			etoi.setEngTyp(et);
+			etoi.setBaseTyp(et);
 			etoi.setEngTypMo(new ArrayList<TypeData>(monthMap.getYMap(et).values()));
 			etoi.setEngTypSs(new ArrayList<TypeData>(tonMap.getYMap(et).values()));
 			etoi.setEngTypEs(new ArrayList<TypeData>(entSMap.getYMap(et).values()));
@@ -252,7 +252,7 @@ public class WaterDataService {
 		
 		for(String et:monthMap.getXset()){
 			etoi = new EngTypOtherItem();
-			etoi.setEngTyp(et);
+			etoi.setBaseTyp(et);
 			etoi.setEngTypMo(new ArrayList<TypeData>(monthMap.getYMap(et).values()));
 			etoi.setEngTypSs(new ArrayList<TypeData>(tonMap.getYMap(et).values()));
 			etoi.setEngTypEs(new ArrayList<TypeData>(entSMap.getYMap(et).values()));
@@ -375,7 +375,7 @@ public class WaterDataService {
 		
 		for(String et:monthMap.getXset()){
 			etoi = new EngTypOtherItem();
-			etoi.setEngTyp(et);
+			etoi.setBaseTyp(et);
 			etoi.setEngTypMo(new ArrayList<TypeData>(monthMap.getYMap(et).values()));
 			etoi.setEngTypSs(new ArrayList<TypeData>(sitSizeMap.getYMap(et).values()));
 			etoi.setEngTypEs(new ArrayList<TypeData>(entSMap.getYMap(et).values()));
@@ -511,13 +511,13 @@ public class WaterDataService {
 		EntTypOtherItem ettoi = null;
 		for(String et:engMonthMap.getXset()){
 			etoi = new EngTypOtherItem();
-			etoi.setEngTyp(et);
+			etoi.setBaseTyp(et);
 			etoi.setEngTypMo(new ArrayList<TypeData>(engMonthMap.getYMap(et).values()));
 			engTypeOther.add(etoi);
 		}
 		for(String et:entMonthMap.getXset()){
 			ettoi = new EntTypOtherItem();
-			ettoi.setEntTyp(et);
+			ettoi.setBaseTyp(et);
 			ettoi.setEntTypMo(new ArrayList<TypeData>(entMonthMap.getYMap(et).values()));
 			entTypeOther.add(ettoi);
 		}

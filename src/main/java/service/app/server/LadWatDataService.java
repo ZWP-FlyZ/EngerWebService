@@ -139,7 +139,7 @@ public class LadWatDataService {
 			
 		for(String et:traEngTypMap.getXset()){
 			ttoi = new TraTypOtherItem();
-			ttoi.setTraTyp(et);
+			ttoi.setBaseTyp(et);
 			ttoi.setTraTypEt(new ArrayList<TypeData>(traEngTypMap.getYMap(et).values()));
 			traTypeOther.add(ttoi);
 		}	
@@ -237,7 +237,7 @@ public class LadWatDataService {
 			
 		for(String et:engMonthMap.getXset()){
 			ttoi = new EngTypOtherItem();
-			ttoi.setEngTyp(et);
+			ttoi.setBaseTyp(et);
 			ttoi.setEngTypMo(new ArrayList<TypeData>(engMonthMap.getYMap(et).values()));
 			engTypeOther.add(ttoi);
 		}	
@@ -335,7 +335,7 @@ public class LadWatDataService {
 			
 		for(String et:traMonthMap.getXset()){
 			ttoi = new TraTypOtherItem();
-			ttoi.setTraTyp(et);
+			ttoi.setBaseTyp(et);
 			ttoi.setTraTypMo(new ArrayList<TypeData>(traMonthMap.getYMap(et).values()));
 			traTypeOther.add(ttoi);
 		}	
@@ -437,8 +437,8 @@ public class LadWatDataService {
 			
 		for(String et:citMap.getXset()){
 			ctoi = new CitTypOtherItem();
-			ctoi.setCitType(et);
-			ctoi.setCitTypDataOfEng(citMap.get(et, et).getTypDatOfAllEng());
+			ctoi.setBaseTyp(et);
+			ctoi.setBaseTypDatOfAllEng(citMap.get(et, et).getTypDatOfAllEng());
 			citTypeOther.add(ctoi);
 		}	
 		
@@ -533,8 +533,8 @@ public class LadWatDataService {
 			
 		for(String et:traMap.getXset()){
 			ttoi = new TraTypOtherItem();
-			ttoi.setTraTyp(et);
-			ttoi.setTraTypDataOfEng( traMap.get(et,et).getTypDatOfAllEng());
+			ttoi.setBaseTyp(et);
+			ttoi.setBaseTypDatOfAllEng( traMap.get(et,et).getTypDatOfAllEng());
 			traTypeOther.add(ttoi);
 		}	
 		

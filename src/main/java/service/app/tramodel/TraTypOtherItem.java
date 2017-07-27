@@ -2,17 +2,12 @@ package service.app.tramodel;
 
 import java.util.List;
 
-public class TraTypOtherItem {
-	private String traTyp;
+public class TraTypOtherItem extends BaseTypOtherItem{
+
 	private List<TypeData> traTypMo;
 	private List<TypeData> traTypEt;//能源类型
-	private Double traTypDataOfEng;
-	public String getTraTyp() {
-		return traTyp;
-	}
-	public void setTraTyp(String traTyp) {
-		this.traTyp = traTyp;
-	}
+
+
 	public List<TypeData> getTraTypMo() {
 		return traTypMo;
 	}
@@ -25,11 +20,5 @@ public class TraTypOtherItem {
 	public void setTraTypEt(List<TypeData> traTypEt) {
 		this.traTypEt = traTypEt;
 	}
-	public Double getTraTypDataOfEng() {
-		return traTypDataOfEng;
-	}
-	public void setTraTypDataOfEng(Double traTypDataOfEng) {
-		this.traTypDataOfEng = traTypDataOfEng;
-	}
-	
+
 }

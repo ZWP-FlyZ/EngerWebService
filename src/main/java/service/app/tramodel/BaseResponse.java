@@ -1,9 +1,12 @@
 package service.app.tramodel;
 
+import java.util.List;
+
 public class BaseResponse {
 	protected int errCode ;
 	protected String roleName;
 	protected String timeRange;
+	protected List<List<String>> xs;
 	
 	public int getErrCode() {
 		return errCode;
@@ -28,5 +31,14 @@ public class BaseResponse {
 	public void setTimeRange(String timeRange) {
 		this.timeRange = timeRange;
 	}
+
+	public List<List<String>> getXs() {
+		return xs;
+	}
+
+	public void setXs(List<List<String>> xs) {
+		this.xs = xs;
+	}
+	
 	
 }

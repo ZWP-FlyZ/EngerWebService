@@ -2,16 +2,10 @@ package service.app.tramodel;
 
 import java.util.List;
 
-public class EntTypOtherItem {
-	private String entTyp;
+public class EntTypOtherItem extends BaseTypOtherItem {
+
 	private List<TypeData> entTypMo;//月份
 	
-	public String getEntTyp() {
-		return entTyp;
-	}
-	public void setEntTyp(String entTyp) {
-		this.entTyp = entTyp;
-	}
 	public List<TypeData> getEntTypMo() {
 		return entTypMo;
 	}

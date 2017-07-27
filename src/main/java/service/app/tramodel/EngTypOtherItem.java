@@ -2,9 +2,8 @@ package service.app.tramodel;
 
 import java.util.List;
 
-public class EngTypOtherItem {
+public class EngTypOtherItem extends BaseTypOtherItem{
 	
-	private String engTyp;
 	private List<TypeData> engTypMo;//月份
 	private List<TypeData> engTypSs;//客座数
 	private List<TypeData> engTypEs;//企业类型
@@ -13,12 +12,7 @@ public class EngTypOtherItem {
 	private List<TypeData> engTypWs;//吨位数
 	private List<TypeData> engTypCLs;//公交车长数
 	private List<TypeData> engTypPs;//出租车排量数
-	public String getEngTyp() {
-		return engTyp;
-	}
-	public void setEngTyp(String engTyp) {
-		this.engTyp = engTyp;
-	}
+
 	public List<TypeData> getEngTypMo() {
 		return engTypMo;
 	}

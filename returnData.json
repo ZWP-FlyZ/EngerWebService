@@ -31,11 +31,16 @@
 	errCode//状态码
 	roleName//角色名
 	timeRange//统计时间范围
+	xs://X轴类型或者饼图样例
+	[
+		[燃料类型1,燃料类型2.....]//燃料类型
+		//......
+	]
 
 	engTypOther://每种燃料每个月使用量
 	[
 		{
-			engTyp//燃料类型
+			baseTyp//燃料类型
 			engTypMo://该燃料每个月的使用量
 			[
 				{
@@ -56,11 +61,20 @@
 	errCode//状态码
 	roleName//角色名
 	timeRange//统计时间范围
+	xs://X轴类型或者饼图样例
+	[
+		[年月1,年月2.....]//年月类型
+		[燃料类型1,燃料类型2.....]//燃料类型
+		[客座类型1,客座类型2.....]//客座类型
+		[企业规模类型1,企业规模类型2.....]//企业规模类型
+		[运距类型1,运距规模类型2.....]//运距规模类型
+		[车辆类型1,车辆规模类型2.....]//车辆规模类型
+	]
 
 	engTypOther://每种燃料与其他条件
 	[
 		{
-			engTyp//燃料类型
+			baseTyp//燃料类型
 
 			engTypMo://该燃料每个月的使用量
 			[
@@ -79,36 +93,36 @@
 					TypDatOfAllLen//周转总量
 				}
 			]//end SS			
-
-			engTypEs://该燃料不同企业规模数据
-			[
-				{
-					type//类型
-					TypDatOfAllEng//能耗总量
-					TypDatOfAllLen//周转总量
-				}
-			]//end ES
-
-			engTypLs://该燃料不同运距类型数据
-			[
-				{
-					type//类型
-					TypDatOfAllEng//能耗总量
-					TypDatOfAllLen//周转总量
-				}
-			]//end LS
-
-			engTypCTs://该燃料不同车辆类型数据
-			[
-				{
-					type//类型
-					TypDatOfAllEng//能耗总量
-					TypDatOfAllLen//周转总量
-				}
-			]//end CTS
-
 		}//end EngType		
 	]
+
+	entTypOther://企业类型其他
+	[
+		{
+			baseTyp//企业类型
+			baseTypDatOfAllEng//能耗总量
+			baseTypDatOfAllLen//周转总量
+		}
+	]
+
+	disTypOther://运距类型其他
+	[
+		{
+			baseTyp//运距类型
+			baseTypDatOfAllEng//能耗总量
+			entTypDatOfAllLen//周转总量
+		}
+	]
+
+	carTypOther://车辆类型其他
+	[
+		{
+			baseTyp//车辆类型
+			baseTypDatOfAllEng//能耗总量
+			baseTypDatOfAllLen//周转总量
+		}
+	]
+
 
 }
 
@@ -121,6 +135,15 @@
 	errCode//状态码
 	roleName//角色名
 	timeRange//统计时间范围
+	xs://X轴类型或者饼图样例
+	[
+		[年月1,年月2.....]//年月类型
+		[燃料类型1,燃料类型2.....]//燃料类型
+		[客座类型1,客座类型2.....]//客座类型
+		[企业规模类型1,企业规模类型2.....]//企业规模类型
+		[运距类型1,运距规模类型2.....]//运距规模类型
+		[车辆类型1,车辆规模类型2.....]//车辆规模类型
+	]
 
 	engTypOther://每种燃料与其他条件
 	[

@@ -1,5 +1,6 @@
 package service.app.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -12,10 +13,14 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import service.app.server.LandDataService;
 import service.app.tramodel.EngTypOtherItem;
+import service.app.tramodel.EntTypOtherItem;
 import service.app.tramodel.ErrCode;
+import service.app.tramodel.BaseTypOtherItem;
 import service.app.tramodel.EngTypOthResponse;
 import service.app.tramodel.RequestData;
+import service.app.tramodel.RoadOPassResponse;
 import service.app.tramodel.RoleType;
+import service.app.util.TimeTools;
 
 @Controller
 public class LandController {
@@ -27,7 +32,7 @@ public class LandController {
 	@SuppressWarnings("unchecked")
 	@RequestMapping("/roadpassO.json")
 	@ResponseBody
-	public EngTypOthResponse roadPassTrans(HttpServletResponse response,
+	public RoadOPassResponse roadPassTrans(HttpServletResponse response,
 										RequestData rd){
 		rd.setUsername("zwp");
 		rd.setRoleName("enterprice");
@@ -36,15 +41,20 @@ public class LandController {
 		rd.setPlace1("杭州");
 		rd.setPlace2("江干");
 		
-		EngTypOthResponse ir = new EngTypOthResponse();
+		RoadOPassResponse rpr = new RoadOPassResponse();
 		
-		ir.setErrCode(ErrCode.DATA_OK);
-		ir.setRoleName(rd.getRoleName());
-		ir.setTimeRange(rd.getTimeRange());
+		List<List<String>> lls = new ArrayList<>();
+		rpr.setXs(lls);
+		rpr.setErrCode(ErrCode.DATA_OK);
+		rpr.setRoleName(rd.getRoleName());
+		rpr.setTimeRange(rd.getTimeRange());
+		rpr.getXs().add(TimeTools.getYMlist(rd.getTimeRange()));
 		Map<String,Object> ds = lds.getRoadPassTypOther(rd);
-		ir.setEngTypOther((List<EngTypOtherItem>) ds.get("engTypeOther"));
-		
-		return ir;
+		rpr.setEngTypOther((List<EngTypOtherItem>) ds.get("engTypeOther"));
+		rpr.setEntTypOther((List<EntTypOtherItem>) ds.get("entTypeOther"));
+		rpr.setDisTypOther((List<BaseTypOtherItem>) ds.get("disTypOther"));
+		rpr.setCarTypOther((List<BaseTypOtherItem>) ds.get("carTypOther"));
+		return rpr;
 	}
 	
 	@SuppressWarnings("unchecked")

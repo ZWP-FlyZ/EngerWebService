@@ -1,5 +1,7 @@
 package service.app.server;
 
+import static org.mockito.Matchers.charThat;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -16,7 +18,9 @@ import service.app.model.BusTranData;
 import service.app.model.RoadGoodsData;
 import service.app.model.RoadPassData;
 import service.app.model.TaxiTranData;
+import service.app.tramodel.BaseTypOtherItem;
 import service.app.tramodel.EngTypOtherItem;
+import service.app.tramodel.EntTypOtherItem;
 import service.app.tramodel.RequestData;
 import service.app.tramodel.RoleType;
 import service.app.tramodel.TypeData;
@@ -80,19 +84,24 @@ public  Map<String,Object> getRoadPassTypOther(RequestData rd){
 		}
 		
 		List<EngTypOtherItem> engTypeOther = new ArrayList<>();
-		TwoDecMap<String,TypeData> monthMap = new TwoDecMap<>();
-		TwoDecMap<String,TypeData> sitSizwMap = new TwoDecMap<>();
-		TwoDecMap<String,TypeData> entSMap = new TwoDecMap<>();
-		TwoDecMap<String,TypeData> tranDisMap = new TwoDecMap<>();
+		List<EntTypOtherItem> entTypeOther = new ArrayList<>();
+		List<BaseTypOtherItem> disTypOther = new ArrayList<>();
+		List<BaseTypOtherItem> carTypOther = new ArrayList<>();
+		
+		TwoDecMap<String,TypeData> engMonthMap = new TwoDecMap<>();
+		TwoDecMap<String,TypeData> engSitMap = new TwoDecMap<>();
+		TwoDecMap<String,TypeData> entMap = new TwoDecMap<>();
+		TwoDecMap<String,TypeData> disMap = new TwoDecMap<>();
 		TwoDecMap<String,TypeData>  carTypeMap= new TwoDecMap<>();
+		
 		String tmp = null;
 		TypeData td = null;
-		EngTypOtherItem etoi = null;
+
 		for(RoadPassData d:allData){
 			//month
 			tmp = TimeTools.getYearMonth(d.getInTime());
 			if(tmp!=null){
-				td = monthMap.get(d.getFuelType(),tmp);
+				td = engMonthMap.get(d.getFuelType(),tmp);
 				if(td==null)
 				{
 					td = new TypeData();
@@ -100,14 +109,14 @@ public  Map<String,Object> getRoadPassTypOther(RequestData rd){
 				}
 				td.addEng(d.getFuelCsption());
 				td.addLen(d.getGoTurn());
-				monthMap.put(d.getFuelType(),tmp,td);
+				engMonthMap.put(d.getFuelType(),tmp,td);
 			}
 
 			
 			//sitCOt
 			tmp = tg.getRoadPassSitCotType(d.getSitCot());
 			if(tmp!=null){
-				td = sitSizwMap.get(d.getFuelType(),tmp);
+				td = engSitMap.get(d.getFuelType(),tmp);
 				if(td==null)
 				{
 					td = new TypeData();
@@ -115,14 +124,14 @@ public  Map<String,Object> getRoadPassTypOther(RequestData rd){
 				}
 				td.addEng(d.getFuelCsption());
 				td.addLen(d.getGoTurn());
-				sitSizwMap.put(d.getFuelType(),tmp,td);
+				engSitMap.put(d.getFuelType(),tmp,td);
 			}
 
 			
 			//EntSize
 			tmp = tg.getRoadPassEntSizeType(d.getEntS());
 			if(tmp!=null){
-				td = entSMap.get(d.getFuelType(),tmp);
+				td = entMap.get(tmp,tmp);
 				if(td==null)
 				{
 					td = new TypeData();
@@ -130,14 +139,14 @@ public  Map<String,Object> getRoadPassTypOther(RequestData rd){
 				}
 				td.addEng(d.getFuelCsption());
 				td.addLen(d.getGoTurn());
-				entSMap.put(d.getFuelType(),tmp,td);
+				entMap.put(tmp,tmp,td);
 			}
 
 			
 			//TranDis
 			tmp = tg.getRoadPassDisType(d.getTranDis());
 			if(tmp!=null){
-				td = tranDisMap.get(d.getFuelType(),tmp);
+				td = disMap.get(tmp,tmp);
 				if(td==null)
 				{
 					td = new TypeData();
@@ -145,12 +154,12 @@ public  Map<String,Object> getRoadPassTypOther(RequestData rd){
 				}
 				td.addEng(d.getFuelCsption());
 				td.addLen(d.getGoTurn());
-				tranDisMap.put(d.getFuelType(),tmp,td);
+				disMap.put(tmp,tmp,td);
 			}
 
 			tmp = d.getCarType();
 			if(tmp!=null){
-				td = carTypeMap.get(d.getFuelType(),tmp);
+				td = carTypeMap.get(tmp,tmp);
 				if(td==null)
 				{
 					td = new TypeData();
@@ -158,25 +167,56 @@ public  Map<String,Object> getRoadPassTypOther(RequestData rd){
 				}
 				td.addEng(d.getFuelCsption());
 				td.addLen(d.getGoTurn());
-				carTypeMap.put(d.getFuelType(),tmp,td);
+				carTypeMap.put(tmp,tmp,td);
 			}
 
 		}
 		
 		
-		for(String et:monthMap.getXset()){
+		EngTypOtherItem etoi = null;
+		for(String et:engMonthMap.getXset()){
 			etoi = new EngTypOtherItem();
-			etoi.setEngTyp(et);
-			etoi.setEngTypMo(new ArrayList<TypeData>(monthMap.getYMap(et).values()));
-			etoi.setEngTypSs(new ArrayList<TypeData>(sitSizwMap.getYMap(et).values()));
-			etoi.setEngTypEs(new ArrayList<TypeData>(entSMap.getYMap(et).values()));
-			etoi.setEngTypLs(new ArrayList<TypeData>(tranDisMap.getYMap(et).values()));
-			etoi.setEngTypCTs(new ArrayList<TypeData>(carTypeMap.getYMap(et).values()));
+			etoi.setBaseTyp(et);
+			etoi.setEngTypMo(new ArrayList<TypeData>(engMonthMap.getYMap(et).values()));
+			etoi.setEngTypSs(new ArrayList<TypeData>(engSitMap.getYMap(et).values()));
 			engTypeOther.add(etoi);
 		}
 		
+		EntTypOtherItem ettoi = null;
+		for(String et:entMap.getXset()){
+			ettoi = new EntTypOtherItem();
+			ettoi.setBaseTyp(et);
+			td = entMap.get(et, et);
+			ettoi.setBaseTypDatOfAllEng(td.getTypDatOfAllEng());
+			ettoi.setBaseTypDatOfAllLen(td.getTypDatOfAllLen());
+			entTypeOther.add(ettoi);
+		}
+		
+		BaseTypOtherItem dtoi = null;
+		for(String et:disMap.getXset()){
+			dtoi = new BaseTypOtherItem();
+			dtoi.setBaseTyp(et);
+			td = disMap.get(et, et);
+			dtoi.setBaseTypDatOfAllEng(td.getTypDatOfAllEng());
+			dtoi.setBaseTypDatOfAllLen(td.getTypDatOfAllLen());
+			disTypOther.add(dtoi);
+		}
+		
+		BaseTypOtherItem cttoi = null;
+		for(String et:carTypeMap.getXset()){
+			cttoi = new BaseTypOtherItem();
+			cttoi.setBaseTyp(et);
+			td = carTypeMap.get(et, et);
+			cttoi.setBaseTypDatOfAllEng(td.getTypDatOfAllEng());
+			cttoi.setBaseTypDatOfAllLen(td.getTypDatOfAllLen());
+			carTypOther.add(cttoi);
+		}
+				
 		Map<String ,Object> map = new HashMap<String ,Object>();
 		map.put("engTypeOther",engTypeOther);
+		map.put("entTypeOther",entTypeOther);
+		map.put("disTypOther",disTypOther);
+		map.put("carTypOther",carTypOther);
 		return map;
 	}
 
@@ -290,7 +330,7 @@ public  Map<String,Object> getRoadGoodsTypOther(RequestData rd){
 	
 	for(String et:monthMap.getXset()){
 		etoi = new EngTypOtherItem();
-		etoi.setEngTyp(et);
+		etoi.setBaseTyp(et);
 		etoi.setEngTypMo(new ArrayList<TypeData>(monthMap.getYMap(et).values()));
 		etoi.setEngTypSs(new ArrayList<TypeData>(tonMap.getYMap(et).values()));
 		etoi.setEngTypEs(new ArrayList<TypeData>(entSMap.getYMap(et).values()));
@@ -383,7 +423,7 @@ public  Map<String,Object> getBusTranTypOther(RequestData rd){
 	
 	for(String et:monthMap.getXset()){
 		etoi = new EngTypOtherItem();
-		etoi.setEngTyp(et);
+		etoi.setBaseTyp(et);
 		etoi.setEngTypMo(new ArrayList<TypeData>(monthMap.getYMap(et).values()));
 		etoi.setEngTypSs(new ArrayList<TypeData>(clsMap.getYMap(et).values()));
 		engTypeOther.add(etoi);
@@ -473,7 +513,7 @@ public  Map<String,Object> getTaxiTranTypOther(RequestData rd){
 	
 	for(String et:monthMap.getXset()){
 		etoi = new EngTypOtherItem();
-		etoi.setEngTyp(et);
+		etoi.setBaseTyp(et);
 		etoi.setEngTypMo(new ArrayList<TypeData>(monthMap.getYMap(et).values()));
 		etoi.setEngTypSs(new ArrayList<TypeData>(dpMap.getYMap(et).values()));
 		engTypeOther.add(etoi);
