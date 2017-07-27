@@ -10,6 +10,7 @@ public class RequestData {
 	private String timeRange;
 	private String cityType;
 	private String engerType;
+	private String tranType;
 	
 	private String token;
 	
@@ -77,6 +78,14 @@ public class RequestData {
 	public void setToken(String token) {
 		this.token = token;
 	}
+	public String getTranType() {
+		return tranType;
+	}
+	public void setTranType(String tranType) {
+		this.tranType = tranType;
+	}
+	
+	
 	
 	
 	

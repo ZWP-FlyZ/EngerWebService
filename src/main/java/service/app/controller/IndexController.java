@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import service.app.server.IndexService;
 import service.app.tramodel.EngTypOtherItem;
 import service.app.tramodel.ErrCode;
-import service.app.tramodel.IndexResponse;
+import service.app.tramodel.EngTypOthResponse;
 import service.app.tramodel.RequestData;
 import service.app.tramodel.RoleType;
 
@@ -26,7 +26,7 @@ public class IndexController extends BaseController{
 	@SuppressWarnings("unchecked")
 	@RequestMapping("/index.json")
 	@ResponseBody
-	public IndexResponse getIndexData(HttpServletResponse response,
+	public EngTypOthResponse getIndexData(HttpServletResponse response,
 				RequestData rd){
 		
 		rd.setUsername("zwp");
@@ -34,9 +34,9 @@ public class IndexController extends BaseController{
 		rd.setRoleType(RoleType.ROLE_TRAFFIC);
 		rd.setTimeRange("2017-01-01:2017-12-30");
 		rd.setPlace1("杭州");
-		rd.setPlace2("江干区");
+		rd.setPlace2("江干");
 		
-		IndexResponse ir = new IndexResponse();
+		EngTypOthResponse ir = new EngTypOthResponse();
 		
 		ir.setErrCode(ErrCode.DATA_OK);
 		ir.setRoleName(rd.getRoleName());

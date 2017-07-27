@@ -6,8 +6,8 @@ public class AllSimData {
 	protected String fuelType;
 	protected Double fuelCsption;
 	protected Double goTurn;
-	protected String palce1;
-	protected String palce2;
+	protected String place1;
+	protected String place2;
 	protected Double tranDis;
 	protected String traType;
 	protected Integer entS;
@@ -36,17 +36,18 @@ public class AllSimData {
 	public void setGoTurn(Double goTurn) {
 		this.goTurn = goTurn;
 	}
-	public String getPalce1() {
-		return palce1;
+
+	public String getPlace1() {
+		return place1;
 	}
-	public void setPalce1(String palce1) {
-		this.palce1 = palce1;
+	public void setPlace1(String place1) {
+		this.place1 = place1;
 	}
-	public String getPalce2() {
-		return palce2;
+	public String getPlace2() {
+		return place2;
 	}
-	public void setPalce2(String palce2) {
-		this.palce2 = palce2;
+	public void setPlace2(String place2) {
+		this.place2 = place2;
 	}
 	public Double getTranDis() {
 		return tranDis;

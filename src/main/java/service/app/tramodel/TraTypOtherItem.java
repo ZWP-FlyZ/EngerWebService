@@ -6,6 +6,7 @@ public class TraTypOtherItem {
 	private String traTyp;
 	private List<TypeData> traTypMo;
 	private List<TypeData> traTypEt;//能源类型
+	private Double traTypDataOfEng;
 	public String getTraTyp() {
 		return traTyp;
 	}
@@ -24,6 +25,11 @@ public class TraTypOtherItem {
 	public void setTraTypEt(List<TypeData> traTypEt) {
 		this.traTypEt = traTypEt;
 	}
-	
+	public Double getTraTypDataOfEng() {
+		return traTypDataOfEng;
+	}
+	public void setTraTypDataOfEng(Double traTypDataOfEng) {
+		this.traTypDataOfEng = traTypDataOfEng;
+	}
 	
 }

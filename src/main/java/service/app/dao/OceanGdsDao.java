@@ -17,7 +17,7 @@ public interface OceanGdsDao {
 			+ "(SELECT * FROM oceangoods "
 			+ "WHERE inTime >=  #{startTime} AND inTime <= #{endTime}) AS t1 "
 			+ "WHERE companyId LIKE #{enterprice}) AS t2 "
-			+ "WHERE place1 LIKE '%' AND place2 LIKE '%' ")
+			+ "WHERE place1 LIKE  #{place1} AND place2 LIKE #{place2} ")
 	public List<OceanGoodsData> getOceanGdsAll(
 			@Param("startTime") String startTime,
 			@Param("endTime")String endTime,

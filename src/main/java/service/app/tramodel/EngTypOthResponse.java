@@ -2,7 +2,7 @@ package service.app.tramodel;
 
 import java.util.List;
 
-public class IndexResponse extends BaseResponse{
+public class EngTypOthResponse extends BaseResponse{
 	private  List<EngTypOtherItem> engTypOther;
 
 	public List<EngTypOtherItem> getEngTypOther() {

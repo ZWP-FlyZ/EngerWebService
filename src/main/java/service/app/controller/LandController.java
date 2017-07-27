@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import service.app.server.LandDataService;
 import service.app.tramodel.EngTypOtherItem;
 import service.app.tramodel.ErrCode;
-import service.app.tramodel.IndexResponse;
+import service.app.tramodel.EngTypOthResponse;
 import service.app.tramodel.RequestData;
 import service.app.tramodel.RoleType;
 
@@ -27,16 +27,16 @@ public class LandController {
 	@SuppressWarnings("unchecked")
 	@RequestMapping("/roadpassO.json")
 	@ResponseBody
-	public IndexResponse roadPassTrans(HttpServletResponse response,
+	public EngTypOthResponse roadPassTrans(HttpServletResponse response,
 										RequestData rd){
 		rd.setUsername("zwp");
 		rd.setRoleName("enterprice");
 		rd.setRoleType(RoleType.ROLE_TRAFFIC);
 		rd.setTimeRange("2017-01-01:2017-12-30");
 		rd.setPlace1("杭州");
-		rd.setPlace2("江干区");
+		rd.setPlace2("江干");
 		
-		IndexResponse ir = new IndexResponse();
+		EngTypOthResponse ir = new EngTypOthResponse();
 		
 		ir.setErrCode(ErrCode.DATA_OK);
 		ir.setRoleName(rd.getRoleName());
@@ -50,16 +50,16 @@ public class LandController {
 	@SuppressWarnings("unchecked")
 	@RequestMapping("/roadgoodsO.json")
 	@ResponseBody
-	public IndexResponse roadGoodsTrans(HttpServletResponse response,
+	public EngTypOthResponse roadGoodsTrans(HttpServletResponse response,
 										RequestData rd){
 		rd.setUsername("zwp");
 		rd.setRoleName("enterprice");
 		rd.setRoleType(RoleType.ROLE_TRAFFIC);
 		rd.setTimeRange("2017-01-01:2017-12-30");
 		rd.setPlace1("杭州");
-		rd.setPlace2("江干区");
+		rd.setPlace2("江干");
 		
-		IndexResponse ir = new IndexResponse();
+		EngTypOthResponse ir = new EngTypOthResponse();
 		
 		ir.setErrCode(ErrCode.DATA_OK);
 		ir.setRoleName(rd.getRoleName());
@@ -72,18 +72,18 @@ public class LandController {
 	@SuppressWarnings("unchecked")
 	@RequestMapping("/bustranO.json")
 	@ResponseBody
-	public IndexResponse busTrans(HttpServletResponse response,
+	public EngTypOthResponse busTrans(HttpServletResponse response,
 										RequestData rd){
 		rd.setUsername("zwp");
 		rd.setRoleName("enterprice");
 		rd.setRoleType(RoleType.ROLE_TRAFFIC);
 		rd.setTimeRange("2017-01-01:2017-12-30");
 		rd.setPlace1("杭州");
-		rd.setPlace2("江干区");
+		rd.setPlace2("江干");
 		
 		response.setHeader("Access-Control-Allow-Origin", "*");
 		
-		IndexResponse ir = new IndexResponse();
+		EngTypOthResponse ir = new EngTypOthResponse();
 		
 		ir.setErrCode(ErrCode.DATA_OK);
 		ir.setRoleName(rd.getRoleName());
@@ -98,16 +98,16 @@ public class LandController {
 	@SuppressWarnings("unchecked")
 	@RequestMapping("/taxitranO.json")
 	@ResponseBody
-	public IndexResponse taxiTrans(HttpServletResponse response,
+	public EngTypOthResponse taxiTrans(HttpServletResponse response,
 										RequestData rd){
 		rd.setUsername("zwp");
 		rd.setRoleName("enterprice");
 		rd.setRoleType(RoleType.ROLE_TRAFFIC);
 		rd.setTimeRange("2017-01-01:2017-12-30");
 		rd.setPlace1("杭州");
-		rd.setPlace2("江干区");
+		rd.setPlace2("江干");
 		
-		IndexResponse ir = new IndexResponse();
+		EngTypOthResponse ir = new EngTypOthResponse();
 		
 		ir.setErrCode(ErrCode.DATA_OK);
 		ir.setRoleName(rd.getRoleName());

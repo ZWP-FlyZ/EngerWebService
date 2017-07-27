@@ -3,6 +3,7 @@ package service.app.dao;
 import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 
 import service.app.model.PortProData;
@@ -12,16 +13,18 @@ public interface PortProDao {
 	
 	
 	
-	@Select(" SELECT * from" +
-	 "(SELECT * FROM trafficenger.portproduct "+ 
-			"where inTime >= '2017-01-01' and inTime < '2017-05-01') as t1 "+ 
-	" where companyId like '%%' ;")
+	@Select("SELECT * FROM "
+			+ "(SELECT * FROM "
+			+ "(SELECT * FROM portproduct "
+			+ "WHERE inTime >=  #{startTime} AND inTime <= #{endTime}) AS t1 "
+			+ "WHERE companyId LIKE #{enterprice}) AS t2 "
+			+ "WHERE place1 LIKE  #{place1} AND place2 LIKE #{place2} ")
 	public List<PortProData> getProtProAll(
-			String startTime,
-			String endTime,
-			String enterprice,
-			String place1,
-			String place2
+			@Param("startTime") String startTime,
+			@Param("endTime")String endTime,
+			@Param("enterprice")String enterprice,
+			@Param("place1")String place1,
+			@Param("place2")String place2
 			);
 	
 }

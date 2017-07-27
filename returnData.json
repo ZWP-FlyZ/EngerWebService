@@ -481,7 +481,7 @@
 	traTypOther://每种传输类型与其他条件
 	[
 		{
-			traTyp//燃料类型
+			traTyp//运输类型
 
 			traTypEt://该运输类型各燃料类型的使用量
 			[
@@ -583,8 +583,8 @@
 	citTypOther://每各地区类型与其他条件
 	[
 		{
-			ctiTyp//地市类型
-			ctiTypDataOfEng//能耗总量
+			citTyp//地市类型
+			citTypDataOfEng//能耗总量
 		}//end EngType		
 	]
 

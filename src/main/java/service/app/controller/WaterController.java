@@ -14,7 +14,7 @@ import service.app.server.WaterDataService;
 import service.app.tramodel.EngTypOtherItem;
 import service.app.tramodel.EntTypOtherItem;
 import service.app.tramodel.ErrCode;
-import service.app.tramodel.IndexResponse;
+import service.app.tramodel.EngTypOthResponse;
 import service.app.tramodel.PortProductResponse;
 import service.app.tramodel.RequestData;
 import service.app.tramodel.RoleType;
@@ -29,16 +29,16 @@ public class WaterController {
 	@SuppressWarnings("unchecked")
 	@RequestMapping("/rivertranO.json")
 	@ResponseBody
-	public IndexResponse riverTran(HttpServletResponse response,
+	public EngTypOthResponse riverTran(HttpServletResponse response,
 										RequestData rd){
 		rd.setUsername("zwp");
 		rd.setRoleName("enterprice");
 		rd.setRoleType(RoleType.ROLE_TRAFFIC);
 		rd.setTimeRange("2017-01-01:2017-12-30");
 		rd.setPlace1("杭州");
-		rd.setPlace2("江干区");
+		rd.setPlace2("江干");
 		
-		IndexResponse ir = new IndexResponse();
+		EngTypOthResponse ir = new EngTypOthResponse();
 		
 		ir.setErrCode(ErrCode.DATA_OK);
 		ir.setRoleName(rd.getRoleName());
@@ -51,16 +51,16 @@ public class WaterController {
 	@SuppressWarnings("unchecked")
 	@RequestMapping("/oceanpassO.json")
 	@ResponseBody
-	public IndexResponse oceanPass(HttpServletResponse response,
+	public EngTypOthResponse oceanPass(HttpServletResponse response,
 										RequestData rd){
 		rd.setUsername("zwp");
 		rd.setRoleName("enterprice");
 		rd.setRoleType(RoleType.ROLE_TRAFFIC);
 		rd.setTimeRange("2017-01-01:2017-12-30");
 		rd.setPlace1("杭州");
-		rd.setPlace2("江干区");
+		rd.setPlace2("江干");
 		
-		IndexResponse ir = new IndexResponse();
+		EngTypOthResponse ir = new EngTypOthResponse();
 		
 		ir.setErrCode(ErrCode.DATA_OK);
 		ir.setRoleName(rd.getRoleName());
@@ -75,16 +75,16 @@ public class WaterController {
 	@SuppressWarnings("unchecked")
 	@RequestMapping("/oceangoodsO.json")
 	@ResponseBody
-	public IndexResponse oceanGoods(HttpServletResponse response,
+	public EngTypOthResponse oceanGoods(HttpServletResponse response,
 										RequestData rd){
 		rd.setUsername("zwp");
 		rd.setRoleName("enterprice");
 		rd.setRoleType(RoleType.ROLE_TRAFFIC);
 		rd.setTimeRange("2017-01-01:2017-12-30");
 		rd.setPlace1("杭州");
-		rd.setPlace2("江干区");
+		rd.setPlace2("江干");
 		
-		IndexResponse ir = new IndexResponse();
+		EngTypOthResponse ir = new EngTypOthResponse();
 		
 		ir.setErrCode(ErrCode.DATA_OK);
 		ir.setRoleName(rd.getRoleName());
@@ -107,7 +107,7 @@ public class WaterController {
 		rd.setRoleType(RoleType.ROLE_TRAFFIC);
 		rd.setTimeRange("2017-01-01:2017-12-30");
 		rd.setPlace1("杭州");
-		rd.setPlace2("江干区");
+		rd.setPlace2("江干");
 		
 		PortProductResponse ppr = new PortProductResponse();
 		
