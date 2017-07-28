@@ -20,6 +20,7 @@ import service.app.tramodel.items.TraTypOtherItem;
 import service.app.tramodel.response.CitTraTypOthResponse;
 import service.app.tramodel.response.EngTypOthResponse;
 import service.app.tramodel.response.TraTypOthResponse;
+import service.app.util.TimeTools;
 import service.app.util.TypeGetter;
 
 @Controller
@@ -45,7 +46,7 @@ public class LadWatController {
 		ttr.setErrCode(ErrCode.DATA_OK);
 		ttr.setRoleName(rd.getRoleName());
 		ttr.setTimeRange(rd.getTimeRange());
-		
+		ttr.getXs().add(TimeTools.getYMlist(rd.getTimeRange()));
 		Map<String,Object> ds = lwds.getPerDisEngTypOther(rd);
 		ttr.setTraTypOther((List<TraTypOtherItem>) ds.get("traTypeOther"));
 		

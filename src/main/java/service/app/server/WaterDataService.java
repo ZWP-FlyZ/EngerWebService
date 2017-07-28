@@ -19,8 +19,11 @@ import service.app.model.RiverTranData;
 import service.app.tramodel.RequestData;
 import service.app.tramodel.RoleType;
 import service.app.tramodel.TypeData;
+import service.app.tramodel.items.BaseTypOtherItem;
+import service.app.tramodel.items.CarTypOtherItem;
 import service.app.tramodel.items.EngTypOtherItem;
 import service.app.tramodel.items.EntTypOtherItem;
+import service.app.tramodel.items.WeiTypOtherItem;
 import service.app.util.TimeTools;
 import service.app.util.TwoDecMap;
 import service.app.util.TypeGetter;
@@ -77,18 +80,22 @@ public class WaterDataService {
 		}
 		
 		List<EngTypOtherItem> engTypeOther = new ArrayList<>();
-		TwoDecMap<String,TypeData> monthMap = new TwoDecMap<>();
-		TwoDecMap<String,TypeData> tonMap = new TwoDecMap<>();
-		TwoDecMap<String,TypeData> entSMap = new TwoDecMap<>();
+		List<EntTypOtherItem> entTypeOther = new ArrayList<>();
+		List<WeiTypOtherItem> weiTypOther = new ArrayList<>();
+
 		
+		TwoDecMap<String,TypeData> engMonthMap = new TwoDecMap<>();
+		TwoDecMap<String,TypeData> engTonMap = new TwoDecMap<>();
+		TwoDecMap<String,TypeData> entMap = new TwoDecMap<>();
+		TwoDecMap<String,TypeData> tonStMap = new TwoDecMap<>();
 		String tmp = null;
 		TypeData td = null;
-		EngTypOtherItem etoi = null;
+
 		for(RiverTranData d:allData){
 			//month
 			tmp = TimeTools.getYearMonth(d.getInTime());
 			if(tmp!=null){
-				td = monthMap.get(d.getFuelType(),tmp);
+				td = engMonthMap.get(d.getFuelType(),tmp);
 				if(td==null)
 				{
 					td = new TypeData();
@@ -96,29 +103,13 @@ public class WaterDataService {
 				}
 				td.addEng(d.getFuelCsption());
 				td.addLen(d.getGoTurn());
-				monthMap.put(d.getFuelType(),tmp,td);
+				engMonthMap.put(d.getFuelType(),tmp,td);
 			}
-
-			
-			//sitCOt
-			tmp = tg.getRiverTranTonType(d.getTonnage());
-			if(tmp!=null){
-				td = tonMap.get(d.getFuelType(),tmp);
-				if(td==null)
-				{
-					td = new TypeData();
-					td.setType(tmp);
-				}
-				td.addEng(d.getFuelCsption());
-				td.addLen(d.getGoTurn());
-				tonMap.put(d.getFuelType(),tmp,td);
-			}
-
 			
 			//EntSize
 			tmp = tg.getRiverTranEntSType(d.getEntS());
 			if(tmp!=null){
-				td = entSMap.get(d.getFuelType(),tmp);
+				td = entMap.get(tmp,tmp);
 				if(td==null)
 				{
 					td = new TypeData();
@@ -126,22 +117,70 @@ public class WaterDataService {
 				}
 				td.addEng(d.getFuelCsption());
 				td.addLen(d.getGoTurn());
-				entSMap.put(d.getFuelType(),tmp,td);
+				entMap.put(tmp,tmp,td);
 			}
+
+			
+			//tonnage
+			tmp = tg.getRiverTranTonType(d.getTonnage());
+			if(tmp!=null){
+				td = engTonMap.get(d.getFuelType(),tmp);
+				if(td==null)
+				{
+					td = new TypeData();
+					td.setType(tmp);
+				}
+				td.addEng(d.getFuelCsption());
+				td.addLen(d.getGoTurn());
+				engTonMap.put(d.getFuelType(),tmp,td);
+			}
+			
+			//tonnage - ship type
+			if(tmp!=null){
+				td = tonStMap.get(tmp,d.getShipType());
+				if(td==null)
+				{
+					td = new TypeData();
+					td.setType(d.getShipType());
+				}
+				td.addEng(d.getFuelCsption());
+				td.addLen(d.getGoTurn());
+				tonStMap.put(tmp,d.getShipType(),td);
+			}
+
 		}
 		
-		
-		for(String et:monthMap.getXset()){
+		EngTypOtherItem etoi = null;
+		for(String et:engMonthMap.getXset()){
 			etoi = new EngTypOtherItem();
 			etoi.setBaseTyp(et);
-			etoi.setEngTypMo(new ArrayList<TypeData>(monthMap.getYMap(et).values()));
-			etoi.setEngTypSs(new ArrayList<TypeData>(tonMap.getYMap(et).values()));
-			etoi.setEngTypEs(new ArrayList<TypeData>(entSMap.getYMap(et).values()));
+			etoi.setEngTypMo(new ArrayList<TypeData>(engMonthMap.getYMap(et).values()));
+			etoi.setEngTypWs(new ArrayList<TypeData>(engTonMap.getYMap(et).values()));
 			engTypeOther.add(etoi);
+		}
+		
+		EntTypOtherItem ettoi = null;
+		for(String et:entMap.getXset()){
+			ettoi = new EntTypOtherItem();
+			ettoi.setBaseTyp(et);
+			td = entMap.get(et, et);
+			ettoi.setBaseTypDatOfAllEng(td.getTypDatOfAllEng());
+			ettoi.setBaseTypDatOfAllLen(td.getTypDatOfAllLen());
+			entTypeOther.add(ettoi);
+		}
+		
+		WeiTypOtherItem wtoi = null;
+		for(String et:tonStMap.getXset()){
+			wtoi = new WeiTypOtherItem();
+			wtoi.setBaseTyp(et);
+			wtoi.setWeiTypSt(new ArrayList<TypeData>(tonStMap.getYMap(et).values()));
+			weiTypOther.add(wtoi);
 		}
 		
 		Map<String ,Object> map = new HashMap<String ,Object>();
 		map.put("engTypeOther",engTypeOther);
+		map.put("entTypeOther",entTypeOther);
+		map.put("weiTypOther",weiTypOther);
 		return map;
 	}
 	
@@ -181,18 +220,25 @@ public class WaterDataService {
 		}
 		
 		List<EngTypOtherItem> engTypeOther = new ArrayList<>();
-		TwoDecMap<String,TypeData> monthMap = new TwoDecMap<>();
-		TwoDecMap<String,TypeData> tonMap = new TwoDecMap<>();
-		TwoDecMap<String,TypeData> entSMap = new TwoDecMap<>();
-		TwoDecMap<String,TypeData> tranDisMap = new TwoDecMap<>();
+		List<EntTypOtherItem> entTypeOther = new ArrayList<>();
+		List<WeiTypOtherItem> weiTypOther = new ArrayList<>();
+
+		
+		TwoDecMap<String,TypeData> engMonthMap = new TwoDecMap<>();
+		TwoDecMap<String,TypeData> engTonMap = new TwoDecMap<>();
+		TwoDecMap<String,TypeData> engDisMap = new TwoDecMap<>();
+		
+		TwoDecMap<String,TypeData> entMap = new TwoDecMap<>();
+		TwoDecMap<String,TypeData> tonStMap = new TwoDecMap<>();
+		
 		String tmp = null;
 		TypeData td = null;
-		EngTypOtherItem etoi = null;
+
 		for(OceanGoodsData d:allData){
 			//month
 			tmp = TimeTools.getYearMonth(d.getInTime());
 			if(tmp!=null){
-				td = monthMap.get(d.getFuelType(),tmp);
+				td = engMonthMap.get(d.getFuelType(),tmp);
 				if(td==null)
 				{
 					td = new TypeData();
@@ -200,14 +246,43 @@ public class WaterDataService {
 				}
 				td.addEng(d.getFuelCsption());
 				td.addLen(d.getGoTurn());
-				monthMap.put(d.getFuelType(),tmp,td);
+				engMonthMap.put(d.getFuelType(),tmp,td);
+			}
+			
+			
+			//EntSize
+			tmp = tg.getOceanGoodsEntSType(d.getEntS());
+			if(tmp!=null){
+				td = entMap.get(tmp,tmp);
+				if(td==null)
+				{
+					td = new TypeData();
+					td.setType(tmp);
+				}
+				td.addEng(d.getFuelCsption());
+				td.addLen(d.getGoTurn());
+				entMap.put(tmp,tmp,td);
+			}
+			
+			//tranDIs
+			tmp = tg.getOceanGoodsTranDisType(d.getTranDis());
+			if(tmp!=null){
+				td = engDisMap.get(d.getFuelType(),tmp);
+				if(td==null)
+				{
+					td = new TypeData();
+					td.setType(tmp);
+				}
+				td.addEng(d.getFuelCsption());
+				td.addLen(d.getGoTurn());
+				engDisMap.put(d.getFuelType(),tmp,td);
 			}
 
 			
 			//tonnage
 			tmp = tg.getOceanGoodsTonType(d.getTonnage());
 			if(tmp!=null){
-				td = tonMap.get(d.getFuelType(),tmp);
+				td = engTonMap.get(d.getFuelType(),tmp);
 				if(td==null)
 				{
 					td = new TypeData();
@@ -215,53 +290,58 @@ public class WaterDataService {
 				}
 				td.addEng(d.getFuelCsption());
 				td.addLen(d.getGoTurn());
-				tonMap.put(d.getFuelType(),tmp,td);
+				engTonMap.put(d.getFuelType(),tmp,td);
 			}
 
-			
-			//EntSize
-			tmp = tg.getOceanGoodsEntSType(d.getEntS());
+			//tonnage - ship type
 			if(tmp!=null){
-				td = entSMap.get(d.getFuelType(),tmp);
+				td = tonStMap.get(tmp,d.getShipType());
 				if(td==null)
 				{
 					td = new TypeData();
-					td.setType(tmp);
+					td.setType(d.getShipType());
 				}
 				td.addEng(d.getFuelCsption());
 				td.addLen(d.getGoTurn());
-				entSMap.put(d.getFuelType(),tmp,td);
+				tonStMap.put(tmp,d.getShipType(),td);
 			}
-			
-			//tranDIs
-			tmp = tg.getOceanGoodsTranDisType(d.getTranDis());
-			if(tmp!=null){
-				td = tranDisMap.get(d.getFuelType(),tmp);
-				if(td==null)
-				{
-					td = new TypeData();
-					td.setType(tmp);
-				}
-				td.addEng(d.getFuelCsption());
-				td.addLen(d.getGoTurn());
-				tranDisMap.put(d.getFuelType(),tmp,td);
-			}
-			
+					
 		}
 		
-		
-		for(String et:monthMap.getXset()){
+		EngTypOtherItem etoi = null;
+		for(String et:engMonthMap.getXset()){
 			etoi = new EngTypOtherItem();
 			etoi.setBaseTyp(et);
-			etoi.setEngTypMo(new ArrayList<TypeData>(monthMap.getYMap(et).values()));
-			etoi.setEngTypSs(new ArrayList<TypeData>(tonMap.getYMap(et).values()));
-			etoi.setEngTypEs(new ArrayList<TypeData>(entSMap.getYMap(et).values()));
-			etoi.setEngTypLs(new ArrayList<TypeData>(tranDisMap.getYMap(et).values()));
+			etoi.setEngTypMo(new ArrayList<TypeData>(engMonthMap.getYMap(et).values()));
+			etoi.setEngTypWs(new ArrayList<TypeData>(engTonMap.getYMap(et).values()));
+			etoi.setEngTypLs(new ArrayList<TypeData>(engDisMap.getYMap(et).values()));
 			engTypeOther.add(etoi);
 		}
 		
+		EntTypOtherItem ettoi = null;
+		for(String et:entMap.getXset()){
+			ettoi = new EntTypOtherItem();
+			ettoi.setBaseTyp(et);
+			td = entMap.get(et, et);
+			ettoi.setBaseTypDatOfAllEng(td.getTypDatOfAllEng());
+			ettoi.setBaseTypDatOfAllLen(td.getTypDatOfAllLen());
+			entTypeOther.add(ettoi);
+		}
+		
+		WeiTypOtherItem wtoi = null;
+		for(String et:tonStMap.getXset()){
+			wtoi = new WeiTypOtherItem();
+			wtoi.setBaseTyp(et);
+			wtoi.setWeiTypSt(new ArrayList<TypeData>(tonStMap.getYMap(et).values()));
+			weiTypOther.add(wtoi);
+		}
+		
+		
+		
 		Map<String ,Object> map = new HashMap<String ,Object>();
 		map.put("engTypeOther",engTypeOther);
+		map.put("entTypeOther",entTypeOther);
+		map.put("weiTypOther",weiTypOther);
 		return map;
 		
 		
@@ -304,10 +384,15 @@ public class WaterDataService {
 		}
 		
 		List<EngTypOtherItem> engTypeOther = new ArrayList<>();
-		TwoDecMap<String,TypeData> monthMap = new TwoDecMap<>();
-		TwoDecMap<String,TypeData> sitSizeMap = new TwoDecMap<>();
-		TwoDecMap<String,TypeData> entSMap = new TwoDecMap<>();
-		TwoDecMap<String,TypeData> tranDisMap = new TwoDecMap<>();
+		List<EntTypOtherItem> entTypeOther = new ArrayList<>();
+		List<BaseTypOtherItem> disTypOther = new ArrayList<>();
+
+		
+		TwoDecMap<String,TypeData> engMonthMap = new TwoDecMap<>();
+		TwoDecMap<String,TypeData> engSitMap = new TwoDecMap<>();
+		TwoDecMap<String,TypeData> entMap = new TwoDecMap<>();
+		TwoDecMap<String,TypeData> disMap = new TwoDecMap<>();
+		
 		String tmp = null;
 		TypeData td = null;
 		EngTypOtherItem etoi = null;
@@ -315,7 +400,7 @@ public class WaterDataService {
 			//month
 			tmp = TimeTools.getYearMonth(d.getInTime());
 			if(tmp!=null){
-				td = monthMap.get(d.getFuelType(),tmp);
+				td = engMonthMap.get(d.getFuelType(),tmp);
 				if(td==null)
 				{
 					td = new TypeData();
@@ -323,14 +408,14 @@ public class WaterDataService {
 				}
 				td.addEng(d.getFuelCsption());
 				td.addLen(d.getGoTurn());
-				monthMap.put(d.getFuelType(),tmp,td);
+				engMonthMap.put(d.getFuelType(),tmp,td);
 			}
 
 			
 			//sitcot
 			tmp = tg.getOceanPassSitSizeType(d.getSitCot());
 			if(tmp!=null){
-				td = sitSizeMap.get(d.getFuelType(),tmp);
+				td = engSitMap.get(d.getFuelType(),tmp);
 				if(td==null)
 				{
 					td = new TypeData();
@@ -338,14 +423,14 @@ public class WaterDataService {
 				}
 				td.addEng(d.getFuelCsption());
 				td.addLen(d.getGoTurn());
-				sitSizeMap.put(d.getFuelType(),tmp,td);
+				engSitMap.put(d.getFuelType(),tmp,td);
 			}
 
 			
 			//EntSize
-			tmp = tg.getOceanPassEntSType(d.getEntS());
+			tmp = tg.getOceanGoodsEntSType(d.getEntS());
 			if(tmp!=null){
-				td = entSMap.get(d.getFuelType(),tmp);
+				td = entMap.get(tmp,tmp);
 				if(td==null)
 				{
 					td = new TypeData();
@@ -353,13 +438,15 @@ public class WaterDataService {
 				}
 				td.addEng(d.getFuelCsption());
 				td.addLen(d.getGoTurn());
-				entSMap.put(d.getFuelType(),tmp,td);
+				entMap.put(tmp,tmp,td);
 			}
 			
-			//tranDIs
-			tmp = tg.getOceanPassTranDisType(d.getTranDis());
+			
+			
+			//TranDis
+			tmp = tg.getRoadPassDisType(d.getTranDis());
 			if(tmp!=null){
-				td = tranDisMap.get(d.getFuelType(),tmp);
+				td = disMap.get(tmp,tmp);
 				if(td==null)
 				{
 					td = new TypeData();
@@ -367,24 +454,44 @@ public class WaterDataService {
 				}
 				td.addEng(d.getFuelCsption());
 				td.addLen(d.getGoTurn());
-				tranDisMap.put(d.getFuelType(),tmp,td);
+				disMap.put(tmp,tmp,td);
 			}
 			
 		}
 		
 		
-		for(String et:monthMap.getXset()){
+		for(String et:engMonthMap.getXset()){
 			etoi = new EngTypOtherItem();
 			etoi.setBaseTyp(et);
-			etoi.setEngTypMo(new ArrayList<TypeData>(monthMap.getYMap(et).values()));
-			etoi.setEngTypSs(new ArrayList<TypeData>(sitSizeMap.getYMap(et).values()));
-			etoi.setEngTypEs(new ArrayList<TypeData>(entSMap.getYMap(et).values()));
-			etoi.setEngTypLs(new ArrayList<TypeData>(tranDisMap.getYMap(et).values()));
+			etoi.setEngTypMo(new ArrayList<TypeData>(engMonthMap.getYMap(et).values()));
+			etoi.setEngTypSs(new ArrayList<TypeData>(engSitMap.getYMap(et).values()));
 			engTypeOther.add(etoi);
+		}
+		
+		EntTypOtherItem ettoi = null;
+		for(String et:entMap.getXset()){
+			ettoi = new EntTypOtherItem();
+			ettoi.setBaseTyp(et);
+			td = entMap.get(et, et);
+			ettoi.setBaseTypDatOfAllEng(td.getTypDatOfAllEng());
+			ettoi.setBaseTypDatOfAllLen(td.getTypDatOfAllLen());
+			entTypeOther.add(ettoi);
+		}
+		
+		BaseTypOtherItem dtoi = null;
+		for(String et:disMap.getXset()){
+			dtoi = new BaseTypOtherItem();
+			dtoi.setBaseTyp(et);
+			td = disMap.get(et, et);
+			dtoi.setBaseTypDatOfAllEng(td.getTypDatOfAllEng());
+			dtoi.setBaseTypDatOfAllLen(td.getTypDatOfAllLen());
+			disTypOther.add(dtoi);
 		}
 		
 		Map<String ,Object> map = new HashMap<String ,Object>();
 		map.put("engTypeOther",engTypeOther);
+		map.put("entTypeOther",entTypeOther);
+		map.put("disTypOther",disTypOther);
 		return map;
 		
 	}
@@ -427,7 +534,7 @@ public class WaterDataService {
 		List<EngTypOtherItem> engTypeOther = new ArrayList<>();
 		List<EntTypOtherItem> entTypeOther = new ArrayList<>();
 		TwoDecMap<String,TypeData> engMonthMap = new TwoDecMap<>();
-		TwoDecMap<String,TypeData> entMonthMap = new TwoDecMap<>();
+		TwoDecMap<String,TypeData> entMap = new TwoDecMap<>();
 		
 		String tmp = null;
 		String tmp2 = null;
@@ -487,8 +594,11 @@ public class WaterDataService {
 				td.addLen(d.getProTask());
 				engMonthMap.put(TypeGetter.QI_TA,tmp,td);
 				
-				tmp2 = tg.getPortProEntSType(d.getProTask());//企业 规模 每月数据
-				td = entMonthMap.get(tmp2, tmp);
+			}
+			
+			tmp = tg.getPortProEntSType(d.getProTask());//企业 规模 每月数据
+			if(tmp!=null){
+				td = entMap.get(tmp, tmp);
 				if(td==null)
 				{
 					td = new TypeData();
@@ -501,9 +611,8 @@ public class WaterDataService {
 				td.addEng(d.getCoal());
 				td.addEng(d.getOther());
 				td.addLen(d.getProTask());
-				entMonthMap.put(tmp2, tmp, td);
-			}
-						
+				entMap.put(tmp, tmp, td);
+			}			
 		}
 		
 		
@@ -515,10 +624,12 @@ public class WaterDataService {
 			etoi.setEngTypMo(new ArrayList<TypeData>(engMonthMap.getYMap(et).values()));
 			engTypeOther.add(etoi);
 		}
-		for(String et:entMonthMap.getXset()){
+		for(String et:entMap.getXset()){
 			ettoi = new EntTypOtherItem();
 			ettoi.setBaseTyp(et);
-			ettoi.setEntTypMo(new ArrayList<TypeData>(entMonthMap.getYMap(et).values()));
+			td = entMap.get(et, et);
+			ettoi.setBaseTypDatOfAllEng(td.getTypDatOfAllEng());
+			ettoi.setBaseTypDatOfAllLen(td.getTypDatOfAllLen());
 			entTypeOther.add(ettoi);
 		}
 		

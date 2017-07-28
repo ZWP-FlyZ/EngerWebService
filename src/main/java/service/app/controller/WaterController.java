@@ -14,10 +14,16 @@ import service.app.server.WaterDataService;
 import service.app.tramodel.ErrCode;
 import service.app.tramodel.RequestData;
 import service.app.tramodel.RoleType;
+import service.app.tramodel.items.BaseTypOtherItem;
 import service.app.tramodel.items.EngTypOtherItem;
 import service.app.tramodel.items.EntTypOtherItem;
+import service.app.tramodel.items.WeiTypOtherItem;
 import service.app.tramodel.response.EngTypOthResponse;
+import service.app.tramodel.response.OceanGoodsResponse;
+import service.app.tramodel.response.OceanPassResponse;
 import service.app.tramodel.response.PortProductResponse;
+import service.app.tramodel.response.RiverTranResponse;
+import service.app.util.TimeTools;
 
 @Controller
 public class WaterController {
@@ -29,7 +35,7 @@ public class WaterController {
 	@SuppressWarnings("unchecked")
 	@RequestMapping("/rivertranO.json")
 	@ResponseBody
-	public EngTypOthResponse riverTran(HttpServletResponse response,
+	public RiverTranResponse riverTran(HttpServletResponse response,
 										RequestData rd){
 		rd.setUsername("zwp");
 		rd.setRoleName("enterprice");
@@ -38,44 +44,27 @@ public class WaterController {
 		rd.setPlace1("杭州");
 		rd.setPlace2("江干");
 		
-		EngTypOthResponse ir = new EngTypOthResponse();
+		RiverTranResponse trt = new RiverTranResponse();
 		
-		ir.setErrCode(ErrCode.DATA_OK);
-		ir.setRoleName(rd.getRoleName());
+		trt.setErrCode(ErrCode.DATA_OK);
+		trt.setRoleName(rd.getRoleName());
+		trt.setTimeRange(rd.getTimeRange());
+		trt.getXs().add(TimeTools.getYMlist(rd.getTimeRange()));
 		Map<String,Object> ds = wds.getRiverTranTypeOther(rd);
-		ir.setEngTypOther((List<EngTypOtherItem>) ds.get("engTypeOther"));
-		
-		return ir;
+		trt.setEngTypOther((List<EngTypOtherItem>) ds.get("engTypeOther"));
+		trt.setEntTypOther((List<EntTypOtherItem>) ds.get("entTypeOther"));
+		trt.setWeiTypOther((List<WeiTypOtherItem>) ds.get("weiTypOther"));
+		return trt;
 	}
 	
-	@SuppressWarnings("unchecked")
-	@RequestMapping("/oceanpassO.json")
-	@ResponseBody
-	public EngTypOthResponse oceanPass(HttpServletResponse response,
-										RequestData rd){
-		rd.setUsername("zwp");
-		rd.setRoleName("enterprice");
-		rd.setRoleType(RoleType.ROLE_TRAFFIC);
-		rd.setTimeRange("2017-01-01:2017-12-30");
-		rd.setPlace1("杭州");
-		rd.setPlace2("江干");
-		
-		EngTypOthResponse ir = new EngTypOthResponse();
-		
-		ir.setErrCode(ErrCode.DATA_OK);
-		ir.setRoleName(rd.getRoleName());
-		ir.setTimeRange(rd.getTimeRange());
-		Map<String,Object> ds = wds.getOceanPassTypeOther(rd);
-		ir.setEngTypOther((List<EngTypOtherItem>) ds.get("engTypeOther"));
-		
-		return ir;
-
-	}
+	
+	
+	
 	
 	@SuppressWarnings("unchecked")
 	@RequestMapping("/oceangoodsO.json")
 	@ResponseBody
-	public EngTypOthResponse oceanGoods(HttpServletResponse response,
+	public OceanGoodsResponse oceanGoods(HttpServletResponse response,
 										RequestData rd){
 		rd.setUsername("zwp");
 		rd.setRoleName("enterprice");
@@ -84,18 +73,53 @@ public class WaterController {
 		rd.setPlace1("杭州");
 		rd.setPlace2("江干");
 		
-		EngTypOthResponse ir = new EngTypOthResponse();
+		OceanGoodsResponse ogr = new OceanGoodsResponse();
 		
-		ir.setErrCode(ErrCode.DATA_OK);
-		ir.setRoleName(rd.getRoleName());
-		ir.setTimeRange(rd.getTimeRange());
+		ogr.setErrCode(ErrCode.DATA_OK);
+		ogr.setRoleName(rd.getRoleName());
+		ogr.setTimeRange(rd.getTimeRange());
+		ogr.getXs().add(TimeTools.getYMlist(rd.getTimeRange()));
 		Map<String,Object> ds = wds.getOceanGoodsTypeOther(rd);
-		ir.setEngTypOther((List<EngTypOtherItem>) ds.get("engTypeOther"));
-		
-		return ir;
+		ogr.setEngTypOther((List<EngTypOtherItem>) ds.get("engTypeOther"));
+		ogr.setEntTypOther((List<EntTypOtherItem>) ds.get("entTypeOther"));
+		ogr.setWeiTypOther((List<WeiTypOtherItem>) ds.get("weiTypOther"));
+		return ogr;
 		
 
 	}
+	
+	
+	
+	
+	
+	
+	@SuppressWarnings("unchecked")
+	@RequestMapping("/oceanpassO.json")
+	@ResponseBody
+	public OceanPassResponse oceanPass(HttpServletResponse response,
+										RequestData rd){
+		rd.setUsername("zwp");
+		rd.setRoleName("enterprice");
+		rd.setRoleType(RoleType.ROLE_TRAFFIC);
+		rd.setTimeRange("2017-01-01:2017-12-30");
+		rd.setPlace1("杭州");
+		rd.setPlace2("江干");
+		
+		OceanPassResponse opr = new OceanPassResponse();
+		
+		opr.setErrCode(ErrCode.DATA_OK);
+		opr.setRoleName(rd.getRoleName());
+		opr.setTimeRange(rd.getTimeRange());
+		opr.getXs().add(TimeTools.getYMlist(rd.getTimeRange()));
+		Map<String,Object> ds = wds.getOceanPassTypeOther(rd);
+		opr.setEngTypOther((List<EngTypOtherItem>) ds.get("engTypeOther"));
+		opr.setEntTypOther((List<EntTypOtherItem>) ds.get("entTypeOther"));
+		opr.setDisTypOther((List<BaseTypOtherItem>) ds.get("disTypOther"));
+		return opr;
+
+	}
+	
+
 	
 	@SuppressWarnings("unchecked")
 	@RequestMapping("/portproduceO.json")
@@ -114,6 +138,7 @@ public class WaterController {
 		ppr.setErrCode(ErrCode.DATA_OK);
 		ppr.setRoleName(rd.getRoleName());
 		ppr.setTimeRange(rd.getTimeRange());
+		ppr.getXs().add(TimeTools.getYMlist(rd.getTimeRange()));
 		Map<String ,Object> ds = wds.getPortProductTypeOther(rd);
 		ppr.setEngTypOther((List<EngTypOtherItem>)ds.get("engTypeOther"));
 		ppr.setEntTypOther((List<EntTypOtherItem>)ds.get("entTypeOther"));

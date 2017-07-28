@@ -326,25 +326,6 @@ public  Map<String,Object> getRoadGoodsTypOther(RequestData rd){
 			carTonMap.put(d.getCarType(),tmp,td);
 		}
 
-		
-//		//TranDis
-//		tmp = tg.getRoadGoodsDisType(d.getTranDis());
-//		if(tmp!=null){
-//			td = tranDisMap.get(d.getFuelType(),tmp);
-//			if(td==null)
-//			{
-//				td = new TypeData();
-//				td.setType(tmp);
-//			}
-//			td.addEng(d.getFuelCsption());
-//			td.addLen(d.getGoTurn());
-//			tranDisMap.put(d.getFuelType(),tmp,td);
-//		}
-		
-		
-		
-		
-
 	}
 	
 	

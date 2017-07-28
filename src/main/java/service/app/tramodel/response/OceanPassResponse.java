@@ -4,10 +4,10 @@ import java.util.List;
 
 import service.app.tramodel.items.BaseTypOtherItem;
 
-public class PortProductResponse extends BaseResponse{
-
+public class OceanPassResponse extends BaseResponse {
 	private List<? extends BaseTypOtherItem> engTypOther;
 	private List<? extends BaseTypOtherItem> entTypOther;
+	private List<? extends BaseTypOtherItem> disTypOther;
 	public List<? extends BaseTypOtherItem> getEngTypOther() {
 		return engTypOther;
 	}
@@ -20,4 +20,11 @@ public class PortProductResponse extends BaseResponse{
 	public void setEntTypOther(List<? extends BaseTypOtherItem> entTypOther) {
 		this.entTypOther = entTypOther;
 	}
+	public List<? extends BaseTypOtherItem> getDisTypOther() {
+		return disTypOther;
+	}
+	public void setDisTypOther(List<? extends BaseTypOtherItem> disTypOther) {
+		this.disTypOther = disTypOther;
+	}
+	
 }
