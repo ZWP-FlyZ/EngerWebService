@@ -1,6 +1,8 @@
-package service.app.tramodel;
+package service.app.tramodel.response;
 
 import java.util.List;
+
+import service.app.tramodel.items.CitTypOtherItem;
 
 public class CitTraTypOthResponse extends BaseResponse{
 	

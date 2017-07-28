@@ -12,14 +12,16 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import service.app.server.LandDataService;
-import service.app.tramodel.EngTypOtherItem;
-import service.app.tramodel.EntTypOtherItem;
 import service.app.tramodel.ErrCode;
-import service.app.tramodel.BaseTypOtherItem;
-import service.app.tramodel.EngTypOthResponse;
 import service.app.tramodel.RequestData;
-import service.app.tramodel.RoadOPassResponse;
 import service.app.tramodel.RoleType;
+import service.app.tramodel.items.BaseTypOtherItem;
+import service.app.tramodel.items.CarTypOtherItem;
+import service.app.tramodel.items.EngTypOtherItem;
+import service.app.tramodel.items.EntTypOtherItem;
+import service.app.tramodel.response.EngTypOthResponse;
+import service.app.tramodel.response.RoadGoodsResponse;
+import service.app.tramodel.response.RoadPassResponse;
 import service.app.util.TimeTools;
 
 @Controller
@@ -32,7 +34,7 @@ public class LandController {
 	@SuppressWarnings("unchecked")
 	@RequestMapping("/roadpassO.json")
 	@ResponseBody
-	public RoadOPassResponse roadPassTrans(HttpServletResponse response,
+	public RoadPassResponse roadPassTrans(HttpServletResponse response,
 										RequestData rd){
 		rd.setUsername("zwp");
 		rd.setRoleName("enterprice");
@@ -41,10 +43,8 @@ public class LandController {
 		rd.setPlace1("杭州");
 		rd.setPlace2("江干");
 		
-		RoadOPassResponse rpr = new RoadOPassResponse();
+		RoadPassResponse rpr = new RoadPassResponse();
 		
-		List<List<String>> lls = new ArrayList<>();
-		rpr.setXs(lls);
 		rpr.setErrCode(ErrCode.DATA_OK);
 		rpr.setRoleName(rd.getRoleName());
 		rpr.setTimeRange(rd.getTimeRange());
@@ -53,14 +53,14 @@ public class LandController {
 		rpr.setEngTypOther((List<EngTypOtherItem>) ds.get("engTypeOther"));
 		rpr.setEntTypOther((List<EntTypOtherItem>) ds.get("entTypeOther"));
 		rpr.setDisTypOther((List<BaseTypOtherItem>) ds.get("disTypOther"));
-		rpr.setCarTypOther((List<BaseTypOtherItem>) ds.get("carTypOther"));
+		rpr.setCarTypOther((List<CarTypOtherItem>) ds.get("carTypOther"));
 		return rpr;
 	}
 	
 	@SuppressWarnings("unchecked")
 	@RequestMapping("/roadgoodsO.json")
 	@ResponseBody
-	public EngTypOthResponse roadGoodsTrans(HttpServletResponse response,
+	public RoadGoodsResponse roadGoodsTrans(HttpServletResponse response,
 										RequestData rd){
 		rd.setUsername("zwp");
 		rd.setRoleName("enterprice");
@@ -69,14 +69,17 @@ public class LandController {
 		rd.setPlace1("杭州");
 		rd.setPlace2("江干");
 		
-		EngTypOthResponse ir = new EngTypOthResponse();
+		RoadGoodsResponse rgr = new RoadGoodsResponse();
 		
-		ir.setErrCode(ErrCode.DATA_OK);
-		ir.setRoleName(rd.getRoleName());
+		rgr.setErrCode(ErrCode.DATA_OK);
+		rgr.setRoleName(rd.getRoleName());
+		rgr.getXs().add(TimeTools.getYMlist(rd.getTimeRange()));
 		Map<String,Object> ds = lds.getRoadGoodsTypOther(rd);
-		ir.setEngTypOther((List<EngTypOtherItem>) ds.get("engTypeOther"));
+		rgr.setEngTypOther((List<EngTypOtherItem>) ds.get("engTypeOther"));
+		rgr.setEntTypOther((List<EntTypOtherItem>) ds.get("entTypeOther"));
+		rgr.setCarTypOther((List<CarTypOtherItem>) ds.get("carTypOther"));
 		
-		return ir;
+		return rgr;
 	}
 	
 	@SuppressWarnings("unchecked")
@@ -94,10 +97,11 @@ public class LandController {
 		response.setHeader("Access-Control-Allow-Origin", "*");
 		
 		EngTypOthResponse ir = new EngTypOthResponse();
-		
+		ir.getXs().add(TimeTools.getYMlist(rd.getTimeRange()));
 		ir.setErrCode(ErrCode.DATA_OK);
 		ir.setRoleName(rd.getRoleName());
 		ir.setTimeRange(rd.getTimeRange());
+		
 		Map<String,Object> ds = lds.getBusTranTypOther(rd);
 		ir.setEngTypOther((List<EngTypOtherItem>) ds.get("engTypeOther"));
 		
@@ -122,6 +126,7 @@ public class LandController {
 		ir.setErrCode(ErrCode.DATA_OK);
 		ir.setRoleName(rd.getRoleName());
 		ir.setTimeRange(rd.getTimeRange());
+		ir.getXs().add(TimeTools.getYMlist(rd.getTimeRange()));
 		Map<String,Object> ds = lds.getTaxiTranTypOther(rd);
 		ir.setEngTypOther((List<EngTypOtherItem>) ds.get("engTypeOther"));
 		

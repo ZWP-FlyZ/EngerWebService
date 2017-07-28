@@ -1,4 +1,4 @@
-package service.app.tramodel;
+package service.app.tramodel.items;
 
 public class CitTypOtherItem extends BaseTypOtherItem{
 

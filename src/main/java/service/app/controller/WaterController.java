@@ -11,13 +11,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import service.app.server.WaterDataService;
-import service.app.tramodel.EngTypOtherItem;
-import service.app.tramodel.EntTypOtherItem;
 import service.app.tramodel.ErrCode;
-import service.app.tramodel.EngTypOthResponse;
-import service.app.tramodel.PortProductResponse;
 import service.app.tramodel.RequestData;
 import service.app.tramodel.RoleType;
+import service.app.tramodel.items.EngTypOtherItem;
+import service.app.tramodel.items.EntTypOtherItem;
+import service.app.tramodel.response.EngTypOthResponse;
+import service.app.tramodel.response.PortProductResponse;
 
 @Controller
 public class WaterController {

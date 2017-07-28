@@ -1,6 +1,9 @@
-package service.app.tramodel;
+package service.app.tramodel.response;
 
 import java.util.List;
+
+import service.app.tramodel.items.EngTypOtherItem;
+import service.app.tramodel.items.EntTypOtherItem;
 
 public class PortProductResponse extends BaseResponse{
 

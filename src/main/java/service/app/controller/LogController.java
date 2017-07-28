@@ -13,8 +13,8 @@ import service.app.model.UserInfo;
 import service.app.server.LogService;
 import service.app.timwin.TimWinMap;
 import service.app.tramodel.ErrCode;
-import service.app.tramodel.LogInResponse;
 import service.app.tramodel.RequestData;
+import service.app.tramodel.response.LogInResponse;
 import service.app.util.TokenCreater;
 
 @Controller

@@ -11,11 +11,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import service.app.server.IndexService;
-import service.app.tramodel.EngTypOtherItem;
 import service.app.tramodel.ErrCode;
-import service.app.tramodel.EngTypOthResponse;
 import service.app.tramodel.RequestData;
 import service.app.tramodel.RoleType;
+import service.app.tramodel.items.EngTypOtherItem;
+import service.app.tramodel.response.EngTypOthResponse;
 
 @Controller
 public class IndexController extends BaseController{

@@ -1,4 +1,4 @@
-package service.app.tramodel;
+package service.app.tramodel.response;
 
 import service.app.model.UserInfo;
 

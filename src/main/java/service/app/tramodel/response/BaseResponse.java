@@ -1,5 +1,6 @@
-package service.app.tramodel;
+package service.app.tramodel.response;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class BaseResponse {
@@ -33,6 +34,8 @@ public class BaseResponse {
 	}
 
 	public List<List<String>> getXs() {
+		if(xs==null)
+			xs = new ArrayList<>();
 		return xs;
 	}
 

@@ -1,6 +1,8 @@
-package service.app.tramodel;
+package service.app.tramodel.items;
 
 import java.util.List;
+
+import service.app.tramodel.TypeData;
 
 public class EntTypOtherItem extends BaseTypOtherItem {
 
