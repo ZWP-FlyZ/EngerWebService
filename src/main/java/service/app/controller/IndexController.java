@@ -16,6 +16,7 @@ import service.app.tramodel.RequestData;
 import service.app.tramodel.RoleType;
 import service.app.tramodel.items.EngTypOtherItem;
 import service.app.tramodel.response.EngTypOthResponse;
+import service.app.util.TimeTools;
 
 @Controller
 public class IndexController extends BaseController{
@@ -41,6 +42,7 @@ public class IndexController extends BaseController{
 		ir.setErrCode(ErrCode.DATA_OK);
 		ir.setRoleName(rd.getRoleName());
 		ir.setTimeRange(rd.getTimeRange());
+		ir.getXs().add(TimeTools.getYMlist(rd.getTimeRange()));
 		Map<String,Object> ds = indexS.getEngTypOther(rd);
 		ir.setEngTypOther((List<EngTypOtherItem>) ds.get("engTypeOther"));
 		
