@@ -18,7 +18,6 @@ import service.app.tramodel.items.BaseTypOtherItem;
 import service.app.tramodel.items.EngTypOtherItem;
 import service.app.tramodel.items.EntTypOtherItem;
 import service.app.tramodel.items.WeiTypOtherItem;
-import service.app.tramodel.response.EngTypOthResponse;
 import service.app.tramodel.response.OceanGoodsResponse;
 import service.app.tramodel.response.OceanPassResponse;
 import service.app.tramodel.response.PortProductResponse;

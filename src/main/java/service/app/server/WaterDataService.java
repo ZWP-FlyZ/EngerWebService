@@ -20,7 +20,6 @@ import service.app.tramodel.RequestData;
 import service.app.tramodel.RoleType;
 import service.app.tramodel.TypeData;
 import service.app.tramodel.items.BaseTypOtherItem;
-import service.app.tramodel.items.CarTypOtherItem;
 import service.app.tramodel.items.EngTypOtherItem;
 import service.app.tramodel.items.EntTypOtherItem;
 import service.app.tramodel.items.WeiTypOtherItem;
@@ -537,7 +536,6 @@ public class WaterDataService {
 		TwoDecMap<String,TypeData> entMap = new TwoDecMap<>();
 		
 		String tmp = null;
-		String tmp2 = null;
 		TypeData td = null;
 		
 		for(PortProData d:allData){

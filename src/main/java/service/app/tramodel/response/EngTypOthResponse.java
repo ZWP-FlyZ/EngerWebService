@@ -2,17 +2,21 @@ package service.app.tramodel.response;
 
 import java.util.List;
 
-import service.app.tramodel.items.EngTypOtherItem;
+import service.app.tramodel.items.BaseTypOtherItem;
 
 public class EngTypOthResponse extends BaseResponse{
-	private  List<EngTypOtherItem> engTypOther;
+	private  List<? extends BaseTypOtherItem> engTypOther;
 
-	public List<EngTypOtherItem> getEngTypOther() {
+	public List<? extends BaseTypOtherItem> getEngTypOther() {
 		return engTypOther;
 	}
 
-	public void setEngTypOther(List<EngTypOtherItem> engTypOther) {
+	public void setEngTypOther(List<? extends BaseTypOtherItem> engTypOther) {
 		this.engTypOther = engTypOther;
 	}
+	
+	
+
+
 	
 }

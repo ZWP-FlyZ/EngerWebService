@@ -71,6 +71,7 @@ public class LadWatController {
 		ir.setErrCode(ErrCode.DATA_OK);
 		ir.setRoleName(rd.getRoleName());
 		ir.setTimeRange(rd.getTimeRange());
+		ir.getXs().add(TimeTools.getYMlist(rd.getTimeRange()));
 		Map<String,Object> ds = lwds.getEngTyp3YearTypOther(rd);
 		ir.setEngTypOther((List<EngTypOtherItem>) ds.get("engTypeOther"));
 		
@@ -86,7 +87,7 @@ public class LadWatController {
 		rd.setUsername("zwp");
 		rd.setRoleName("enterprice");
 		rd.setRoleType(RoleType.ROLE_TRAFFIC);
-		rd.setTimeRange("2017-01-01:2017-12-30");
+		rd.setTimeRange("2017-01-01:2017-12-30"); 
 		rd.setPlace1("杭州");
 		rd.setPlace2("江干");
 		
@@ -95,7 +96,7 @@ public class LadWatController {
 		ttr.setErrCode(ErrCode.DATA_OK);
 		ttr.setRoleName(rd.getRoleName());
 		ttr.setTimeRange(rd.getTimeRange());
-		
+		ttr.getXs().add(TimeTools.getYMlist(rd.getTimeRange()));
 		Map<String,Object> ds = lwds.getTraTypPerYearTypOther(rd);
 		ttr.setTraTypOther((List<TraTypOtherItem>) ds.get("traTypeOther"));
 		
@@ -120,7 +121,7 @@ public class LadWatController {
 		ttr.setErrCode(ErrCode.DATA_OK);
 		ttr.setRoleName(rd.getRoleName());
 		ttr.setTimeRange(rd.getTimeRange());
-		
+		ttr.getXs().add(TimeTools.getYMlist(rd.getTimeRange()));
 		Map<String,Object> ds = lwds.getTraTypPerYearTypOther(rd);
 		ttr.setTraTypOther((List<TraTypOtherItem>) ds.get("traTypeOther"));
 		
@@ -146,7 +147,7 @@ public class LadWatController {
 		ctt.setRoleName(rd.getRoleName());
 		ctt.setTimeRange(rd.getTimeRange());
 		ctt.setTranType(rd.getTranType());
-		
+		//ctt.getXs().add(TimeTools.getYMlist(rd.getTimeRange()));
 		Map<String,Object> ds = lwds.getCitTranTypOther(rd);
 		ctt.setCitTypOther((List<CitTypOtherItem>) (ds.get("citTypeOther")));
 		return ctt;
@@ -172,7 +173,7 @@ public class LadWatController {
 		ttr.setRoleName(rd.getRoleName());
 		ttr.setTimeRange(rd.getTimeRange());
 		ttr.setCityType(rd.getCityType());
-		
+		//ttr.getXs().add(TimeTools.getYMlist(rd.getTimeRange()));
 		Map<String,Object> ds = lwds.getTranCitTypOther(rd);
 		ttr.setTraTypOther((List<TraTypOtherItem>) ds.get("traTypeOther"));
 		
