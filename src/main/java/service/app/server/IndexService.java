@@ -162,7 +162,7 @@ public class IndexService {
 				//month
 				tmp = TimeTools.getYearMonth(d.getInTime());
 				if(tmp!=null){
-					td = monthMap.get(TypeGetter.CHAI_YOU,tmp);//柴油
+					td = monthMap.get(TypeGetter.FT_CHAI_YOU,tmp);//柴油
 					if(td==null)
 					{
 						td = new TypeData();
@@ -170,9 +170,9 @@ public class IndexService {
 					}
 					td.addEng(d.getDiesel());
 
-					monthMap.put(TypeGetter.CHAI_YOU,tmp,td);
+					monthMap.put(TypeGetter.FT_CHAI_YOU,tmp,td);
 					
-					td = monthMap.get(TypeGetter.QI_YOU,tmp);
+					td = monthMap.get(TypeGetter.FT_QI_YOU,tmp);
 					if(td==null)
 					{
 						td = new TypeData();
@@ -180,9 +180,9 @@ public class IndexService {
 					}
 					td.addEng(d.getGasoline());
 
-					monthMap.put(TypeGetter.QI_YOU,tmp,td);
+					monthMap.put(TypeGetter.FT_QI_YOU,tmp,td);
 					
-					td = monthMap.get(TypeGetter.MEI_YOU,tmp);
+					td = monthMap.get(TypeGetter.FT_MEI_YOU,tmp);
 					if(td==null)
 					{
 						td = new TypeData();
@@ -190,9 +190,9 @@ public class IndexService {
 					}
 					td.addEng(d.getCoal());
 
-					monthMap.put(TypeGetter.MEI_YOU,tmp,td);
+					monthMap.put(TypeGetter.FT_MEI_YOU,tmp,td);
 					
-					td = monthMap.get(TypeGetter.DIAN_LI,tmp);
+					td = monthMap.get(TypeGetter.FT_DIAN_NENG,tmp);
 					if(td==null)
 					{
 						td = new TypeData();
@@ -200,16 +200,16 @@ public class IndexService {
 					}
 					td.addEng(d.getPower());
 
-					monthMap.put(TypeGetter.DIAN_LI,tmp,td);
+					monthMap.put(TypeGetter.FT_DIAN_NENG,tmp,td);
 					
-					td = monthMap.get(TypeGetter.QI_TA,tmp);
+					td = monthMap.get(TypeGetter.FT_QI_TA,tmp);
 					if(td==null)
 					{
 						td = new TypeData();
 						td.setType(tmp);
 					}
 					td.addEng(d.getOther());
-					monthMap.put(TypeGetter.QI_TA,tmp,td);
+					monthMap.put(TypeGetter.FT_QI_TA,tmp,td);
 					
 				}
 			}

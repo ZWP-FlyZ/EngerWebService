@@ -139,7 +139,7 @@ public class LadWatController {
 		rd.setTimeRange("2017-01-01:2017-12-30");
 		rd.setPlace1("杭州");
 		rd.setPlace2("江干");
-		rd.setTranType(TypeGetter.LAND_PASS);
+		rd.setTranType(TypeGetter.TT_LAND_PASS);
 		
 		CitTraTypOthResponse ctt = new CitTraTypOthResponse();
 		
@@ -164,7 +164,7 @@ public class LadWatController {
 		rd.setTimeRange("2017-01-01:2017-12-30");
 		rd.setPlace1("杭州");
 		rd.setPlace2("江干");
-		rd.setTranType(TypeGetter.LAND_PASS);
+		rd.setTranType(TypeGetter.TT_LAND_PASS);
 		rd.setCityType("杭州");
 		
 		TraTypOthResponse ttr = new TraTypOthResponse();

@@ -373,22 +373,22 @@ public class LadWatDataService {
 		
 		List<AllSimData> allData = new ArrayList<>();
 		if( (k&0x1)!=0 ){// land
-			if(rd.getTranType().equals(TypeGetter.LAND_GOODS)){
+			if(rd.getTranType().equals(TypeGetter.TT_LAND_GOODS)){
 				List<RoadGoodsData> list1 = 
 						roadGdsDao.getRoadGdsAll(times[0], times[1], enterprice, places[0], places[1]);
 				if(list1!=null)
 					allData.addAll(list1);
-			}else if(rd.getTranType().equals(TypeGetter.LAND_PASS)){
+			}else if(rd.getTranType().equals(TypeGetter.TT_LAND_PASS)){
 				List<RoadPassData> list2 = 
 						roadPassDao.getRoadPassAll(times[0], times[1], enterprice, places[0], places[1]);
 				if(list2!=null)
 					allData.addAll(list2);
-			}else if(rd.getTranType().equals(TypeGetter.LAND_BUS)){
+			}else if(rd.getTranType().equals(TypeGetter.TT_LAND_BUS)){
 				List<BusTranData> list3 = 
 						busTranDao.getBusTranAll(times[0], times[1], enterprice, places[0], places[1]);
 				if(list3!=null)
 					allData.addAll(list3);
-			}else if(rd.getTranType().equals(TypeGetter.LAND_TAXI)){
+			}else if(rd.getTranType().equals(TypeGetter.TT_LAND_TAXI)){
 				List<TaxiTranData> list4 = 
 						taxiTranDao.getTaxiTranAll(times[0], times[1], enterprice, places[0], places[1]);
 				if(list4!=null)
@@ -397,17 +397,17 @@ public class LadWatDataService {
 		}
 		
 		if( (k&0x2)!=0 ){//water
-			if(rd.getTranType().equals(TypeGetter.WATER_RIVER)){
+			if(rd.getTranType().equals(TypeGetter.TT_WATER_RIVER)){
 				List<RiverTranData> list1 = 
 						riverTranDao.getRiverTranAll(times[0], times[1], enterprice, places[0], places[1]);
 				if(list1!=null)
 					allData.addAll(list1);
-			}else if(rd.getTranType().equals(TypeGetter.WATER_GOODS)){
+			}else if(rd.getTranType().equals(TypeGetter.TT_WATER_GOODS)){
 				List<OceanGoodsData> list2 = 
 						oceanGdsDao.getOceanGdsAll(times[0], times[1], enterprice, places[0], places[1]);
 				if(list2!=null)
 					allData.addAll(list2);
-			}else if(rd.getTranType().equals(TypeGetter.WATER_PASS)){
+			}else if(rd.getTranType().equals(TypeGetter.TT_WATER_PASS)){
 				List<OceanPassData> list3 = 
 						oceanPassDao.getOceanPassAll(times[0], times[1], enterprice, places[0], places[1]);
 				if(list3!=null)

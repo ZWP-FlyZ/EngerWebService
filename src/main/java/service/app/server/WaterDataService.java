@@ -542,7 +542,7 @@ public class WaterDataService {
 			//month
 			tmp = TimeTools.getYearMonth(d.getInTime());
 			if(tmp!=null){
-				td = engMonthMap.get(TypeGetter.CHAI_YOU,tmp);//柴油
+				td = engMonthMap.get(TypeGetter.FT_CHAI_YOU,tmp);//柴油
 				if(td==null)
 				{
 					td = new TypeData();
@@ -550,9 +550,9 @@ public class WaterDataService {
 				}
 				td.addEng(d.getDiesel());
 				td.addLen(d.getProTask());
-				engMonthMap.put(TypeGetter.CHAI_YOU,tmp,td);
+				engMonthMap.put(TypeGetter.FT_CHAI_YOU,tmp,td);
 				
-				td = engMonthMap.get(TypeGetter.QI_YOU,tmp);
+				td = engMonthMap.get(TypeGetter.FT_QI_YOU,tmp);
 				if(td==null)
 				{
 					td = new TypeData();
@@ -560,9 +560,9 @@ public class WaterDataService {
 				}
 				td.addEng(d.getGasoline());
 				td.addLen(d.getProTask());
-				engMonthMap.put(TypeGetter.QI_YOU,tmp,td);
+				engMonthMap.put(TypeGetter.FT_QI_YOU,tmp,td);
 				
-				td = engMonthMap.get(TypeGetter.MEI_YOU,tmp);
+				td = engMonthMap.get(TypeGetter.FT_MEI_YOU,tmp);
 				if(td==null)
 				{
 					td = new TypeData();
@@ -570,9 +570,9 @@ public class WaterDataService {
 				}
 				td.addEng(d.getCoal());
 				td.addLen(d.getProTask());
-				engMonthMap.put(TypeGetter.MEI_YOU,tmp,td);
+				engMonthMap.put(TypeGetter.FT_MEI_YOU,tmp,td);
 				
-				td = engMonthMap.get(TypeGetter.DIAN_LI,tmp);
+				td = engMonthMap.get(TypeGetter.FT_DIAN_NENG,tmp);
 				if(td==null)
 				{
 					td = new TypeData();
@@ -580,9 +580,9 @@ public class WaterDataService {
 				}
 				td.addEng(d.getPower());
 				td.addLen(d.getProTask());
-				engMonthMap.put(TypeGetter.DIAN_LI,tmp,td);
+				engMonthMap.put(TypeGetter.FT_DIAN_NENG,tmp,td);
 				
-				td = engMonthMap.get(TypeGetter.QI_TA,tmp);
+				td = engMonthMap.get(TypeGetter.FT_QI_TA,tmp);
 				if(td==null)
 				{
 					td = new TypeData();
@@ -590,7 +590,7 @@ public class WaterDataService {
 				}
 				td.addEng(d.getOther());
 				td.addLen(d.getProTask());
-				engMonthMap.put(TypeGetter.QI_TA,tmp,td);
+				engMonthMap.put(TypeGetter.FT_QI_TA,tmp,td);
 				
 			}
 			
