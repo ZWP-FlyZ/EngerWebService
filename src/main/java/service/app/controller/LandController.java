@@ -1,5 +1,6 @@
 package service.app.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -52,6 +53,12 @@ public class LandController {
 		rpr.setRoleName(rd.getRoleName());
 		rpr.setTimeRange(rd.getTimeRange());
 		rpr.getXs().add(TimeTools.getYMlist(rd.getTimeRange()));
+		rpr.getXs().add(tg.getLandEngers());
+		rpr.getXs().add(tg.getRoadPassSitCotTypeAll());
+		rpr.getXs().add(tg.getRoadPassEntSizeTypeAll());
+		rpr.getXs().add(new ArrayList<String>());//运距类型
+		rpr.getXs().add(tg.getCarTypes());//车辆类型
+		
 		Map<String,Object> ds = lds.getRoadPassTypOther(rd);
 		rpr.setEngTypOther((List<EngTypOtherItem>) ds.get("engTypeOther"));
 		rpr.setEntTypOther((List<EntTypOtherItem>) ds.get("entTypeOther"));
@@ -77,6 +84,10 @@ public class LandController {
 		rgr.setErrCode(ErrCode.DATA_OK);
 		rgr.setRoleName(rd.getRoleName());
 		rgr.getXs().add(TimeTools.getYMlist(rd.getTimeRange()));
+		rgr.getXs().add(tg.getLandEngers());
+		rgr.getXs().add(tg.getRoadGoodsTonTypeAll());
+		rgr.getXs().add(tg.getRoadGoodsEntSizeTypeAll());
+		rgr.getXs().add(tg.getCarTypes());//车辆类型
 		Map<String,Object> ds = lds.getRoadGoodsTypOther(rd);
 		rgr.setEngTypOther((List<EngTypOtherItem>) ds.get("engTypeOther"));
 		rgr.setEntTypOther((List<EntTypOtherItem>) ds.get("entTypeOther"));
