@@ -60,6 +60,7 @@ public class TypeGetter implements InitializingBean{
 	private final static String TN_ALL_TRA_PP = "allTrafficPP";	//附加港口生产
 	private final static String TN_CAR = "cars";
 	private final static String TN_SHIP = "ship";
+	private final static String TN_CITY = "cities";
 	
 	
 	private final static String TN_BUS_CL = "busCarLen";
@@ -92,6 +93,14 @@ public class TypeGetter implements InitializingBean{
 		return tc.getAlltypes(TN_WATER_ENG);
 	}
 	
+	public List<String> getTransTypes(){
+		return tc.getAlltypes(TN_ALL_TRA);
+	}
+	
+	public List<String> getAllEngersTypes(){
+		return tc.getAlltypes(TN_ALL_ENG);
+	}
+	
 	
 	public List<String> getCarTypes(){
 		return tc.getAlltypes(TN_CAR);
@@ -99,7 +108,13 @@ public class TypeGetter implements InitializingBean{
 	
 	public List<String> getShipTypes(){
 		return tc.getAlltypes(TN_SHIP);
-	}	
+	}
+	
+	public List<String> getCitiesTypes(){
+		return tc.getAlltypes(TN_CITY);
+	}
+	
+	
 	
 	
 	//道路客运客位数转客位类型
@@ -375,6 +390,9 @@ public class TypeGetter implements InitializingBean{
 		
 		String[] tmp8 = {ST_S1,ST_S2,ST_S3,ST_S4,ST_S5,ST_S6,ST_S7};
 		tc.setAllTypes(TN_SHIP, tmp8);
+		
+		String[] tmp9 = {"杭州","宁波","温州","嘉兴","湖州","绍兴","金华","衢州","舟山","台州","丽水"};
+		tc.setAllTypes(TN_CITY, tmp9);
 		
 		
 		

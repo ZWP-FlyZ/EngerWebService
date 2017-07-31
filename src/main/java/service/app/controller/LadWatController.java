@@ -29,6 +29,9 @@ public class LadWatController {
 	@Autowired
 	LadWatDataService lwds;
 	
+	@Autowired
+	TypeGetter tg;
+	
 	@SuppressWarnings("unchecked")
 	@RequestMapping("/perdisengO.json")
 	@ResponseBody
@@ -46,7 +49,9 @@ public class LadWatController {
 		ttr.setErrCode(ErrCode.DATA_OK);
 		ttr.setRoleName(rd.getRoleName());
 		ttr.setTimeRange(rd.getTimeRange());
-		ttr.getXs().add(TimeTools.getYMlist(rd.getTimeRange()));
+		ttr.getXs().add(tg.getTransTypes());
+		ttr.getXs().add(tg.getAllEngersTypes());
+		
 		Map<String,Object> ds = lwds.getPerDisEngTypOther(rd);
 		ttr.setTraTypOther((List<TraTypOtherItem>) ds.get("traTypeOther"));
 		
@@ -72,6 +77,8 @@ public class LadWatController {
 		ir.setRoleName(rd.getRoleName());
 		ir.setTimeRange(rd.getTimeRange());
 		ir.getXs().add(TimeTools.getYMlist(rd.getTimeRange()));
+		ir.getXs().add(tg.getAllEngersTypes());
+		
 		Map<String,Object> ds = lwds.getEngTyp3YearTypOther(rd);
 		ir.setEngTypOther((List<EngTypOtherItem>) ds.get("engTypeOther"));
 		
@@ -97,6 +104,8 @@ public class LadWatController {
 		ttr.setRoleName(rd.getRoleName());
 		ttr.setTimeRange(rd.getTimeRange());
 		ttr.getXs().add(TimeTools.getYMlist(rd.getTimeRange()));
+		ttr.getXs().add(tg.getTransTypes());
+		
 		Map<String,Object> ds = lwds.getTraTypPerYearTypOther(rd);
 		ttr.setTraTypOther((List<TraTypOtherItem>) ds.get("traTypeOther"));
 		
@@ -122,6 +131,7 @@ public class LadWatController {
 		ttr.setRoleName(rd.getRoleName());
 		ttr.setTimeRange(rd.getTimeRange());
 		ttr.getXs().add(TimeTools.getYMlist(rd.getTimeRange()));
+		ttr.getXs().add(tg.getTransTypes());
 		Map<String,Object> ds = lwds.getTraTypPerYearTypOther(rd);
 		ttr.setTraTypOther((List<TraTypOtherItem>) ds.get("traTypeOther"));
 		
@@ -147,7 +157,7 @@ public class LadWatController {
 		ctt.setRoleName(rd.getRoleName());
 		ctt.setTimeRange(rd.getTimeRange());
 		ctt.setTranType(rd.getTranType());
-		//ctt.getXs().add(TimeTools.getYMlist(rd.getTimeRange()));
+		ctt.getXs().add(tg.getCitiesTypes());
 		Map<String,Object> ds = lwds.getCitTranTypOther(rd);
 		ctt.setCitTypOther((List<CitTypOtherItem>) (ds.get("citTypeOther")));
 		return ctt;
@@ -173,7 +183,9 @@ public class LadWatController {
 		ttr.setRoleName(rd.getRoleName());
 		ttr.setTimeRange(rd.getTimeRange());
 		ttr.setCityType(rd.getCityType());
-		//ttr.getXs().add(TimeTools.getYMlist(rd.getTimeRange()));
+		ttr.getXs().add(tg.getTransTypes());
+		
+		
 		Map<String,Object> ds = lwds.getTranCitTypOther(rd);
 		ttr.setTraTypOther((List<TraTypOtherItem>) ds.get("traTypeOther"));
 		
