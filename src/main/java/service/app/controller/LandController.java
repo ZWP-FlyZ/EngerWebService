@@ -91,12 +91,14 @@ public class LandController {
 	public EngTypOthResponse busTrans(HttpServletResponse response,
 										RequestData rd){
 		
-		rd.setUsername("zwp");
-		rd.setRoleName("enterprice");
-		rd.setRoleType(RoleType.ROLE_TRAFFIC);
-		rd.setTimeRange("2016-12-01:2017-05-30");
-		rd.setPlace1("杭州");
-		rd.setPlace2("江干");
+//		rd.setUsername("zwp");
+//		rd.setRoleName("enterprice");
+//		rd.setRoleType(RoleType.ROLE_TRAFFIC);
+//		rd.setTimeRange("2016-12-01:2017-05-30");
+//		rd.setPlace1("杭州");
+//		rd.setPlace2("江干");
+		
+		System.err.println(rd.getTimeRange());
 		
 		response.setHeader("Access-Control-Allow-Origin", "*");
 		
@@ -121,12 +123,15 @@ public class LandController {
 	@ResponseBody
 	public EngTypOthResponse taxiTrans(HttpServletResponse response,
 										RequestData rd){
-		rd.setUsername("zwp");
-		rd.setRoleName("enterprice");
-		rd.setRoleType(RoleType.ROLE_TRAFFIC);
-		rd.setTimeRange("2017-01-01:2017-12-30");
-		rd.setPlace1("杭州");
-		rd.setPlace2("江干");
+//		rd.setUsername("zwp");
+//		rd.setRoleName("enterprice");
+//		rd.setRoleType(RoleType.ROLE_TRAFFIC);
+//		rd.setTimeRange("2017-01-01:2017-12-30");
+//		rd.setPlace1("杭州");
+//		rd.setPlace2("江干");
+		
+		System.err.println(rd.getTimeRange());
+		response.setHeader("Access-Control-Allow-Origin", "*");
 		
 		EngTypOthResponse ir = new EngTypOthResponse();
 		
@@ -134,6 +139,9 @@ public class LandController {
 		ir.setRoleName(rd.getRoleName());
 		ir.setTimeRange(rd.getTimeRange());
 		ir.getXs().add(TimeTools.getYMlist(rd.getTimeRange()));
+		ir.getXs().add(tg.getLandEngers());
+		ir.getXs().add(tg.getTaxiTranDpTypeAll());
+		
 		Map<String,Object> ds = lds.getTaxiTranTypOther(rd);
 		ir.setEngTypOther((List<EngTypOtherItem>) ds.get("engTypeOther"));
 		

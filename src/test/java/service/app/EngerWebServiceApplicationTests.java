@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import service.app.util.AuthRoute;
 import service.app.util.TypeGetter;
 
 @RunWith(SpringRunner.class)
@@ -15,10 +16,14 @@ public class EngerWebServiceApplicationTests {
 	@Autowired
 	TypeGetter tg;
 	
+	@Autowired
+	AuthRoute ar;
+	
 	@Test
 	public void contextLoads() {
 		String s = tg.getBusTranCarLenType(new Double(7.0));
 		System.err.println(s);
+		
 	}
 
 }

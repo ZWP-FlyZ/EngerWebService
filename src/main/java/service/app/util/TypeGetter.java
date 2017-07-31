@@ -64,7 +64,7 @@ public class TypeGetter implements InitializingBean{
 	
 	
 	private final static String TN_BUS_CL = "busCarLen";
-	
+	private final static String TN_TAXI_DP = "taxiDp";
 	
 	@Autowired
 	TypeChooser tc;
@@ -133,8 +133,19 @@ public class TypeGetter implements InitializingBean{
 	
 	public String getTaxiTranDpType(Double dpCot){
 		//楚竹车排量
-		return "dpCot1";
+		return tc.get(TN_TAXI_DP, dpCot);
 	}
+	
+	public List<String> getTaxiTranDpTypeAll(){
+		return tc.getAlltypes(TN_TAXI_DP);
+	}
+	
+	public boolean setTaxiTranDpypeAll(String ts){
+		return tc.put(ts);
+	}
+	
+	
+	
 	
 	public String getRiverTranTonType(Double tonnage){
 		return "tonnage2";
@@ -174,8 +185,8 @@ public class TypeGetter implements InitializingBean{
 
 	@Override
 	public void afterPropertiesSet() throws Exception {
-		// TODO Auto-generated method stub
 		setBusTranCarLenTypeAll(TN_BUS_CL+":5-7,7-9,9-12,12-14,14-b");
+		setTaxiTranDpypeAll(TN_TAXI_DP+":a-1.6,1.6-2,2-2.5,2.5-3,3-b");
 		
 				
 		String[] tmp = {TT_LAND_PASS,TT_LAND_GOODS,TT_LAND_BUS,TT_LAND_TAXI,
@@ -204,15 +215,6 @@ public class TypeGetter implements InitializingBean{
 		String[] tmp6 = {FT_CHAI_YOU,FT_QI_YOU,FT_MEI_YOU,FT_DIAN_NENG,
 						FT_QI_TA};
 		tc.setAllTypes(TN_WATER_ENG, tmp6);
-		
-		
-		
-		
-		
-
-		
-
-
 		
 	}
 	
