@@ -64,8 +64,14 @@ public class IndexService {
 		String enterprice=null;
 		int k = 0x0;
 		
+		if(rd.getPlace1()==null)
+			rd.setPlace1("%%");
+		if(rd.getPlace2()==null)
+			rd.setPlace2("%%");
 		places[0] = rd.getPlace1();
 		places[1] = rd.getPlace2();
+		
+		
 		if(rd.getRoleType().equals(RoleType.ROLE_TRAFFIC)){
 			enterprice = "%%";
 			k=0x3;

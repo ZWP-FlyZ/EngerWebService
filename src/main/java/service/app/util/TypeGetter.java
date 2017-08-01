@@ -67,17 +67,22 @@ public class TypeGetter implements InitializingBean{
 	private final static String TN_TAXI_DP = "taxiDp";
 	private final static String TN_ROAD_PASS_Sits = "roadPassSits";
 	private final static String TN_ROAD_PASS_Ents = "roadPassEnts";
+	private final static String TN_ROAD_PASS_Dis = "roadPassDis";
 	
 	private final static String TN_ROAD_GOODS_Ton = "roadGoodsTon";
 	private final static String TN_ROAD_GOODS_Ents = "roadGoodsEnts";
+	private final static String TN_ROAD_GOODS_Dis = "roadGoodsDis";
 
 	private final static String TN_RIVER_Ents = "riverEnts";
 	private final static String TN_RIVER_Ton = "riverTon";
 	
 	private final static String TN_OCEAN_GOODS_Ton = "oceanGoodsTon";
 	private final static String TN_OCEAN_GOODS_Ents = "oceanGoodsEnts";
+	private final static String TN_OCEAN_GOODS_Dis = "oceanGoodsDis";
+	
 	private final static String TN_OCEAN_PASS_Sits = "oceanPassSits";
 	private final static String TN_OCEAN_PASS_Ents = "oceanPassEnts";
+	private final static String TN_OCEAN_PASS_Dis = "oceanPassDis";
 	
 	private final static String TN_PORT_PRODUCT_Ents = "portProEnts";
 	
@@ -151,7 +156,15 @@ public class TypeGetter implements InitializingBean{
 	
 	public String getRoadPassDisType(Double tranDis){
 		// TO-DO
-		return "tranDis1";
+		return tc.get(TN_ROAD_PASS_Dis, tranDis);
+	}
+	
+	public List<String> getRoadPassDisTypeAll(){
+		return tc.getAlltypes(TN_ROAD_PASS_Dis);
+	}
+	
+	public boolean setRoadPassDisTypeAll(String ts){
+		return tc.put(ts);
 	}
 	
 	
@@ -188,7 +201,15 @@ public class TypeGetter implements InitializingBean{
 
 	public String getRoadGoodsDisType(Double tranDis){
 		//道路客运运距
-		return "tranDis1";
+		return tc.get(TN_ROAD_GOODS_Dis, tranDis);
+	}
+	
+	public List<String> getRoadGoodsDisTypeAll(){
+		return tc.getAlltypes(TN_ROAD_GOODS_Dis);
+	}
+	
+	public boolean setRoadGoodsDisTypeAll(String ts){
+		return tc.put(ts);
 	}
 	
 	
@@ -284,7 +305,15 @@ public class TypeGetter implements InitializingBean{
 	
 	
 	public String getOceanGoodsTranDisType(Double tranDis){
-		return "tranDis2";
+		return tc.get(TN_OCEAN_GOODS_Dis, tranDis);
+	}
+	
+	public List<String> getOceanGoodsTranDisTypeAll(){
+		return tc.getAlltypes(TN_OCEAN_GOODS_Dis);
+	}
+	
+	public boolean setOceanGoodsTranDisTypeAll(String ts){
+		return tc.put(ts);
 	}
 	
 	
@@ -317,8 +346,18 @@ public class TypeGetter implements InitializingBean{
 	
 	
 	public String getOceanPassTranDisType(Double tranDis){
-		return "tranDis2";
+		return  tc.get(TN_OCEAN_PASS_Dis, tranDis);
 	}
+	
+	public List<String> getOceanPassTranDisTypeAll(){
+		return tc.getAlltypes(TN_OCEAN_PASS_Dis);
+	}
+	
+	public boolean setOceanPassTranDisTypeAll(String ts){
+		return tc.put(ts);
+	}
+	
+	
 	
 	public String getPortProEntSType(Double proTask){
 		return tc.get(TN_PORT_PRODUCT_Ents, proTask);
@@ -341,18 +380,22 @@ public class TypeGetter implements InitializingBean{
 		
 		setRoadGoodsEntSizeTypeAll(TN_ROAD_GOODS_Ents+":5.2-7.2,7.2-9.2,9.2-12.2,12.2-14.2,14.2-b");
 		setRoadGoodsTonTypeAll(TN_ROAD_GOODS_Ton+":a-1.62,1.62-2.2,2.2-2.52,2.52-3.2,3.2-b");
+		setRoadGoodsDisTypeAll(TN_ROAD_GOODS_Dis+":a-40,40-80,80-120,120-b");
 		
 		setRoadPassEntSizeTypeAll(TN_ROAD_PASS_Ents+":5.1-7.1,7.1-9.1,9.1-12.1,12.1-14.1,14.1-b");
 		setRoadPassSitCotTypeAll(TN_ROAD_PASS_Sits+":5.11-7.11,7.11-9.11,9.11-12.11,12.11-14.11,14.11-b");
+		setRoadPassDisTypeAll(TN_ROAD_PASS_Dis+":a-40,40-80,80-120,120-b");
 		
 		setRiverTranEntSTypeAll(TN_RIVER_Ents+":5.3-7.3,7.3-9.3,9.3-12,12-14,14-b");
 		setRiverTranTonTypeAll(TN_RIVER_Ton+":5.31-7.31,7.31-9.3,9.3-12,12-14,14-b");
 		
 		setOceanGoodsEntSTypeAll(TN_OCEAN_GOODS_Ents+":5.4-7.4,7.4-9.4,9.4-12,12-14,14-b");
 		setOceanGoodsTonTypeAll(TN_OCEAN_GOODS_Ton+":5.41-7.41,7.41-9,9-12,12-14,14-b");
+		setOceanGoodsTranDisTypeAll(TN_OCEAN_GOODS_Dis+":a-40,40-80,80-120,120-b");
 		
 		setOceanPassEntSTypeAll(TN_OCEAN_PASS_Ents+":5.5-7.5,7.5-9,9-12,12-14,14-b");
 		setOceanPassSitSizeTypeAll(TN_OCEAN_PASS_Sits+":5.51-7.51,7.51-9,9-12,12-14,14-b");
+		setOceanPassTranDisTypeAll(TN_OCEAN_PASS_Dis+":a-40,40-80,80-120,120-b");
 		
 		setPortProEntSTypeAll(TN_PORT_PRODUCT_Ents+":5.6-7.6,7.6-9.6,9.6-12,12-14,14-b");
 		

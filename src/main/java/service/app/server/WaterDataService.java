@@ -50,6 +50,12 @@ public class WaterDataService {
 		String enterprice=null;
 		int k = 0x0;
 		
+		if(rd.getPlace1()==null)
+			rd.setPlace1("%%");
+		if(rd.getPlace2()==null)
+			rd.setPlace2("%%");
+		
+		
 		List<RiverTranData> allData =  new ArrayList<>();
 		
 		places[0] = rd.getPlace1();
@@ -189,6 +195,11 @@ public class WaterDataService {
 		String[] places = new String[2];
 		String enterprice=null;
 		int k = 0x0;
+		
+		if(rd.getPlace1()==null)
+			rd.setPlace1("%%");
+		if(rd.getPlace2()==null)
+			rd.setPlace2("%%");
 		
 		List<OceanGoodsData> allData =  new ArrayList<>();
 		
@@ -354,6 +365,11 @@ public class WaterDataService {
 		String enterprice=null;
 		int k = 0x0;
 		
+		if(rd.getPlace1()==null)
+			rd.setPlace1("%%");
+		if(rd.getPlace2()==null)
+			rd.setPlace2("%%");
+		
 		List<OceanPassData> allData =  new ArrayList<>();
 		
 		places[0] = rd.getPlace1();
@@ -501,6 +517,11 @@ public class WaterDataService {
 		String[] places = new String[2];
 		String enterprice=null;
 		int k = 0x0;
+		
+		if(rd.getPlace1()==null)
+			rd.setPlace1("%%");
+		if(rd.getPlace2()==null)
+			rd.setPlace2("%%");
 		
 		List<PortProData> allData =  new ArrayList<>();
 		

@@ -54,6 +54,11 @@ public  Map<String,Object> getRoadPassTypOther(RequestData rd){
 		String enterprice=null;
 		int k = 0x0;
 		
+		if(rd.getPlace1()==null)
+			rd.setPlace1("%%");
+		if(rd.getPlace2()==null)
+			rd.setPlace2("%%");
+		
 		List<RoadPassData> allData =  new ArrayList<>();
 		
 		places[0] = rd.getPlace1();
@@ -228,6 +233,10 @@ public  Map<String,Object> getRoadGoodsTypOther(RequestData rd){
 	String enterprice=null;
 	int k = 0x0;
 	
+	if(rd.getPlace1()==null)
+		rd.setPlace1("%%");
+	if(rd.getPlace2()==null)
+		rd.setPlace2("%%");
 	List<RoadGoodsData> allData =  new ArrayList<>();
 	
 	places[0] = rd.getPlace1();
@@ -372,6 +381,11 @@ public  Map<String,Object> getBusTranTypOther(RequestData rd){
 	String enterprice=null;
 	int k = 0x0;
 	
+	if(rd.getPlace1()==null)
+		rd.setPlace1("%%");
+	if(rd.getPlace2()==null)
+		rd.setPlace2("%%");
+	
 	List<BusTranData> allData =  new ArrayList<>();
 	
 	places[0] = rd.getPlace1();
@@ -461,6 +475,11 @@ public  Map<String,Object> getTaxiTranTypOther(RequestData rd){
 	String[] places = new String[2];
 	String enterprice=null;
 	int k = 0x0;
+	
+	if(rd.getPlace1()==null)
+		rd.setPlace1("%%");
+	if(rd.getPlace2()==null)
+		rd.setPlace2("%%");
 	
 	List<TaxiTranData> allData =  new ArrayList<>();
 	

@@ -91,7 +91,7 @@ public class WaterController {
 		ogr.getXs().add(tg.getOceanGoodsTonTypeAll());
 		ogr.getXs().add(tg.getOceanGoodsEntSTypeAll());
 		ogr.getXs().add(tg.getShipTypes());//车辆类型
-		ogr.getXs().add(new ArrayList<String>());//车辆类型
+		ogr.getXs().add(tg.getOceanGoodsTranDisTypeAll());//车辆类型
 		
 		Map<String,Object> ds = wds.getOceanGoodsTypeOther(rd);
 		ogr.setEngTypOther((List<EngTypOtherItem>) ds.get("engTypeOther"));
@@ -128,7 +128,7 @@ public class WaterController {
 		opr.getXs().add(tg.getWaterEngers());
 		opr.getXs().add(tg.getOceanPassSitSizeTypeAll());
 		opr.getXs().add(tg.getOceanPassEntSTypeAll());
-		opr.getXs().add(new ArrayList<String>());//运距类型
+		opr.getXs().add(tg.getOceanPassTranDisTypeAll());//运距类型
 		
 		Map<String,Object> ds = wds.getOceanPassTypeOther(rd);
 		opr.setEngTypOther((List<EngTypOtherItem>) ds.get("engTypeOther"));
