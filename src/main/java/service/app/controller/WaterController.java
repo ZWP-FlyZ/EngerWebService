@@ -1,6 +1,5 @@
 package service.app.controller;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -40,13 +39,14 @@ public class WaterController {
 	@ResponseBody
 	public RiverTranResponse riverTran(HttpServletResponse response,
 										RequestData rd){
-		rd.setUsername("zwp");
-		rd.setRoleName("enterprice");
-		rd.setRoleType(RoleType.ROLE_TRAFFIC);
-		rd.setTimeRange("2017-01-01:2017-12-30");
-		rd.setPlace1("杭州");
-		rd.setPlace2("江干");
+//		rd.setUsername("zwp");
+//		rd.setRoleName("enterprice");
+//		rd.setRoleType(RoleType.ROLE_TRAFFIC);
+//		rd.setTimeRange("2017-01-01:2017-12-30");
+//		rd.setPlace1("杭州");
+//		rd.setPlace2("江干");
 		
+		response.setHeader("Access-Control-Allow-Origin", "*");
 		RiverTranResponse trt = new RiverTranResponse();
 		
 		trt.setErrCode(ErrCode.DATA_OK);

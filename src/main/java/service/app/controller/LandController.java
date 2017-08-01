@@ -56,7 +56,7 @@ public class LandController {
 		rpr.getXs().add(tg.getLandEngers());
 		rpr.getXs().add(tg.getRoadPassSitCotTypeAll());
 		rpr.getXs().add(tg.getRoadPassEntSizeTypeAll());
-		rpr.getXs().add(new ArrayList<String>());//运距类型
+		rpr.getXs().add(tg.getRoadGoodsDisTypeAll());//运距类型
 		rpr.getXs().add(tg.getCarTypes());//车辆类型
 		
 		Map<String,Object> ds = lds.getRoadPassTypOther(rd);
