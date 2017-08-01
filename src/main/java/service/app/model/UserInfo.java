@@ -12,9 +12,7 @@ public class UserInfo {
 	private String phone;
 	private String roleType;
 	private String roleName;
-	
-	private String routeJson;
-	
+		
 	
 	
 	public String getName() {
@@ -78,12 +76,7 @@ public class UserInfo {
 	public void setPlace2(String place2) {
 		this.place2 = place2;
 	}
-	public String getRouteJson() {
-		return routeJson;
-	}
-	public void setRouteJson(String routeJson) {
-		this.routeJson = routeJson;
-	}
+
 	
 
 }
