@@ -25,3 +25,7 @@ nbdist/
 
 
 src/main/resources/static/
+
+*.tmp
+
+
