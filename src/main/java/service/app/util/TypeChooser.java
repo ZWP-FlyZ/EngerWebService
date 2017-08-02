@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Map;
 
 import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
 
 
 @Component
@@ -14,6 +15,8 @@ public class TypeChooser {
 	private Map<String, List<String>> 			types = new HashMap<>();
 	private Map<String,List<TypeChooserItem>>	typeItems = new HashMap<>();
 	
+	
+	@Transactional
 	public boolean put(String ts){
 		if(ts==null)
 			return false;

@@ -1,6 +1,7 @@
 package service.app.controller;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import javax.servlet.http.HttpServletResponse;
@@ -10,6 +11,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import service.app.model.AllTypesItem;
 import service.app.model.UserInfo;
 import service.app.server.SetService;
 import service.app.tramodel.ErrCode;
@@ -99,6 +101,40 @@ public class SetController extends BaseController {
 		else
 			sr.setErrCode(ErrCode.SETTING_ERR);
 		
+		return sr;
+	}
+	
+	@RequestMapping("/getdictlist.json")
+	@ResponseBody
+	public SetResponse getDict(HttpServletResponse response,RequestData data){
+		List<AllTypesItem> infoes = new ArrayList<>();
+		List<AllTypesItem> tmps = ss.getAllTypes();
+		if(tmps!=null)
+			infoes.addAll(tmps);
+				
+		SetResponse sr = new SetResponse();
+		sr.setErrCode(ErrCode.SETTING_OK);
+		sr.setDicts(infoes);
+		
+		return sr;
+	}
+	
+	@RequestMapping("/setdict.json")
+	@ResponseBody
+	public SetResponse setDict(HttpServletResponse response,RequestData data){
+		data.setTypeName(TypeGetter.TN_BUS_CL);
+		data.setTypeS("4-7,7-9,9-12,12-14,14-17,17-b");
+		//data.setTypeName(null);
+		
+		
+		SetResponse sr = new SetResponse();
+		sr.setErrCode(ErrCode.SETTING_ERR);
+		if(data.getTypeName()==null){
+			sr.setErrCode(ErrCode.SETTING_ERR);
+		}else if(tg.setTypeAll(data.getTypeName(), data.getTypeS()))
+				if(ss.setAllType(data.getTypeName(), data.getTypeS()))
+					sr.setErrCode(ErrCode.SETTING_OK);
+		System.err.println(Arrays.toString(tg.getBusTranCarLenTypeAll().toArray()));
 		return sr;
 	}
 	

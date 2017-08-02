@@ -6,8 +6,13 @@ import org.springframework.beans.factory.InitializingBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import service.app.server.SetService;
+
 @Component
 public class TypeGetter implements InitializingBean{
+	
+
+	
 	
 	//enger type
 	public final static String FT_CHAI_YOU = "柴油";//柴油
@@ -63,31 +68,39 @@ public class TypeGetter implements InitializingBean{
 	private final static String TN_CITY = "cities";
 	
 	
-	private final static String TN_BUS_CL = "busCarLen";
-	private final static String TN_TAXI_DP = "taxiDp";
-	private final static String TN_ROAD_PASS_Sits = "roadPassSits";
-	private final static String TN_ROAD_PASS_Ents = "roadPassEnts";
-	private final static String TN_ROAD_PASS_Dis = "roadPassDis";
+	public final static String TN_BUS_CL = "busCarLen";
+	public final static String TN_TAXI_DP = "taxiDp";
+	public final static String TN_ROAD_PASS_Sits = "roadPassSits";
+	public final static String TN_ROAD_PASS_Ents = "roadPassEnts";
+	public final static String TN_ROAD_PASS_Dis = "roadPassDis";
 	
-	private final static String TN_ROAD_GOODS_Ton = "roadGoodsTon";
-	private final static String TN_ROAD_GOODS_Ents = "roadGoodsEnts";
-	private final static String TN_ROAD_GOODS_Dis = "roadGoodsDis";
+	public final static String TN_ROAD_GOODS_Ton = "roadGoodsTon";
+	public final static String TN_ROAD_GOODS_Ents = "roadGoodsEnts";
+	public final static String TN_ROAD_GOODS_Dis = "roadGoodsDis";
 
-	private final static String TN_RIVER_Ents = "riverEnts";
-	private final static String TN_RIVER_Ton = "riverTon";
+	public final static String TN_RIVER_Ents = "riverEnts";
+	public final static String TN_RIVER_Ton = "riverTon";
 	
-	private final static String TN_OCEAN_GOODS_Ton = "oceanGoodsTon";
-	private final static String TN_OCEAN_GOODS_Ents = "oceanGoodsEnts";
-	private final static String TN_OCEAN_GOODS_Dis = "oceanGoodsDis";
+	public final static String TN_OCEAN_GOODS_Ton = "oceanGoodsTon";
+	public final static String TN_OCEAN_GOODS_Ents = "oceanGoodsEnts";
+	public final static String TN_OCEAN_GOODS_Dis = "oceanGoodsDis";
 	
-	private final static String TN_OCEAN_PASS_Sits = "oceanPassSits";
-	private final static String TN_OCEAN_PASS_Ents = "oceanPassEnts";
-	private final static String TN_OCEAN_PASS_Dis = "oceanPassDis";
+	public final static String TN_OCEAN_PASS_Sits = "oceanPassSits";
+	public final static String TN_OCEAN_PASS_Ents = "oceanPassEnts";
+	public final static String TN_OCEAN_PASS_Dis = "oceanPassDis";
 	
-	private final static String TN_PORT_PRODUCT_Ents = "portProEnts";
+	public final static String TN_PORT_PRODUCT_Ents = "portProEnts";
 	
 	@Autowired
 	TypeChooser tc;
+	
+	@Autowired
+	SetService ss;
+	
+	
+	public boolean setTypeAll(String typeName,String typeS){
+		return tc.put(typeName+":"+typeS);
+	}
 	
 	
 	public List<String> getLandEngers(){
@@ -132,10 +145,7 @@ public class TypeGetter implements InitializingBean{
 		return tc.getAlltypes(TN_ROAD_PASS_Sits);
 	}
 	
-	public boolean setRoadPassSitCotTypeAll(String ts){
-		return tc.put(ts);
-	}
-	
+
 	
 	
 	
@@ -148,9 +158,7 @@ public class TypeGetter implements InitializingBean{
 		return tc.getAlltypes(TN_ROAD_PASS_Ents);
 	}
 	
-	public boolean setRoadPassEntSizeTypeAll(String ts){
-		return tc.put(ts);
-	}
+
 	
 	
 	
@@ -163,9 +171,7 @@ public class TypeGetter implements InitializingBean{
 		return tc.getAlltypes(TN_ROAD_PASS_Dis);
 	}
 	
-	public boolean setRoadPassDisTypeAll(String ts){
-		return tc.put(ts);
-	}
+
 	
 	
 	
@@ -178,10 +184,7 @@ public class TypeGetter implements InitializingBean{
 		return tc.getAlltypes(TN_ROAD_GOODS_Ton);
 	}
 	
-	public boolean setRoadGoodsTonTypeAll(String ts){
-		return tc.put(ts);
-	}
-	
+
 	
 	
 	
@@ -193,9 +196,7 @@ public class TypeGetter implements InitializingBean{
 		return tc.getAlltypes(TN_ROAD_GOODS_Ents);
 	}
 	
-	public boolean setRoadGoodsEntSizeTypeAll(String ts){
-		return tc.put(ts);
-	}
+
 	
 	
 
@@ -208,9 +209,7 @@ public class TypeGetter implements InitializingBean{
 		return tc.getAlltypes(TN_ROAD_GOODS_Dis);
 	}
 	
-	public boolean setRoadGoodsDisTypeAll(String ts){
-		return tc.put(ts);
-	}
+
 	
 	
 	
@@ -224,9 +223,7 @@ public class TypeGetter implements InitializingBean{
 		return tc.getAlltypes(TN_BUS_CL);
 	}
 	
-	public boolean setBusTranCarLenTypeAll(String ts){
-		return tc.put(ts);
-	}
+
 	
 	
 	
@@ -239,9 +236,7 @@ public class TypeGetter implements InitializingBean{
 		return tc.getAlltypes(TN_TAXI_DP);
 	}
 	
-	public boolean setTaxiTranDpypeAll(String ts){
-		return tc.put(ts);
-	}
+
 	
 	
 	
@@ -254,9 +249,7 @@ public class TypeGetter implements InitializingBean{
 		return tc.getAlltypes(TN_RIVER_Ton);
 	}
 	
-	public boolean setRiverTranTonTypeAll(String ts){
-		return tc.put(ts);
-	}
+
 	
 	
 	
@@ -270,9 +263,7 @@ public class TypeGetter implements InitializingBean{
 		return tc.getAlltypes(TN_RIVER_Ents);
 	}
 	
-	public boolean setRiverTranEntSTypeAll(String ts){
-		return tc.put(ts);
-	}
+
 	
 	
 	public String getOceanGoodsTonType(Double tonnage){
@@ -283,9 +274,7 @@ public class TypeGetter implements InitializingBean{
 		return tc.getAlltypes(TN_OCEAN_GOODS_Ton);
 	}
 	
-	public boolean setOceanGoodsTonTypeAll(String ts){
-		return tc.put(ts);
-	}
+
 	
 
 	
@@ -298,9 +287,7 @@ public class TypeGetter implements InitializingBean{
 		return tc.getAlltypes(TN_OCEAN_GOODS_Ents);
 	}
 	
-	public boolean setOceanGoodsEntSTypeAll(String ts){
-		return tc.put(ts);
-	}
+
 	
 	
 	
@@ -312,9 +299,7 @@ public class TypeGetter implements InitializingBean{
 		return tc.getAlltypes(TN_OCEAN_GOODS_Dis);
 	}
 	
-	public boolean setOceanGoodsTranDisTypeAll(String ts){
-		return tc.put(ts);
-	}
+
 	
 	
 	
@@ -326,9 +311,7 @@ public class TypeGetter implements InitializingBean{
 		return tc.getAlltypes(TN_OCEAN_PASS_Sits);
 	}
 	
-	public boolean setOceanPassSitSizeTypeAll(String ts){
-		return tc.put(ts);
-	}
+
 	
 	
 	public String getOceanPassEntSType(int entS){
@@ -339,11 +322,7 @@ public class TypeGetter implements InitializingBean{
 		return tc.getAlltypes(TN_OCEAN_PASS_Ents);
 	}
 	
-	public boolean setOceanPassEntSTypeAll(String ts){
-		return tc.put(ts);
-	}
-	
-	
+
 	
 	public String getOceanPassTranDisType(Double tranDis){
 		return  tc.get(TN_OCEAN_PASS_Dis, tranDis);
@@ -353,9 +332,7 @@ public class TypeGetter implements InitializingBean{
 		return tc.getAlltypes(TN_OCEAN_PASS_Dis);
 	}
 	
-	public boolean setOceanPassTranDisTypeAll(String ts){
-		return tc.put(ts);
-	}
+
 	
 	
 	
@@ -367,37 +344,66 @@ public class TypeGetter implements InitializingBean{
 		return tc.getAlltypes(TN_PORT_PRODUCT_Ents);
 	}
 	
-	public boolean setPortProEntSTypeAll(String ts){
-		return tc.put(ts);
-	}
+
 	
 
 	@Override
 	public void afterPropertiesSet() throws Exception {
-		setBusTranCarLenTypeAll(TN_BUS_CL+":5-7,7-9,9-12,12-14,14-b");
-		setTaxiTranDpypeAll(TN_TAXI_DP+":a-1.6,1.6-2,2-2.5,2.5-3,3-b");
+		
+		setTypeAll(TN_BUS_CL,ss.getAllTypeByTypeName(TN_BUS_CL).getTypeS());
+		setTypeAll(TN_TAXI_DP,ss.getAllTypeByTypeName(TN_TAXI_DP).getTypeS());
+		
+		//setBusTranCarLenTypeAll(TN_BUS_CL+":5-7,7-9,9-12,12-14,14-b");
+		//setTaxiTranDpypeAll(TN_TAXI_DP+":a-1.6,1.6-2,2-2.5,2.5-3,3-b");
+		
+		setTypeAll(TN_ROAD_GOODS_Ents,ss.getAllTypeByTypeName(TN_ROAD_GOODS_Ents).getTypeS());
+		setTypeAll(TN_ROAD_GOODS_Ton,ss.getAllTypeByTypeName(TN_ROAD_GOODS_Ton).getTypeS());
+		setTypeAll(TN_ROAD_GOODS_Dis,ss.getAllTypeByTypeName(TN_ROAD_GOODS_Dis).getTypeS());
+
 		
 		
-		setRoadGoodsEntSizeTypeAll(TN_ROAD_GOODS_Ents+":5.2-7.2,7.2-9.2,9.2-12.2,12.2-14.2,14.2-b");
-		setRoadGoodsTonTypeAll(TN_ROAD_GOODS_Ton+":a-1.62,1.62-2.2,2.2-2.52,2.52-3.2,3.2-b");
-		setRoadGoodsDisTypeAll(TN_ROAD_GOODS_Dis+":a-40,40-80,80-120,120-b");
+//		setRoadGoodsEntSizeTypeAll(TN_ROAD_GOODS_Ents+":5.2-7.2,7.2-9.2,9.2-12.2,12.2-14.2,14.2-b");
+//		setRoadGoodsTonTypeAll(TN_ROAD_GOODS_Ton+":a-1.62,1.62-2.2,2.2-2.52,2.52-3.2,3.2-b");
+//		setRoadGoodsDisTypeAll(TN_ROAD_GOODS_Dis+":a-40,40-80,80-120,120-b");
 		
-		setRoadPassEntSizeTypeAll(TN_ROAD_PASS_Ents+":5.1-7.1,7.1-9.1,9.1-12.1,12.1-14.1,14.1-b");
-		setRoadPassSitCotTypeAll(TN_ROAD_PASS_Sits+":5.11-7.11,7.11-9.11,9.11-12.11,12.11-14.11,14.11-b");
-		setRoadPassDisTypeAll(TN_ROAD_PASS_Dis+":a-40,40-80,80-120,120-b");
+		setTypeAll(TN_ROAD_PASS_Ents,ss.getAllTypeByTypeName(TN_ROAD_PASS_Ents).getTypeS());
+		setTypeAll(TN_ROAD_PASS_Sits,ss.getAllTypeByTypeName(TN_ROAD_PASS_Sits).getTypeS());
+		setTypeAll(TN_ROAD_PASS_Dis,ss.getAllTypeByTypeName(TN_ROAD_PASS_Dis).getTypeS());
+
 		
-		setRiverTranEntSTypeAll(TN_RIVER_Ents+":5.3-7.3,7.3-9.3,9.3-12,12-14,14-b");
-		setRiverTranTonTypeAll(TN_RIVER_Ton+":5.31-7.31,7.31-9.3,9.3-12,12-14,14-b");
 		
-		setOceanGoodsEntSTypeAll(TN_OCEAN_GOODS_Ents+":5.4-7.4,7.4-9.4,9.4-12,12-14,14-b");
-		setOceanGoodsTonTypeAll(TN_OCEAN_GOODS_Ton+":5.41-7.41,7.41-9,9-12,12-14,14-b");
-		setOceanGoodsTranDisTypeAll(TN_OCEAN_GOODS_Dis+":a-40,40-80,80-120,120-b");
+//		setTypeAll(TN_ROAD_PASS_Ents+":5.1-7.1,7.1-9.1,9.1-12.1,12.1-14.1,14.1-b");
+//		setTypeAll(TN_ROAD_PASS_Sits+":5.11-7.11,7.11-9.11,9.11-12.11,12.11-14.11,14.11-b");
+//		setTypeAll(TN_ROAD_PASS_Dis+":a-40,40-80,80-120,120-b");
 		
-		setOceanPassEntSTypeAll(TN_OCEAN_PASS_Ents+":5.5-7.5,7.5-9,9-12,12-14,14-b");
-		setOceanPassSitSizeTypeAll(TN_OCEAN_PASS_Sits+":5.51-7.51,7.51-9,9-12,12-14,14-b");
-		setOceanPassTranDisTypeAll(TN_OCEAN_PASS_Dis+":a-40,40-80,80-120,120-b");
 		
-		setPortProEntSTypeAll(TN_PORT_PRODUCT_Ents+":5.6-7.6,7.6-9.6,9.6-12,12-14,14-b");
+		setTypeAll(TN_RIVER_Ents,ss.getAllTypeByTypeName(TN_RIVER_Ents).getTypeS());
+		setTypeAll(TN_RIVER_Ton,ss.getAllTypeByTypeName(TN_RIVER_Ton).getTypeS());
+		
+//		setTypeAll(TN_RIVER_Ents+":5.3-7.3,7.3-9.3,9.3-12,12-14,14-b");
+//		setTypeAll(TN_RIVER_Ton+":5.31-7.31,7.31-9.3,9.3-12,12-14,14-b");
+		
+		setTypeAll(TN_OCEAN_GOODS_Ents,ss.getAllTypeByTypeName(TN_OCEAN_GOODS_Ents).getTypeS());
+		setTypeAll(TN_OCEAN_GOODS_Ton,ss.getAllTypeByTypeName(TN_OCEAN_GOODS_Ton).getTypeS());
+		setTypeAll(TN_OCEAN_GOODS_Dis,ss.getAllTypeByTypeName(TN_OCEAN_GOODS_Dis).getTypeS());
+		
+//		setTypeAll(TN_OCEAN_GOODS_Ents+":5.4-7.4,7.4-9.4,9.4-12,12-14,14-b");
+//		setTypeAll(TN_OCEAN_GOODS_Ton+":5.41-7.41,7.41-9,9-12,12-14,14-b");
+//		setTypeAll(TN_OCEAN_GOODS_Dis+":a-40,40-80,80-120,120-b");
+		
+		setTypeAll(TN_OCEAN_PASS_Ents,ss.getAllTypeByTypeName(TN_OCEAN_PASS_Ents).getTypeS());
+		setTypeAll(TN_OCEAN_PASS_Sits,ss.getAllTypeByTypeName(TN_OCEAN_PASS_Sits).getTypeS());
+		setTypeAll(TN_OCEAN_PASS_Dis,ss.getAllTypeByTypeName(TN_OCEAN_PASS_Dis).getTypeS());
+		
+		
+//		setTypeAll(TN_OCEAN_PASS_Ents+":5.5-7.5,7.5-9,9-12,12-14,14-b");
+//		setTypeAll(TN_OCEAN_PASS_Sits+":5.51-7.51,7.51-9,9-12,12-14,14-b");
+//		setTypeAll(TN_OCEAN_PASS_Dis+":a-40,40-80,80-120,120-b");
+		
+		
+		setTypeAll(TN_PORT_PRODUCT_Ents,ss.getAllTypeByTypeName(TN_PORT_PRODUCT_Ents).getTypeS());
+		
+//		setTypeAll(TN_PORT_PRODUCT_Ents+":5.6-7.6,7.6-9.6,9.6-12,12-14,14-b");
 		
 		
 		String[] tmp = {TT_LAND_PASS,TT_LAND_GOODS,TT_LAND_BUS,TT_LAND_TAXI,

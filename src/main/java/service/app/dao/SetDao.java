@@ -9,6 +9,7 @@ import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
 
+import service.app.model.AllTypesItem;
 import service.app.model.UserInfo;
 import service.app.tramodel.RequestData;
 
@@ -43,5 +44,20 @@ public interface SetDao {
 			+ "`roleName`=#{userinfo.roleName}, `place1`=#{userinfo.place1}, `place2`=#{userinfo.place2} "
 			+ " WHERE username = #{userinfo.username} AND roleType!= 'R_ADMIN'")
 	public int edituser(@Param(value="userinfo")RequestData userinfo);
+	
+	
+	@Select("SELECT * FROM trafficenger.alltypes")
+	public List<AllTypesItem> getalltypes();
+	
+	@Select("SELECT * FROM trafficenger.alltypes WHERE typeName = #{typeName}")
+	public AllTypesItem gettypebyname(@Param(value="typeName")String typeName);
+	
+	
+	@Update("UPDATE trafficenger.alltypes SET typeS = #{typeS} WHERE typeName = #{typeName}")
+	public int settypebyname(@Param(value="typeName")String typeName,
+								@Param(value="typeS")String typeS);
+	
+	
+	
 	
 }

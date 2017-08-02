@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import service.app.dao.SetDao;
+import service.app.model.AllTypesItem;
 import service.app.model.UserInfo;
 import service.app.tramodel.RequestData;
 
@@ -49,6 +50,24 @@ public class SetService {
 
 		try {
 			 sd.edituser(data);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return false;
+		}
+		return true;
+	}
+	
+	public List<AllTypesItem> getAllTypes(){
+		return sd.getalltypes();
+	}
+	
+	public AllTypesItem getAllTypeByTypeName(String typeName){
+		return sd.gettypebyname(typeName);
+	}
+	
+	public boolean setAllType(String typeName,String typeS){
+		try {
+			 sd.settypebyname(typeName, typeS);
 		} catch (Exception e) {
 			e.printStackTrace();
 			return false;
