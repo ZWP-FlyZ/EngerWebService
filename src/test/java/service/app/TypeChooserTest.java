@@ -17,7 +17,7 @@ public class TypeChooserTest {
 	
 	@Test
 	public void putTest(){
-		tc.put("type1:,5-6,6-7,7-8.123,8.123-b");
+		tc.put("type1:5-6,6-7,7-8.123,8.123-b");
 		List<String>ss = tc.getAlltypes("type1");
 		for(String s:ss)
 			System.err.println(s);

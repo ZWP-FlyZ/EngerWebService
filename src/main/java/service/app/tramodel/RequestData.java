@@ -12,6 +12,14 @@ public class RequestData {
 	private String engerType;
 	private String tranType;
 	
+	private String name;
+	private String phone;
+	
+	private String typeName;
+	private String typeS;
+	
+	private String passwordN;
+	
 	private String token;
 	
 	
@@ -83,6 +91,36 @@ public class RequestData {
 	}
 	public void setTranType(String tranType) {
 		this.tranType = tranType;
+	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	public String getPhone() {
+		return phone;
+	}
+	public void setPhone(String phone) {
+		this.phone = phone;
+	}
+	public String getTypeName() {
+		return typeName;
+	}
+	public void setTypeName(String typeName) {
+		this.typeName = typeName;
+	}
+	public String getTypeS() {
+		return typeS;
+	}
+	public void setTypeS(String typeS) {
+		this.typeS = typeS;
+	}
+	public String getPasswordN() {
+		return passwordN;
+	}
+	public void setPasswordN(String passwordN) {
+		this.passwordN = passwordN;
 	}
 	
 	

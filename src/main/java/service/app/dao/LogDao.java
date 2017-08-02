@@ -9,6 +9,6 @@ import service.app.model.UserInfo;
 @Mapper
 public interface LogDao {
 
-	@Select("select * from UserInfo where username = #{username}")
+	@Select("select * from userinfo where username = #{username}")
 	public UserInfo getInfoForLogIn(@Param(value = "username") String username);
 }
