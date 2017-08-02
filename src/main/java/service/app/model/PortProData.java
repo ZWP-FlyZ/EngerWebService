@@ -7,7 +7,7 @@ public class PortProData extends AllSimData {
 	private Double coal;
 	private Double power;
 	private Double other;
-	
+	private Double throughput;
 	private Double proTask;
 
 	public Double getDiesel() {
@@ -57,4 +57,13 @@ public class PortProData extends AllSimData {
 	public void setProTask(Double proTask) {
 		this.proTask = proTask;
 	}
+
+	public Double getThroughput() {
+		return throughput;
+	}
+
+	public void setThroughput(Double throughput) {
+		this.throughput = throughput;
+	}
+
 }

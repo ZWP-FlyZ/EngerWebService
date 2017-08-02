@@ -615,7 +615,7 @@ public class WaterDataService {
 				
 			}
 			
-			tmp = tg.getPortProEntSType(d.getProTask());//企业 规模 每月数据
+			tmp = tg.getPortProEntSType(d.getThroughput());//企业 规模 每月数据
 			if(tmp!=null){
 				td = entMap.get(tmp, tmp);
 				if(td==null)

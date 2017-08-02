@@ -32,7 +32,7 @@ public class TypeGetter implements InitializingBean{
 	public final static String TT_WATER_RIVER = "内河运输";
 	public final static String TT_WATER_PASS = "海洋客运";
 	public final static String TT_WATER_GOODS = "海洋货运";
-	public final static String TT_WATER_PORT = "港口企业";
+	public final static String TT_WATER_PORT = "港口生产";
 	
 	//car type
 	public final static String CT_C1 = "c1";
