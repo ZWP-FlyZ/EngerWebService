@@ -17,12 +17,16 @@ import service.app.tramodel.RoleType;
 import service.app.tramodel.items.EngTypOtherItem;
 import service.app.tramodel.response.EngTypOthResponse;
 import service.app.util.TimeTools;
+import service.app.util.TypeGetter;
 
 @Controller
 public class IndexController extends BaseController{
 
 	@Autowired
 	IndexService indexS;
+	
+	@Autowired
+	TypeGetter tg;
 	
 	@SuppressWarnings("unchecked")
 	@RequestMapping("/index.json")
@@ -43,6 +47,7 @@ public class IndexController extends BaseController{
 		ir.setRoleName(rd.getRoleName());
 		ir.setTimeRange(rd.getTimeRange());
 		ir.getXs().add(TimeTools.getYMlist(rd.getTimeRange()));
+		ir.getXs().add(tg.getAllEngersTypes());
 		Map<String,Object> ds = indexS.getEngTypOther(rd);
 		ir.setEngTypOther((List<EngTypOtherItem>) ds.get("engTypeOther"));
 		

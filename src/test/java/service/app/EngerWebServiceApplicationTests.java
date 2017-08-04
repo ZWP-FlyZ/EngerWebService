@@ -31,6 +31,9 @@ public class EngerWebServiceApplicationTests {
 		for(String s:i) System.err.println(s);
 		//sd.reguser(null);
 		
+		for(String s:tg.getTaxiTranDpTypeAll())
+		System.err.println(s);
+		
 	}
 
 }

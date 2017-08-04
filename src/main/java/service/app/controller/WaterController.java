@@ -74,13 +74,14 @@ public class WaterController {
 	@ResponseBody
 	public OceanGoodsResponse oceanGoods(HttpServletResponse response,
 										RequestData rd){
-		rd.setUsername("zwp");
-		rd.setRoleName("enterprice");
-		rd.setRoleType(RoleType.ROLE_TRAFFIC);
-		rd.setTimeRange("2017-01-01:2017-12-30");
-		rd.setPlace1("杭州");
-		rd.setPlace2("江干");
+//		rd.setUsername("zwp");
+//		rd.setRoleName("enterprice");
+//		rd.setRoleType(RoleType.ROLE_TRAFFIC);
+//		rd.setTimeRange("2017-01-01:2017-12-30");
+//		rd.setPlace1("杭州");
+//		rd.setPlace2("江干");
 		
+		response.setHeader("Access-Control-Allow-Origin", "*");
 		OceanGoodsResponse ogr = new OceanGoodsResponse();
 		
 		ogr.setErrCode(ErrCode.DATA_OK);
@@ -112,13 +113,13 @@ public class WaterController {
 	@ResponseBody
 	public OceanPassResponse oceanPass(HttpServletResponse response,
 										RequestData rd){
-		rd.setUsername("zwp");
-		rd.setRoleName("enterprice");
-		rd.setRoleType(RoleType.ROLE_TRAFFIC);
-		rd.setTimeRange("2017-01-01:2017-12-30");
-		rd.setPlace1("杭州");
-		rd.setPlace2("江干");
-		
+//		rd.setUsername("zwp");
+//		rd.setRoleName("enterprice");
+//		rd.setRoleType(RoleType.ROLE_TRAFFIC);
+//		rd.setTimeRange("2017-01-01:2017-12-30");
+//		rd.setPlace1("杭州");
+//		rd.setPlace2("江干");
+		response.setHeader("Access-Control-Allow-Origin", "*");
 		OceanPassResponse opr = new OceanPassResponse();
 		
 		opr.setErrCode(ErrCode.DATA_OK);

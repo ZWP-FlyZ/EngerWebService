@@ -443,7 +443,7 @@ public class WaterDataService {
 
 			
 			//EntSize
-			tmp = tg.getOceanGoodsEntSType(d.getEntS());
+			tmp = tg.getOceanPassEntSType(d.getEntS());
 			if(tmp!=null){
 				td = entMap.get(tmp,tmp);
 				if(td==null)
@@ -459,7 +459,7 @@ public class WaterDataService {
 			
 			
 			//TranDis
-			tmp = tg.getRoadPassDisType(d.getTranDis());
+			tmp = tg.getOceanPassTranDisType(d.getTranDis());
 			if(tmp!=null){
 				td = disMap.get(tmp,tmp);
 				if(td==null)
