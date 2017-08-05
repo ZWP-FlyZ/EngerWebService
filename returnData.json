@@ -770,7 +770,40 @@
 
 
 
+//实时数据返回
 
+{
+	errCode//状态码
+	roleName//角色名
+	timeRange//统计时间范围
+	tranType//运输类型
+	carId//车牌号
+	shipId//船ID
+	cityType//地市类型
+	companyId//企业Id
+	xs://X轴类型或者饼图样例
+	[
+		[时间1,时间2 .....]//时间类型
+	]
+	engTypOther://每种燃料与其他条件
+	[
+		{
+			baseTyp//燃料类型
+			engTypTM://该燃料每10分钟的使用量
+			[
+				{
+					type//yyyy-mm-dd HH:MM类型
+					TypDatOfAllEng//能耗总量
+					TypDatOfAllLen//总里程数总量
+					TypDatOfAllCo//标煤能耗总量
+				}
+			]//end Month
+
+		}//end EngType		
+	]
+
+
+}
 
 
 

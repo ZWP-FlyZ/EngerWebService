@@ -13,12 +13,16 @@ public class TimeTools {
 	private final static SimpleDateFormat sdfYM = 
 						new SimpleDateFormat("yyyy-MM");
 	
+	private final static SimpleDateFormat sdfTenMu = 
+			new SimpleDateFormat("yyyy-MM-dd HH:mm");
 	
 	public static String getNow(){
 		return sdf.format(new Date());
 	}
 	
 	public static String[] sqlitTimeRange(String timeRange){
+		if(timeRange==null) return null;
+		if(timeRange.contains("&")) return timeRange.split("&");
 		return timeRange.split(":");
 	}
 	public static String getYearMonth(String date){
@@ -45,5 +49,37 @@ public class TimeTools {
 		}
 		return yms;
 	}
+	
+	
+	public  static  String getTenMinute(String s){
+		if(s==null) return null;
+		
+		return s.substring(0, s.length()-4)+"0";
+	}
+	
+	public static List<String> getTenMuList(String timeRange){
+		List<String> tms = new ArrayList<>();
+		
+		try {
+			String[] ss = sqlitTimeRange(timeRange);
+			Date ds = sdfTenMu.parse(getTenMinute(ss[0]));
+			Date de = sdfTenMu.parse(getTenMinute(ss[1]));
+			Calendar calendar = Calendar.getInstance();
+			calendar.setTime(ds);
+			while(calendar.getTime().before(de)||
+						calendar.getTime().equals(de)){
+				tms.add(sdfTenMu.format(calendar.getTime()));
+				calendar.add(Calendar.MINUTE, 10);
+			}
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		
+		
+		return tms;
+	}
+	
 	
 }

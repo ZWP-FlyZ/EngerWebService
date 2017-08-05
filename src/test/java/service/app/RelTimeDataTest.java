@@ -1,0 +1,24 @@
+package service.app;
+
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.junit4.SpringRunner;
+
+import service.app.model.RelTimeData;
+import service.app.server.RelTimeDataService;
+
+@RunWith(SpringRunner.class)
+@SpringBootTest
+public class RelTimeDataTest {
+
+	@Autowired
+	RelTimeDataService rds ;
+	
+	@Test
+	public void test() {
+
+	}
+
+}

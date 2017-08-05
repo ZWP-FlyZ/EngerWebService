@@ -371,8 +371,8 @@ public class LadWatDataService {
 		if(rd.getPlace2()==null)
 			rd.setPlace2("%%");
 		
-		places[0] = rd.getPlace1();
-		places[1] = rd.getPlace2();
+		places[0] = "%%";
+		places[1] = "%%";
 		if(rd.getRoleType().equals(RoleType.ROLE_TRAFFIC)){
 			enterprice = "%%";
 			k=0x3;

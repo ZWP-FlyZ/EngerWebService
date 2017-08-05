@@ -6,62 +6,70 @@ import service.app.tramodel.TypeData;
 
 public class EngTypOtherItem extends BaseTypOtherItem{
 	
-	private List<TypeData> engTypMo;//月份
-	private List<TypeData> engTypSs;//客座数
-	private List<TypeData> engTypEs;//企业类型
-	private List<TypeData> engTypLs;//运距
-	private List<TypeData> engTypCTs;//车辆类型
-	private List<TypeData> engTypWs;//吨位数
-	private List<TypeData> engTypCLs;//公交车长数
-	private List<TypeData> engTypPs;//出租车排量数
+	private List<? extends TypeData> engTypMo;//月份
+	private List<? extends TypeData> engTypSs;//客座数
+	private List<? extends TypeData> engTypEs;//企业类型
+	private List<? extends TypeData> engTypLs;//运距
+	private List<? extends TypeData> engTypCTs;//车辆类型
+	private List<? extends TypeData> engTypWs;//吨位数
+	private List<? extends TypeData> engTypCLs;//公交车长数
+	private List<? extends TypeData> engTypPs;//出租车排量数
+	
+	private List<? extends TypeData> engTypTMu;//出租车排量数
 
-	public List<TypeData> getEngTypMo() {
+	public List<? extends TypeData> getEngTypMo() {
 		return engTypMo;
 	}
-	public void setEngTypMo(List<TypeData> engTypMo) {
+	public void setEngTypMo(List<? extends TypeData> engTypMo) {
 		this.engTypMo = engTypMo;
 	}
-	public List<TypeData> getEngTypSs() {
+	public List<? extends TypeData> getEngTypSs() {
 		return engTypSs;
 	}
-	public void setEngTypSs(List<TypeData> engTypSs) {
+	public void setEngTypSs(List<? extends TypeData> engTypSs) {
 		this.engTypSs = engTypSs;
 	}
-	public List<TypeData> getEngTypEs() {
+	public List<? extends TypeData> getEngTypEs() {
 		return engTypEs;
 	}
-	public void setEngTypEs(List<TypeData> engTypEs) {
+	public void setEngTypEs(List<? extends TypeData> engTypEs) {
 		this.engTypEs = engTypEs;
 	}
-	public List<TypeData> getEngTypLs() {
+	public List<? extends TypeData> getEngTypLs() {
 		return engTypLs;
 	}
-	public void setEngTypLs(List<TypeData> engTypLs) {
+	public void setEngTypLs(List<? extends TypeData> engTypLs) {
 		this.engTypLs = engTypLs;
 	}
-	public List<TypeData> getEngTypCTs() {
+	public List<? extends TypeData> getEngTypCTs() {
 		return engTypCTs;
 	}
-	public void setEngTypCTs(List<TypeData> engTypCTs) {
+	public void setEngTypCTs(List<? extends TypeData> engTypCTs) {
 		this.engTypCTs = engTypCTs;
 	}
-	public List<TypeData> getEngTypWs() {
+	public List<? extends TypeData> getEngTypWs() {
 		return engTypWs;
 	}
-	public void setEngTypWs(List<TypeData> engTypWs) {
+	public void setEngTypWs(List<? extends TypeData> engTypWs) {
 		this.engTypWs = engTypWs;
 	}
-	public List<TypeData> getEngTypCLs() {
+	public List<? extends TypeData> getEngTypCLs() {
 		return engTypCLs;
 	}
-	public void setEngTypCLs(List<TypeData> engTypCLs) {
+	public void setEngTypCLs(List<? extends TypeData> engTypCLs) {
 		this.engTypCLs = engTypCLs;
 	}
-	public List<TypeData> getEngTypPs() {
+	public List<? extends TypeData> getEngTypPs() {
 		return engTypPs;
 	}
-	public void setEngTypPs(List<TypeData> engTypPs) {
+	public void setEngTypPs(List<? extends TypeData> engTypPs) {
 		this.engTypPs = engTypPs;
+	}
+	public List<? extends TypeData> getEngTypTMu() {
+		return engTypTMu;
+	}
+	public void setEngTypTMu(List<? extends TypeData> engTypTMu) {
+		this.engTypTMu = engTypTMu;
 	}
 	
 	
