@@ -110,7 +110,7 @@ public class RelTimeDataService {
 	}
 	
 	private String checkNull(String s){
-		return s==null?"%":s;
+		return s==null||"".equals(s)?"%":s;
 	}
 	
 }

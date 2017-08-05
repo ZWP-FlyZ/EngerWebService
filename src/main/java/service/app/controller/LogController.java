@@ -18,7 +18,7 @@ import service.app.tramodel.response.LogInResponse;
 import service.app.util.TokenCreater;
 
 @Controller
-public class LogController extends BaseController implements InitializingBean{
+public class LogController  implements InitializingBean{
 
 	
 	private int COOKIE_TIME = 180;

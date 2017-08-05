@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import service.app.server.WaterDataService;
 import service.app.tramodel.ErrCode;
 import service.app.tramodel.RequestData;
-import service.app.tramodel.RoleType;
 import service.app.tramodel.items.BaseTypOtherItem;
 import service.app.tramodel.items.EngTypOtherItem;
 import service.app.tramodel.items.EntTypOtherItem;
@@ -146,13 +145,13 @@ public class WaterController {
 	@ResponseBody
 	public PortProductResponse portProduce(HttpServletResponse response,
 										RequestData rd){
-		rd.setUsername("zwp");
-		rd.setRoleName("enterprice");
-		rd.setRoleType(RoleType.ROLE_TRAFFIC);
-		rd.setTimeRange("2017-01-01:2017-12-30");
-		rd.setPlace1("杭州");
-		rd.setPlace2("江干");
-		
+//		rd.setUsername("zwp");
+//		rd.setRoleName("enterprice");
+//		rd.setRoleType(RoleType.ROLE_TRAFFIC);
+//		rd.setTimeRange("2017-01-01:2017-12-30");
+//		rd.setPlace1("杭州");
+//		rd.setPlace2("江干");
+		response.setHeader("Access-Control-Allow-Origin", "*");
 		PortProductResponse ppr = new PortProductResponse();
 		
 		ppr.setErrCode(ErrCode.DATA_OK);

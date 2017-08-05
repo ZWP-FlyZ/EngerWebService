@@ -791,7 +791,7 @@
 	[
 		{
 			baseTyp//燃料类型
-			engTypTM://该燃料每10分钟的使用量
+			engTypTMu://该燃料每10分钟的使用量
 			[
 				{
 					type//yyyy-mm-dd HH:MM类型

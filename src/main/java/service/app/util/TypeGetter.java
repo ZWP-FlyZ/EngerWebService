@@ -53,6 +53,9 @@ public class TypeGetter implements InitializingBean{
 	public final static String ST_S7 = "s7";
 
 	
+	
+	
+	
 	//类型名称
 	private final static String TN_LAND_ENG = "landEngers";
 	private final static String TN_LAND_TRA = "landTraffic";
@@ -91,6 +94,9 @@ public class TypeGetter implements InitializingBean{
 	
 	public final static String TN_PORT_PRODUCT_Ents = "portProEnts";
 	
+	private final static String TN_REL_TIME_LAND_ENG = "relLandEngers";
+	private final static String TN_REL_TIME_WAT_ENG = "relWatEngers";
+	
 	@Autowired
 	TypeChooser tc;
 	
@@ -110,6 +116,17 @@ public class TypeGetter implements InitializingBean{
 	public List<String> getWaterEngers(){
 		return tc.getAlltypes(TN_WATER_ENG);
 	}
+	
+	public List<String> getRelLandEngers(){
+		return tc.getAlltypes(TN_REL_TIME_LAND_ENG);
+	}
+	
+	public List<String> getRelWaterEngers(){
+		return tc.getAlltypes(TN_REL_TIME_WAT_ENG);
+	}
+	
+	
+	
 	
 	public List<String> getTransTypes(){
 		return tc.getAlltypes(TN_ALL_TRA);
@@ -443,6 +460,11 @@ public class TypeGetter implements InitializingBean{
 		String[] tmp9 = {"杭州","宁波","温州","嘉兴","湖州","绍兴","金华","衢州","舟山","台州","丽水"};
 		tc.setAllTypes(TN_CITY, tmp9);
 		
+		String[] tmp10 = {FT_QI_YOU,FT_DIAN_NENG};
+		tc.setAllTypes(TN_REL_TIME_LAND_ENG, tmp10);
+		
+		String[] tmp11 = {FT_QI_YOU};
+		tc.setAllTypes(TN_REL_TIME_WAT_ENG, tmp11);
 		
 		
 	}

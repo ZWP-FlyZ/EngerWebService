@@ -21,7 +21,7 @@ import service.app.tramodel.response.SetResponse;
 import service.app.util.TypeGetter;
 
 @Controller
-public class SetController extends BaseController {
+public class SetController  {
 	
 	@Autowired
 	SetService ss;

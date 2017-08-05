@@ -13,14 +13,13 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import service.app.server.IndexService;
 import service.app.tramodel.ErrCode;
 import service.app.tramodel.RequestData;
-import service.app.tramodel.RoleType;
 import service.app.tramodel.items.EngTypOtherItem;
 import service.app.tramodel.response.EngTypOthResponse;
 import service.app.util.TimeTools;
 import service.app.util.TypeGetter;
 
 @Controller
-public class IndexController extends BaseController{
+public class IndexController {
 
 	@Autowired
 	IndexService indexS;
@@ -34,15 +33,15 @@ public class IndexController extends BaseController{
 	public EngTypOthResponse getIndexData(HttpServletResponse response,
 				RequestData rd){
 		
-		rd.setUsername("zwp");
-		rd.setRoleName("enterprice");
-		rd.setRoleType(RoleType.ROLE_TRAFFIC);
-		rd.setTimeRange("2017-01-01:2017-12-30");
-		rd.setPlace1("杭州");
-		rd.setPlace2("江干");
+//		rd.setUsername("zwp");
+//		rd.setRoleName("enterprice");
+//		rd.setRoleType(RoleType.ROLE_TRAFFIC);
+//		rd.setTimeRange("2017-01-01:2017-12-30");
+//		rd.setPlace1("杭州");
+//		rd.setPlace2("江干");
 		
 		EngTypOthResponse ir = new EngTypOthResponse();
-		
+		response.setHeader("Access-Control-Allow-Origin", "*");
 		ir.setErrCode(ErrCode.DATA_OK);
 		ir.setRoleName(rd.getRoleName());
 		ir.setTimeRange(rd.getTimeRange());

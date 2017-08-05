@@ -16,7 +16,7 @@ import service.app.timwin.TimWinMap;
 import service.app.util.TokenCreater;
 
 
-public class TestController extends BaseController implements InitializingBean{
+public class TestController  implements InitializingBean{
 
 	@Autowired
 	LogService bs;
