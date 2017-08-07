@@ -17,15 +17,15 @@ import service.app.tramodel.RequestData;
 public interface SetDao {
 	
 	//@Select("SELECT * FROM trafficenger.userinfo WHERE roleType != 'R_ADMIN'")
-	@Select("SELECT * FROM trafficenger.userinfo WHERE roleType != ''")
+	@Select("SELECT * FROM userinfo WHERE roleType != ''")
 	public List<UserInfo> getUsers();
 	
-	@Select("SELECT COUNT(username) FROM trafficenger.userinfo "
+	@Select("SELECT COUNT(username) FROM userinfo "
 			+ "WHERE username = #{username} LIMIT 1;")
 	public int isContainUser(@Param(value="username")String username);
 		
 	
-	@Insert("INSERT INTO `trafficenger`.`userinfo` "
+	@Insert("INSERT INTO `userinfo` "
 			+ "(`username`, `password`, `userAuth`, `name`, `phone`, `roleType`, `roleName`, `place1`, `place2`) "
 			+ "VALUES (#{userinfo.username}, #{userinfo.password}, '0',"
 			+ " #{userinfo.name}, #{userinfo.phone}, #{userinfo.roleType}, #{userinfo.roleName},"
@@ -33,27 +33,27 @@ public interface SetDao {
 	public int reguser(@Param(value="userinfo")RequestData userinfo);
 	
 	
-	@Delete("DELETE FROM `trafficenger`.`userinfo` WHERE username = #{username} AND roleType!= 'R_ADMIN'")
+	@Delete("DELETE FROM `userinfo` WHERE username = #{username} AND roleType!= 'R_ADMIN'")
 	public int deluser(@Param(value="username")String username);
 	
 	
 	
 	
-	@Update("UPDATE `trafficenger`.`userinfo` "
+	@Update("UPDATE`userinfo` "
 			+ "SET `name`=#{userinfo.name}, `phone`=#{userinfo.phone}, `roleType`=#{userinfo.roleType}, "
 			+ "`roleName`=#{userinfo.roleName}, `place1`=#{userinfo.place1}, `place2`=#{userinfo.place2} "
 			+ " WHERE username = #{userinfo.username} AND roleType!= 'R_ADMIN'")
 	public int edituser(@Param(value="userinfo")RequestData userinfo);
 	
 	
-	@Select("SELECT * FROM trafficenger.alltypes")
+	@Select("SELECT * FROM alltypes")
 	public List<AllTypesItem> getalltypes();
 	
-	@Select("SELECT * FROM trafficenger.alltypes WHERE typeName = #{typeName}")
+	@Select("SELECT * FROM alltypes WHERE typeName = #{typeName}")
 	public AllTypesItem gettypebyname(@Param(value="typeName")String typeName);
 	
 	
-	@Update("UPDATE trafficenger.alltypes SET typeS = #{typeS} WHERE typeName = #{typeName}")
+	@Update("UPDATE alltypes SET typeS = #{typeS} WHERE typeName = #{typeName}")
 	public int settypebyname(@Param(value="typeName")String typeName,
 								@Param(value="typeS")String typeS);
 	

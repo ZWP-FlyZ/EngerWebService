@@ -14,7 +14,7 @@ public interface RoadGdsDao {
 
 	@Select("SELECT * FROM "
 			+ "(SELECT * FROM "
-			+ "(SELECT * FROM trafficenger.roadgoods "
+			+ "(SELECT * FROM roadgoods "
 			+ "WHERE inTime >=  #{startTime} AND inTime <= #{endTime}) AS t1 "
 			+ "WHERE companyId LIKE #{enterprice}) AS t2 "
 			+ "WHERE place1 LIKE  #{place1} AND place2 LIKE #{place2}")

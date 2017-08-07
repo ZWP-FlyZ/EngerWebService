@@ -12,8 +12,8 @@ import service.app.server.RelTimeDataService;
 @SpringBootTest
 public class RelTimeDataTest {
 
-	@Autowired
-	RelTimeDataService rds ;
+//	@Autowired
+//	RelTimeDataService rds ;
 	
 	@Test
 	public void test() {
