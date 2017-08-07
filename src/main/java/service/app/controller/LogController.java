@@ -14,6 +14,7 @@ import service.app.server.LogService;
 import service.app.timwin.TimWinMap;
 import service.app.tramodel.ErrCode;
 import service.app.tramodel.RequestData;
+import service.app.tramodel.response.BaseResponse;
 import service.app.tramodel.response.LogInResponse;
 import service.app.util.TokenCreater;
 
@@ -58,6 +59,20 @@ public class LogController  implements InitializingBean{
 		return resp;
 	}
 	
+	
+	
+	@RequestMapping("/logout.json")
+	@ResponseBody
+	public BaseResponse logout(HttpServletResponse response,RequestData data){
+		response.setHeader("Access-Control-Allow-Origin", "*");
+		
+		BaseResponse br = new BaseResponse();
+		if(tokenMap.remove(data.getUsername()))
+			br.setErrCode(ErrCode.LOGOUT_OK);
+		else
+			br.setErrCode(ErrCode.LOGOUT_ERR);
+		return br;
+	}
 	
 	@Override
 	public void afterPropertiesSet() throws Exception {

@@ -128,7 +128,17 @@ public class TimWinMap implements InitializingBean {
 	}
 	
 	
-
+	public boolean remove(String k){
+		if(mRun==false)
+			return false;
+		lock.lock();
+		for(Map<String,Object> m:flag.dataList){
+			if(m.remove(k)!=null) 
+				break;
+		}
+		lock.unlock();	
+		return true;
+	}
 	
 	public  boolean isContainName(String name){
 		if(mRun==false)
@@ -138,8 +148,10 @@ public class TimWinMap implements InitializingBean {
 			lock.lock();
 
 			for(Map<String,Object> m:flag.dataList){
-				if(m.containsKey(name))
+				if(m.containsKey(name)){
+					lock.unlock();
 					return true;
+				}
 			}
 
 			lock.unlock();
@@ -155,8 +167,11 @@ public class TimWinMap implements InitializingBean {
 			lock.lock();
 
 			for(Map<String,Object> m:flag.dataList){
-				if(m.containsValue(data))
+				if(m.containsValue(data)){
+					lock.unlock();
 					return true;
+				}
+					
 			}
 
 			lock.unlock();

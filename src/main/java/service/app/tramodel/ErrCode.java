@@ -9,6 +9,10 @@ public class ErrCode {
 	public final static int LOGIN_OK = 10;//登录成功
 	public final static int LOGIN_ERR_INFO = 11;//登录失败，错误的用户名或密码
 	
+	//登出
+	public final static int LOGOUT_OK = 12;//登录成功
+	public final static int LOGOUT_ERR = 13;//登录失败，错误的用户名或密码
+	
 		
 	//数据统计部分传输
 	public final static int DATA_OK = 30;//数据数据可用
