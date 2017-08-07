@@ -84,6 +84,11 @@ public class LadWatDataService {
 			k=0x2;
 		}
 		
+		if(rd.getRoleType().equals(RoleType.ROLE_ADMIN)) {
+			k = 0x3;
+			enterprice = "%%";
+		}
+		
 		List<AllSimData> allData = new ArrayList<>();
 		if( (k&0x1)!=0 ){// land
 			List<RoadGoodsData> list1 = 
@@ -181,6 +186,11 @@ public class LadWatDataService {
 		}else if(rd.getRoleType().equals(RoleType.ROLE_WATER)){
 			enterprice = "%%";
 			k=0x2;
+		}
+		
+		if(rd.getRoleType().equals(RoleType.ROLE_ADMIN)) {
+			k = 0x3;
+			enterprice = "%%";
 		}
 		
 		List<AllSimData> allData = new ArrayList<>();
@@ -285,6 +295,11 @@ public class LadWatDataService {
 			k=0x2;
 		}
 		
+		if(rd.getRoleType().equals(RoleType.ROLE_ADMIN)) {
+			k = 0x3;
+			enterprice = "%%";
+		}
+		
 		List<AllSimData> allData = new ArrayList<>();
 		if( (k&0x1)!=0 ){// land
 			List<RoadGoodsData> list1 = 
@@ -385,6 +400,11 @@ public class LadWatDataService {
 		}else if(rd.getRoleType().equals(RoleType.ROLE_WATER)){
 			enterprice = "%%";
 			k=0x2;
+		}
+		
+		if(rd.getRoleType().equals(RoleType.ROLE_ADMIN)) {
+			k = 0x3;
+			enterprice = "%%";
 		}
 		
 		List<AllSimData> allData = new ArrayList<>();
@@ -491,6 +511,11 @@ public class LadWatDataService {
 		}else if(rd.getRoleType().equals(RoleType.ROLE_WATER)){
 			enterprice = "%%";
 			k=0x2;
+		}
+		
+		if(rd.getRoleType().equals(RoleType.ROLE_ADMIN)) {
+			k = 0x3;
+			enterprice = "%%";
 		}
 		
 		List<AllSimData> allData = new ArrayList<>();

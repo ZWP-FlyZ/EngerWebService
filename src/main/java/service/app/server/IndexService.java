@@ -85,6 +85,11 @@ public class IndexService {
 			enterprice = "%%";
 			k=0x2;
 		}
+		
+		if(rd.getRoleType().equals(RoleType.ROLE_ADMIN)) {
+			k = 0x3;
+			enterprice = "%%";
+		}
 			
 		Map<String ,Object> map = new HashMap<String ,Object>();
 		map.put("engTypeOther",selectAdd(times,places,enterprice,k));

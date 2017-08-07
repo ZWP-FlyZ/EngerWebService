@@ -74,6 +74,13 @@ public class WaterDataService {
 			k=0x2;
 		}
 		
+		if(rd.getRoleType().equals(RoleType.ROLE_ADMIN)) {
+			k = 0x3;
+			enterprice = "%%";
+		}
+		
+		
+		
 		if( (k&0x1)!=0 ){
 
 		}
@@ -217,6 +224,11 @@ public class WaterDataService {
 		}else if(rd.getRoleType().equals(RoleType.ROLE_WATER)){
 			enterprice = "%%";
 			k=0x2;
+		}
+		
+		if(rd.getRoleType().equals(RoleType.ROLE_ADMIN)) {
+			k = 0x3;
+			enterprice = "%%";
 		}
 		
 		if( (k&0x1)!=0 ){
@@ -388,6 +400,11 @@ public class WaterDataService {
 			k=0x2;
 		}
 		
+		if(rd.getRoleType().equals(RoleType.ROLE_ADMIN)) {
+			k = 0x3;
+			enterprice = "%%";
+		}
+		
 		if( (k&0x1)!=0 ){
 
 		}
@@ -539,6 +556,11 @@ public class WaterDataService {
 		}else if(rd.getRoleType().equals(RoleType.ROLE_WATER)){
 			enterprice = "%%";
 			k=0x2;
+		}
+		
+		if(rd.getRoleType().equals(RoleType.ROLE_ADMIN)) {
+			k = 0x3;
+			enterprice = "%%";
 		}
 		
 		if( (k&0x1)!=0 ){

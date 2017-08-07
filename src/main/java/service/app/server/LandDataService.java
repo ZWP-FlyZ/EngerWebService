@@ -77,6 +77,13 @@ public  Map<String,Object> getRoadPassTypOther(RequestData rd){
 			k=0x2;
 		}
 		
+		
+		if(rd.getRoleType().equals(RoleType.ROLE_ADMIN)) {
+			k = 0x3;
+			enterprice = "%%";
+		}
+			
+		
 		if( (k&0x1)!=0 ){
 			List<RoadPassData> l = 
 					roadPassDao.getRoadPassAll(times[0], times[1], enterprice, places[0], places[1]);
@@ -255,6 +262,11 @@ public  Map<String,Object> getRoadGoodsTypOther(RequestData rd){
 		k=0x2;
 	}
 	
+	if(rd.getRoleType().equals(RoleType.ROLE_ADMIN)) {
+		k = 0x3;
+		enterprice = "%%";
+	}
+	
 	if( (k&0x1)!=0 ){
 		List<RoadGoodsData> l = 
 				roadGdsDao.getRoadGdsAll(times[0], times[1], enterprice, places[0], places[1]);
@@ -404,6 +416,11 @@ public  Map<String,Object> getBusTranTypOther(RequestData rd){
 		k=0x2;
 	}
 	
+	if(rd.getRoleType().equals(RoleType.ROLE_ADMIN)) {
+		k = 0x3;
+		enterprice = "%%";
+	}
+	
 	if( (k&0x1)!=0 ){
 		List<BusTranData> l = 
 				busTranDao.getBusTranAll(times[0], times[1], enterprice, places[0], places[1]);
@@ -497,6 +514,11 @@ public  Map<String,Object> getTaxiTranTypOther(RequestData rd){
 	}else if(rd.getRoleType().equals(RoleType.ROLE_WATER)){
 		enterprice = "%%";
 		k=0x2;
+	}
+	
+	if(rd.getRoleType().equals(RoleType.ROLE_ADMIN)) {
+		k = 0x3;
+		enterprice = "%%";
 	}
 	
 	if( (k&0x1)!=0 ){
