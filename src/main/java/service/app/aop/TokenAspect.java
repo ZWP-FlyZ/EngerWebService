@@ -39,10 +39,7 @@ public class TokenAspect {
 		String mn = si.getName();
 		String cn = si.getDeclaringTypeName();
 		RequestData rd = (RequestData) pjp.getArgs()[1];
-
 		Object result ;
-		
-
 		if(rd==null||rd.getToken()==null||
 			rd.getToken().equals("")||!tokenMap.isContainData(rd.getToken())){
 			MethodSignature ms = (MethodSignature)si;

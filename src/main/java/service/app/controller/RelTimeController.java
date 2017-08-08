@@ -34,15 +34,7 @@ public class RelTimeController {
 	public RelTimeDataResponse getRelTimeData(HttpServletResponse response,
 											RequestData rd){
 		
-//		rd.setUsername("zwp");
-//		rd.setRoleName("enterprice");
-//		rd.setRoleType(RoleType.ROLE_TRAFFIC);
-//		rd.setTimeRange("2017-01-01 11:11:00&2017-01-01 23:11:00");
-//		rd.setPlace1("杭州");
-//		rd.setPlace2("江干区");
-//		
-//		rd.setTranType(TypeGetter.TT_LAND_BUS);
-//		rd.setCarId("c1");
+
 		response.setHeader("Access-Control-Allow-Origin", "*");
 		
 		

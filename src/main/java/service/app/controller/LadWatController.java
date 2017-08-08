@@ -36,12 +36,7 @@ public class LadWatController {
 	@ResponseBody
 	public TraTypOthResponse perDisEng(HttpServletResponse response,
 			RequestData rd){
-//		rd.setUsername("zwp");
-//		rd.setRoleName("enterprice");
-//		rd.setRoleType(RoleType.ROLE_TRAFFIC);
-//		rd.setTimeRange("2017-01-01:2017-12-30");
-//		rd.setPlace1("杭州");
-//		rd.setPlace2("江干");
+
 		response.setHeader("Access-Control-Allow-Origin", "*");
 		TraTypOthResponse ttr = new TraTypOthResponse();
 		
