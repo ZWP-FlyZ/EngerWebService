@@ -2,9 +2,8 @@ package service.app.tramodel.response;
 
 import service.app.model.UserInfo;
 
-public class LogInResponse {
-	private int errCode;
-	private String token;
+public class LogInResponse extends BaseResponse{
+
 	private UserInfo userInfo;
 	public int getErrCode() {
 		return errCode;
@@ -20,12 +19,6 @@ public class LogInResponse {
 	public void setUserInfo(UserInfo userInfo) {
 		this.userInfo = userInfo;
 	}
-	public String getToken() {
-		return token;
-	}
-	public void setToken(String token) {
-		this.token = token;
-	}
-	
-	
+
+
 }

@@ -7,7 +7,10 @@ public class BaseResponse {
 	protected int errCode ;
 	protected String roleName;
 	protected String timeRange;
+	protected String token ;
+	
 	protected List<List<String>> xs;
+	
 	
 	public int getErrCode() {
 		return errCode;
@@ -41,6 +44,14 @@ public class BaseResponse {
 
 	public void setXs(List<List<String>> xs) {
 		this.xs = xs;
+	}
+
+	public String getToken() {
+		return token;
+	}
+
+	public void setToken(String token) {
+		this.token = token;
 	}
 	
 	
