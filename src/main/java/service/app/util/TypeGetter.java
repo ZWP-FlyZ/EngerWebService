@@ -443,7 +443,7 @@ public class TypeGetter implements InitializingBean{
 		tc.setAllTypes(TN_ALL_ENG, tmp4);
 		
 		String[] tmp5 = {FT_CHAI_YOU,FT_QI_YOU,FT_DIAN_NENG,
-						FT_HUN_HE,FT_SHI_YOU_QI,FT_TIAN_RAN_QI};
+						FT_HUN_HE,FT_SHI_YOU_QI,FT_TIAN_RAN_QI,FT_QI_TA};
 		tc.setAllTypes(TN_LAND_ENG, tmp5);
 		
 		String[] tmp6 = {FT_CHAI_YOU,FT_QI_YOU,FT_MEI_YOU,FT_DIAN_NENG,
