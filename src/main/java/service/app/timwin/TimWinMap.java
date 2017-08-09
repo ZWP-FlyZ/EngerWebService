@@ -7,6 +7,8 @@ import java.util.Map;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.stereotype.Component;
 
@@ -22,7 +24,8 @@ public class TimWinMap implements InitializingBean {
 	private Thread mThread;
 	
 	private Lock lock = new ReentrantLock();
-
+	
+	private final static Logger logger = LoggerFactory.getLogger(TimWinMap.class);
 	
 	public TimWinMap(){
 
@@ -48,6 +51,8 @@ public class TimWinMap implements InitializingBean {
 		mThread = new Thread(mRunable);
 		mRun = true;
 		mThread.start();
+		
+		logger.info("TimWinMap started ! WindowSize="+mWinSize +" mUniTimeLen = "+mUniTimeLen/100+" s");
 	}
 	
 	Runnable mRunable = new Runnable(){
@@ -71,8 +76,7 @@ public class TimWinMap implements InitializingBean {
 				flag.pushIndex = in;
 				if(flag.dataList.get((int)(in%mWinSizeP)).size()>0)
 					flag.dataList.get((int)(in%mWinSizeP)).clear();
-				System.err.println("Thread "+Thread.currentThread().getName()+"  index = " + in + " dataList = " +showAll(flag.dataList));
-
+				logger.debug("Thread "+Thread.currentThread().getName()+"  index = " + in + " dataList = " +showAll(flag.dataList));
 				lock.unlock();
 			}// endless loop
 		}
@@ -98,7 +102,8 @@ public class TimWinMap implements InitializingBean {
 			flag.dataList.get((int)(flag.pushIndex%mWinSizeP)).put(name, data);
 			f = true;
 			//System.err.println(name+"   " + data.toString());
-			System.err.println("Thread:"+Thread.currentThread().getName()+showAll(flag.dataList));
+			logger.debug("push name["+name+"],Object["+data.toString()+"]");
+			logger.debug("Thread:"+Thread.currentThread().getName()+showAll(flag.dataList));
 			showAll(flag.dataList);
 			lock.unlock();
 		return f;
@@ -121,8 +126,11 @@ public class TimWinMap implements InitializingBean {
 					break;
 				}
 			}
-			if(f)
+			if(f){
 				flag.dataList.get((int)(flag.pushIndex%mWinSizeP)).put(name, data);
+				logger.debug("repushIf name["+name+"],Object["+data.toString()+"]");
+				logger.debug("Thread:"+Thread.currentThread().getName()+showAll(flag.dataList));
+			}
 			lock.unlock();			
 		return f;
 	}

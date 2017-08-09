@@ -53,7 +53,10 @@ public class TokenAspect {
 			result = no;
 		}
 		else
-			result = pjp.proceed();
+			{
+				result = pjp.proceed();
+				tokenMap.repushIfContain(rd.getUsername(), rd.getToken());
+			}
 		
 		logger.info(cn +"." +mn+" username["+rd.getUsername()+"],token["+rd.getToken()+
 								"] errCode["+((BaseResponse)result).getErrCode()+"]" );

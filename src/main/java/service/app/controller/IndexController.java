@@ -5,6 +5,8 @@ import java.util.Map;
 
 import javax.servlet.http.HttpServletResponse;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -32,6 +34,8 @@ public class IndexController {
 	TimWinMap tokenMap;
 	
 	
+	final static Logger logger = LoggerFactory.getLogger(IndexController.class);
+	
 	@SuppressWarnings("unchecked")
 	@RequestMapping("/index.json")
 	@ResponseBody
@@ -40,22 +44,19 @@ public class IndexController {
 				
 		EngTypOthResponse ir = new EngTypOthResponse();
 		response.setHeader("Access-Control-Allow-Origin", "*");
-		
-		if(rd.getToken()==null||!tokenMap.isContainData(rd.getToken())){
-			ir.setErrCode(ErrCode.DATA_AUTH_ERR);
-			ir.setRoleName(rd.getRoleName());
-			ir.setTimeRange(rd.getTimeRange());
-			
-		}else{
-			ir.setErrCode(ErrCode.DATA_OK);
-			ir.setRoleName(rd.getRoleName());
-			ir.setTimeRange(rd.getTimeRange());
+		Map<String,Object> ds = null;
+		ir.setErrCode(ErrCode.DATA_OK);
+		ir.setRoleName(rd.getRoleName());
+		ir.setTimeRange(rd.getTimeRange());
+		try {
 			ir.getXs().add(TimeTools.getYMlist(rd.getTimeRange()));
 			ir.getXs().add(tg.getAllEngersTypes());
-			Map<String,Object> ds = indexS.getEngTypOther(rd);
+			ds = indexS.getEngTypOther(rd);
 			ir.setEngTypOther((List<EngTypOtherItem>) ds.get("engTypeOther"));
+		} catch (Exception e) {
+			logger.error(e.getMessage());
+			ir.setErrCode(ErrCode.DATA_OK);
 		}
-		
 		return ir;
 	}
 	

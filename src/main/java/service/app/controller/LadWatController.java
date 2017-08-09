@@ -56,14 +56,9 @@ public class LadWatController {
 	@SuppressWarnings("unchecked")
 	@RequestMapping("/engtyp3yearO.json")
 	@ResponseBody
-	public EngTypOthResponse engTyp3Year(HttpServletResponse response,
+	public EngTypOthResponse engTypnAnyYear(HttpServletResponse response,
 			RequestData rd){
-//		rd.setUsername("zwp");
-//		rd.setRoleName("enterprice");
-//		rd.setRoleType(RoleType.ROLE_TRAFFIC);
-//		rd.setTimeRange("2017-01-01:2017-12-30");
-//		rd.setPlace1("杭州");
-//		rd.setPlace2("江干");
+
 		response.setHeader("Access-Control-Allow-Origin", "*");
 		EngTypOthResponse ir = new EngTypOthResponse();
 		
@@ -85,12 +80,7 @@ public class LadWatController {
 	@ResponseBody
 	public TraTypOthResponse traTypPerYear(HttpServletResponse response,
 			RequestData rd){
-//		rd.setUsername("zwp");
-//		rd.setRoleName("enterprice");
-//		rd.setRoleType(RoleType.ROLE_TRAFFIC);
-//		rd.setTimeRange("2017-01-01:2017-12-30"); 
-//		rd.setPlace1("杭州");
-//		rd.setPlace2("江干");
+
 		response.setHeader("Access-Control-Allow-Origin", "*");
 		TraTypOthResponse ttr = new TraTypOthResponse();
 		
@@ -112,12 +102,7 @@ public class LadWatController {
 	@ResponseBody
 	public TraTypOthResponse traTypAllYear(HttpServletResponse response,
 			RequestData rd){
-//		rd.setUsername("zwp");
-//		rd.setRoleName("enterprice");
-//		rd.setRoleType(RoleType.ROLE_TRAFFIC);
-//		rd.setTimeRange("2017-01-01:2017-12-30");
-//		rd.setPlace1("杭州");
-//		rd.setPlace2("江干");
+
 		response.setHeader("Access-Control-Allow-Origin", "*");
 		TraTypOthResponse ttr = new TraTypOthResponse();
 		
@@ -137,13 +122,7 @@ public class LadWatController {
 	@ResponseBody
 	public CitTraTypOthResponse cityTranTypEnger(HttpServletResponse response,
 			RequestData rd){
-//		rd.setUsername("zwp");
-//		rd.setRoleName("enterprice");
-//		rd.setRoleType(RoleType.ROLE_TRAFFIC);
-//		rd.setTimeRange("2017-01-01:2017-12-30");
-//		rd.setPlace1("杭州");
-//		rd.setPlace2("江干");
-//		rd.setTranType(TypeGetter.TT_LAND_PASS);
+
 		response.setHeader("Access-Control-Allow-Origin", "*");
 		CitTraTypOthResponse ctt = new CitTraTypOthResponse();
 		
@@ -162,14 +141,7 @@ public class LadWatController {
 	@ResponseBody
 	public TraTypOthResponse traCitTypeEng(HttpServletResponse response,
 			RequestData rd){
-//		rd.setUsername("zwp");
-//		rd.setRoleName("enterprice");
-//		rd.setRoleType(RoleType.ROLE_TRAFFIC);
-//		rd.setTimeRange("2017-01-01:2017-12-30");
-//		rd.setPlace1("杭州");
-//		rd.setPlace2("江干");
-//		rd.setTranType(TypeGetter.TT_LAND_PASS);
-//		rd.setCityType("杭州");
+
 		response.setHeader("Access-Control-Allow-Origin", "*");
 		TraTypOthResponse ttr = new TraTypOthResponse();
 		

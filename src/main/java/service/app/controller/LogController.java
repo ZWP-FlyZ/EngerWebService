@@ -26,6 +26,7 @@ public class LogController  implements InitializingBean{
 	@Autowired
 	LogService bs;
 	
+	
 	@RequestMapping("/login.json")
 	@ResponseBody
 	public LogInResponse login(HttpServletResponse response,RequestData data){
@@ -61,7 +62,7 @@ public class LogController  implements InitializingBean{
 	@Override
 	public void afterPropertiesSet() throws Exception {
 		// TODO Auto-generated method stub
-		tokenMap.setmWinSize(4);
+		tokenMap.setmWinSize(20);
 		tokenMap.setmUniTimeLen(180*1000);
 		tokenMap.start();
 	}
