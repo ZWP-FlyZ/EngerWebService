@@ -2,6 +2,8 @@ package service.app.controller;
 
 import javax.servlet.http.HttpServletResponse;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -15,6 +17,7 @@ import service.app.tramodel.ErrCode;
 import service.app.tramodel.RequestData;
 import service.app.tramodel.response.BaseResponse;
 import service.app.tramodel.response.LogInResponse;
+import service.app.util.MyEncode;
 import service.app.util.TokenCreater;
 
 @Controller
@@ -26,22 +29,31 @@ public class LogController  implements InitializingBean{
 	@Autowired
 	LogService bs;
 	
+	final static Logger logger = LoggerFactory.getLogger(LogController.class);
 	
 	@RequestMapping("/login.json")
 	@ResponseBody
 	public LogInResponse login(HttpServletResponse response,RequestData data){
 		LogInResponse resp = new LogInResponse();
-		UserInfo userInfo = bs.getLogInData(data.getUsername());
 		response.setHeader("Access-Control-Allow-Origin", "*");
+		resp.setErrCode(ErrCode.LOGIN_ERR_INFO);
+		try {
+			UserInfo userInfo = bs.getLogInData(data.getUsername());
+			
+			if(userInfo!=null&& userInfo.getPassword().equals(MyEncode.encode(data.getPassword()))){
+				resp.setErrCode(ErrCode.LOGIN_OK);//登录成功
+				userInfo.setPassword(null);
+				resp.setUserInfo(userInfo);
+				String token = TokenCreater.getToken(data.getUsername());
+				resp.setToken(token);
+				tokenMap.pushData(data.getUsername(), token);	
+			}
 
-		resp.setErrCode(ErrCode.LOGIN_OK);//登录成功
-		userInfo.setPassword(null);
-		resp.setUserInfo(userInfo);
+		} catch (Exception e) {
+			logger.error(e.getMessage());
+			// TODO: handle exception
+		}
 		
-		String token = TokenCreater.getToken(data.getUsername());
-		resp.setToken(token);
-		tokenMap.pushData(data.getUsername(), token);
-
 		return resp;
 	}
 	
