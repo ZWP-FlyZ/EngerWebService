@@ -1,7 +1,6 @@
 package service.app.controller;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 import javax.servlet.http.HttpServletResponse;
@@ -122,8 +121,8 @@ public class SetController  {
 	@RequestMapping("/setdict.json")
 	@ResponseBody
 	public SetResponse setDict(HttpServletResponse response,RequestData data){
-		data.setTypeName(TypeGetter.TN_BUS_CL);
-		data.setTypeS("4-7,7-9,9-12,12-14,14-17,17-b");
+//		data.setTypeName(TypeGetter.TN_BUS_CL);
+//		data.setTypeS("4-7,7-9,9-12,12-14,14-17,17-b");
 		//data.setTypeName(null);
 		
 		
@@ -134,7 +133,7 @@ public class SetController  {
 		}else if(tg.setTypeAll(data.getTypeName(), data.getTypeS()))
 				if(ss.setAllType(data.getTypeName(), data.getTypeS()))
 					sr.setErrCode(ErrCode.SETTING_OK);
-		System.err.println(Arrays.toString(tg.getBusTranCarLenTypeAll().toArray()));
+
 		return sr;
 	}
 	
