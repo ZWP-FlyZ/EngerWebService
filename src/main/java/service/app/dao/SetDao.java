@@ -45,6 +45,12 @@ public interface SetDao {
 			+ " WHERE username = #{userinfo.username} AND roleType!= 'R_ADMIN'")
 	public int edituser(@Param(value="userinfo")RequestData userinfo);
 	
+	@Update("UPDATE`userinfo` "
+			+ "SET `password`=#{userinfo.password} "
+			+ " WHERE username = #{userinfo.username} AND roleType!= 'R_ADMIN'")
+	public int setpass(@Param(value="userinfo")RequestData userinfo);
+	
+	
 	
 	@Select("SELECT * FROM alltypes")
 	public List<AllTypesItem> getalltypes();

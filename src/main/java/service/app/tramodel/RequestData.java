@@ -25,11 +25,17 @@ public class RequestData {
 	private String shipId;
 	private String companyId;
 	
-	
+	private String upAuth;
 	
 	private String token;
 	
 	
+	public String getUpAuth() {
+		return upAuth;
+	}
+	public void setUpAuth(String upAuth) {
+		this.upAuth = upAuth;
+	}
 	public String getPlace1() {
 		return place1;
 	}

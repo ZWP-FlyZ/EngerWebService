@@ -2,6 +2,8 @@ package service.app.server;
 
 import java.util.List;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -9,10 +11,16 @@ import service.app.dao.SetDao;
 import service.app.model.AllTypesItem;
 import service.app.model.UserInfo;
 import service.app.tramodel.RequestData;
+import service.app.util.MyEncode;
+import service.app.util.TimeTools;
 
 @Service
 public class SetService {
 	
+	
+	
+	
+	private final static Logger logger = LoggerFactory.getLogger(SetService.class) ;
 	@Autowired
 	SetDao sd;
 	
@@ -27,6 +35,8 @@ public class SetService {
 	
 	public boolean regUser(RequestData data){
 		try {
+			data.setPassword( MyEncode.encode(data.getPassword()));
+			data.setUpAuth(TimeTools.getNow());
 			sd.reguser(data);
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -51,11 +61,23 @@ public class SetService {
 		try {
 			 sd.edituser(data);
 		} catch (Exception e) {
-			e.printStackTrace();
+			logger.error(e.getMessage());
 			return false;
 		}
 		return true;
 	}
+	
+	public boolean setPassword(RequestData data){
+		try {
+			data.setPassword(MyEncode.encode(data.getPassword()));
+			sd.setpass(data);
+		} catch (Exception e) {
+			logger.error(e.getMessage());
+			return false;
+		}
+		return true;
+	}
+	
 	
 	public List<AllTypesItem> getAllTypes(){
 		return sd.getalltypes();

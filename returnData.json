@@ -20,6 +20,7 @@
 
 	name//用户姓名
 	phone//电话
+	upAhth//注册时间 yyyy-MM-dd HH:mm:ss
 }
 
 
