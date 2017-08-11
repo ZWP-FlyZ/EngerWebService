@@ -74,8 +74,8 @@ public class LogController  implements InitializingBean{
 	@Override
 	public void afterPropertiesSet() throws Exception {
 		// TODO Auto-generated method stub
-		tokenMap.setmWinSize(20);
-		tokenMap.setmUniTimeLen(180*1000);
+		tokenMap.setmWinSize(3);
+		tokenMap.setmUniTimeLen(5*1000);
 		tokenMap.start();
 	}
 	
