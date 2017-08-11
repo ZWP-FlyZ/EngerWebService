@@ -49,6 +49,8 @@ public class SetController  {
 				
 		
 		SetResponse sr = new SetResponse();
+		
+		
 		sr.setErrCode(ErrCode.SETTING_OK);
 		sr.setUsers(infoes);
 		return sr;

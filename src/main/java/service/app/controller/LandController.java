@@ -5,6 +5,8 @@ import java.util.Map;
 
 import javax.servlet.http.HttpServletResponse;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -32,6 +34,7 @@ public class LandController {
 	@Autowired
 	TypeGetter tg;
 	
+	private final static Logger logger = LoggerFactory.getLogger(LandController.class);
 
 	@SuppressWarnings("unchecked")
 	@RequestMapping("/roadpassO.json")
@@ -39,24 +42,29 @@ public class LandController {
 	public RoadPassResponse roadPassTrans(HttpServletResponse response,
 										RequestData rd){
 
-		response.setHeader("Access-Control-Allow-Origin", "*");
 		RoadPassResponse rpr = new RoadPassResponse();
-		
 		rpr.setErrCode(ErrCode.DATA_OK);
 		rpr.setRoleName(rd.getRoleName());
 		rpr.setTimeRange(rd.getTimeRange());
-		rpr.getXs().add(TimeTools.getYMlist(rd.getTimeRange()));
-		rpr.getXs().add(tg.getLandEngers());
-		rpr.getXs().add(tg.getRoadPassSitCotTypeAll());
-		rpr.getXs().add(tg.getRoadPassEntSizeTypeAll());
-		rpr.getXs().add(tg.getRoadGoodsDisTypeAll());//运距类型
-		rpr.getXs().add(tg.getCarTypes());//车辆类型
 		
-		Map<String,Object> ds = lds.getRoadPassTypOther(rd);
-		rpr.setEngTypOther((List<EngTypOtherItem>) ds.get("engTypeOther"));
-		rpr.setEntTypOther((List<EntTypOtherItem>) ds.get("entTypeOther"));
-		rpr.setDisTypOther((List<BaseTypOtherItem>) ds.get("disTypOther"));
-		rpr.setCarTypOther((List<CarTypOtherItem>) ds.get("carTypOther"));
+		try {
+			rpr.getXs().add(TimeTools.getYMlist(rd.getTimeRange()));
+			rpr.getXs().add(tg.getLandEngers());
+			rpr.getXs().add(tg.getRoadPassSitCotTypeAll());
+			rpr.getXs().add(tg.getRoadPassEntSizeTypeAll());
+			rpr.getXs().add(tg.getRoadGoodsDisTypeAll());//运距类型
+			rpr.getXs().add(tg.getCarTypes());//车辆类型
+			
+			Map<String,Object> ds = lds.getRoadPassTypOther(rd);
+			rpr.setEngTypOther((List<EngTypOtherItem>) ds.get("engTypeOther"));
+			rpr.setEntTypOther((List<EntTypOtherItem>) ds.get("entTypeOther"));
+			rpr.setDisTypOther((List<BaseTypOtherItem>) ds.get("disTypOther"));
+			rpr.setCarTypOther((List<CarTypOtherItem>) ds.get("carTypOther"));
+		} catch (Exception e) {
+			logger.error(e.getMessage());
+			// TODO: handle exception
+			rpr.setErrCode(ErrCode.DATA_ERR);
+		}
 		return rpr;
 	}
 	
@@ -65,26 +73,31 @@ public class LandController {
 	@ResponseBody
 	public RoadGoodsResponse roadGoodsTrans(HttpServletResponse response,
 										RequestData rd){
-//		rd.setUsername("zwp");
-//		rd.setRoleName("enterprice");
-//		rd.setRoleType(RoleType.ROLE_TRAFFIC);
-//		rd.setTimeRange("2017-01-01:2017-12-30");
-//		rd.setPlace1("杭州");
-//		rd.setPlace2("江干");
-		response.setHeader("Access-Control-Allow-Origin", "*");
+
+
 		RoadGoodsResponse rgr = new RoadGoodsResponse();
 		
 		rgr.setErrCode(ErrCode.DATA_OK);
 		rgr.setRoleName(rd.getRoleName());
-		rgr.getXs().add(TimeTools.getYMlist(rd.getTimeRange()));
-		rgr.getXs().add(tg.getLandEngers());
-		rgr.getXs().add(tg.getRoadGoodsTonTypeAll());
-		rgr.getXs().add(tg.getRoadGoodsEntSizeTypeAll());
-		rgr.getXs().add(tg.getCarTypes());//车辆类型
-		Map<String,Object> ds = lds.getRoadGoodsTypOther(rd);
-		rgr.setEngTypOther((List<EngTypOtherItem>) ds.get("engTypeOther"));
-		rgr.setEntTypOther((List<EntTypOtherItem>) ds.get("entTypeOther"));
-		rgr.setCarTypOther((List<CarTypOtherItem>) ds.get("carTypOther"));
+		rgr.setTimeRange(rd.getTimeRange());
+		
+		try {
+			rgr.getXs().add(TimeTools.getYMlist(rd.getTimeRange()));
+			rgr.getXs().add(tg.getLandEngers());
+			rgr.getXs().add(tg.getRoadGoodsTonTypeAll());
+			rgr.getXs().add(tg.getRoadGoodsEntSizeTypeAll());
+			rgr.getXs().add(tg.getCarTypes());//车辆类型
+			Map<String,Object> ds = lds.getRoadGoodsTypOther(rd);
+			rgr.setEngTypOther((List<EngTypOtherItem>) ds.get("engTypeOther"));
+			rgr.setEntTypOther((List<EntTypOtherItem>) ds.get("entTypeOther"));
+			rgr.setCarTypOther((List<CarTypOtherItem>) ds.get("carTypOther"));
+		} catch (Exception e) {
+			logger.error(e.getMessage());
+			rgr.setErrCode(ErrCode.DATA_ERR);
+		}
+		
+		
+
 		
 		return rgr;
 	}
@@ -95,28 +108,25 @@ public class LandController {
 	public EngTypOthResponse busTrans(HttpServletResponse response,
 										RequestData rd){
 		
-//		rd.setUsername("zwp");
-//		rd.setRoleName("enterprice");
-//		rd.setRoleType(RoleType.ROLE_TRAFFIC);
-//		rd.setTimeRange("2016-12-01:2017-05-30");
-//		rd.setPlace1("杭州");
-//		rd.setPlace2("江干");
-		
-		System.err.println(rd.getTimeRange());
-		
-		response.setHeader("Access-Control-Allow-Origin", "*");
+
 		
 		EngTypOthResponse ir = new EngTypOthResponse();
-		
 		ir.setErrCode(ErrCode.DATA_OK);
 		ir.setRoleName(rd.getRoleName());
 		ir.setTimeRange(rd.getTimeRange());
-		ir.getXs().add(TimeTools.getYMlist(rd.getTimeRange()));
-		ir.getXs().add(tg.getLandEngers());
-		ir.getXs().add(tg.getBusTranCarLenTypeAll());
+	
 		
-		Map<String,Object> ds = lds.getBusTranTypOther(rd);
-		ir.setEngTypOther((List<EngTypOtherItem>) ds.get("engTypeOther"));
+		try {
+			ir.getXs().add(TimeTools.getYMlist(rd.getTimeRange()));
+			ir.getXs().add(tg.getLandEngers());
+			ir.getXs().add(tg.getBusTranCarLenTypeAll());
+			
+			Map<String,Object> ds = lds.getBusTranTypOther(rd);
+			ir.setEngTypOther((List<EngTypOtherItem>) ds.get("engTypeOther"));
+		} catch (Exception e) {
+			logger.error(e.getMessage());
+			ir.setErrCode(ErrCode.DATA_ERR);
+		}
 		
 		return ir;
 	}
@@ -127,27 +137,23 @@ public class LandController {
 	@ResponseBody
 	public EngTypOthResponse taxiTrans(HttpServletResponse response,
 										RequestData rd){
-//		rd.setUsername("zwp");
-//		rd.setRoleName("enterprice");
-//		rd.setRoleType(RoleType.ROLE_TRAFFIC);
-//		rd.setTimeRange("2017-01-01:2017-12-30");
-//		rd.setPlace1("杭州");
-//		rd.setPlace2("江干");
-		
-		System.err.println(rd.getTimeRange());
-		response.setHeader("Access-Control-Allow-Origin", "*");
-		
+
 		EngTypOthResponse ir = new EngTypOthResponse();
-		
 		ir.setErrCode(ErrCode.DATA_OK);
 		ir.setRoleName(rd.getRoleName());
 		ir.setTimeRange(rd.getTimeRange());
-		ir.getXs().add(TimeTools.getYMlist(rd.getTimeRange()));
-		ir.getXs().add(tg.getLandEngers());
-		ir.getXs().add(tg.getTaxiTranDpTypeAll());
 		
-		Map<String,Object> ds = lds.getTaxiTranTypOther(rd);
-		ir.setEngTypOther((List<EngTypOtherItem>) ds.get("engTypeOther"));
+		try {
+			ir.getXs().add(TimeTools.getYMlist(rd.getTimeRange()));
+			ir.getXs().add(tg.getLandEngers());
+			ir.getXs().add(tg.getTaxiTranDpTypeAll());
+			
+			Map<String,Object> ds = lds.getTaxiTranTypOther(rd);
+			ir.setEngTypOther((List<EngTypOtherItem>) ds.get("engTypeOther"));
+		} catch (Exception e) {
+			logger.error(e.getMessage());
+			ir.setErrCode(ErrCode.DATA_ERR);
+		}
 		
 		return ir;
 	}

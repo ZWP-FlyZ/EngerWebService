@@ -5,6 +5,8 @@ import java.util.Map;
 
 import javax.servlet.http.HttpServletResponse;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -31,24 +33,30 @@ public class LadWatController {
 	@Autowired
 	TypeGetter tg;
 	
+	private final static Logger logger = LoggerFactory.getLogger(LadWatController.class);
+	
+	
 	@SuppressWarnings("unchecked")
 	@RequestMapping("/perdisengO.json")
 	@ResponseBody
 	public TraTypOthResponse perDisEng(HttpServletResponse response,
 			RequestData rd){
 
-		response.setHeader("Access-Control-Allow-Origin", "*");
-		TraTypOthResponse ttr = new TraTypOthResponse();
 		
+		TraTypOthResponse ttr = new TraTypOthResponse();
 		ttr.setErrCode(ErrCode.DATA_OK);
 		ttr.setRoleName(rd.getRoleName());
 		ttr.setTimeRange(rd.getTimeRange());
-		ttr.getXs().add(tg.getTransTypes());
-		ttr.getXs().add(tg.getAllEngersTypes());
-		
-		Map<String,Object> ds = lwds.getPerDisEngTypOther(rd);
-		ttr.setTraTypOther((List<TraTypOtherItem>) ds.get("traTypeOther"));
-		
+		try {
+			ttr.getXs().add(tg.getTransTypes());
+			ttr.getXs().add(tg.getAllEngersTypes());
+			
+			Map<String,Object> ds = lwds.getPerDisEngTypOther(rd);
+			ttr.setTraTypOther((List<TraTypOtherItem>) ds.get("traTypeOther"));
+		} catch (Exception e) {
+			logger.error(e.getMessage());
+			ttr.setErrCode(ErrCode.DATA_OK);
+		}
 		return ttr;
 	}
 	
@@ -59,18 +67,23 @@ public class LadWatController {
 	public EngTypOthResponse engTypnAnyYear(HttpServletResponse response,
 			RequestData rd){
 
-		response.setHeader("Access-Control-Allow-Origin", "*");
+
 		EngTypOthResponse ir = new EngTypOthResponse();
-		
 		ir.setErrCode(ErrCode.DATA_OK);
 		ir.setRoleName(rd.getRoleName());
 		ir.setTimeRange(rd.getTimeRange());
-		ir.getXs().add(TimeTools.getYMlist(rd.getTimeRange()));
-		ir.getXs().add(tg.getAllEngersTypes());
 		
-		Map<String,Object> ds = lwds.getEngTyp3YearTypOther(rd);
-		ir.setEngTypOther((List<EngTypOtherItem>) ds.get("engTypeOther"));
-		
+		try {
+			ir.getXs().add(TimeTools.getYMlist(rd.getTimeRange()));
+			ir.getXs().add(tg.getAllEngersTypes());
+			
+			Map<String,Object> ds = lwds.getEngTyp3YearTypOther(rd);
+			ir.setEngTypOther((List<EngTypOtherItem>) ds.get("engTypeOther"));
+		} catch (Exception e) {
+			logger.error(e.getMessage());
+			ir.setErrCode(ErrCode.DATA_OK);
+		}
+
 		return ir;
 	}
 	
@@ -81,17 +94,24 @@ public class LadWatController {
 	public TraTypOthResponse traTypPerYear(HttpServletResponse response,
 			RequestData rd){
 
-		response.setHeader("Access-Control-Allow-Origin", "*");
+
 		TraTypOthResponse ttr = new TraTypOthResponse();
 		
 		ttr.setErrCode(ErrCode.DATA_OK);
 		ttr.setRoleName(rd.getRoleName());
 		ttr.setTimeRange(rd.getTimeRange());
-		ttr.getXs().add(TimeTools.getYMlist(rd.getTimeRange()));
-		ttr.getXs().add(tg.getTransTypes());
+		try {
+			ttr.getXs().add(TimeTools.getYMlist(rd.getTimeRange()));
+			ttr.getXs().add(tg.getTransTypes());
+			
+			Map<String,Object> ds = lwds.getTraTypPerYearTypOther(rd);
+			ttr.setTraTypOther((List<TraTypOtherItem>) ds.get("traTypeOther"));
+		} catch (Exception e) {
+			logger.error(e.getMessage());
+			ttr.setErrCode(ErrCode.DATA_OK);
+		}
 		
-		Map<String,Object> ds = lwds.getTraTypPerYearTypOther(rd);
-		ttr.setTraTypOther((List<TraTypOtherItem>) ds.get("traTypeOther"));
+
 		
 		return ttr;
 	}
@@ -103,16 +123,23 @@ public class LadWatController {
 	public TraTypOthResponse traTypAllYear(HttpServletResponse response,
 			RequestData rd){
 
-		response.setHeader("Access-Control-Allow-Origin", "*");
+		
 		TraTypOthResponse ttr = new TraTypOthResponse();
 		
 		ttr.setErrCode(ErrCode.DATA_OK);
 		ttr.setRoleName(rd.getRoleName());
 		ttr.setTimeRange(rd.getTimeRange());
-		ttr.getXs().add(TimeTools.getYMlist(rd.getTimeRange()));
-		ttr.getXs().add(tg.getTransTypes());
-		Map<String,Object> ds = lwds.getTraTypPerYearTypOther(rd);
-		ttr.setTraTypOther((List<TraTypOtherItem>) ds.get("traTypeOther"));
+		
+		try {
+			ttr.getXs().add(TimeTools.getYMlist(rd.getTimeRange()));
+			ttr.getXs().add(tg.getTransTypes());
+			Map<String,Object> ds = lwds.getTraTypPerYearTypOther(rd);
+			ttr.setTraTypOther((List<TraTypOtherItem>) ds.get("traTypeOther"));
+		} catch (Exception e) {
+			logger.error(e.getMessage());
+			ttr.setErrCode(ErrCode.DATA_OK);
+		}
+
 		
 		return ttr;
 	}
@@ -123,16 +150,20 @@ public class LadWatController {
 	public CitTraTypOthResponse cityTranTypEnger(HttpServletResponse response,
 			RequestData rd){
 
-		response.setHeader("Access-Control-Allow-Origin", "*");
+	
 		CitTraTypOthResponse ctt = new CitTraTypOthResponse();
-		
 		ctt.setErrCode(ErrCode.DATA_OK);
 		ctt.setRoleName(rd.getRoleName());
 		ctt.setTimeRange(rd.getTimeRange());
 		ctt.setTranType(rd.getTranType());
-		ctt.getXs().add(tg.getCitiesTypes());
-		Map<String,Object> ds = lwds.getCitTranTypOther(rd);
-		ctt.setCitTypOther((List<CitTypOtherItem>) (ds.get("citTypeOther")));
+		try {
+			ctt.getXs().add(tg.getCitiesTypes());
+			Map<String,Object> ds = lwds.getCitTranTypOther(rd);
+			ctt.setCitTypOther((List<CitTypOtherItem>) (ds.get("citTypeOther")));
+		} catch (Exception e) {
+			logger.error(e.getMessage());
+			ctt.setErrCode(ErrCode.DATA_OK);
+		}
 		return ctt;
 	}
 	
@@ -142,18 +173,21 @@ public class LadWatController {
 	public TraTypOthResponse traCitTypeEng(HttpServletResponse response,
 			RequestData rd){
 
-		response.setHeader("Access-Control-Allow-Origin", "*");
+
 		TraTypOthResponse ttr = new TraTypOthResponse();
-		
 		ttr.setErrCode(ErrCode.DATA_OK);
 		ttr.setRoleName(rd.getRoleName());
 		ttr.setTimeRange(rd.getTimeRange());
 		ttr.setCityType(rd.getCityType());
-		ttr.getXs().add(tg.getTransTypes());
-		
-		
-		Map<String,Object> ds = lwds.getTranCitTypOther(rd);
-		ttr.setTraTypOther((List<TraTypOtherItem>) ds.get("traTypeOther"));
+		try {
+			ttr.getXs().add(tg.getTransTypes());
+			Map<String,Object> ds = lwds.getTranCitTypOther(rd);
+			ttr.setTraTypOther((List<TraTypOtherItem>) ds.get("traTypeOther"));
+			
+		} catch (Exception e) {
+			logger.error(e.getMessage());
+			ttr.setErrCode(ErrCode.DATA_OK);
+		}
 		
 		return ttr;
 	}

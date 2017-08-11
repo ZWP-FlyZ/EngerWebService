@@ -34,7 +34,7 @@ public class IndexController {
 	TimWinMap tokenMap;
 	
 	
-	final static Logger logger = LoggerFactory.getLogger(IndexController.class);
+	private final static Logger logger = LoggerFactory.getLogger(IndexController.class);
 	
 	@SuppressWarnings("unchecked")
 	@RequestMapping("/index.json")
@@ -43,7 +43,6 @@ public class IndexController {
 				RequestData rd){
 				
 		EngTypOthResponse ir = new EngTypOthResponse();
-		response.setHeader("Access-Control-Allow-Origin", "*");
 		Map<String,Object> ds = null;
 		ir.setErrCode(ErrCode.DATA_OK);
 		ir.setRoleName(rd.getRoleName());

@@ -1,5 +1,7 @@
 package service.app.aop;
 
+import javax.servlet.http.HttpServletResponse;
+
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.Signature;
 import org.aspectj.lang.annotation.Around;
@@ -38,6 +40,10 @@ public class TokenAspect {
 		Signature si =  pjp.getSignature();
 		String mn = si.getName();
 		String cn = si.getDeclaringTypeName();
+		
+		HttpServletResponse response = (HttpServletResponse) pjp.getArgs()[0];
+		response.setHeader("Access-Control-Allow-Origin", "*");
+		
 		RequestData rd = (RequestData) pjp.getArgs()[1];
 		Object result ;
 		if(rd.getToken().equals("123123123")){

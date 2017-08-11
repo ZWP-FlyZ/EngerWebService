@@ -5,6 +5,8 @@ import java.util.Map;
 
 import javax.servlet.http.HttpServletResponse;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -27,19 +29,16 @@ public class RelTimeController {
 	@Autowired
 	TypeGetter tg;
 	
+	private final static Logger logger = LoggerFactory.getLogger(RelTimeController.class);
 	
 	@SuppressWarnings("unchecked")
 	@RequestMapping("/reltimedata.json")
 	@ResponseBody
 	public RelTimeDataResponse getRelTimeData(HttpServletResponse response,
 											RequestData rd){
-		
-
-		response.setHeader("Access-Control-Allow-Origin", "*");
-		
+				
 		
 		RelTimeDataResponse rtdr =new RelTimeDataResponse();
-		
 		rtdr.setErrCode(ErrCode.DATA_OK);
 		rtdr.setRoleName(rd.getRoleName());
 		rtdr.setTimeRange(rd.getTimeRange());
@@ -48,15 +47,19 @@ public class RelTimeController {
 		rtdr.setShipId(rd.getShipId());
 		rtdr.setCityType(rd.getCityType());
 		rtdr.setCompanyId(rd.getCompanyId());
-		
-		rtdr.getXs().add(TimeTools.getTenMuList(rd.getTimeRange()));
-		if(TypeGetter.TT_WATER_RIVER.equals(rd.getTranType()))
-			rtdr.getXs().add(tg.getRelWaterEngers());
-		else
-			rtdr.getXs().add(tg.getRelLandEngers());
-		
-		Map<String,Object> ds = rtds.getBusRelTimeData(rd);
-		rtdr.setEngTypOther((List<EngTypOtherItem>) ds.get("engTypeOther"));
+		try {
+			rtdr.getXs().add(TimeTools.getTenMuList(rd.getTimeRange()));
+			if(TypeGetter.TT_WATER_RIVER.equals(rd.getTranType()))
+				rtdr.getXs().add(tg.getRelWaterEngers());
+			else
+				rtdr.getXs().add(tg.getRelLandEngers());
+			
+			Map<String,Object> ds = rtds.getBusRelTimeData(rd);
+			rtdr.setEngTypOther((List<EngTypOtherItem>) ds.get("engTypeOther"));
+		} catch (Exception e) {
+			logger.error(e.getMessage());
+			rtdr.setErrCode(ErrCode.DATA_OK);
+		}
 		
 		return rtdr;
 	}
