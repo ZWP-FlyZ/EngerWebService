@@ -94,7 +94,6 @@ public class SetController  {
 	@ResponseBody
 	public SetResponse editUser(HttpServletResponse response,RequestData data){
 		SetResponse sr = new SetResponse();
-		data.setName("zwp1");
 			
 		if(data.getUsername()==null||
 					!ss.isContarinUsername(data.getUsername())){
@@ -143,11 +142,7 @@ public class SetController  {
 	@ResponseBody
 	public SetResponse setPassword(HttpServletResponse response,RequestData data){
 		
-		
-		
-		data.setPassword(MD5Util.string2MD5(data.getPassword()));
-		data.setPasswordN(MD5Util.string2MD5(data.getPasswordN()));
-		
+				
 		SetResponse sr = new SetResponse();
 		sr.setErrCode(ErrCode.SETTING_ERR);
 		UserInfo userInfo =ls.getLogInData(data.getUsername()) ;

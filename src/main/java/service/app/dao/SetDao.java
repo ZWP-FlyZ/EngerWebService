@@ -17,7 +17,7 @@ import service.app.tramodel.RequestData;
 public interface SetDao {
 	
 	//@Select("SELECT * FROM trafficenger.userinfo WHERE roleType != 'R_ADMIN'")
-	@Select("SELECT * FROM userinfo WHERE roleType != ''")
+	@Select("SELECT * FROM userinfo WHERE roleType != 'R_ADMIN'")
 	public List<UserInfo> getUsers();
 	
 	@Select("SELECT COUNT(username) FROM userinfo "
@@ -26,10 +26,10 @@ public interface SetDao {
 		
 	
 	@Insert("INSERT INTO `userinfo` "
-			+ "(`username`, `password`, `userAuth`, `name`, `phone`, `roleType`, `roleName`, `place1`, `place2`) "
+			+ "(`username`, `password`, `userAuth`, `name`, `phone`, `roleType`, `roleName`, `place1`, `place2`,`upAuth`) "
 			+ "VALUES (#{userinfo.username}, #{userinfo.password}, '0',"
 			+ " #{userinfo.name}, #{userinfo.phone}, #{userinfo.roleType}, #{userinfo.roleName},"
-			+ "#{userinfo.place1}, #{userinfo.place2})")
+			+ "#{userinfo.place1}, #{userinfo.place2},#{userinfo.upAuth})")
 	public int reguser(@Param(value="userinfo")RequestData userinfo);
 	
 	
@@ -47,7 +47,7 @@ public interface SetDao {
 	
 	@Update("UPDATE`userinfo` "
 			+ "SET `password`=#{userinfo.password} "
-			+ " WHERE username = #{userinfo.username} AND roleType!= 'R_ADMIN'")
+			+ " WHERE username = #{userinfo.username}")
 	public int setpass(@Param(value="userinfo")RequestData userinfo);
 	
 	

@@ -37,6 +37,8 @@ public class SetService {
 		try {
 			data.setPassword( MyEncode.encode(data.getPassword()));
 			data.setUpAuth(TimeTools.getNow());
+//			System.err.println(data.getPlace1());
+//			System.err.println(data.getPlace2());
 			sd.reguser(data);
 		} catch (Exception e) {
 			e.printStackTrace();
