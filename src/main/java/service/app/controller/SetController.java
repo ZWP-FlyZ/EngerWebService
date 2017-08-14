@@ -142,7 +142,10 @@ public class SetController  {
 	@ResponseBody
 	public SetResponse setPassword(HttpServletResponse response,RequestData data){
 		
-				
+		
+		
+
+		
 		SetResponse sr = new SetResponse();
 		sr.setErrCode(ErrCode.SETTING_ERR);
 		UserInfo userInfo =ls.getLogInData(data.getUsername()) ;
