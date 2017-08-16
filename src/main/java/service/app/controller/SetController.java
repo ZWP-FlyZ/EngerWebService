@@ -17,7 +17,6 @@ import service.app.server.SetService;
 import service.app.tramodel.ErrCode;
 import service.app.tramodel.RequestData;
 import service.app.tramodel.response.SetResponse;
-import service.app.util.MD5Util;
 import service.app.util.MyEncode;
 import service.app.util.TypeGetter;
 

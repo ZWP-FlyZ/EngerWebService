@@ -2,31 +2,36 @@ package service.app;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
+
+import service.app.nosql.RespResult;
+import service.app.nosql.ResultRepository;
+import service.app.tramodel.response.BaseResponse;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class EngerWebServiceApplicationTests {
 
-//	@Autowired
-//	TypeGetter tg;
-//	
-//	@Autowired
-//	SetDao sd;
+	
+
 //
 //	
 	@Test
 	public void contextLoads() {
-//		//String s = tg.getBusTranCarLenType(new Double(7.0));
-//		//System.err.println(s);
+		
+//		rr.save(new RespResult("test", new BaseResponse()));
+//		rr.save(new RespResult("test2", new BaseResponse()));
+//		rr.save(new RespResult("test3", new BaseResponse()));
+//		rr.save(new RespResult("test4", new BaseResponse()));
+//		System.err.println(rr.count());
 //		
-//		List<String> i = tg.getBusTranCarLenTypeAll();
-//		for(String s:i) System.err.println(s);
-//		//sd.reguser(null);
-//		
-//		for(String s:tg.getTaxiTranDpTypeAll())
-//		System.err.println(s);
+//		for(RespResult r:rr.findAll()){
+//			System.err.println(r);
+//		}
+		
+		
 		
 	}
 
