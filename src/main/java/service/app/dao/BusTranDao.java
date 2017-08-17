@@ -24,4 +24,11 @@ public interface BusTranDao {
 			@Param("place1")String place1,
 			@Param("place2")String place2
 			);
+	
+	@Select("SELECT * FROM bustran "
+			+ "WHERE inTime >=  #{startTime} AND inTime <= #{endTime}")
+	public List<BusTranData> getBusTranAllN(
+			@Param("startTime") String startTime,
+			@Param("endTime")String endTime
+			);
 }

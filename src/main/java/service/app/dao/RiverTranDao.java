@@ -24,4 +24,11 @@ public interface RiverTranDao {
 			@Param("place1")String place1,
 			@Param("place2")String place2
 			);
+	
+	@Select("SELECT * FROM rivertran "
+			+ "WHERE inTime >=  #{startTime} AND inTime <= #{endTime}")
+	public List<RiverTranData> getRiverTranAllN(
+			@Param("startTime") String startTime,
+			@Param("endTime")String endTime
+			);
 }

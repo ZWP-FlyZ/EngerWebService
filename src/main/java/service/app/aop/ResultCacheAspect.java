@@ -42,7 +42,7 @@ public class ResultCacheAspect {
 		MethodSignature ms = (MethodSignature)pjp.getSignature();
 		String cacheName = ms.getName()+"_"+CacheNameTools.getResultCacheName(rd);
 		Object result = null;
-		mLRU.printAll();
+		//mLRU.printAll();
 		String tc = mLRU.get(cacheName);
 		RespResult re=null;
 		if(tc!=null){

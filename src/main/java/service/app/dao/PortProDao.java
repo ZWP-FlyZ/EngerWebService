@@ -27,4 +27,11 @@ public interface PortProDao {
 			@Param("place2")String place2
 			);
 	
+	@Select("SELECT * FROM portproduct "
+			+ "WHERE inTime >=  #{startTime} AND inTime <= #{endTime} ")
+	public List<PortProData> getProtProAllN(
+			@Param("startTime") String startTime,
+			@Param("endTime")String endTime
+			);
+	
 }

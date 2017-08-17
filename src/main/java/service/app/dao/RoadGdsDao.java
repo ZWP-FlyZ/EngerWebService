@@ -26,4 +26,13 @@ public interface RoadGdsDao {
 			@Param("place2")String place2
 			);
 	
+	@Select("SELECT * FROM roadgoods "
+			+ "WHERE inTime >=  #{startTime} AND inTime <= #{endTime}")
+	public List<RoadGoodsData> getRoadGdsAllN(			
+			@Param("startTime") String startTime,
+			@Param("endTime")String endTime
+			);
+	
+	
+	
 }

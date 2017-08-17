@@ -23,5 +23,10 @@ public class CacheNameTools {
 		return sb.toString();
 	}
 	
+	public static String getTYMCacheName(String service,String YM){
+		return service+"_"+YM;
+	}
+	
+	
 	
 }

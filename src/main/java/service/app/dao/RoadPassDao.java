@@ -26,4 +26,11 @@ public interface RoadPassDao {
 			@Param("place2")String place2
 			);
 	
+	@Select("SELECT * FROM roadpass "
+			+ "WHERE inTime >=  #{startTime} AND inTime <= #{endTime}")
+	public List<RoadPassData> getRoadPassAllN(
+			@Param("startTime") String startTime,
+			@Param("endTime")String endTime
+			);
+	
 }

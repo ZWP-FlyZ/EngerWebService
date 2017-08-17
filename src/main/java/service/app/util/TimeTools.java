@@ -20,6 +20,9 @@ public class TimeTools {
 		return sdf.format(new Date());
 	}
 	
+	public static String getNowYM(){
+		return sdfYM.format(new Date());
+	}	
 	public static String[] sqlitTimeRange(String timeRange){
 		if(timeRange==null) return null;
 		if(timeRange.contains("&")) return timeRange.split("&");
@@ -75,11 +78,23 @@ public class TimeTools {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
-		
-		
 		return tms;
 	}
+	
+	
+	public static int getMaxDayOfMonth(String YM){
+		Calendar c = Calendar.getInstance();
+		try {
+			c.setTime(sdfYM.parse(YM));
+			return c.getActualMaximum(Calendar.DAY_OF_MONTH);
+		} catch (ParseException e) {
+			e.printStackTrace();
+			return 28;
+		}
+	}
+	
+	
+	
 	
 	
 }

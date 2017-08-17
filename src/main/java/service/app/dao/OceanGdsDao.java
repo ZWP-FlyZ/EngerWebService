@@ -25,6 +25,13 @@ public interface OceanGdsDao {
 			@Param("place1")String place1,
 			@Param("place2")String place2
 			);
+	
+	@Select("SELECT * FROM oceangoods "
+			+ "WHERE inTime >=  #{startTime} AND inTime <= #{endTime} ")
+	public List<OceanGoodsData> getOceanGdsAllN(
+			@Param("startTime") String startTime,
+			@Param("endTime")String endTime
+			);
 }
 
 

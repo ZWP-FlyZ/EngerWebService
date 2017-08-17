@@ -25,4 +25,11 @@ public interface OceanPassDao {
 			@Param("place2")String place2
 			);
 	
+	@Select("SELECT * FROM oceanpass "
+			+ "WHERE inTime >=  #{startTime} AND inTime <= #{endTime} ")
+	public List<OceanPassData> getOceanPassAllN(
+			@Param("startTime") String startTime,
+			@Param("endTime")String endTime
+			);
+	
 }

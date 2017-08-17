@@ -23,4 +23,11 @@ public interface RelTimeShipDao {
 			@Param("param")RelTimeSelctParam param			
 			);
 	
+	@Select("SELECT * FROM ${tName} WHERE inTime >= #{param.startTime} "
+			+ "AND inTime <= #{param.endTime}")
+	public List<RelTimeData>getRelTimeDataN(
+			@Param("tName")String tName,
+			@Param("param")RelTimeSelctParam param			
+			);
+	
 }
