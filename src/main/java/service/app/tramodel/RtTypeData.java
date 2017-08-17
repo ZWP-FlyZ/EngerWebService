@@ -20,4 +20,11 @@ public class RtTypeData extends TypeData {
 			TypDatOfAllCo = 0.0;
 		TypDatOfAllCo+=co;
 	}
+
+
+	@Override
+	public Object add(Object o) {
+		// TODO Auto-generated method stub
+		return super.add(o);
+	}
 }

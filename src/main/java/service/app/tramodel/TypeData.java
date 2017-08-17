@@ -1,6 +1,6 @@
 package service.app.tramodel;
 
-public class TypeData {
+public class TypeData implements MyAdd{
 	String type;
 	Double TypDatOfAllEng;
 	Double TypDatOfAllLen;
@@ -16,7 +16,6 @@ public class TypeData {
 	public void setType(String type) {
 		this.type = type;
 	}
-	
 	
 	public Double getTypDatOfAllEng() {
 		return TypDatOfAllEng;
@@ -37,6 +36,15 @@ public class TypeData {
 	public void addLen(Double len ){
 		TypDatOfAllLen += len;
 	}
-	
-	
+
+	@Override
+	public Object add(Object o) {
+		// TODO Auto-generated method stub
+		if(o==null||!(o instanceof TypeData)) return this;
+		TypeData td = (TypeData) o;
+		if(!this.type.equals(td.type))  return this;
+		TypDatOfAllEng += td.TypDatOfAllEng;
+		TypDatOfAllLen += td.TypDatOfAllLen;
+		return this;
+	}
 }

@@ -4,7 +4,9 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
 
-public class TwoDecMap<K,V> {
+import service.app.tramodel.MyAdd;
+
+public class TwoDecMap<K, V extends MyAdd> {
 	private Map<K,Map<K,V>> mMap = null;
 	
 	public TwoDecMap(){
@@ -56,5 +58,37 @@ public class TwoDecMap<K,V> {
 		mMap.get(x).clear();
 	}
 	
+	
+	public int sizeX(){
+		return mMap.size();
+	}
+	
+	
+	@SuppressWarnings("unchecked")
+	public TwoDecMap<K,V> add(TwoDecMap<K,V> ad){
+		if(ad==null||ad.sizeX()==0)
+				return this;
+		Map<K,V> tmpY = null;
+		Map<K,V> tmpAdY = null;
+		V  tmpV  = null;;
+		for(K adKeyX:ad.getXset()){
+			tmpY = mMap.get(adKeyX);
+			tmpAdY = ad.mMap.get(adKeyX);
+			if(tmpY==null){
+				this.mMap.put(adKeyX, ad.getYMap(adKeyX));
+				continue;
+			}
+			for(K adKeyY:tmpAdY.keySet()){
+				tmpV = tmpY.get(adKeyY);
+				if(tmpV==null){
+					this.mMap.get(adKeyX).put(adKeyY, tmpAdY.get(adKeyY));
+					continue;
+				}
+				this.mMap.get(adKeyX).put(adKeyY, (V) tmpV.add(tmpAdY.get(adKeyY)));
+			}
+		}
+		return this;
+	}
+		
 
 }
