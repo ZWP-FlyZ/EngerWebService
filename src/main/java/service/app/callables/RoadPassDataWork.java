@@ -172,9 +172,6 @@ public class RoadPassDataWork extends DataAuthBaseWork {
 			logger.error(e.toString());
 		}
 		
-		
-		
-		
 		return maps;
 	}
 

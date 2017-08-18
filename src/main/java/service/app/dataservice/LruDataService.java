@@ -100,8 +100,9 @@ public class LruDataService {
 			}
 		}
 		tmpData  = getDataFromMySql(tranType,YM);
-		tymRepo.save(new CacheData(cacheName,tmpData));
-		logger.debug("Don't have cache! name =["+cacheName+"]");
+		if(tmpData.size()!=0)
+			tymRepo.save(new CacheData(cacheName,tmpData));
+		logger.debug("Don't have cache! Add Cache If Size not 0 name =["+cacheName+"] size=["+tmpData.size()+"]");
 		lock.lock();
 		tc = mTrYeMoCache.add(cacheName, cacheName);
 		if(tc!=null){
@@ -137,8 +138,9 @@ public class LruDataService {
 			}
 		}
 		tmpData  = getDataFromMySql(tranType,TimeTools.getYearMonth(YMD));
-		tymRepo.save(new CacheData(cacheName,tmpData));
-		logger.debug("Don't have cache! name =["+cacheName+"]");
+		if(tmpData.size()!=0)
+			tymRepo.save(new CacheData(cacheName,tmpData));
+		logger.debug("Don't have cache! Add Cache If Size not 0 name =["+cacheName+"] size=["+tmpData.size()+"]");
 		lock.lock();
 		tc = mTrYeMoDaCache.add(cacheName, cacheName);
 		if(tc!=null){
@@ -166,8 +168,9 @@ public class LruDataService {
 			}
 		}
 		tmpData  = getRelTimeDataFromMySql(tranType,YMD);
-		tymRepo.save(new CacheData(cacheName,tmpData));
-		logger.debug("Don't have cache! name =["+cacheName+"]");
+		if(tmpData.size()!=0)
+			tymRepo.save(new CacheData(cacheName,tmpData));
+		logger.debug("Don't have cache! Add Cache If Size not 0 name =["+cacheName+"] size=["+tmpData.size()+"]");
 		lock.lock();
 		tc = mRelTimTrYeMoDaCache.add(cacheName, cacheName);
 		if(tc!=null){
@@ -194,8 +197,9 @@ public class LruDataService {
 			}
 		}
 		tmpData  = getRelTimeDataFromMySql(tranType,YMDH.substring(0,10));
-		tymRepo.save(new CacheData(cacheName,tmpData));
-		logger.debug("Don't have cache! name =["+cacheName+"]");
+		if(tmpData.size()!=0)
+			tymRepo.save(new CacheData(cacheName,tmpData));
+		logger.debug("Don't have cache! Add Cache If Size not 0 name =["+cacheName+"] size=["+tmpData.size()+"]");
 		lock.lock();
 		tc = mRelTimTrYeMoDaHoCache.add(cacheName, cacheName);
 		if(tc!=null){

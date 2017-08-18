@@ -34,6 +34,9 @@ public class LandController {
 	@Autowired
 	TypeGetter tg;
 	
+	@Autowired
+	service.app.server.n.LandDataService landServiceN;
+	
 	private final static Logger logger = LoggerFactory.getLogger(LandController.class);
 
 	@SuppressWarnings("unchecked")
@@ -55,7 +58,7 @@ public class LandController {
 			rpr.getXs().add(tg.getRoadGoodsDisTypeAll());//运距类型
 			rpr.getXs().add(tg.getCarTypes());//车辆类型
 			
-			Map<String,Object> ds = lds.getRoadPassTypOther(rd);
+			Map<String,Object> ds = landServiceN.getRoadPassTypOther(rd);
 			rpr.setEngTypOther((List<EngTypOtherItem>) ds.get("engTypeOther"));
 			rpr.setEntTypOther((List<EntTypOtherItem>) ds.get("entTypeOther"));
 			rpr.setDisTypOther((List<BaseTypOtherItem>) ds.get("disTypOther"));
