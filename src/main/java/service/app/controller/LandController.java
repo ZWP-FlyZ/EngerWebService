@@ -90,7 +90,7 @@ public class LandController {
 			rgr.getXs().add(tg.getRoadGoodsTonTypeAll());
 			rgr.getXs().add(tg.getRoadGoodsEntSizeTypeAll());
 			rgr.getXs().add(tg.getCarTypes());//车辆类型
-			Map<String,Object> ds = lds.getRoadGoodsTypOther(rd);
+			Map<String,Object> ds = landServiceN.getRoadGoodsTypOther(rd);
 			rgr.setEngTypOther((List<EngTypOtherItem>) ds.get("engTypeOther"));
 			rgr.setEntTypOther((List<EntTypOtherItem>) ds.get("entTypeOther"));
 			rgr.setCarTypOther((List<CarTypOtherItem>) ds.get("carTypOther"));
@@ -124,7 +124,7 @@ public class LandController {
 			ir.getXs().add(tg.getLandEngers());
 			ir.getXs().add(tg.getBusTranCarLenTypeAll());
 			
-			Map<String,Object> ds = lds.getBusTranTypOther(rd);
+			Map<String,Object> ds = landServiceN.getBusTranTypOther(rd);
 			ir.setEngTypOther((List<EngTypOtherItem>) ds.get("engTypeOther"));
 		} catch (Exception e) {
 			logger.error(e.toString());
@@ -151,7 +151,7 @@ public class LandController {
 			ir.getXs().add(tg.getLandEngers());
 			ir.getXs().add(tg.getTaxiTranDpTypeAll());
 			
-			Map<String,Object> ds = lds.getTaxiTranTypOther(rd);
+			Map<String,Object> ds = landServiceN.getTaxiTranTypOther(rd);
 			ir.setEngTypOther((List<EngTypOtherItem>) ds.get("engTypeOther"));
 		} catch (Exception e) {
 			logger.error(e.toString());

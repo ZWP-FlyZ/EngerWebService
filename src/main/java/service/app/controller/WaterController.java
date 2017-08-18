@@ -33,6 +33,9 @@ public class WaterController {
 	WaterDataService wds;
 	
 	@Autowired
+	service.app.server.n.WaterDataService waterService;
+	
+	@Autowired
 	TypeGetter tg;
 	
 	private final static Logger logger = LoggerFactory.getLogger(WaterController.class);
@@ -58,7 +61,7 @@ public class WaterController {
 			trt.getXs().add(tg.getRiverTranEntSTypeAll());
 			trt.getXs().add(tg.getShipTypes());//车辆类型
 			
-			Map<String,Object> ds = wds.getRiverTranTypeOther(rd);
+			Map<String,Object> ds = waterService.getRiverTranTypeOther(rd);
 			trt.setEngTypOther((List<EngTypOtherItem>) ds.get("engTypeOther"));
 			trt.setEntTypOther((List<EntTypOtherItem>) ds.get("entTypeOther"));
 			trt.setWeiTypOther((List<WeiTypOtherItem>) ds.get("weiTypOther"));
@@ -69,8 +72,6 @@ public class WaterController {
 		
 		return trt;
 	}
-	
-	
 	
 	
 	
@@ -93,7 +94,7 @@ public class WaterController {
 			ogr.getXs().add(tg.getShipTypes());//车辆类型
 			ogr.getXs().add(tg.getOceanGoodsTranDisTypeAll());//车辆类型
 			
-			Map<String,Object> ds = wds.getOceanGoodsTypeOther(rd);
+			Map<String,Object> ds = waterService.getOceanGoodsTypeOther(rd);
 			ogr.setEngTypOther((List<EngTypOtherItem>) ds.get("engTypeOther"));
 			ogr.setEntTypOther((List<EntTypOtherItem>) ds.get("entTypeOther"));
 			ogr.setWeiTypOther((List<WeiTypOtherItem>) ds.get("weiTypOther"));
@@ -107,11 +108,7 @@ public class WaterController {
 		return ogr;
 		
 
-	}
-	
-	
-	
-	
+}
 	
 	
 	@SuppressWarnings("unchecked")
@@ -133,7 +130,7 @@ public class WaterController {
 			opr.getXs().add(tg.getOceanPassEntSTypeAll());
 			opr.getXs().add(tg.getOceanPassTranDisTypeAll());//运距类型
 			
-			Map<String,Object> ds = wds.getOceanPassTypeOther(rd);
+			Map<String,Object> ds = waterService.getOceanPassTypeOther(rd);
 			opr.setEngTypOther((List<EngTypOtherItem>) ds.get("engTypeOther"));
 			opr.setEntTypOther((List<EntTypOtherItem>) ds.get("entTypeOther"));
 			opr.setDisTypOther((List<BaseTypOtherItem>) ds.get("disTypOther"));
@@ -144,8 +141,6 @@ public class WaterController {
 		return opr;
 
 	}
-	
-
 	
 	@SuppressWarnings("unchecked")
 	@RequestMapping("/portproduceO.json")
@@ -162,7 +157,7 @@ public class WaterController {
 			ppr.getXs().add(TimeTools.getYMlist(rd.getTimeRange()));
 			ppr.getXs().add(tg.getWaterEngers());
 			ppr.getXs().add(tg.getPortProEntSTypeAll());
-			Map<String ,Object> ds = wds.getPortProductTypeOther(rd);
+			Map<String ,Object> ds = waterService.getPortProductTypeOther(rd);
 			ppr.setEngTypOther((List<EngTypOtherItem>)ds.get("engTypeOther"));
 			ppr.setEntTypOther((List<EntTypOtherItem>)ds.get("entTypeOther"));
 		} catch (Exception e) {
