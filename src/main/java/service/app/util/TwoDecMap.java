@@ -5,6 +5,7 @@ import java.util.Map;
 import java.util.Set;
 
 import service.app.tramodel.MyAdd;
+import service.app.tramodel.TypeData;
 
 public class TwoDecMap<K, V extends MyAdd> {
 	private Map<K,Map<K,V>> mMap = null;
@@ -69,7 +70,7 @@ public class TwoDecMap<K, V extends MyAdd> {
 		if(ad==null||ad.sizeX()==0)
 				return this;
 		Map<K,V> tmpY = null;
-		Map<K,V> tmpAdY = null;
+		Map<K, V> tmpAdY = null;
 		V  tmpV  = null;;
 		for(K adKeyX:ad.getXset()){
 			tmpY = mMap.get(adKeyX);

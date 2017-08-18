@@ -57,8 +57,8 @@ public class RelTimeController {
 			Map<String,Object> ds = rtds.getBusRelTimeData(rd);
 			rtdr.setEngTypOther((List<EngTypOtherItem>) ds.get("engTypeOther"));
 		} catch (Exception e) {
-			logger.error(e.getMessage());
-			rtdr.setErrCode(ErrCode.DATA_OK);
+			logger.error(e.toString());
+			rtdr.setErrCode(ErrCode.DATA_ERR);
 		}
 		
 		return rtdr;

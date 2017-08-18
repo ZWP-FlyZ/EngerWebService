@@ -28,6 +28,9 @@ public class IndexController {
 	IndexService indexS;
 	
 	@Autowired
+	service.app.server.n.IndexService index2;
+	
+	@Autowired
 	TypeGetter tg;
 	
 	@Autowired
@@ -50,11 +53,12 @@ public class IndexController {
 		try {
 			ir.getXs().add(TimeTools.getYMlist(rd.getTimeRange()));
 			ir.getXs().add(tg.getAllEngersTypes());
-			ds = indexS.getEngTypOther(rd);
+			ds = index2.getEngTypOther(rd);
 			ir.setEngTypOther((List<EngTypOtherItem>) ds.get("engTypeOther"));
 		} catch (Exception e) {
-			logger.error(e.getMessage());
-			ir.setErrCode(ErrCode.DATA_OK);
+			logger.error(e.toString());
+			e.printStackTrace();
+			ir.setErrCode(ErrCode.DATA_ERR);
 		}
 		return ir;
 	}

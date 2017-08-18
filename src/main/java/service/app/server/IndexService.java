@@ -35,7 +35,7 @@ import service.app.util.TimeTools;
 import service.app.util.TwoDecMap;
 import service.app.util.TypeGetter;
 
-@Service
+@Service("indexS")
 public class IndexService {
 
 	@Autowired
@@ -169,9 +169,7 @@ public class IndexService {
 		if( (k&0x2)!=0 ){// 处理港口企业数据
 			List<PortProData> lp = 
 					portProDao.getProtProAll(times[0], times[1], enterprice, places[0], places[1]);
-					if(lp!=null)
-						allData.addAll(lp);
-					
+	
 			for(PortProData d:lp){
 				//month
 				tmp = TimeTools.getYearMonth(d.getInTime());

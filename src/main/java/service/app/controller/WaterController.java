@@ -63,8 +63,8 @@ public class WaterController {
 			trt.setEntTypOther((List<EntTypOtherItem>) ds.get("entTypeOther"));
 			trt.setWeiTypOther((List<WeiTypOtherItem>) ds.get("weiTypOther"));
 		} catch (Exception e) {
-			logger.error(e.getMessage());
-			trt.setErrCode(ErrCode.DATA_OK);
+			logger.error(e.toString());
+			trt.setErrCode(ErrCode.DATA_ERR);
 		}
 		
 		return trt;
@@ -98,8 +98,8 @@ public class WaterController {
 			ogr.setEntTypOther((List<EntTypOtherItem>) ds.get("entTypeOther"));
 			ogr.setWeiTypOther((List<WeiTypOtherItem>) ds.get("weiTypOther"));
 		} catch (Exception e) {
-			logger.error(e.getMessage());
-			ogr.setErrCode(ErrCode.DATA_OK);
+			logger.error(e.toString());
+			ogr.setErrCode(ErrCode.DATA_ERR);
 		}
 		
 
@@ -138,8 +138,8 @@ public class WaterController {
 			opr.setEntTypOther((List<EntTypOtherItem>) ds.get("entTypeOther"));
 			opr.setDisTypOther((List<BaseTypOtherItem>) ds.get("disTypOther"));
 		} catch (Exception e) {
-			logger.error(e.getMessage());
-			opr.setErrCode(ErrCode.DATA_OK);
+			logger.error(e.toString());
+			opr.setErrCode(ErrCode.DATA_ERR);
 		}
 		return opr;
 
@@ -166,8 +166,8 @@ public class WaterController {
 			ppr.setEngTypOther((List<EngTypOtherItem>)ds.get("engTypeOther"));
 			ppr.setEntTypOther((List<EntTypOtherItem>)ds.get("entTypeOther"));
 		} catch (Exception e) {
-			logger.error(e.getMessage());
-			ppr.setErrCode(ErrCode.DATA_OK);
+			logger.error(e.toString());
+			ppr.setErrCode(ErrCode.DATA_ERR);
 		}
 		
 	

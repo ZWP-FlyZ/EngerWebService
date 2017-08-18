@@ -7,23 +7,59 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
-public class TimeTools {
-	private final static SimpleDateFormat sdf = 
-				new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-	private final static SimpleDateFormat sdfYM = 
-						new SimpleDateFormat("yyyy-MM");
-	
-	private final static SimpleDateFormat sdfTenMu = 
-			new SimpleDateFormat("yyyy-MM-dd HH:mm");
-	
+public class TimeTools {	
 	public static String getNow(){
+		SimpleDateFormat sdf = 
+				new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 		return sdf.format(new Date());
 	}
 	
 	public static String getNowYM(){
+		 SimpleDateFormat sdfYM = 
+					new SimpleDateFormat("yyyy-MM");
 		return sdfYM.format(new Date());
-	}	
+	}
+	
+	public static String[] getNowBeforeYM(){
+		 SimpleDateFormat sdfYM = 
+					new SimpleDateFormat("yyyy-MM");
+		 SimpleDateFormat sdfYMD = 
+					new SimpleDateFormat("yyyy-MM-dd");
+		String [] ss = new String[2];
+		Date nd = new Date();
+		ss[0] = sdfYMD.format(nd);
+		Calendar calendar = Calendar.getInstance();
+		calendar.setTime(nd);
+		calendar.add(Calendar.MONTH, -1);
+		ss[1] = sdfYM.format(calendar.getTime());
+		return ss;
+	}
+	
+	
+	public static int compareYMD(String time1,String time2){
+		 SimpleDateFormat sdfYMD = 
+					new SimpleDateFormat("yyyy-MM-dd");
+		try {
+			Date d1 = sdfYMD.parse(time1);
+			Date d2 = sdfYMD.parse(time2);
+
+			if(d1.before(d2)) return -1;
+			else if(d1.after(d2)) return 1;
+			else return 0;
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
+		
+		return -2;
+		
+	}
+	
+	
+	
+	
 	public static String[] sqlitTimeRange(String timeRange){
+		
+		
 		if(timeRange==null) return null;
 		if(timeRange.contains("&")) return timeRange.split("&");
 		return timeRange.split(":");
@@ -34,6 +70,8 @@ public class TimeTools {
 		return date.substring(0, 7);
 	}
 	public static List<String> getYMlist(String timeRange){
+		 SimpleDateFormat sdfYM = 
+					new SimpleDateFormat("yyyy-MM");
 		List<String> yms = new ArrayList<>();
 		 String[] ss = sqlitTimeRange(timeRange);
 		try {
@@ -62,7 +100,8 @@ public class TimeTools {
 	
 	public static List<String> getTenMuList(String timeRange){
 		List<String> tms = new ArrayList<>();
-		
+		 SimpleDateFormat sdfTenMu = 
+					new SimpleDateFormat("yyyy-MM-dd HH:mm");
 		try {
 			String[] ss = sqlitTimeRange(timeRange);
 			Date ds = sdfTenMu.parse(getTenMinute(ss[0]));
@@ -83,6 +122,8 @@ public class TimeTools {
 	
 	
 	public static int getMaxDayOfMonth(String YM){
+		 SimpleDateFormat sdfYM = 
+					new SimpleDateFormat("yyyy-MM");
 		Calendar c = Calendar.getInstance();
 		try {
 			c.setTime(sdfYM.parse(YM));

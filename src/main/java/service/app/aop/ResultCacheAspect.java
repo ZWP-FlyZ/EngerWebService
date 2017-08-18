@@ -13,7 +13,9 @@ import org.springframework.stereotype.Component;
 
 import service.app.nosql.RespResult;
 import service.app.nosql.ResultRepository;
+import service.app.tramodel.ErrCode;
 import service.app.tramodel.RequestData;
+import service.app.tramodel.response.BaseResponse;
 import service.app.util.CacheNameTools;
 import service.app.util.MyLRU;
 
@@ -56,13 +58,14 @@ public class ResultCacheAspect {
 		
 		logger.debug("Don't have Cache["+cacheName+"]");
 		result = pjp.proceed();
-		rr.save(new RespResult(cacheName, result));
-		String cn = mLRU.add(cacheName, cacheName);
-		if(cn!=null){
-			rr.delete(cn.hashCode()+"");
-			logger.debug("LRU full! Cache["+cn+"] deleted");
-		}
-			
+		if(((BaseResponse)result).getErrCode()==ErrCode.DATA_OK&&false){
+			rr.save(new RespResult(cacheName, result));
+			String cn = mLRU.add(cacheName, cacheName);
+			if(cn!=null){
+				rr.delete(cn.hashCode()+"");
+				logger.debug("LRU full! Cache["+cn+"] deleted");
+			}
+		}	
 		return result;
 	}
 	

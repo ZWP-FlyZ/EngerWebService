@@ -1,6 +1,6 @@
 package service.app.tramodel;
 
-public class RequestData {
+public class RequestData implements Cloneable{
 	private String username;
 	private String password;
 	private String roleName;
@@ -29,6 +29,7 @@ public class RequestData {
 	
 	private String token;
 	
+	private String targeDay;
 	
 	public String getUpAuth() {
 		return upAuth;
@@ -153,9 +154,38 @@ public class RequestData {
 	public void setCompanyId(String companyId) {
 		this.companyId = companyId;
 	}
+	public String getTargeDay() {
+		return targeDay;
+	}
+	public void setTargeDay(String targeDay) {
+		this.targeDay = targeDay;
+	}
+	
+	public String getAllSimMessage(){
+		
+		StringBuffer sb = new StringBuffer();
+		sb.append("username:"+username);
+		sb.append(",roleType:"+roleType);
+		sb.append(",roleName:"+roleName);
+		sb.append(",place1:"+place1);
+		sb.append(",place2:"+place2);
+		
+		return  sb.toString();
+	}
+	@Override
+	public RequestData clone()  {
+		// TODO Auto-generated method stub
+		try {
+			return (RequestData)super.clone();
+		} catch (CloneNotSupportedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return null;
+		}
+		
+	}
 	
 	
 	
-	
-	
+
 }

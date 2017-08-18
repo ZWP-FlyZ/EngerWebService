@@ -54,8 +54,8 @@ public class LadWatController {
 			Map<String,Object> ds = lwds.getPerDisEngTypOther(rd);
 			ttr.setTraTypOther((List<TraTypOtherItem>) ds.get("traTypeOther"));
 		} catch (Exception e) {
-			logger.error(e.getMessage());
-			ttr.setErrCode(ErrCode.DATA_OK);
+			logger.error(e.toString());
+			ttr.setErrCode(ErrCode.DATA_ERR);
 		}
 		return ttr;
 	}
@@ -80,8 +80,8 @@ public class LadWatController {
 			Map<String,Object> ds = lwds.getEngTyp3YearTypOther(rd);
 			ir.setEngTypOther((List<EngTypOtherItem>) ds.get("engTypeOther"));
 		} catch (Exception e) {
-			logger.error(e.getMessage());
-			ir.setErrCode(ErrCode.DATA_OK);
+			logger.error(e.toString());
+			ir.setErrCode(ErrCode.DATA_ERR);
 		}
 
 		return ir;
@@ -107,8 +107,8 @@ public class LadWatController {
 			Map<String,Object> ds = lwds.getTraTypPerYearTypOther(rd);
 			ttr.setTraTypOther((List<TraTypOtherItem>) ds.get("traTypeOther"));
 		} catch (Exception e) {
-			logger.error(e.getMessage());
-			ttr.setErrCode(ErrCode.DATA_OK);
+			logger.error(e.toString());
+			ttr.setErrCode(ErrCode.DATA_ERR);
 		}
 		
 
@@ -136,8 +136,8 @@ public class LadWatController {
 			Map<String,Object> ds = lwds.getTraTypPerYearTypOther(rd);
 			ttr.setTraTypOther((List<TraTypOtherItem>) ds.get("traTypeOther"));
 		} catch (Exception e) {
-			logger.error(e.getMessage());
-			ttr.setErrCode(ErrCode.DATA_OK);
+			logger.error(e.toString());
+			ttr.setErrCode(ErrCode.DATA_ERR);
 		}
 
 		
@@ -161,8 +161,8 @@ public class LadWatController {
 			Map<String,Object> ds = lwds.getCitTranTypOther(rd);
 			ctt.setCitTypOther((List<CitTypOtherItem>) (ds.get("citTypeOther")));
 		} catch (Exception e) {
-			logger.error(e.getMessage());
-			ctt.setErrCode(ErrCode.DATA_OK);
+			logger.error(e.toString());
+			ctt.setErrCode(ErrCode.DATA_ERR);
 		}
 		return ctt;
 	}
@@ -185,8 +185,8 @@ public class LadWatController {
 			ttr.setTraTypOther((List<TraTypOtherItem>) ds.get("traTypeOther"));
 			
 		} catch (Exception e) {
-			logger.error(e.getMessage());
-			ttr.setErrCode(ErrCode.DATA_OK);
+			logger.error(e.toString());
+			ttr.setErrCode(ErrCode.DATA_ERR);
 		}
 		
 		return ttr;

@@ -50,7 +50,7 @@ public class LogController  implements InitializingBean{
 			}
 
 		} catch (Exception e) {
-			logger.error(e.getMessage());
+			logger.error(e.toString());
 			// TODO: handle exception
 		}
 		

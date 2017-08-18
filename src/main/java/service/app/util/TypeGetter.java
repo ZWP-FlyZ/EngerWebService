@@ -97,6 +97,21 @@ public class TypeGetter implements InitializingBean{
 	private final static String TN_REL_TIME_LAND_ENG = "relLandEngers";
 	private final static String TN_REL_TIME_WAT_ENG = "relWatEngers";
 	
+	
+	public final static String[] ALL_TRA_PP = {TT_LAND_PASS,TT_LAND_GOODS,TT_LAND_BUS,TT_LAND_TAXI,
+            TT_WATER_RIVER,TT_WATER_PASS,TT_WATER_GOODS,TT_WATER_PORT};
+	
+	public final static String[] ALL_TRA = {TT_LAND_PASS,TT_LAND_GOODS,TT_LAND_BUS,TT_LAND_TAXI,
+            TT_WATER_RIVER,TT_WATER_PASS,TT_WATER_GOODS};
+	
+	public final static String[] LAND_TRA = {TT_LAND_PASS,TT_LAND_GOODS,TT_LAND_BUS,TT_LAND_TAXI};
+	
+	public final static  String[] WATER_TRA = {TT_WATER_RIVER,TT_WATER_PASS,TT_WATER_GOODS};
+	
+	public final static  String[] WATER_TRA_PP = {TT_WATER_RIVER,TT_WATER_PASS,TT_WATER_GOODS,TT_WATER_PORT};
+	
+	
+	
 	@Autowired
 	TypeChooser tc;
 	
@@ -423,19 +438,15 @@ public class TypeGetter implements InitializingBean{
 //		setTypeAll(TN_PORT_PRODUCT_Ents+":5.6-7.6,7.6-9.6,9.6-12,12-14,14-b");
 		
 		
-		String[] tmp = {TT_LAND_PASS,TT_LAND_GOODS,TT_LAND_BUS,TT_LAND_TAXI,
-                TT_WATER_RIVER,TT_WATER_PASS,TT_WATER_GOODS,TT_WATER_PORT};
-		tc.setAllTypes(TN_ALL_TRA_PP, tmp);
+
+		tc.setAllTypes(TN_ALL_TRA_PP, ALL_TRA_PP);
 		
-		String[] tmp1 = {TT_LAND_PASS,TT_LAND_GOODS,TT_LAND_BUS,TT_LAND_TAXI,
-                TT_WATER_RIVER,TT_WATER_PASS,TT_WATER_GOODS};
-		tc.setAllTypes(TN_ALL_TRA, tmp1);
+		tc.setAllTypes(TN_ALL_TRA, ALL_TRA);
 		
-		String[] tmp2 = {TT_LAND_PASS,TT_LAND_GOODS,TT_LAND_BUS,TT_LAND_TAXI};
-		tc.setAllTypes(TN_LAND_TRA, tmp2);
+
+		tc.setAllTypes(TN_LAND_TRA, LAND_TRA);
 		
-		String[] tmp3 = {TT_WATER_RIVER,TT_WATER_PASS,TT_WATER_GOODS,TT_WATER_PORT};
-		tc.setAllTypes(TN_WATER_TRA, tmp3);
+		tc.setAllTypes(TN_WATER_TRA, WATER_TRA_PP);
 		
 		
 		String[] tmp4 = {FT_CHAI_YOU,FT_QI_YOU,FT_MEI_YOU,FT_DIAN_NENG,
