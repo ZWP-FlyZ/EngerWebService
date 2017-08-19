@@ -20,6 +20,7 @@ import service.app.model.AllSimData;
 import service.app.model.BusTranData;
 import service.app.model.OceanGoodsData;
 import service.app.model.OceanPassData;
+import service.app.model.PortProData;
 import service.app.model.RiverTranData;
 import service.app.model.RoadGoodsData;
 import service.app.model.RoadPassData;
@@ -252,6 +253,71 @@ public class LadWatDataService {
 			engMonthMap.put(d.getFuelType(),tmp,td);
 		}
 		
+		if( (k&0x2)!=0 ){// 处理港口企业数据
+			List<PortProData> lp = 
+					portProDao.getProtProAll(times[0], times[1], enterprice, places[0], places[1]);
+	
+			for(PortProData d:lp){
+				//month
+				tmp = TimeTools.getYearMonth(d.getInTime());
+				if(tmp!=null){
+					td = engMonthMap.get(TypeGetter.FT_CHAI_YOU,tmp);//柴油
+					if(td==null)
+					{
+						td = new TypeData();
+						td.setType(tmp);
+					}
+					td.addEng(d.getDiesel());
+
+					engMonthMap.put(TypeGetter.FT_CHAI_YOU,tmp,td);
+					
+					td = engMonthMap.get(TypeGetter.FT_QI_YOU,tmp);
+					if(td==null)
+					{
+						td = new TypeData();
+						td.setType(tmp);
+					}
+					td.addEng(d.getGasoline());
+					engMonthMap.put(TypeGetter.FT_QI_YOU,tmp,td);
+					
+					td = engMonthMap.get(TypeGetter.FT_MEI_YOU,tmp);
+					if(td==null)
+					{
+						td = new TypeData();
+						td.setType(tmp);
+					}
+					td.addEng(d.getCoal());
+
+					engMonthMap.put(TypeGetter.FT_MEI_YOU,tmp,td);
+					
+					td = engMonthMap.get(TypeGetter.FT_DIAN_NENG,tmp);
+					if(td==null)
+					{
+						td = new TypeData();
+						td.setType(tmp);
+					}
+					td.addEng(d.getPower());
+					engMonthMap.put(TypeGetter.FT_DIAN_NENG,tmp,td);
+					
+					td = engMonthMap.get(TypeGetter.FT_QI_TA,tmp);
+					if(td==null)
+					{
+						td = new TypeData();
+						td.setType(tmp);
+					}
+					td.addEng(d.getOther());
+					engMonthMap.put(TypeGetter.FT_QI_TA,tmp,td);
+					
+				}
+			}
+		}
+		
+		
+		
+		
+		
+		
+		
 			
 		for(String et:engMonthMap.getXset()){
 			ttoi = new EngTypOtherItem();
@@ -386,8 +452,8 @@ public class LadWatDataService {
 		if(rd.getPlace2()==null)
 			rd.setPlace2("%%");
 		
-		places[0] = "%%";
-		places[1] = "%%";
+		places[0] = rd.getPlace1();
+		places[1] = rd.getPlace2();
 		if(rd.getRoleType().equals(RoleType.ROLE_TRAFFIC)){
 			enterprice = "%%";
 			k=0x3;

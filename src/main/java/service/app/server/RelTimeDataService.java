@@ -29,6 +29,7 @@ public class RelTimeDataService {
 	RelTimeShipDao shipDao;
 	
 	
+	
 	private final static String TNAME_ROAD_PASS = "roadpassrel";
 	private final static String TNAME_ROAD_GOODS = "roadgoodsrel";
 	private final static String TNAME_BUS = "bustranrel";

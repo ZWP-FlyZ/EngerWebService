@@ -30,6 +30,10 @@ public class LadWatController {
 	@Autowired
 	LadWatDataService lwds;
 	
+
+	@Autowired
+	service.app.server.n.LadWatDataService lWService;
+	
 	@Autowired
 	TypeGetter tg;
 	
@@ -51,9 +55,10 @@ public class LadWatController {
 			ttr.getXs().add(tg.getTransTypes());
 			ttr.getXs().add(tg.getAllEngersTypes());
 			
-			Map<String,Object> ds = lwds.getPerDisEngTypOther(rd);
+			Map<String,Object> ds = lWService.getPerDisEngTypOther(rd);
 			ttr.setTraTypOther((List<TraTypOtherItem>) ds.get("traTypeOther"));
 		} catch (Exception e) {
+			e.printStackTrace();
 			logger.error(e.toString());
 			ttr.setErrCode(ErrCode.DATA_ERR);
 		}
@@ -77,9 +82,10 @@ public class LadWatController {
 			ir.getXs().add(TimeTools.getYMlist(rd.getTimeRange()));
 			ir.getXs().add(tg.getAllEngersTypes());
 			
-			Map<String,Object> ds = lwds.getEngTyp3YearTypOther(rd);
+			Map<String,Object> ds = lWService.getEngTyp3YearTypOther(rd);
 			ir.setEngTypOther((List<EngTypOtherItem>) ds.get("engTypeOther"));
 		} catch (Exception e) {
+			e.printStackTrace();
 			logger.error(e.toString());
 			ir.setErrCode(ErrCode.DATA_ERR);
 		}
@@ -104,9 +110,10 @@ public class LadWatController {
 			ttr.getXs().add(TimeTools.getYMlist(rd.getTimeRange()));
 			ttr.getXs().add(tg.getTransTypes());
 			
-			Map<String,Object> ds = lwds.getTraTypPerYearTypOther(rd);
+			Map<String,Object> ds = lWService.getTraTypPerYearTypOther(rd);
 			ttr.setTraTypOther((List<TraTypOtherItem>) ds.get("traTypeOther"));
 		} catch (Exception e) {
+			e.printStackTrace();
 			logger.error(e.toString());
 			ttr.setErrCode(ErrCode.DATA_ERR);
 		}
@@ -116,34 +123,7 @@ public class LadWatController {
 		return ttr;
 	}
 	
-	
-	@SuppressWarnings("unchecked")
-	@RequestMapping("/tratypallyearO.json")
-	@ResponseBody
-	public TraTypOthResponse traTypAllYear(HttpServletResponse response,
-			RequestData rd){
-
 		
-		TraTypOthResponse ttr = new TraTypOthResponse();
-		
-		ttr.setErrCode(ErrCode.DATA_OK);
-		ttr.setRoleName(rd.getRoleName());
-		ttr.setTimeRange(rd.getTimeRange());
-		
-		try {
-			ttr.getXs().add(TimeTools.getYMlist(rd.getTimeRange()));
-			ttr.getXs().add(tg.getTransTypes());
-			Map<String,Object> ds = lwds.getTraTypPerYearTypOther(rd);
-			ttr.setTraTypOther((List<TraTypOtherItem>) ds.get("traTypeOther"));
-		} catch (Exception e) {
-			logger.error(e.toString());
-			ttr.setErrCode(ErrCode.DATA_ERR);
-		}
-
-		
-		return ttr;
-	}
-	
 	@SuppressWarnings("unchecked")
 	@RequestMapping("/citytrantypengO.json")
 	@ResponseBody
@@ -158,9 +138,10 @@ public class LadWatController {
 		ctt.setTranType(rd.getTranType());
 		try {
 			ctt.getXs().add(tg.getCitiesTypes());
-			Map<String,Object> ds = lwds.getCitTranTypOther(rd);
+			Map<String,Object> ds = lWService.getCitTranTypOther(rd);
 			ctt.setCitTypOther((List<CitTypOtherItem>) (ds.get("citTypeOther")));
 		} catch (Exception e) {
+			e.printStackTrace();
 			logger.error(e.toString());
 			ctt.setErrCode(ErrCode.DATA_ERR);
 		}
@@ -181,10 +162,11 @@ public class LadWatController {
 		ttr.setCityType(rd.getCityType());
 		try {
 			ttr.getXs().add(tg.getTransTypes());
-			Map<String,Object> ds = lwds.getTranCitTypOther(rd);
+			Map<String,Object> ds = lWService.getTranCitTypOther(rd);
 			ttr.setTraTypOther((List<TraTypOtherItem>) ds.get("traTypeOther"));
 			
 		} catch (Exception e) {
+			e.printStackTrace();
 			logger.error(e.toString());
 			ttr.setErrCode(ErrCode.DATA_ERR);
 		}

@@ -43,7 +43,9 @@ public class IndexService {
 		List<EngTypOtherItem> engTypeOther = new ArrayList<>();
 		
 		
-		if(YMs.size()>0) {
+		if(YMs.size()==0) throw new NullPointerException("年月列表为空");
+		
+		
 			YMs.set(YMs.size()-1, TimeTools.sqlitTimeRange(rd.getTimeRange())[1]);
 			for(int i=0;i<YMs.size()-1;i++){
 				tmp = rd.clone();
@@ -86,8 +88,6 @@ public class IndexService {
 					engTypeOther.add(etoi);
 				}
 			}
-
-		}// end YMs>0
 		
 		map.put("engTypeOther",engTypeOther);
 		return map;

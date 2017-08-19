@@ -21,27 +21,27 @@ public class EngerWebServiceApplicationTests {
 	public void contextLoads() {
 		long i = System.currentTimeMillis();
 		
-		System.err.println(lds.getTYMCacheDataBefore(TypeGetter.TT_LAND_BUS, "2017-01").size());
-		System.err.println(System.currentTimeMillis()-i);
-		System.err.println(lds.getTYMCacheDataBefore(TypeGetter.TT_LAND_BUS, "2017-01").size());
-		System.err.println(System.currentTimeMillis()-i);
-		System.err.println("---------------------------------------------------");
-		System.err.println(lds.getTYMCacheDataNow(TypeGetter.TT_LAND_BUS, "2017-01-28").size());
-		System.err.println(System.currentTimeMillis()-i);
-		System.err.println(lds.getTYMCacheDataNow(TypeGetter.TT_LAND_BUS, "2017-01-28").size());
-		System.err.println(System.currentTimeMillis()-i);
-		System.err.println("---------------------------------------------------");
-		
-		System.err.println(lds.getRelTimDataCacheBefore(TypeGetter.TT_LAND_BUS, "2017-01-01").size());
-		System.err.println(System.currentTimeMillis()-i);
-		System.err.println(lds.getRelTimDataCacheBefore(TypeGetter.TT_LAND_BUS, "2017-01-01").size());
-		System.err.println(System.currentTimeMillis()-i);
-		System.err.println("---------------------------------------------------");
-		System.err.println(lds.getRelTimDataCacheNow(TypeGetter.TT_LAND_BUS, "2017-01-01 02").size());
-		System.err.println(System.currentTimeMillis()-i);
-		System.err.println(lds.getRelTimDataCacheNow(TypeGetter.TT_LAND_BUS, "2017-01-01 02").size());
-		System.err.println(System.currentTimeMillis()-i);
-		System.err.println("---------------------------------------------------");	
+//		System.err.println(lds.getTYMCacheDataBefore(TypeGetter.TT_LAND_BUS, "2017-01").size());
+//		System.err.println(System.currentTimeMillis()-i);
+//		System.err.println(lds.getTYMCacheDataBefore(TypeGetter.TT_LAND_BUS, "2017-01").size());
+//		System.err.println(System.currentTimeMillis()-i);
+//		System.err.println("---------------------------------------------------");
+//		System.err.println(lds.getTYMCacheDataNow(TypeGetter.TT_LAND_BUS, "2017-01-28").size());
+//		System.err.println(System.currentTimeMillis()-i);
+//		System.err.println(lds.getTYMCacheDataNow(TypeGetter.TT_LAND_BUS, "2017-01-28").size());
+//		System.err.println(System.currentTimeMillis()-i);
+//		System.err.println("---------------------------------------------------");
+//		
+//		System.err.println(lds.getRelTimDataCacheBefore(TypeGetter.TT_LAND_BUS, "2017-01-01").size());
+//		System.err.println(System.currentTimeMillis()-i);
+//		System.err.println(lds.getRelTimDataCacheBefore(TypeGetter.TT_LAND_BUS, "2017-01-01").size());
+//		System.err.println(System.currentTimeMillis()-i);
+//		System.err.println("---------------------------------------------------");
+//		System.err.println(lds.getRelTimDataCacheNow(TypeGetter.TT_LAND_BUS, "2017-01-01 02").size());
+//		System.err.println(System.currentTimeMillis()-i);
+//		System.err.println(lds.getRelTimDataCacheNow(TypeGetter.TT_LAND_BUS, "2017-01-01 02").size());
+//		System.err.println(System.currentTimeMillis()-i);
+//		System.err.println("---------------------------------------------------");	
 		
 	}
 

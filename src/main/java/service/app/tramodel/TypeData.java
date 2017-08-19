@@ -42,7 +42,7 @@ public class TypeData implements MyAdd{
 		// TODO Auto-generated method stub
 		if(o==null||!(o instanceof TypeData)) return this;
 		TypeData td = (TypeData) o;
-		if(!this.type.equals(td.type))  return this;
+		//if(!this.type.equals(td.type))  return this;
 		TypDatOfAllEng += td.TypDatOfAllEng;
 		TypDatOfAllLen += td.TypDatOfAllLen;
 		return this;
