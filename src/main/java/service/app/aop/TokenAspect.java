@@ -31,7 +31,8 @@ public class TokenAspect {
 	
 	@Pointcut("execution(* service.app.controller.*.*(..)) &&"
 			+ " !execution(* service.app.controller.LogController.login(..)) && "
-			+ "!execution(*  service.app.controller.*.afterPropertiesSet())")
+			+ "!execution(*  service.app.controller.*.afterPropertiesSet())  && "
+			+ "!execution(* service.app.controller.SetController.downloadHelpDoc(..))")
 	public void executionToken(){}
 	
 	

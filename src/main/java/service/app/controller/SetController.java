@@ -5,10 +5,18 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletResponse;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.Resource;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 
 import service.app.model.AllTypesItem;
 import service.app.model.UserInfo;
@@ -17,6 +25,7 @@ import service.app.server.SetService;
 import service.app.tramodel.ErrCode;
 import service.app.tramodel.RequestData;
 import service.app.tramodel.response.SetResponse;
+import service.app.util.FileStorageUtil;
 import service.app.util.MyEncode;
 import service.app.util.TypeGetter;
 
@@ -32,6 +41,12 @@ public class SetController  {
 	@Autowired
 	TypeGetter tg;
 	
+	@Autowired
+	FileStorageUtil fs;
+	
+	
+	private final static Logger logger = LoggerFactory.getLogger(SetController.class);
+	private final static String suppout = "support";
 	
 	
 	
@@ -132,7 +147,6 @@ public class SetController  {
 		}else if(tg.setTypeAll(data.getTypeName(), data.getTypeS()))
 				if(ss.setAllType(data.getTypeName(), data.getTypeS()))
 					sr.setErrCode(ErrCode.SETTING_OK);
-
 		return sr;
 	}
 	
@@ -162,6 +176,76 @@ public class SetController  {
 			sr.setErrCode(ErrCode.SETTING_PASS_ERR);
 		return sr;
 	}
+	
+	
+	@PostMapping(value="/helpupload" )
+	@ResponseBody
+	public SetResponse uploadHelpDoc(HttpServletResponse response,RequestData data,MultipartFile file){
+		SetResponse sr = new SetResponse();
+		sr.setErrCode(ErrCode.SETTING_ERR);
+		System.err.println(data.getToken());
+		
+		try {
+			fs.store(file);
+			sr.setErrCode(ErrCode.SETTING_OK);
+		} catch (Exception e) {
+			// TODO: handle exception
+			logger.error(e.toString());
+		}
+		return sr;
+	}
+	
+	@GetMapping(value="/helpdownload/helpDocument.pdf" )
+	@ResponseBody
+	public ResponseEntity<Resource> downloadHelpDoc(HttpServletResponse response){
+		response.setHeader("Access-Control-Allow-Origin", "*");
+		try {
+			 Resource file = fs.loadAsResource();
+		        return ResponseEntity.ok().header(HttpHeaders.CONTENT_DISPOSITION,
+		                "attachment; filename=\"" + file.getFilename() + "\"").body(file);
+		} catch (Exception e) {
+			// TODO: handle exception
+			logger.error(e.toString());
+		}
+		return ResponseEntity.notFound().build();
+	}
+	
+	
+	
+	@GetMapping("/getsupport")
+	@ResponseBody
+	public SetResponse getSupportMessage(HttpServletResponse response,RequestData data){
+		
+		SetResponse sr = new SetResponse();
+		sr.setErrCode(ErrCode.SETTING_ERR);
+		try {
+			sr.setRoleName(fs.getMessageFrom(suppout, "1:2:3:4"));
+			sr.setErrCode(ErrCode.SETTING_OK);
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+			logger.error(e.toString());
+		}
+		return sr;
+	}
+	
+	
+	@GetMapping("/setsupport")
+	@ResponseBody
+	public SetResponse setSupportMessage(HttpServletResponse response,RequestData data){
+		SetResponse sr = new SetResponse();
+		sr.setErrCode(ErrCode.SETTING_ERR);
+		try {
+			if(fs.setMessageTo(suppout, data.getRoleName()))
+				sr.setErrCode(ErrCode.SETTING_OK);
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+			logger.error(e.toString());
+		}
+		return sr;
+	}
+	
 	
 	
 	

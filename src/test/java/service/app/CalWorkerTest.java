@@ -81,7 +81,7 @@ public class CalWorkerTest {
 //		works.add(new IndexDataWork(d3));
 //		works.add(new IndexDataWork(d4));
 		
-		cw.submitWorkList(works);
+		//cw.submitWorkList(works);
 	}
 	
 	

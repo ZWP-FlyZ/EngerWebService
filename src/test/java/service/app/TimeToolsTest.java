@@ -18,8 +18,8 @@ public class TimeToolsTest {
 //		System.err.println(TimeTools.getMaxDayOfMonth("2017-02"));
 //		System.err.println(TimeTools.getMaxDayOfMonth("2019-10"));
 		
-		System.err.println(TimeTools.compareYMD("2017-03-01", "2017-02-01"));
-		System.err.println(TimeTools.compareYMD("2017-01-01", "2017-01-01"));
+//		System.err.println(TimeTools.compareYMD("2017-03-01", "2017-02-01"));
+//		System.err.println(TimeTools.compareYMD("2017-01-01", "2017-01-01"));
 		
 	}
 

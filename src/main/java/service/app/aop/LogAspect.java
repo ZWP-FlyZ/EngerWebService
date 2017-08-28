@@ -20,7 +20,8 @@ public class LogAspect {
 	private static final Logger logger = LoggerFactory.getLogger(LogAspect.class);
 	
 	@Pointcut("execution(* service.app.controller.*.*(..)) &&"
-			+ " !execution(* service.app.controller.*.afterPropertiesSet())")
+			+ " !execution(* service.app.controller.*.afterPropertiesSet()) && "
+			+ "!execution(* service.app.controller.SetController.downloadHelpDoc(..))")
 	public void executionController(){}
 			
 	@Before("executionController()")

@@ -16,22 +16,22 @@ public class ThreadPoolTest {
 	
 	@Test
 	public void test()  {
-		Future<String> f1 =  threadPool.submit(c1);
-		Future<String> f2 =  threadPool.submit(c2);
-		Future<String> f3 =  threadPool.submit(c3);
-		
-		try {
-			System.err.println(f3.get());
-			System.err.println(f2.get());
-			System.err.println(f1.get());
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (ExecutionException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
+//		Future<String> f1 =  threadPool.submit(c1);
+//		Future<String> f2 =  threadPool.submit(c2);
+//		Future<String> f3 =  threadPool.submit(c3);
+//		
+//		try {
+//			System.err.println(f3.get());
+//			System.err.println(f2.get());
+//			System.err.println(f1.get());
+//		} catch (InterruptedException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		} catch (ExecutionException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+//		
 		
 	}
 	

@@ -41,61 +41,61 @@ public class TwoDecMapTest {
 //		m3 = m2.add(m3);
 //		System.err.println(gson.toJson(m3));
 		
-		TypeData td = new TypeData();
-		td.setType("mt1");
-		td.setTypDatOfAllEng(1.0);
-		td.setTypDatOfAllLen(1.0);
-		mt1.put("1", "1", td);
-		
-		td = new TypeData();
-		td.setType("mt2");
-		td.setTypDatOfAllEng(1.0);
-		td.setTypDatOfAllLen(1.0);
-		mt1.put("2", "2", td);
-		
-		td = new TypeData();
-		td.setType("mt3");
-		td.setTypDatOfAllEng(1.0);
-		td.setTypDatOfAllLen(1.0);
-		mt1.put("1", "3", td);
-		
-		td = new TypeData();
-		td.setType("mt3");
-		td.setTypDatOfAllEng(1.0);
-		td.setTypDatOfAllLen(1.0);
-		mt1.put("7", "3", td);
-		
-		
-		
-		td = new TypeData();
-		td.setType("mt1");
-		td.setTypDatOfAllEng(1.0);
-		td.setTypDatOfAllLen(1.0);
-		mt2.put("1", "1", td);
-		
-		td = new TypeData();
-		td.setType("mt2");
-		td.setTypDatOfAllEng(1.0);
-		td.setTypDatOfAllLen(1.0);
-		mt2.put("2", "2", td);
-		
-		td = new TypeData();
-		td.setType("mt2");
-		td.setTypDatOfAllEng(1.0);
-		td.setTypDatOfAllLen(1.0);
-		mt2.put("1", "4", td);
-		
-		td = new TypeData();
-		td.setType("mt3");
-		td.setTypDatOfAllEng(1.0);
-		td.setTypDatOfAllLen(1.0);
-		mt2.put("3", "3", td);
-		
-		mt3 = mt1.add(mt3);
-		System.err.println(gson.toJson(mt3));
-		System.err.println(gson.toJson(mt2));
-		mt3 = mt2.add(mt3);
-		System.err.println(gson.toJson(mt3));
+//		TypeData td = new TypeData();
+//		td.setType("mt1");
+//		td.setTypDatOfAllEng(1.0);
+//		td.setTypDatOfAllLen(1.0);
+//		mt1.put("1", "1", td);
+//		
+//		td = new TypeData();
+//		td.setType("mt2");
+//		td.setTypDatOfAllEng(1.0);
+//		td.setTypDatOfAllLen(1.0);
+//		mt1.put("2", "2", td);
+//		
+//		td = new TypeData();
+//		td.setType("mt3");
+//		td.setTypDatOfAllEng(1.0);
+//		td.setTypDatOfAllLen(1.0);
+//		mt1.put("1", "3", td);
+//		
+//		td = new TypeData();
+//		td.setType("mt3");
+//		td.setTypDatOfAllEng(1.0);
+//		td.setTypDatOfAllLen(1.0);
+//		mt1.put("7", "3", td);
+//		
+//		
+//		
+//		td = new TypeData();
+//		td.setType("mt1");
+//		td.setTypDatOfAllEng(1.0);
+//		td.setTypDatOfAllLen(1.0);
+//		mt2.put("1", "1", td);
+//		
+//		td = new TypeData();
+//		td.setType("mt2");
+//		td.setTypDatOfAllEng(1.0);
+//		td.setTypDatOfAllLen(1.0);
+//		mt2.put("2", "2", td);
+//		
+//		td = new TypeData();
+//		td.setType("mt2");
+//		td.setTypDatOfAllEng(1.0);
+//		td.setTypDatOfAllLen(1.0);
+//		mt2.put("1", "4", td);
+//		
+//		td = new TypeData();
+//		td.setType("mt3");
+//		td.setTypDatOfAllEng(1.0);
+//		td.setTypDatOfAllLen(1.0);
+//		mt2.put("3", "3", td);
+//		
+//		mt3 = mt1.add(mt3);
+//		System.err.println(gson.toJson(mt3));
+//		System.err.println(gson.toJson(mt2));
+//		mt3 = mt2.add(mt3);
+//		System.err.println(gson.toJson(mt3));
 		
 		
 		
