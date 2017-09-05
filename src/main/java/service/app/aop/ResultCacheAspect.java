@@ -19,6 +19,7 @@ import service.app.nosql.ResultRepository;
 import service.app.tramodel.ErrCode;
 import service.app.tramodel.RequestData;
 import service.app.tramodel.response.BaseResponse;
+import service.app.util.CacheManager;
 import service.app.util.CacheNameTools;
 import service.app.util.MyLRU;
 
@@ -30,10 +31,12 @@ public class ResultCacheAspect {
 	@Autowired
 	ResultRepository rr;
 	
+	@Autowired
+	CacheManager cm;
+	
 	
 	private Lock lock = new ReentrantLock();
 	
-	private static final MyLRU<String,String>  mLRU= new MyLRU<>(100*1000);
 	
 	private static final Logger logger = LoggerFactory.getLogger(ResultCacheAspect.class);
 	
@@ -52,7 +55,7 @@ public class ResultCacheAspect {
 		Object result = null;
 		//mLRU.printAll();
 		lock.lock();
-		String tc = mLRU.get(cacheName);
+		String tc = cm.getMfrontlru().get(cacheName);
 		lock.unlock();
 		RespResult re=null;
 		if(tc!=null){
@@ -69,7 +72,7 @@ public class ResultCacheAspect {
 		if(((BaseResponse)result).getErrCode()==ErrCode.DATA_OK){
 			rr.save(new RespResult(cacheName, result));
 			lock.lock();
-			String cn = mLRU.add(cacheName, cacheName);
+			String cn = cm.getMfrontlru().add(cacheName, cacheName);
 			lock.unlock();
 			if(cn!=null){
 				rr.delete(cn.hashCode()+"");
@@ -78,15 +81,5 @@ public class ResultCacheAspect {
 		}	
 		return result;
 	}
-	
-	
-	public void clearCache(){
-		lock.lock();
-			mLRU.clear();
-		lock.unlock();
-	}
-	
-	
-	
-	
+		
 }

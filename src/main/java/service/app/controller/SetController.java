@@ -26,6 +26,7 @@ import service.app.server.SetService;
 import service.app.tramodel.ErrCode;
 import service.app.tramodel.RequestData;
 import service.app.tramodel.response.SetResponse;
+import service.app.util.CacheManager;
 import service.app.util.FileStorageUtil;
 import service.app.util.MyEncode;
 import service.app.util.TypeGetter;
@@ -46,8 +47,7 @@ public class SetController  {
 	FileStorageUtil fs;
 	
 	@Autowired
-	ResultCacheAspect rca;
-	
+	CacheManager cm;
 	
 	private final static Logger logger = LoggerFactory.getLogger(SetController.class);
 	private final static String suppout = "support";
@@ -151,7 +151,7 @@ public class SetController  {
 		}else if(tg.setTypeAll(data.getTypeName(), data.getTypeS()))
 				if(ss.setAllType(data.getTypeName(), data.getTypeS())){
 						sr.setErrCode(ErrCode.SETTING_OK);
-						rca.clearCache();
+						cm.cleanBackCache();
 				}
 		return sr;
 	}
@@ -161,10 +161,7 @@ public class SetController  {
 	@ResponseBody
 	public SetResponse setPassword(HttpServletResponse response,RequestData data){
 		
-		
-		
-
-		
+				
 		SetResponse sr = new SetResponse();
 		sr.setErrCode(ErrCode.SETTING_ERR);
 		UserInfo userInfo =ls.getLogInData(data.getUsername()) ;
