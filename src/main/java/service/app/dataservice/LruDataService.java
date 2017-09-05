@@ -25,6 +25,7 @@ import service.app.model.RelTimeSelctParam;
 import service.app.nosql.CacheData;
 import service.app.nosql.ResultRepository;
 import service.app.nosql.TYMRepository;
+import service.app.util.CacheManager;
 import service.app.util.MyLRU;
 import service.app.util.TimeTools;
 import service.app.util.TypeGetter;
@@ -64,17 +65,11 @@ public class LruDataService {
 	@Autowired 
 	TYMRepository tymRepo;
 	
-	
-	private final static MyLRU<String, String> mTrYeMoCache = new MyLRU<>(8*3*12);//最多保存8种能耗3年数据
-	private final static MyLRU<String, String> mTrYeMoDaCache = new MyLRU<>(32);//最多保存32个   月数据
-	
-	private final static MyLRU<String, String> mRelTimTrYeMoDaCache = new MyLRU<>(5*10);//最多保存5中能耗 10个      一天内实时数据
-	private final static MyLRU<String, String> mRelTimTrYeMoDaHoCache = new MyLRU<>(25);//最多保存5中能耗 10个      一天内实时数据
+	@Autowired
+	CacheManager cm;
 	
 	private final static Logger logger = LoggerFactory.getLogger(LruDataService.class);
-	
-	private Lock lock = new ReentrantLock();
-	
+		
 	/**
 	 * 
 	 * @param tranType
@@ -88,9 +83,8 @@ public class LruDataService {
 		if(tranType==null || YM==null ) return new ArrayList<>();
 		List<? extends AllSimData> tmpData = null;
 		String cacheName = tranType+"_"+YM;
-		lock.lock();
-		String tc = mTrYeMoCache.get(cacheName);
-		lock.unlock();
+		
+		String tc = cm.mTryemocacheGet(cacheName);
 		if(tc!=null){
 			CacheData tymd = tymRepo.findOne(cacheName.hashCode()+"");
 			if(tymd!=null){
@@ -103,13 +97,11 @@ public class LruDataService {
 		if(tmpData.size()!=0)
 			tymRepo.save(new CacheData(cacheName,tmpData));
 		logger.debug("Don't have cache! Add Cache If Size not 0 name =["+cacheName+"] size=["+tmpData.size()+"]");
-		lock.lock();
-		tc = mTrYeMoCache.add(cacheName, cacheName);
+		tc = cm.mTryemocacheAdd(cacheName, cacheName);
 		if(tc!=null){
 			tymRepo.delete(tc.hashCode()+"");
 			logger.debug("LRU(mTrYeMoCache) full! Cache["+tc+"] deleted");
 		}
-		lock.unlock();
 		return tmpData;
 	}
 	
@@ -126,9 +118,9 @@ public class LruDataService {
 		if(tranType==null || YMD==null) return new ArrayList<>();
 		List<? extends AllSimData> tmpData = null;
 		String cacheName = tranType+"_"+YMD;
-		lock.lock();
-		String tc = mTrYeMoDaCache.get(cacheName);
-		lock.unlock();
+		
+		String tc = cm.mTrYeMoDaCacheGet(cacheName);
+		
 		if(tc!=null){
 			CacheData tymd = tymRepo.findOne(cacheName.hashCode()+"");
 			if(tymd!=null){
@@ -141,13 +133,12 @@ public class LruDataService {
 		if(tmpData.size()!=0)
 			tymRepo.save(new CacheData(cacheName,tmpData));
 		logger.debug("Don't have cache! Add Cache If Size not 0 name =["+cacheName+"] size=["+tmpData.size()+"]");
-		lock.lock();
-		tc = mTrYeMoDaCache.add(cacheName, cacheName);
+		
+		tc = cm.mTrYeMoDaCacheAdd(cacheName, cacheName);
 		if(tc!=null){
 			tymRepo.delete(tc.hashCode()+"");
 			logger.debug("LRU(mTrYeMoDaCache) full! Cache["+tc+"] deleted");
 		}
-		lock.unlock();
 		return tmpData;
 	}
 	
@@ -156,9 +147,9 @@ public class LruDataService {
 		if(tranType==null || YMD==null) return new ArrayList<>();
 		List<? extends AllSimData> tmpData = null;
 		String cacheName = tranType+"_"+YMD+"_R";
-		lock.lock();
-		String tc = mRelTimTrYeMoDaCache.get(cacheName);
-		lock.unlock();
+		
+		String tc = cm.mRelTimTrYeMoDaCacheGet(cacheName);
+		
 		if(tc!=null){
 			CacheData tymd = tymRepo.findOne(cacheName.hashCode()+"");
 			if(tymd!=null){
@@ -171,13 +162,13 @@ public class LruDataService {
 		if(tmpData.size()!=0)
 			tymRepo.save(new CacheData(cacheName,tmpData));
 		logger.debug("Don't have cache! Add Cache If Size not 0 name =["+cacheName+"] size=["+tmpData.size()+"]");
-		lock.lock();
-		tc = mRelTimTrYeMoDaCache.add(cacheName, cacheName);
+		
+		tc = cm.mRelTimTrYeMoDaCacheAdd(cacheName, cacheName);
 		if(tc!=null){
 			tymRepo.delete(tc.hashCode()+"");
 			logger.debug("LRU(mRelTimTrYeMoDaCache) full! Cache["+tc+"] deleted");
 		}
-		lock.unlock();
+		
 		return tmpData;
 	}
 	
@@ -185,9 +176,9 @@ public class LruDataService {
 		if(tranType==null || YMDH==null) return new ArrayList<>();
 		List<? extends AllSimData> tmpData = null;
 		String cacheName = tranType+"_"+YMDH+"_R";
-		lock.lock();
-		String tc = mRelTimTrYeMoDaHoCache.get(cacheName);
-		lock.unlock();
+		
+		String tc = cm.mRelTimTrYeMoDaHoCacheGet(cacheName);
+		
 		if(tc!=null){
 			CacheData tymd = tymRepo.findOne(cacheName.hashCode()+"");
 			if(tymd!=null){
@@ -200,13 +191,13 @@ public class LruDataService {
 		if(tmpData.size()!=0)
 			tymRepo.save(new CacheData(cacheName,tmpData));
 		logger.debug("Don't have cache! Add Cache If Size not 0 name =["+cacheName+"] size=["+tmpData.size()+"]");
-		lock.lock();
-		tc = mRelTimTrYeMoDaHoCache.add(cacheName, cacheName);
+		
+		tc = cm.mRelTimTrYeMoDaHoCacheAdd(cacheName, cacheName);
 		if(tc!=null){
 			tymRepo.delete(tc.hashCode()+"");
 			logger.debug("LRU(mRelTimTrYeMoDaHoCache) full! Cache["+tc+"] deleted");
 		}
-		lock.unlock();
+		
 		return tmpData;
 	}
 	

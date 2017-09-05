@@ -1,8 +1,5 @@
 package service.app.aop;
 
-import java.util.concurrent.locks.Lock;
-import java.util.concurrent.locks.ReentrantLock;
-
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
@@ -21,7 +18,6 @@ import service.app.tramodel.RequestData;
 import service.app.tramodel.response.BaseResponse;
 import service.app.util.CacheManager;
 import service.app.util.CacheNameTools;
-import service.app.util.MyLRU;
 
 @Aspect
 @Component
@@ -35,7 +31,7 @@ public class ResultCacheAspect {
 	CacheManager cm;
 	
 	
-	private Lock lock = new ReentrantLock();
+	
 	
 	
 	private static final Logger logger = LoggerFactory.getLogger(ResultCacheAspect.class);
@@ -54,9 +50,9 @@ public class ResultCacheAspect {
 		String cacheName = ms.getName()+"_"+CacheNameTools.getResultCacheName(rd);
 		Object result = null;
 		//mLRU.printAll();
-		lock.lock();
-		String tc = cm.getMfrontlru().get(cacheName);
-		lock.unlock();
+		
+		String tc = cm.mFrontCacheGet(cacheName);
+		
 		RespResult re=null;
 		if(tc!=null){
 			re = rr.findOne(""+cacheName.hashCode());
@@ -71,9 +67,9 @@ public class ResultCacheAspect {
 		result = pjp.proceed();
 		if(((BaseResponse)result).getErrCode()==ErrCode.DATA_OK){
 			rr.save(new RespResult(cacheName, result));
-			lock.lock();
-			String cn = cm.getMfrontlru().add(cacheName, cacheName);
-			lock.unlock();
+			
+			String cn =  cm.mFrontCacheAdd(cacheName, cacheName);
+			
 			if(cn!=null){
 				rr.delete(cn.hashCode()+"");
 				logger.debug("LRU full! Cache["+cn+"] deleted");
