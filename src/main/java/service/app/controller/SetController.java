@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
+import service.app.aop.ResultCacheAspect;
 import service.app.model.AllTypesItem;
 import service.app.model.UserInfo;
 import service.app.server.LogService;
@@ -43,6 +44,9 @@ public class SetController  {
 	
 	@Autowired
 	FileStorageUtil fs;
+	
+	@Autowired
+	ResultCacheAspect rca;
 	
 	
 	private final static Logger logger = LoggerFactory.getLogger(SetController.class);
@@ -145,8 +149,10 @@ public class SetController  {
 		if(data.getTypeName()==null){
 			sr.setErrCode(ErrCode.SETTING_ERR);
 		}else if(tg.setTypeAll(data.getTypeName(), data.getTypeS()))
-				if(ss.setAllType(data.getTypeName(), data.getTypeS()))
-					sr.setErrCode(ErrCode.SETTING_OK);
+				if(ss.setAllType(data.getTypeName(), data.getTypeS())){
+						sr.setErrCode(ErrCode.SETTING_OK);
+						rca.clearCache();
+				}
 		return sr;
 	}
 	

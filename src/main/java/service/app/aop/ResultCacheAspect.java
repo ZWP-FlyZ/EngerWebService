@@ -1,5 +1,8 @@
 package service.app.aop;
 
+import java.util.concurrent.locks.Lock;
+import java.util.concurrent.locks.ReentrantLock;
+
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
@@ -27,6 +30,9 @@ public class ResultCacheAspect {
 	@Autowired
 	ResultRepository rr;
 	
+	
+	private Lock lock = new ReentrantLock();
+	
 	private static final MyLRU<String,String>  mLRU= new MyLRU<>(100*1000);
 	
 	private static final Logger logger = LoggerFactory.getLogger(ResultCacheAspect.class);
@@ -45,7 +51,9 @@ public class ResultCacheAspect {
 		String cacheName = ms.getName()+"_"+CacheNameTools.getResultCacheName(rd);
 		Object result = null;
 		//mLRU.printAll();
+		lock.lock();
 		String tc = mLRU.get(cacheName);
+		lock.unlock();
 		RespResult re=null;
 		if(tc!=null){
 			re = rr.findOne(""+cacheName.hashCode());
@@ -58,15 +66,24 @@ public class ResultCacheAspect {
 		
 		logger.debug("Don't have Cache["+cacheName+"]");
 		result = pjp.proceed();
-		if(((BaseResponse)result).getErrCode()==ErrCode.DATA_OK&&false){
+		if(((BaseResponse)result).getErrCode()==ErrCode.DATA_OK){
 			rr.save(new RespResult(cacheName, result));
+			lock.lock();
 			String cn = mLRU.add(cacheName, cacheName);
+			lock.unlock();
 			if(cn!=null){
 				rr.delete(cn.hashCode()+"");
 				logger.debug("LRU full! Cache["+cn+"] deleted");
 			}
 		}	
 		return result;
+	}
+	
+	
+	public void clearCache(){
+		lock.lock();
+			mLRU.clear();
+		lock.unlock();
 	}
 	
 	

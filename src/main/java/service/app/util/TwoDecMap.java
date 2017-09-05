@@ -5,7 +5,6 @@ import java.util.Map;
 import java.util.Set;
 
 import service.app.tramodel.MyAdd;
-import service.app.tramodel.TypeData;
 
 public class TwoDecMap<K, V extends MyAdd> {
 	private Map<K,Map<K,V>> mMap = null;

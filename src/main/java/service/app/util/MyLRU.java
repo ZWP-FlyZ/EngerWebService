@@ -8,9 +8,6 @@ package service.app.util;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.springframework.context.annotation.Scope;
-import org.springframework.stereotype.Component;
-
 public class MyLRU<K, V> {
     private int maxSize;
     private Map<K, DoublyLinkedNode<K, V>> store;
@@ -48,6 +45,11 @@ public class MyLRU<K, V> {
         return node.value;
     }
 
+    public void clear(){
+    	store.clear();
+    	sequence.clear();
+    }
+    
     public void printAll() {
         sequence.printList();
         System.out.println(store);
@@ -67,7 +69,11 @@ public class MyLRU<K, V> {
             this.key = key;
             this.value = value;
         }
-
+        	
+        public void clear(){
+        	left=null;
+        	right = null;
+        }
         public String toString() {
             String leftStr = (left != null) ? String.valueOf(left.key) + ", " + String.valueOf(left.value) : "null";
             String rightStr = (right != null) ? String.valueOf(right.key) + ", " + String.valueOf(right.value) : "null";
@@ -106,6 +112,18 @@ public class MyLRU<K, V> {
             return temp;
         }
 
+        public void clear(){
+        	DoublyLinkedNode<T3, T4> temp = head;
+    
+			DoublyLinkedNode<T3, T4> temp2 = null;
+        	 while(temp!=null){
+        		 temp2 = temp;
+        		 temp = temp.right;
+        		 temp2.clear();
+        	 }
+        	 head = tail = null;
+        }
+        
         public DoublyLinkedNode<T3, T4> bringToFront(DoublyLinkedNode<T3, T4> node) {
             System.out.println("Bringing " + node.value + " to front.");
             if (head == node) {
@@ -125,6 +143,8 @@ public class MyLRU<K, V> {
             head = node;
             return head;
         }
+
+        
 
         public void printList() {
             DoublyLinkedNode<T3, T4> temp = head;
