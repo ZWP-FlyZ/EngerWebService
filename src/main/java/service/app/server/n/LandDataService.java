@@ -15,16 +15,7 @@ import service.app.callables.BusTranDataWork;
 import service.app.callables.RoadGoodsDataWork;
 import service.app.callables.RoadPassDataWork;
 import service.app.callables.TaxiTranDataWork;
-import service.app.dao.BusTranDao;
-import service.app.dao.RoadGdsDao;
-import service.app.dao.RoadPassDao;
-import service.app.dao.TaxiTranDao;
-import service.app.model.BusTranData;
-import service.app.model.RoadGoodsData;
-import service.app.model.RoadPassData;
-import service.app.model.TaxiTranData;
 import service.app.tramodel.RequestData;
-import service.app.tramodel.RoleType;
 import service.app.tramodel.TypeData;
 import service.app.tramodel.items.BaseTypOtherItem;
 import service.app.tramodel.items.CarTypOtherItem;
@@ -32,7 +23,6 @@ import service.app.tramodel.items.EngTypOtherItem;
 import service.app.tramodel.items.EntTypOtherItem;
 import service.app.util.TimeTools;
 import service.app.util.TwoDecMap;
-import service.app.util.TypeGetter;
 import service.app.worker.CalWorker;
 
 @Service("landServiceN")

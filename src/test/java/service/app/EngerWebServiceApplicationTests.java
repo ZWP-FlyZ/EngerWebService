@@ -14,8 +14,8 @@ import service.app.util.TypeGetter;
 public class EngerWebServiceApplicationTests {
 
 	
-	@Autowired
-	LruDataService lds;
+//	@Autowired
+//	LruDataService lds;
 	
 	@Test
 	public void contextLoads() {

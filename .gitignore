@@ -28,4 +28,6 @@ src/main/resources/static/
 
 *.tmp
 
+helpdoc/
+
 
