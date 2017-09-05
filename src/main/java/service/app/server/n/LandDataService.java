@@ -32,6 +32,7 @@ public class LandDataService {
 	@Autowired
 	CalWorker cw;
 	
+	@SuppressWarnings("unused")
 	private final static Logger logger = LoggerFactory.getLogger(IndexService.class);
 	
 	@SuppressWarnings("unchecked")

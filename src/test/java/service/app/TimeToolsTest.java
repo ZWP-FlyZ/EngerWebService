@@ -2,8 +2,6 @@ package service.app;
 
 import org.junit.Test;
 
-import service.app.util.TimeTools;
-
 public class TimeToolsTest {
 
 	@Test

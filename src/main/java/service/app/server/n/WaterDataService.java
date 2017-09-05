@@ -32,6 +32,7 @@ public class WaterDataService {
 	CalWorker cw;
 	
 	
+	@SuppressWarnings("unused")
 	private final static Logger logger = LoggerFactory.getLogger(WaterDataService.class);
 	
 	@SuppressWarnings("unchecked")

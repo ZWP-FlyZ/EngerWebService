@@ -13,7 +13,6 @@ import org.springframework.stereotype.Service;
 import service.app.callables.BaseWork;
 import service.app.callables.CityTraDataWork;
 import service.app.callables.EngYearDataWork;
-import service.app.callables.RoadPassDataWork;
 import service.app.callables.TraCityDataWork;
 import service.app.callables.TraPerDisDataWork;
 import service.app.callables.TraTypPerYearWork;
@@ -33,6 +32,7 @@ public class LadWatDataService {
 	@Autowired
 	CalWorker cw;
 	
+	@SuppressWarnings("unused")
 	private final static Logger logger = LoggerFactory.getLogger(LadWatDataService.class);
 	
 	

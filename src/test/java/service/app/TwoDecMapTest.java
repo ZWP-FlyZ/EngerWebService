@@ -2,8 +2,6 @@ package service.app;
 
 import org.junit.Test;
 
-import com.google.gson.Gson;
-
 import service.app.tramodel.MyAdd;
 import service.app.tramodel.TypeData;
 import service.app.util.TwoDecMap;
@@ -22,7 +20,7 @@ public class TwoDecMapTest {
 	
 	@Test
 	public void test() {
-		Gson gson = new Gson();
+		//Gson gson = new Gson();
 //		m1.put("1", "1", new T1("1_1"));
 //		m1.put("2", "1", new T1("2_1"));
 //		m1.put("2", "2", new T1("2_2"));

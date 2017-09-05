@@ -57,6 +57,7 @@ public class IndexService {
 	PortProDao portProDao;
 	
 	
+	@SuppressWarnings("unused")
 	private final static Logger logger = LoggerFactory.getLogger(IndexService.class);
 	public  Map<String,Object> getEngTypOther(RequestData rd){
 		

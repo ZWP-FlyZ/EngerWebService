@@ -2,8 +2,6 @@ package service.app.dataservice;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.locks.Lock;
-import java.util.concurrent.locks.ReentrantLock;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -26,7 +24,6 @@ import service.app.nosql.CacheData;
 import service.app.nosql.ResultRepository;
 import service.app.nosql.TYMRepository;
 import service.app.util.CacheManager;
-import service.app.util.MyLRU;
 import service.app.util.TimeTools;
 import service.app.util.TypeGetter;
 

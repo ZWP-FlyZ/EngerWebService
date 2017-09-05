@@ -34,9 +34,6 @@ public class CacheManager implements InitializingBean{
 	private ReadWriteLock rwl4 = new ReentrantReadWriteLock();
 	private ReadWriteLock rwl5 = new ReentrantReadWriteLock();
 	
-	private Thread mThread= null;
-	
-	
 	public String mTryemocacheGet(String k){
 		rwl1.readLock().lock();
 		String t=null;

@@ -1,7 +1,5 @@
 package service.app;
 
-import java.util.List;
-
 import org.junit.Before;
 import org.junit.Test;
 
