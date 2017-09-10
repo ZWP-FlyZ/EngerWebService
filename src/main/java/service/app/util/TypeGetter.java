@@ -35,13 +35,44 @@ public class TypeGetter implements InitializingBean{
 	public final static String TT_WATER_PORT = "港口生产";
 	
 	//car type
-	public final static String CT_C1 = "c1";
-	public final static String CT_C2 = "c2";
-	public final static String CT_C3 = "c3";
-	public final static String CT_C4 = "c4";
-	public final static String CT_C5 = "c5";
-	public final static String CT_C6 = "c6";
-	public final static String CT_C7 = "c7";
+	public final static String CT_C1 = "特大型车";
+	public final static String CT_C2 = "普通客车";
+	public final static String CT_C3 = "双层客车";
+	public final static String CT_C4 = "卧铺客车";
+	public final static String CT_C5 = "轿车";
+	public final static String CT_C6 = "大型车";
+	public final static String CT_C7 = "普通货车";
+	
+	public final static String CT_C8 = "厢式货车";
+	public final static String CT_C9 = "仓栅式货车";
+	public final static String CT_C10 = "封闭货车";
+	public final static String CT_C11 = "罐式货车";
+	public final static String CT_C12 = "平板货车";
+	public final static String CT_C13 = "集装箱车";
+	public final static String CT_C14 = "自卸货车";
+	
+	public final static String CT_C15 = "特殊结构货车";
+	
+	public final static String CT_C16 = "牵引车";
+	public final static String CT_C17 = "专项作业车";
+	public final static String CT_C18 = "普通挂车";
+	public final static String CT_C19 = "厢式挂车";
+	public final static String CT_C20 = "仓栅式挂车";
+	public final static String CT_C21 = "罐式挂车";
+	public final static String CT_C22 = "平板挂车";
+	
+	public final static String CT_C23 = "集装箱挂车";
+	public final static String CT_C24 = "自卸挂车";
+	public final static String CT_C25 = "专项作业挂车";
+	public final static String CT_C26 = "中型";
+	public final static String CT_C27 = "小型";
+	public final static String CT_C28 = "客车";
+	public final static String CT_C29 = "双层";
+	
+	
+	
+	
+	
 
 	//ship type
 	public final static String ST_S1 = "s1";
@@ -462,7 +493,11 @@ public class TypeGetter implements InitializingBean{
 		tc.setAllTypes(TN_WATER_ENG, tmp6);
 		
 		
-		String[] tmp7 = {CT_C1,CT_C2,CT_C3,CT_C4,CT_C5,CT_C6,CT_C7};
+		String[] tmp7 = {	CT_C1,CT_C2,CT_C3,CT_C4,CT_C5,CT_C6,CT_C7,
+							CT_C8,CT_C9,CT_C10,CT_C11,CT_C12,CT_C13,CT_C14,
+							CT_C15,
+							CT_C16,CT_C17,CT_C18,CT_C19,CT_C20,CT_C21,CT_C22,
+							CT_C23,CT_C24,CT_C25,CT_C26,CT_C27,CT_C28,CT_C29};
 		tc.setAllTypes(TN_CAR, tmp7);
 		
 		String[] tmp8 = {ST_S1,ST_S2,ST_S3,ST_S4,ST_S5,ST_S6,ST_S7};
