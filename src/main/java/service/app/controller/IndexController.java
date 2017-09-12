@@ -56,7 +56,7 @@ public class IndexController {
 			ds = index2.getEngTypOther(rd);
 			ir.setEngTypOther((List<EngTypOtherItem>) ds.get("engTypeOther"));
 		} catch (Exception e) {
-			logger.error(e.toString());
+			logger.error(e.toString(),e);
 			e.printStackTrace();
 			ir.setErrCode(ErrCode.DATA_ERR);
 		}

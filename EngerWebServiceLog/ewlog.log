@@ -1,0 +1,91 @@
+2017-09-12 10:44:33.234  INFO 8228 --- [main] service.app.EngerWebServiceApplication   : Starting EngerWebServiceApplication on DESKTOP-IGVOKFE with PID 8228 (E:\workspaceForSTS\EngerWebService\target\classes started by zwp12 in E:\workspaceForSTS\EngerWebService)
+2017-09-12 10:44:33.237 DEBUG 8228 --- [main] service.app.EngerWebServiceApplication   : Running with Spring Boot v1.5.4.RELEASE, Spring v4.3.9.RELEASE
+2017-09-12 10:44:33.238  INFO 8228 --- [main] service.app.EngerWebServiceApplication   : No active profile set, falling back to default profiles: default
+2017-09-12 10:44:38.636 DEBUG 8228 --- [main] service.app.dao.SetDao.gettypebyname     : ==>  Preparing: SELECT * FROM alltypes WHERE typeName = ? 
+2017-09-12 10:44:38.655 DEBUG 8228 --- [main] service.app.dao.SetDao.gettypebyname     : ==> Parameters: busCarLen(String)
+2017-09-12 10:44:38.680 DEBUG 8228 --- [main] service.app.dao.SetDao.gettypebyname     : <==      Total: 1
+2017-09-12 10:44:38.747 DEBUG 8228 --- [main] service.app.dao.SetDao.gettypebyname     : ==>  Preparing: SELECT * FROM alltypes WHERE typeName = ? 
+2017-09-12 10:44:38.748 DEBUG 8228 --- [main] service.app.dao.SetDao.gettypebyname     : ==> Parameters: taxiDp(String)
+2017-09-12 10:44:38.749 DEBUG 8228 --- [main] service.app.dao.SetDao.gettypebyname     : <==      Total: 1
+2017-09-12 10:44:38.752 DEBUG 8228 --- [main] service.app.dao.SetDao.gettypebyname     : ==>  Preparing: SELECT * FROM alltypes WHERE typeName = ? 
+2017-09-12 10:44:38.753 DEBUG 8228 --- [main] service.app.dao.SetDao.gettypebyname     : ==> Parameters: roadGoodsEnts(String)
+2017-09-12 10:44:38.755 DEBUG 8228 --- [main] service.app.dao.SetDao.gettypebyname     : <==      Total: 1
+2017-09-12 10:44:38.760 DEBUG 8228 --- [main] service.app.dao.SetDao.gettypebyname     : ==>  Preparing: SELECT * FROM alltypes WHERE typeName = ? 
+2017-09-12 10:44:38.761 DEBUG 8228 --- [main] service.app.dao.SetDao.gettypebyname     : ==> Parameters: roadGoodsTon(String)
+2017-09-12 10:44:38.762 DEBUG 8228 --- [main] service.app.dao.SetDao.gettypebyname     : <==      Total: 1
+2017-09-12 10:44:38.764 DEBUG 8228 --- [main] service.app.dao.SetDao.gettypebyname     : ==>  Preparing: SELECT * FROM alltypes WHERE typeName = ? 
+2017-09-12 10:44:38.764 DEBUG 8228 --- [main] service.app.dao.SetDao.gettypebyname     : ==> Parameters: roadGoodsDis(String)
+2017-09-12 10:44:38.766 DEBUG 8228 --- [main] service.app.dao.SetDao.gettypebyname     : <==      Total: 1
+2017-09-12 10:44:38.768 DEBUG 8228 --- [main] service.app.dao.SetDao.gettypebyname     : ==>  Preparing: SELECT * FROM alltypes WHERE typeName = ? 
+2017-09-12 10:44:38.768 DEBUG 8228 --- [main] service.app.dao.SetDao.gettypebyname     : ==> Parameters: roadPassEnts(String)
+2017-09-12 10:44:38.770 DEBUG 8228 --- [main] service.app.dao.SetDao.gettypebyname     : <==      Total: 1
+2017-09-12 10:44:38.772 DEBUG 8228 --- [main] service.app.dao.SetDao.gettypebyname     : ==>  Preparing: SELECT * FROM alltypes WHERE typeName = ? 
+2017-09-12 10:44:38.772 DEBUG 8228 --- [main] service.app.dao.SetDao.gettypebyname     : ==> Parameters: roadPassSits(String)
+2017-09-12 10:44:38.774 DEBUG 8228 --- [main] service.app.dao.SetDao.gettypebyname     : <==      Total: 1
+2017-09-12 10:44:38.776 DEBUG 8228 --- [main] service.app.dao.SetDao.gettypebyname     : ==>  Preparing: SELECT * FROM alltypes WHERE typeName = ? 
+2017-09-12 10:44:38.776 DEBUG 8228 --- [main] service.app.dao.SetDao.gettypebyname     : ==> Parameters: roadPassDis(String)
+2017-09-12 10:44:38.778 DEBUG 8228 --- [main] service.app.dao.SetDao.gettypebyname     : <==      Total: 1
+2017-09-12 10:44:38.780 DEBUG 8228 --- [main] service.app.dao.SetDao.gettypebyname     : ==>  Preparing: SELECT * FROM alltypes WHERE typeName = ? 
+2017-09-12 10:44:38.780 DEBUG 8228 --- [main] service.app.dao.SetDao.gettypebyname     : ==> Parameters: riverEnts(String)
+2017-09-12 10:44:38.783 DEBUG 8228 --- [main] service.app.dao.SetDao.gettypebyname     : <==      Total: 1
+2017-09-12 10:44:38.788 DEBUG 8228 --- [main] service.app.dao.SetDao.gettypebyname     : ==>  Preparing: SELECT * FROM alltypes WHERE typeName = ? 
+2017-09-12 10:44:38.789 DEBUG 8228 --- [main] service.app.dao.SetDao.gettypebyname     : ==> Parameters: riverTon(String)
+2017-09-12 10:44:38.793 DEBUG 8228 --- [main] service.app.dao.SetDao.gettypebyname     : <==      Total: 1
+2017-09-12 10:44:38.795 DEBUG 8228 --- [main] service.app.dao.SetDao.gettypebyname     : ==>  Preparing: SELECT * FROM alltypes WHERE typeName = ? 
+2017-09-12 10:44:38.795 DEBUG 8228 --- [main] service.app.dao.SetDao.gettypebyname     : ==> Parameters: oceanGoodsEnts(String)
+2017-09-12 10:44:38.796 DEBUG 8228 --- [main] service.app.dao.SetDao.gettypebyname     : <==      Total: 1
+2017-09-12 10:44:38.800 DEBUG 8228 --- [main] service.app.dao.SetDao.gettypebyname     : ==>  Preparing: SELECT * FROM alltypes WHERE typeName = ? 
+2017-09-12 10:44:38.800 DEBUG 8228 --- [main] service.app.dao.SetDao.gettypebyname     : ==> Parameters: oceanGoodsTon(String)
+2017-09-12 10:44:38.802 DEBUG 8228 --- [main] service.app.dao.SetDao.gettypebyname     : <==      Total: 1
+2017-09-12 10:44:38.804 DEBUG 8228 --- [main] service.app.dao.SetDao.gettypebyname     : ==>  Preparing: SELECT * FROM alltypes WHERE typeName = ? 
+2017-09-12 10:44:38.804 DEBUG 8228 --- [main] service.app.dao.SetDao.gettypebyname     : ==> Parameters: oceanGoodsDis(String)
+2017-09-12 10:44:38.806 DEBUG 8228 --- [main] service.app.dao.SetDao.gettypebyname     : <==      Total: 1
+2017-09-12 10:44:38.808 DEBUG 8228 --- [main] service.app.dao.SetDao.gettypebyname     : ==>  Preparing: SELECT * FROM alltypes WHERE typeName = ? 
+2017-09-12 10:44:38.808 DEBUG 8228 --- [main] service.app.dao.SetDao.gettypebyname     : ==> Parameters: oceanPassEnts(String)
+2017-09-12 10:44:38.810 DEBUG 8228 --- [main] service.app.dao.SetDao.gettypebyname     : <==      Total: 1
+2017-09-12 10:44:38.812 DEBUG 8228 --- [main] service.app.dao.SetDao.gettypebyname     : ==>  Preparing: SELECT * FROM alltypes WHERE typeName = ? 
+2017-09-12 10:44:38.812 DEBUG 8228 --- [main] service.app.dao.SetDao.gettypebyname     : ==> Parameters: oceanPassSits(String)
+2017-09-12 10:44:38.813 DEBUG 8228 --- [main] service.app.dao.SetDao.gettypebyname     : <==      Total: 1
+2017-09-12 10:44:38.818 DEBUG 8228 --- [main] service.app.dao.SetDao.gettypebyname     : ==>  Preparing: SELECT * FROM alltypes WHERE typeName = ? 
+2017-09-12 10:44:38.819 DEBUG 8228 --- [main] service.app.dao.SetDao.gettypebyname     : ==> Parameters: oceanPassDis(String)
+2017-09-12 10:44:38.827 DEBUG 8228 --- [main] service.app.dao.SetDao.gettypebyname     : <==      Total: 1
+2017-09-12 10:44:38.831 DEBUG 8228 --- [main] service.app.dao.SetDao.gettypebyname     : ==>  Preparing: SELECT * FROM alltypes WHERE typeName = ? 
+2017-09-12 10:44:38.831 DEBUG 8228 --- [main] service.app.dao.SetDao.gettypebyname     : ==> Parameters: portProEnts(String)
+2017-09-12 10:44:38.832 DEBUG 8228 --- [main] service.app.dao.SetDao.gettypebyname     : <==      Total: 1
+2017-09-12 10:44:38.902  INFO 8228 --- [main] service.app.timwin.TimWinMap             : TimWinMap started ! WindowSize=20 mUniTimeLen = 1800 s
+2017-09-12 10:44:40.957  INFO 8228 --- [main] service.app.EngerWebServiceApplication   : Started EngerWebServiceApplication in 8.14 seconds (JVM running for 9.082)
+2017-09-12 10:47:38.902 DEBUG 8228 --- [Thread-2] service.app.timwin.TimWinMap             : Thread Thread-2  index = 1 dataList = { [ ][ ][ ][ ][ ][ ][ ][ ][ ][ ][ ][ ][ ][ ][ ][ ][ ][ ][ ][ ][ ]}
+2017-09-12 13:18:27.855  INFO 18968 --- [main] service.app.EngerWebServiceApplication   : Starting EngerWebServiceApplication on DESKTOP-IGVOKFE with PID 18968 (E:\workspaceForSTS\EngerWebService\target\classes started by zwp12 in E:\workspaceForSTS\EngerWebService)
+2017-09-12 13:18:27.910  INFO 18968 --- [main] service.app.EngerWebServiceApplication   : No active profile set, falling back to default profiles: default
+2017-09-12 13:18:33.465  INFO 18968 --- [main] service.app.timwin.TimWinMap             : TimWinMap started ! WindowSize=20 mUniTimeLen = 1800 s
+2017-09-12 13:18:34.772  INFO 18968 --- [main] service.app.EngerWebServiceApplication   : Started EngerWebServiceApplication in 7.132 seconds (JVM running for 7.688)
+2017-09-12 13:20:38.019  INFO 18968 --- [http-nio-8081-exec-1] service.app.aop.LogAspect                : service.app.controller.IndexController.getIndexData username[admin],token[aTY3NmM5MWY2X2QxNTBhNTE4bm0wNzMzOQ] in controller 
+2017-09-12 13:20:38.020 ERROR 18968 --- [http-nio-8081-exec-1] service.app.aop.TokenAspect              : service.app.controller.IndexController.getIndexData username[admin],token[aTY3NmM5MWY2X2QxNTBhNTE4bm0wNzMzOQ] auth err
+2017-09-12 13:20:38.020  INFO 18968 --- [http-nio-8081-exec-1] service.app.aop.TokenAspect              : service.app.controller.IndexController.getIndexData username[admin],token[aTY3NmM5MWY2X2QxNTBhNTE4bm0wNzMzOQ] errCode[44]
+2017-09-12 13:20:50.268  INFO 18968 --- [http-nio-8081-exec-5] service.app.aop.LogAspect                : service.app.controller.LogController.login username[admin],token[null] in controller 
+2017-09-12 13:20:50.635  INFO 18968 --- [http-nio-8081-exec-6] service.app.aop.LogAspect                : service.app.controller.IndexController.getIndexData username[admin],token[ZjUyNDdiNzJfZGkxNW4wNTFhbTkzNjUwMw] in controller 
+2017-09-12 13:20:54.126  INFO 18968 --- [http-nio-8081-exec-6] service.app.aop.TokenAspect              : service.app.controller.IndexController.getIndexData username[admin],token[ZjUyNDdiNzJfZGkxNW4wNTFhbTkzNjUwMw] errCode[30]
+2017-09-12 13:21:04.473  INFO 18968 --- [http-nio-8081-exec-7] service.app.aop.LogAspect                : service.app.controller.IndexController.getIndexData username[admin],token[ZjUyNDdiNzJfZGkxNW4wNTFhbTkzNjUwMw] in controller 
+2017-09-12 13:21:09.985  INFO 18968 --- [http-nio-8081-exec-7] service.app.aop.TokenAspect              : service.app.controller.IndexController.getIndexData username[admin],token[ZjUyNDdiNzJfZGkxNW4wNTFhbTkzNjUwMw] errCode[30]
+2017-09-12 13:25:38.473  INFO 18968 --- [http-nio-8081-exec-9] service.app.aop.LogAspect                : service.app.controller.SetController.getUsers username[null],token[ZjUyNDdiNzJfZGkxNW4wNTFhbTkzNjUwMw] in controller 
+2017-09-12 13:25:38.504  INFO 18968 --- [http-nio-8081-exec-9] service.app.aop.TokenAspect              : service.app.controller.SetController.getUsers username[null],token[ZjUyNDdiNzJfZGkxNW4wNTFhbTkzNjUwMw] errCode[20]
+2017-09-12 13:25:40.380  INFO 18968 --- [http-nio-8081-exec-10] service.app.aop.LogAspect                : service.app.controller.SetController.getDict username[null],token[ZjUyNDdiNzJfZGkxNW4wNTFhbTkzNjUwMw] in controller 
+2017-09-12 13:25:40.382  INFO 18968 --- [http-nio-8081-exec-10] service.app.aop.TokenAspect              : service.app.controller.SetController.getDict username[null],token[ZjUyNDdiNzJfZGkxNW4wNTFhbTkzNjUwMw] errCode[20]
+2017-09-12 13:25:46.156  INFO 18968 --- [http-nio-8081-exec-1] service.app.aop.LogAspect                : service.app.controller.SetController.delUser username[zwp],token[ZjUyNDdiNzJfZGkxNW4wNTFhbTkzNjUwMw] in controller 
+2017-09-12 13:25:46.253  INFO 18968 --- [http-nio-8081-exec-1] service.app.aop.TokenAspect              : service.app.controller.SetController.delUser username[zwp],token[ZjUyNDdiNzJfZGkxNW4wNTFhbTkzNjUwMw] errCode[20]
+2017-09-12 13:25:46.270  INFO 18968 --- [http-nio-8081-exec-3] service.app.aop.LogAspect                : service.app.controller.SetController.getUsers username[null],token[ZjUyNDdiNzJfZGkxNW4wNTFhbTkzNjUwMw] in controller 
+2017-09-12 13:25:46.272  INFO 18968 --- [http-nio-8081-exec-3] service.app.aop.TokenAspect              : service.app.controller.SetController.getUsers username[null],token[ZjUyNDdiNzJfZGkxNW4wNTFhbTkzNjUwMw] errCode[20]
+2017-09-12 13:27:19.276  INFO 18968 --- [http-nio-8081-exec-5] service.app.aop.LogAspect                : service.app.controller.LandController.roadPassTrans username[admin],token[ZjUyNDdiNzJfZGkxNW4wNTFhbTkzNjUwMw] in controller 
+2017-09-12 13:27:19.373  INFO 18968 --- [http-nio-8081-exec-5] service.app.aop.TokenAspect              : service.app.controller.LandController.roadPassTrans username[admin],token[ZjUyNDdiNzJfZGkxNW4wNTFhbTkzNjUwMw] errCode[30]
+2017-09-12 13:27:21.513  INFO 18968 --- [http-nio-8081-exec-6] service.app.aop.LogAspect                : service.app.controller.LandController.roadGoodsTrans username[admin],token[ZjUyNDdiNzJfZGkxNW4wNTFhbTkzNjUwMw] in controller 
+2017-09-12 13:27:21.576  INFO 18968 --- [http-nio-8081-exec-6] service.app.aop.TokenAspect              : service.app.controller.LandController.roadGoodsTrans username[admin],token[ZjUyNDdiNzJfZGkxNW4wNTFhbTkzNjUwMw] errCode[30]
+2017-09-12 13:27:28.308  INFO 18968 --- [http-nio-8081-exec-7] service.app.aop.LogAspect                : service.app.controller.LandController.busTrans username[admin],token[ZjUyNDdiNzJfZGkxNW4wNTFhbTkzNjUwMw] in controller 
+2017-09-12 13:27:28.352  INFO 18968 --- [http-nio-8081-exec-7] service.app.aop.TokenAspect              : service.app.controller.LandController.busTrans username[admin],token[ZjUyNDdiNzJfZGkxNW4wNTFhbTkzNjUwMw] errCode[30]
+2017-09-12 13:27:29.435  INFO 18968 --- [http-nio-8081-exec-8] service.app.aop.LogAspect                : service.app.controller.LandController.taxiTrans username[admin],token[ZjUyNDdiNzJfZGkxNW4wNTFhbTkzNjUwMw] in controller 
+2017-09-12 13:27:29.472  INFO 18968 --- [http-nio-8081-exec-8] service.app.aop.TokenAspect              : service.app.controller.LandController.taxiTrans username[admin],token[ZjUyNDdiNzJfZGkxNW4wNTFhbTkzNjUwMw] errCode[30]
+2017-09-12 13:27:33.384  INFO 18968 --- [http-nio-8081-exec-9] service.app.aop.LogAspect                : service.app.controller.LandController.taxiTrans username[admin],token[ZjUyNDdiNzJfZGkxNW4wNTFhbTkzNjUwMw] in controller 
+2017-09-12 13:27:35.172  INFO 18968 --- [http-nio-8081-exec-9] service.app.aop.TokenAspect              : service.app.controller.LandController.taxiTrans username[admin],token[ZjUyNDdiNzJfZGkxNW4wNTFhbTkzNjUwMw] errCode[30]
+2017-09-12 13:44:59.083  INFO 12500 --- [main] service.app.CalWorkerTest                : Starting CalWorkerTest on DESKTOP-IGVOKFE with PID 12500 (started by zwp12 in E:\workspaceForSTS\EngerWebService)
+2017-09-12 13:44:59.085  INFO 12500 --- [main] service.app.CalWorkerTest                : No active profile set, falling back to default profiles: default
+2017-09-12 13:45:05.809  INFO 12500 --- [main] service.app.timwin.TimWinMap             : TimWinMap started ! WindowSize=20 mUniTimeLen = 1800 s
+2017-09-12 13:45:07.788  INFO 12500 --- [main] service.app.CalWorkerTest                : Started CalWorkerTest in 9.133 seconds (JVM running for 11.7)

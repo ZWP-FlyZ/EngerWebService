@@ -59,7 +59,7 @@ public class LadWatController {
 			ttr.setTraTypOther((List<TraTypOtherItem>) ds.get("traTypeOther"));
 		} catch (Exception e) {
 			e.printStackTrace();
-			logger.error(e.toString());
+			logger.error(e.toString(),e);
 			ttr.setErrCode(ErrCode.DATA_ERR);
 		}
 		return ttr;
@@ -86,7 +86,7 @@ public class LadWatController {
 			ir.setEngTypOther((List<EngTypOtherItem>) ds.get("engTypeOther"));
 		} catch (Exception e) {
 			e.printStackTrace();
-			logger.error(e.toString());
+			logger.error(e.toString(),e);
 			ir.setErrCode(ErrCode.DATA_ERR);
 		}
 
@@ -114,7 +114,7 @@ public class LadWatController {
 			ttr.setTraTypOther((List<TraTypOtherItem>) ds.get("traTypeOther"));
 		} catch (Exception e) {
 			e.printStackTrace();
-			logger.error(e.toString());
+			logger.error(e.toString(),e);
 			ttr.setErrCode(ErrCode.DATA_ERR);
 		}
 		
@@ -142,7 +142,7 @@ public class LadWatController {
 			ctt.setCitTypOther((List<CitTypOtherItem>) (ds.get("citTypeOther")));
 		} catch (Exception e) {
 			e.printStackTrace();
-			logger.error(e.toString());
+			logger.error(e.toString(),e);
 			ctt.setErrCode(ErrCode.DATA_ERR);
 		}
 		return ctt;
@@ -167,7 +167,7 @@ public class LadWatController {
 			
 		} catch (Exception e) {
 			e.printStackTrace();
-			logger.error(e.toString());
+			logger.error(e.toString(),e);
 			ttr.setErrCode(ErrCode.DATA_ERR);
 		}
 		

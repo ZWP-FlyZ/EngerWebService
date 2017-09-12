@@ -64,7 +64,7 @@ public class LandController {
 			rpr.setDisTypOther((List<BaseTypOtherItem>) ds.get("disTypOther"));
 			rpr.setCarTypOther((List<CarTypOtherItem>) ds.get("carTypOther"));
 		} catch (Exception e) {
-			logger.error(e.toString());
+			logger.error(e.toString(),e);
 			// TODO: handle exception
 			rpr.setErrCode(ErrCode.DATA_ERR);
 		}
@@ -95,7 +95,7 @@ public class LandController {
 			rgr.setEntTypOther((List<EntTypOtherItem>) ds.get("entTypeOther"));
 			rgr.setCarTypOther((List<CarTypOtherItem>) ds.get("carTypOther"));
 		} catch (Exception e) {
-			logger.error(e.toString());
+			logger.error(e.toString(),e);
 			rgr.setErrCode(ErrCode.DATA_ERR);
 		}
 		
@@ -127,7 +127,7 @@ public class LandController {
 			Map<String,Object> ds = landServiceN.getBusTranTypOther(rd);
 			ir.setEngTypOther((List<EngTypOtherItem>) ds.get("engTypeOther"));
 		} catch (Exception e) {
-			logger.error(e.toString());
+			logger.error(e.toString(),e);
 			ir.setErrCode(ErrCode.DATA_ERR);
 		}
 		
@@ -154,7 +154,7 @@ public class LandController {
 			Map<String,Object> ds = landServiceN.getTaxiTranTypOther(rd);
 			ir.setEngTypOther((List<EngTypOtherItem>) ds.get("engTypeOther"));
 		} catch (Exception e) {
-			logger.error(e.toString());
+			logger.error(e.toString(),e);
 			ir.setErrCode(ErrCode.DATA_ERR);
 		}
 		
