@@ -52,7 +52,7 @@ public class ResultCacheAspect {
 		//mLRU.printAll();
 		
 		String tc = cm.mFrontCacheGet(cacheName);
-		
+		//tc = null;//debug here
 		RespResult re=null;
 		if(tc!=null){
 			re = rr.findOne(""+cacheName.hashCode());
