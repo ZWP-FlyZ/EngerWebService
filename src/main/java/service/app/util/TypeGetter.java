@@ -1,6 +1,8 @@
 package service.app.util;
 
 import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
@@ -446,11 +448,11 @@ public class TypeGetter implements InitializingBean{
 		
 		
 
-		String[] tmp7 = readTypeFromFile("/service/app/util/carType");
+		String[] tmp7 = readTypeFromFile("/carType");
 		tc.setAllTypes(TN_CAR, tmp7);
 		
 		
-		String[] tmp8 = readTypeFromFile("/service/app/util/shipType");		
+		String[] tmp8 = readTypeFromFile("/shipType");		
 		tc.setAllTypes(TN_SHIP, tmp8);
 		
 		String[] tmp9 = {"杭州","宁波","温州","嘉兴","湖州","绍兴","金华","衢州","舟山","台州","丽水"};
@@ -467,7 +469,7 @@ public class TypeGetter implements InitializingBean{
 		BufferedReader br;
 		List<String> ss = new ArrayList<String>();
 		try {
-			br = new BufferedReader(new InputStreamReader(TypeGetter.class.getResourceAsStream(fileName),"UTF-8"));
+			br = new BufferedReader(new InputStreamReader(this.getClass().getResourceAsStream(fileName),"UTF-8"));
 			String line = null;
 			while ((line = br.readLine()) != null) {
 			     if(!"".equals(line)) ss.add(line);
