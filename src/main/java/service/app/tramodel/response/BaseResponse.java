@@ -7,7 +7,7 @@ public class BaseResponse {
 	protected int errCode ;
 	protected String roleName;
 	protected String timeRange;
-	protected String token ;
+	protected String token;
 	
 	protected List<List<String>> xs;
 	

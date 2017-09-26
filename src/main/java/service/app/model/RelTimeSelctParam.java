@@ -7,6 +7,7 @@ public class RelTimeSelctParam {
 	private String shipId;
 	private String cityType;
 	private String companyId;
+	private String contryType;
 	
 	public String getStartTime() {
 		return startTime;
@@ -45,6 +46,12 @@ public class RelTimeSelctParam {
 	}
 	public void setCompanyId(String companyId) {
 		this.companyId = companyId;
+	}
+	public String getContryType() {
+		return contryType;
+	}
+	public void setContryType(String contryType) {
+		this.contryType = contryType;
 	}
 	
 	

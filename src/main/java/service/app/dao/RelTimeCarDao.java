@@ -30,6 +30,14 @@ public interface RelTimeCarDao {
 			@Param("param")RelTimeSelctParam param			
 			);
 	
+	@Select("SELECT fuelCo,longitude,latitude,inTime FROM ${tName} WHERE inTime >= #{param.startTime} "
+			+ "AND inTime <= #{param.endTime} AND place1 like #{param.cityType} "
+			+ "AND place2 like #{param.contryType}")
+	public List<RelTimeData>getRelTimeDataM(
+			@Param("tName")String tName,
+			@Param("param")RelTimeSelctParam param			
+			);
+	
 	
 	
 }

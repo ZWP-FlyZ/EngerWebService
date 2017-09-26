@@ -21,7 +21,7 @@ public class CalWorker {
 	private WorkerService ws;
 	
 	private final static ExecutorService threadPool 
-								= Executors.newCachedThreadPool();
+								= Executors.newFixedThreadPool(20);
 	private final static Logger logger = LoggerFactory.getLogger(CalWorker.class);
 	
 	public <I,O> O submitWork(BaseWork<I,O> work){

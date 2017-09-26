@@ -31,6 +31,15 @@ public class RequestData implements Cloneable{
 	
 	private String targeDay;
 	
+	private String contryType;
+	
+	
+	public String getContryType() {
+		return contryType;
+	}
+	public void setContryType(String contryType) {
+		this.contryType = contryType;
+	}
 	public String getUpAuth() {
 		return upAuth;
 	}

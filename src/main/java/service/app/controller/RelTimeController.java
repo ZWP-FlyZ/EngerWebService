@@ -16,6 +16,7 @@ import service.app.server.RelTimeDataService;
 import service.app.tramodel.ErrCode;
 import service.app.tramodel.RequestData;
 import service.app.tramodel.items.EngTypOtherItem;
+import service.app.tramodel.response.RelTimMapDataResponse;
 import service.app.tramodel.response.RelTimeDataResponse;
 import service.app.util.TimeTools;
 import service.app.util.TypeGetter;
@@ -36,8 +37,6 @@ public class RelTimeController {
 	@ResponseBody
 	public RelTimeDataResponse getRelTimeData(HttpServletResponse response,
 											RequestData rd){
-				
-		
 		RelTimeDataResponse rtdr =new RelTimeDataResponse();
 		rtdr.setErrCode(ErrCode.DATA_OK);
 		rtdr.setRoleName(rd.getRoleName());
@@ -63,5 +62,27 @@ public class RelTimeController {
 		
 		return rtdr;
 	}
+	
+	
+	@RequestMapping("/reltimemap.json")
+	@ResponseBody
+	public RelTimMapDataResponse getRelTimMapData(HttpServletResponse response,
+							RequestData rd){
+		RelTimMapDataResponse rmdr = new RelTimMapDataResponse();
+		rmdr.setErrCode(ErrCode.DATA_OK);
+		rmdr.setRoleName(rd.getRoleName());
+		rd.setTimeRange("2017-09-09 14:00:00&2017-09-09 14:10:00");
+		rmdr.setTimeRange(rd.getTimeRange());
+		rmdr.setCityType(rd.getCityType());
+		rmdr.setContry(rd.getContryType());
+		try {
+			rmdr.setData(rtds.getRelTimMapData(rd));
+		} catch (Exception e) {
+			logger.error(e.toString(),e);
+			rmdr.setErrCode(ErrCode.DATA_ERR);
+		}
+		return rmdr;
+	}
+	
 	
 }

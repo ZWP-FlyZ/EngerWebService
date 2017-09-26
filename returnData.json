@@ -816,6 +816,20 @@
 
 }
 
+//实时地图数据返回
+
+{
+	errCode//状态码
+	roleName//角色名
+	timeRange//统计时间范围
+	cityType//地市类型
+	contryType//区县类型
+
+	data:[RelTimeData1,RelTimeData2,...]
+}
+
+
+
 
 
 

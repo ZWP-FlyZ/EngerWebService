@@ -110,6 +110,31 @@ public class RelTimeDataService {
 		return map;
 	}
 	
+	
+	
+	public List<RelTimeData> getRelTimMapData(RequestData rd){
+		
+		RelTimeSelctParam param = new RelTimeSelctParam();
+		List<RelTimeData> li = new ArrayList<>();
+		String [] ss = TimeTools.sqlitTimeRange(rd.getTimeRange());
+		
+		//System.err.println(Arrays.toString(ss));
+		param.setStartTime(ss[0]);
+		param.setEndTime(ss[1]);
+		
+		param.setCityType(checkNull(rd.getCityType()));
+		param.setContryType(checkNull(rd.getContryType()));
+		
+		li.addAll(carDao.getRelTimeDataM(TNAME_ROAD_PASS, param));
+		li.addAll(carDao.getRelTimeDataM(TNAME_ROAD_GOODS, param));
+		li.addAll(carDao.getRelTimeDataM(TNAME_BUS, param));
+		li.addAll(carDao.getRelTimeDataM(TNAME_TAXI, param));
+		
+		return li;
+	}
+	
+	
+	
 	private String checkNull(String s){
 		return s==null||"".equals(s)?"%":s;
 	}
