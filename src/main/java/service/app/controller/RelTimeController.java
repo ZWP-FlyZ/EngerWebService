@@ -71,7 +71,6 @@ public class RelTimeController {
 		RelTimMapDataResponse rmdr = new RelTimMapDataResponse();
 		rmdr.setErrCode(ErrCode.DATA_OK);
 		rmdr.setRoleName(rd.getRoleName());
-		rd.setTimeRange("2017-09-09 14:00:00&2017-09-09 14:10:00");
 		rmdr.setTimeRange(rd.getTimeRange());
 		rmdr.setCityType(rd.getCityType());
 		rmdr.setContry(rd.getContryType());
