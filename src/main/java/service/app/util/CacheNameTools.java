@@ -12,6 +12,9 @@ public class CacheNameTools {
 		sb.append("_"+rd.getPlace2());
 		sb.append("_"+rd.getTranType());
 		sb.append("_"+rd.getCityType());
+		sb.append("_"+rd.getCompanyId());
+		sb.append("_"+rd.getCarId());
+		sb.append("_"+rd.getShipId());
 		if(RoleType.ROLE_ADMIN.equals(rd.getRoleType())||
 				RoleType.ROLE_TRAFFIC.equals(rd.getRoleType()))
 			sb.append("_"+RoleType.ROLE_TRAFFIC);
