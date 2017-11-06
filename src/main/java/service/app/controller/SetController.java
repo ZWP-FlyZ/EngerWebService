@@ -52,7 +52,7 @@ public class SetController  {
 	private final static String suppout = "support";
 	
 	
-	
+	/*------获取用户信息接口------*/
 	@RequestMapping("/getusers.json")
 	@ResponseBody
 	public SetResponse getUsers(HttpServletResponse response,RequestData data){
@@ -72,7 +72,7 @@ public class SetController  {
 		sr.setUsers(infoes);
 		return sr;
 	}
-	
+	/*------分配用户账号接口------*/
 	@RequestMapping("/reguser.json")
 	@ResponseBody
 	public SetResponse regUser(HttpServletResponse response,RequestData data){
@@ -90,7 +90,7 @@ public class SetController  {
 		return sr;
 	}
 	
-	
+	/*------删除用户接口------*/
 	@RequestMapping("/deluser.json")
 	@ResponseBody
 	public SetResponse delUser(HttpServletResponse response,RequestData data){
@@ -106,7 +106,7 @@ public class SetController  {
 		
 		return sr;
 	}
-	
+	/*------修改用户信息接口------*/
 	@RequestMapping("/edituser.json")
 	@ResponseBody
 	public SetResponse editUser(HttpServletResponse response,RequestData data){
@@ -122,7 +122,7 @@ public class SetController  {
 		
 		return sr;
 	}
-	
+	/*------获取分类数字字典接口------*/
 	@RequestMapping("/getdictlist.json")
 	@ResponseBody
 	public SetResponse getDict(HttpServletResponse response,RequestData data){
@@ -137,7 +137,7 @@ public class SetController  {
 		
 		return sr;
 	}
-	
+	/*------修改分类数字字典接口------*/
 	@RequestMapping("/setdict.json")
 	@ResponseBody
 	public SetResponse setDict(HttpServletResponse response,RequestData data){
@@ -155,7 +155,7 @@ public class SetController  {
 		return sr;
 	}
 	
-	
+	/*------修改用户密码的接口------*/
 	@RequestMapping("/passsetting.json")
 	@ResponseBody
 	public SetResponse setPassword(HttpServletResponse response,RequestData data){
@@ -179,7 +179,7 @@ public class SetController  {
 		return sr;
 	}
 	
-	
+	/*------上传帮助文档的接口------*/
 	@PostMapping(value="/helpupload" )
 	@ResponseBody
 	public SetResponse uploadHelpDoc(HttpServletResponse response,RequestData data,MultipartFile file){
@@ -196,7 +196,7 @@ public class SetController  {
 		}
 		return sr;
 	}
-	
+	/*------获取帮助文档的接口------*/
 	@GetMapping(value="/helpdownload/helpDocument.pdf" )
 	@ResponseBody
 	public ResponseEntity<Resource> downloadHelpDoc(HttpServletResponse response){
@@ -213,7 +213,7 @@ public class SetController  {
 	}
 	
 	
-	
+	/*------获取平台技术支持信息的接口------*/
 	@GetMapping("/getsupport")
 	@ResponseBody
 	public SetResponse getSupportMessage(HttpServletResponse response,RequestData data){
@@ -231,7 +231,7 @@ public class SetController  {
 		return sr;
 	}
 	
-	
+	/*------修改平台技术支持信息的接口------*/
 	@GetMapping("/setsupport")
 	@ResponseBody
 	public SetResponse setSupportMessage(HttpServletResponse response,RequestData data){

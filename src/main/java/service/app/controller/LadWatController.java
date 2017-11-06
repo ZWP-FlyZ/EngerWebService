@@ -39,7 +39,7 @@ public class LadWatController {
 	
 	private final static Logger logger = LoggerFactory.getLogger(LadWatController.class);
 	
-	
+	/*------单位运距能耗指标接口------*/
 	@SuppressWarnings("unchecked")
 	@RequestMapping("/perdisengO.json")
 	@ResponseBody
@@ -65,7 +65,7 @@ public class LadWatController {
 		return ttr;
 	}
 	
-	
+	/*-----年度数据对比的接口------*/
 	@SuppressWarnings("unchecked")
 	@RequestMapping("/engtyp3yearO.json")
 	@ResponseBody
@@ -93,7 +93,7 @@ public class LadWatController {
 		return ir;
 	}
 	
-	
+	/*------能耗变化趋势接口------*/
 	@SuppressWarnings("unchecked")
 	@RequestMapping("/tratypperyearO.json")
 	@ResponseBody
@@ -123,7 +123,7 @@ public class LadWatController {
 		return ttr;
 	}
 	
-		
+	/*------地市能耗构成接口------*/
 	@SuppressWarnings("unchecked")
 	@RequestMapping("/citytrantypengO.json")
 	@ResponseBody
@@ -147,7 +147,7 @@ public class LadWatController {
 		}
 		return ctt;
 	}
-	
+	/*------交通方式能耗构成接口------*/
 	@SuppressWarnings("unchecked")
 	@RequestMapping("/tracitytypengO.json")
 	@ResponseBody

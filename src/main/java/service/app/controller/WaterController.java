@@ -39,7 +39,7 @@ public class WaterController {
 	TypeGetter tg;
 	
 	private final static Logger logger = LoggerFactory.getLogger(WaterController.class);
-	
+	/*------内河运输接口------*/
 	@SuppressWarnings("unchecked")
 	@RequestMapping("/rivertranO.json")
 	@ResponseBody
@@ -74,7 +74,7 @@ public class WaterController {
 	}
 	
 	
-	
+	/*------海洋货运接口------*/
 	@SuppressWarnings("unchecked")
 	@RequestMapping("/oceangoodsO.json")
 	@ResponseBody
@@ -110,7 +110,7 @@ public class WaterController {
 
 }
 	
-	
+	/*------海洋客运接口------*/
 	@SuppressWarnings("unchecked")
 	@RequestMapping("/oceanpassO.json")
 	@ResponseBody
@@ -141,7 +141,7 @@ public class WaterController {
 		return opr;
 
 	}
-	
+	/*------港口生产接口------*/
 	@SuppressWarnings("unchecked")
 	@RequestMapping("/portproduceO.json")
 	@ResponseBody

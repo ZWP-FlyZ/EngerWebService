@@ -31,7 +31,7 @@ public class RelTimeController {
 	TypeGetter tg;
 	
 	private final static Logger logger = LoggerFactory.getLogger(RelTimeController.class);
-	
+	/*-----实时数据的接口------*/
 	@SuppressWarnings("unchecked")
 	@RequestMapping("/reltimedata.json")
 	@ResponseBody
@@ -63,7 +63,7 @@ public class RelTimeController {
 		return rtdr;
 	}
 	
-	
+	/*-----热力图的接口------*/
 	@RequestMapping("/reltimemap.json")
 	@ResponseBody
 	public RelTimMapDataResponse getRelTimMapData(HttpServletResponse response,

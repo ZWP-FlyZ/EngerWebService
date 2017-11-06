@@ -31,6 +31,7 @@ public class LogController  implements InitializingBean{
 	
 	final static Logger logger = LoggerFactory.getLogger(LogController.class);
 	
+	/*------用户登录接口------*/
 	@RequestMapping("/login.json")
 	@ResponseBody
 	public LogInResponse login(HttpServletResponse response,RequestData data){
@@ -58,7 +59,7 @@ public class LogController  implements InitializingBean{
 	}
 	
 	
-	
+	/*------用户登出接口------*/
 	@RequestMapping("/logout.json")
 	@ResponseBody
 	public BaseResponse logout(HttpServletResponse response,RequestData data){

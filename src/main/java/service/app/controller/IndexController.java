@@ -39,6 +39,7 @@ public class IndexController {
 	
 	private final static Logger logger = LoggerFactory.getLogger(IndexController.class);
 	
+	/*------首页接口------*/
 	@SuppressWarnings("unchecked")
 	@RequestMapping("/index.json")
 	@ResponseBody
@@ -53,7 +54,7 @@ public class IndexController {
 		try {
 			ir.getXs().add(TimeTools.getYMlist(rd.getTimeRange()));
 			ir.getXs().add(tg.getAllEngersTypes());
-			ds = index2.getEngTypOther(rd);
+			ds = index2.getEngTypOther(rd);	
 			ir.setEngTypOther((List<EngTypOtherItem>) ds.get("engTypeOther"));
 		} catch (Exception e) {
 			logger.error(e.toString(),e);

@@ -38,7 +38,7 @@ public class LandController {
 	service.app.server.n.LandDataService landServiceN;
 	
 	private final static Logger logger = LoggerFactory.getLogger(LandController.class);
-
+	/*------道路客运接口------*/
 	@SuppressWarnings("unchecked")
 	@RequestMapping("/roadpassO.json")
 	@ResponseBody
@@ -70,7 +70,7 @@ public class LandController {
 		}
 		return rpr;
 	}
-	
+	/*------道路货运接口------*/
 	@SuppressWarnings("unchecked")
 	@RequestMapping("/roadgoodsO.json")
 	@ResponseBody
@@ -104,7 +104,7 @@ public class LandController {
 		
 		return rgr;
 	}
-	
+	/*------公交客运接口------*/
 	@SuppressWarnings("unchecked")
 	@RequestMapping("/bustranO.json")
 	@ResponseBody
@@ -134,7 +134,7 @@ public class LandController {
 		return ir;
 	}
 	
-	
+	/*------出租车运输接口------*/
 	@SuppressWarnings("unchecked")
 	@RequestMapping("/taxitranO.json")
 	@ResponseBody
