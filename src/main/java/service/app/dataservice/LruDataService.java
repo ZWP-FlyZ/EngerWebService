@@ -31,7 +31,6 @@ import service.app.util.TypeGetter;
 public class LruDataService {
 	
 
-	
 	@Autowired
 	RoadGdsDao roadGdsDao;
 	@Autowired
@@ -249,7 +248,17 @@ public class LruDataService {
 		return list;
 	}
 	
-	
-	
+	//预加载一年的数据
+	public void preloadCache(){
+		logger.info("开始预加载缓存数据，这将花费一段时间！");
+		String[] tranPP = TypeGetter.ALL_TRA_PP;
+		List<String> yms = TimeTools.getPreLoadYMList();
+		for(String tr:tranPP){
+			for(String ym : yms)
+				getTYMCacheDataBefore(tr,ym);
+			logger.info("---->加载( "+tr+" )缓存数据完成!");
+		}
+		logger.info("加载所有缓存数据完成！");
+	}
 
 }

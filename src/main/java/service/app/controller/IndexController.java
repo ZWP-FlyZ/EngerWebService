@@ -33,9 +33,6 @@ public class IndexController {
 	@Autowired
 	TypeGetter tg;
 	
-	@Autowired
-	TimWinMap tokenMap;
-	
 	
 	private final static Logger logger = LoggerFactory.getLogger(IndexController.class);
 	

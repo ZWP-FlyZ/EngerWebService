@@ -121,7 +121,7 @@ public class TimeTools {
 	}
 	
 	
-	public static int getMaxDayOfMonth(String YM){
+	public final static int getMaxDayOfMonth(String YM){
 		 SimpleDateFormat sdfYM = 
 					new SimpleDateFormat("yyyy-MM");
 		Calendar c = Calendar.getInstance();
@@ -134,7 +134,22 @@ public class TimeTools {
 		}
 	}
 	
-	
+	public final static List<String> getPreLoadYMList(){
+		List<String> yms = new ArrayList<String>();
+		 SimpleDateFormat sdfYM = 
+					new SimpleDateFormat("yyyy-MM");
+		Date de = new Date();
+		Calendar c = Calendar.getInstance();
+		c.setTime(de);
+		c.add(Calendar.MONTH, -2);
+		de = c.getTime();
+		c.add(Calendar.YEAR, -1);
+		while(c.getTime().before(de)||c.getTime().equals(de)){
+			yms.add(sdfYM.format(c.getTime()));
+			c.add(Calendar.MONTH, 1);
+		}
+		return yms;
+	}
 	
 	
 	
