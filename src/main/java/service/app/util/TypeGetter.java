@@ -125,6 +125,9 @@ public class TypeGetter implements InitializingBean{
 	
 	
 	
+	public List<String> getTransTypesPP(){
+		return tc.getAlltypes(TN_ALL_TRA_PP);
+	}
 	
 	public List<String> getTransTypes(){
 		return tc.getAlltypes(TN_ALL_TRA);

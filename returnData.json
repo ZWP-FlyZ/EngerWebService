@@ -719,6 +719,98 @@
 }
 
 
+//分析报告返回数据
+{
+	errCode//状态码
+	roleName//角色名
+	timeRange//统计时间范围
+	xs://X轴类型或者饼图样例
+	[
+		[年月1,年月2.....]//年月类型
+		[燃料类型1,燃料类型2.....]//燃料类型
+		[城市1,城市2.....]//城市类型
+		[运输类型1,运输类型2.....]//运输类型
+
+	]
+
+	monTypOther://每个月与其他条件
+	[
+		{
+			baseTyp//月份
+
+			monTypEng://该月各燃料类型的使用量
+			[
+				{
+					type//燃料类型
+					TypDatOfAllEng//能耗总量
+					TypDatOfAllLen//周转总量
+				}
+			]//end monTypEng
+
+			monTypCity://该月各城市类型数据
+			[
+				{
+					type//城市类型
+					TypDatOfAllEng//能耗总量
+					TypDatOfAllLen//周转总量
+				}
+			]//end monTypCity
+
+			monTypTra://该月各运输类型数据
+			[
+				{
+					type//类型
+					TypDatOfAllEng//能耗总量
+					TypDatOfAllLen//周转总量
+				}
+			]//end monTypCity
+
+		}//end monTypOther		
+	]
+
+	monTypOtherPP://每个月与其他条件
+	[
+		{
+			baseTyp//月份
+
+			monTypEng://该月各燃料类型的使用量
+			[
+				{
+					type//燃料类型
+					TypDatOfAllEng//能耗总量
+					TypDatOfAllLen//周转总量
+				}
+			]//end monTypEng
+
+			monTypCity://该月各城市类型数据
+			[
+				{
+					type//城市类型
+					TypDatOfAllEng//能耗总量
+					TypDatOfAllLen//周转总量
+				}
+			]//end monTypCity
+
+			monTypTra://该月各运输类型数据
+			[
+				{
+					type//类型
+					TypDatOfAllEng//能耗总量
+					TypDatOfAllLen//周转总量
+				}
+			]//end monTypCity
+
+		}//end monTypOther		
+	]
+
+
+
+}
+
+
+
+
+
 //获取用户列表，排除了超级管理员账户
 {
 	errCode//状态码

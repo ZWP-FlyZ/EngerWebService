@@ -13,6 +13,7 @@ import org.springframework.stereotype.Service;
 import service.app.callables.BaseWork;
 import service.app.callables.CityTraDataWork;
 import service.app.callables.EngYearDataWork;
+import service.app.callables.ReportDataWork;
 import service.app.callables.TraCityDataWork;
 import service.app.callables.TraPerDisDataWork;
 import service.app.callables.TraTypPerYearWork;
@@ -20,6 +21,7 @@ import service.app.tramodel.RequestData;
 import service.app.tramodel.TypeData;
 import service.app.tramodel.items.CitTypOtherItem;
 import service.app.tramodel.items.EngTypOtherItem;
+import service.app.tramodel.items.MonTypOtherItem;
 import service.app.tramodel.items.TraTypOtherItem;
 import service.app.util.TimeTools;
 import service.app.util.TwoDecMap;
@@ -335,6 +337,99 @@ public class LadWatDataService {
 		
 		return map;
 	}
+	
+	@SuppressWarnings("unchecked")
+	public Map<String,Object> getMonTypOther(RequestData rd){
+		
+		List<BaseWork<RequestData,
+			List<TwoDecMap<String, ? extends TypeData>>>> works = new ArrayList<>();
+
+		List<String> YMs = TimeTools.getYMlist(rd.getTimeRange());
+		RequestData tmp= null;
+		List<List<TwoDecMap<String, ? extends TypeData>>> results = null;
+	
+		List<MonTypOtherItem> monTypeOther = new ArrayList<>();
+		List<MonTypOtherItem> monTypeOtherpp = new ArrayList<>();
+		
+		if(YMs.size()==0) throw new NullPointerException("年月列表为空");
+		
+		YMs.set(YMs.size()-1, TimeTools.sqlitTimeRange(rd.getTimeRange())[1]);
+		for(int i=0;i<YMs.size()-1;i++){
+			tmp = rd.clone();
+			if(tmp==null) throw new NullPointerException("克隆失败！");
+			tmp.setTargeDay(YMs.get(i)+"-15");
+			works.add(new ReportDataWork(tmp));
+		}
+		tmp = rd.clone();
+		if(tmp==null) throw new NullPointerException("克隆失败！");
+		tmp.setTargeDay(YMs.get(YMs.size()-1));
+		works.add(new ReportDataWork(tmp));
+		
+		results = cw.submitWorkList(works);//wait for finish
+		
+		List<TwoDecMap<String, ? extends TypeData>> one = results.get(0);
+		List<TwoDecMap<String, ? extends TypeData>> two = null;
+		TwoDecMap<String,   TypeData> om = null;
+		TwoDecMap<String,   TypeData> tm = null,rm = null;
+		for(int i=1;i<results.size();i++){
+			two = results.get(i);
+			for(int j=0;j<one.size();j++){
+				om = (TwoDecMap<String, TypeData>) one.get(j);
+				tm = (TwoDecMap<String, TypeData>) two.get(j);
+				one.set(j, tm.add(om));
+			}
+		}
+		
+
+		if(one.size()>0){
+			om = (TwoDecMap<String, TypeData>) one.get(0);
+			tm = (TwoDecMap<String, TypeData>) one.get(1);
+			rm = (TwoDecMap<String, TypeData>) one.get(2);
+			
+			MonTypOtherItem mtoi = null;
+			for(String et:om.getXset()){
+				mtoi = new MonTypOtherItem();
+				mtoi.setBaseTyp(et);
+				mtoi.setMonTypEng(new ArrayList<TypeData>(om.getYMap(et).values()));
+				mtoi.setMonTypCity(new ArrayList<TypeData>(tm.getYMap(et).values()));
+				mtoi.setMonTypTra(new ArrayList<TypeData>(rm.getYMap(et).values()));
+				monTypeOther.add(mtoi);
+			}
+			
+			om = (TwoDecMap<String, TypeData>) one.get(3);
+			tm = (TwoDecMap<String, TypeData>) one.get(4);
+			rm = (TwoDecMap<String, TypeData>) one.get(5);
+			
+			for(String et:om.getXset()){
+				mtoi = new MonTypOtherItem();
+				mtoi.setBaseTyp(et);
+				mtoi.setMonTypEng(new ArrayList<TypeData>(om.getYMap(et).values()));
+				mtoi.setMonTypCity(new ArrayList<TypeData>(tm.getYMap(et).values()));
+				mtoi.setMonTypTra(new ArrayList<TypeData>(rm.getYMap(et).values()));
+				monTypeOtherpp.add(mtoi);
+			}
+				
+		}//end
+		
+		Map<String ,Object> map = new HashMap<String ,Object>();
+		map.put("monTypOther",monTypeOther);
+		map.put("monTypOtherPP",monTypeOtherpp);
+		
+		return map;
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	
 	

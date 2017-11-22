@@ -17,9 +17,11 @@ import service.app.tramodel.ErrCode;
 import service.app.tramodel.RequestData;
 import service.app.tramodel.items.CitTypOtherItem;
 import service.app.tramodel.items.EngTypOtherItem;
+import service.app.tramodel.items.MonTypOtherItem;
 import service.app.tramodel.items.TraTypOtherItem;
 import service.app.tramodel.response.CitTraTypOthResponse;
 import service.app.tramodel.response.EngTypOthResponse;
+import service.app.tramodel.response.MonTypOthResponse;
 import service.app.tramodel.response.TraTypOthResponse;
 import service.app.util.TimeTools;
 import service.app.util.TypeGetter;
@@ -173,6 +175,38 @@ public class LadWatController {
 		
 		return ttr;
 	}
+	
+	
+	@SuppressWarnings("unchecked")
+	@RequestMapping("/reportallO.json")
+	@ResponseBody
+	public MonTypOthResponse reportAll(HttpServletResponse response,
+			RequestData rd){
+
+		MonTypOthResponse mtr = new MonTypOthResponse();
+		mtr.setErrCode(ErrCode.DATA_OK);
+		mtr.setRoleName(rd.getRoleName());
+		mtr.setTimeRange(rd.getTimeRange());
+		
+		try {
+			
+			mtr.getXs().add(TimeTools.getYMlist(rd.getTimeRange()));
+			mtr.getXs().add(tg.getAllEngersTypes());
+			mtr.getXs().add(tg.getCitiesTypes());
+			mtr.getXs().add(tg.getTransTypesPP());
+			Map<String,Object> ds = lWService.getMonTypOther(rd);
+			mtr.setMonTypOther((List<MonTypOtherItem>) ds.get("monTypOther"));
+			mtr.setMonTypOther((List<MonTypOtherItem>) ds.get("monTypOtherPP"));
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+			logger.error(e.toString(),e);
+			mtr.setErrCode(ErrCode.DATA_ERR);
+		}
+		
+		return mtr;
+	}
+	
 	
 	
 	
