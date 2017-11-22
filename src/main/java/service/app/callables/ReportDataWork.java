@@ -35,7 +35,6 @@ public class ReportDataWork extends DataAuthBaseWork {
 		if(data==null) return maps;
 		
 		LruDataService lds = ws.lds;
-		TypeGetter tg = ws.tg;
 		String tgd = data.getTargeDay();
 		String[] nowBefMon  = TimeTools.getNowBeforeYM();///[yyyy-mm-dd,yyyy-mm]
 		if(TimeTools.compareYMD(nowBefMon[0], tgd)<0) return maps;//时间超过当前
