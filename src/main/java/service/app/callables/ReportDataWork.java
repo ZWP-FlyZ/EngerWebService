@@ -131,7 +131,7 @@ public class ReportDataWork extends DataAuthBaseWork {
 						if(td==null)
 						{
 							td = new TypeData();
-							td.setType(tmp);
+							td.setType(TypeGetter.FT_CHAI_YOU);
 						}
 						td.addEng(d.getDiesel());
 						td.addLen(d.getProTask());
@@ -141,7 +141,7 @@ public class ReportDataWork extends DataAuthBaseWork {
 						if(td==null)
 						{
 							td = new TypeData();
-							td.setType(tmp);
+							td.setType(TypeGetter.FT_QI_YOU);
 						}
 						td.addEng(d.getGasoline());
 						td.addLen(d.getProTask());
@@ -151,7 +151,7 @@ public class ReportDataWork extends DataAuthBaseWork {
 						if(td==null)
 						{
 							td = new TypeData();
-							td.setType(tmp);
+							td.setType(TypeGetter.FT_MEI_YOU);
 						}
 						td.addEng(d.getCoal());
 						td.addLen(d.getProTask());
@@ -161,7 +161,7 @@ public class ReportDataWork extends DataAuthBaseWork {
 						if(td==null)
 						{
 							td = new TypeData();
-							td.setType(tmp);
+							td.setType(TypeGetter.FT_DIAN_NENG);
 						}
 						td.addEng(d.getPower());
 						td.addLen(d.getProTask());
@@ -171,7 +171,7 @@ public class ReportDataWork extends DataAuthBaseWork {
 						if(td==null)
 						{
 							td = new TypeData();
-							td.setType(tmp);
+							td.setType(TypeGetter.FT_QI_TA);
 						}
 						td.addEng(d.getOther());
 						td.addLen(d.getProTask());

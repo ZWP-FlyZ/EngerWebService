@@ -196,7 +196,7 @@ public class LadWatController {
 			mtr.getXs().add(tg.getTransTypesPP());
 			Map<String,Object> ds = lWService.getMonTypOther(rd);
 			mtr.setMonTypOther((List<MonTypOtherItem>) ds.get("monTypOther"));
-			mtr.setMonTypOther((List<MonTypOtherItem>) ds.get("monTypOtherPP"));
+			mtr.setMonTypOtherPP((List<MonTypOtherItem>) ds.get("monTypOtherPP"));
 			
 		} catch (Exception e) {
 			e.printStackTrace();
