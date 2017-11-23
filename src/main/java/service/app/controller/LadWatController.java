@@ -182,7 +182,8 @@ public class LadWatController {
 	@ResponseBody
 	public MonTypOthResponse reportAll(HttpServletResponse response,
 			RequestData rd){
-
+		
+		
 		MonTypOthResponse mtr = new MonTypOthResponse();
 		mtr.setErrCode(ErrCode.DATA_OK);
 		mtr.setRoleName(rd.getRoleName());

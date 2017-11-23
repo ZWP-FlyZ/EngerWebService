@@ -91,9 +91,12 @@ public class LruDataService {
 		}
 		tmpData  = getDataFromMySql(tranType,YM);
 		if(tmpData.size()!=0)
+		{
 			tymRepo.save(new CacheData(cacheName,tmpData));
+			tc = cm.mTryemocacheAdd(cacheName, cacheName);
+		}
 		logger.debug("Don't have cache! Add Cache If Size not 0 name =["+cacheName+"] size=["+tmpData.size()+"]");
-		tc = cm.mTryemocacheAdd(cacheName, cacheName);
+		
 		if(tc!=null){
 			tymRepo.delete(tc.hashCode()+"");
 			logger.debug("LRU(mTrYeMoCache) full! Cache["+tc+"] deleted");
@@ -127,10 +130,13 @@ public class LruDataService {
 		}
 		tmpData  = getDataFromMySql(tranType,TimeTools.getYearMonth(YMD));
 		if(tmpData.size()!=0)
+		{
 			tymRepo.save(new CacheData(cacheName,tmpData));
+			tc = cm.mTrYeMoDaCacheAdd(cacheName, cacheName);
+		}
 		logger.debug("Don't have cache! Add Cache If Size not 0 name =["+cacheName+"] size=["+tmpData.size()+"]");
 		
-		tc = cm.mTrYeMoDaCacheAdd(cacheName, cacheName);
+		
 		if(tc!=null){
 			tymRepo.delete(tc.hashCode()+"");
 			logger.debug("LRU(mTrYeMoDaCache) full! Cache["+tc+"] deleted");
@@ -156,10 +162,13 @@ public class LruDataService {
 		}
 		tmpData  = getRelTimeDataFromMySql(tranType,YMD);
 		if(tmpData.size()!=0)
+		{
 			tymRepo.save(new CacheData(cacheName,tmpData));
+			tc = cm.mRelTimTrYeMoDaCacheAdd(cacheName, cacheName);
+		}
 		logger.debug("Don't have cache! Add Cache If Size not 0 name =["+cacheName+"] size=["+tmpData.size()+"]");
 		
-		tc = cm.mRelTimTrYeMoDaCacheAdd(cacheName, cacheName);
+		
 		if(tc!=null){
 			tymRepo.delete(tc.hashCode()+"");
 			logger.debug("LRU(mRelTimTrYeMoDaCache) full! Cache["+tc+"] deleted");
@@ -185,10 +194,13 @@ public class LruDataService {
 		}
 		tmpData  = getRelTimeDataFromMySql(tranType,YMDH.substring(0,10));
 		if(tmpData.size()!=0)
+		{
 			tymRepo.save(new CacheData(cacheName,tmpData));
+			tc = cm.mRelTimTrYeMoDaHoCacheAdd(cacheName, cacheName);
+		}
 		logger.debug("Don't have cache! Add Cache If Size not 0 name =["+cacheName+"] size=["+tmpData.size()+"]");
 		
-		tc = cm.mRelTimTrYeMoDaHoCacheAdd(cacheName, cacheName);
+		
 		if(tc!=null){
 			tymRepo.delete(tc.hashCode()+"");
 			logger.debug("LRU(mRelTimTrYeMoDaHoCache) full! Cache["+tc+"] deleted");
