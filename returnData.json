@@ -768,7 +768,7 @@
 		}//end monTypOther		
 	]
 
-	monTypOtherPP://每个月与其他条件
+	monTypOtherPP://港口生产每个月与其他条件
 	[
 		{
 			baseTyp//月份
@@ -922,9 +922,46 @@
 
 
 
+//获取范围数据返回
+
+{
+	errCode//状态码
+	tranType//运输类型
+	rangs:[r1,r2,...]
+}
 
 
+//设置范围数据返回
 
+{
+	errCode//状态码
+	tranType//运输类型
+}
+
+
+// 质量评价数据返回
+{
+	errCode//状态码
+	tranType//运输类型
+	timeRange//时间范围
+	companyId//公司id
+	data:
+	[
+		{
+			cot//统计值
+			ym//年月
+			companyId//公司id
+		}
+	]
+	rowdata:
+	[
+		{
+			cot//统计值
+			ym//年月
+			companyId//公司id
+		}
+	]
+}
 
 
 
