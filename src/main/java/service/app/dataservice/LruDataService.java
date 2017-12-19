@@ -261,7 +261,7 @@ public class LruDataService {
 	}
 	
 	//预加载一年的数据
-	public void preloadCache(){
+	public synchronized void preloadCache(){
 		logger.info("开始预加载缓存数据，这将花费一段时间！");
 		String[] tranPP = TypeGetter.ALL_TRA_PP;
 		List<String> yms = TimeTools.getPreLoadYMList();

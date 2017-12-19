@@ -9,7 +9,10 @@ import java.util.concurrent.locks.ReentrantReadWriteLock;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.InitializingBean;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+
+import service.app.dataservice.LruDataService;
 
 
 @Component
@@ -27,6 +30,9 @@ public class CacheManager implements InitializingBean{
 	
 	private final Logger logger = LoggerFactory.getLogger(CacheManager.class);
 	
+	
+	@Autowired
+	LruDataService lds;
 	
 	private ReadWriteLock rwl1 = new ReentrantReadWriteLock();
 	private ReadWriteLock rwl2 = new ReentrantReadWriteLock();
@@ -186,11 +192,12 @@ public class CacheManager implements InitializingBean{
 		@Override
 		public void run() {
 			try {
-				logger.debug("clear cache");
+				logger.info("清除缓存");
 				cleanFrontCache();
 				cleanBackCache();
+				lds.preloadCache();
 			} catch (Exception e) {
-				logger.error("CacheManager clear Cache err",e);
+				logger.error("清除缓存错误！",e);
 			}
 		}
 	};
@@ -198,7 +205,7 @@ public class CacheManager implements InitializingBean{
 	@Override
 	public void afterPropertiesSet() throws Exception {
 		// TODO Auto-generated method stub
-		pool.scheduleAtFixedRate(runable, 2,2, TimeUnit.DAYS);
+		pool.scheduleAtFixedRate(runable, 5,5, TimeUnit.DAYS);
 	}
 		
 }
